@@ -4,8 +4,27 @@ date: 2026-02-26
 source: Robonomics
 type: substack
 url: https://robonomics.substack.com/p/token-tracker-and-implications
-companies: [VOLCANO ENGINE, BABA, BYTEDANCE, GOOGL, MSFT, OPENAI, OPENROUTER, NATIONAL DATA BUREAU, FROST & SULLIVAN, SEEDANCE, KELING]
-sectors: [ai, ai-infrastructure, cloud-infrastructure, china-tech, video-ai, enterprise-software]
+companies: [VOLCANO ENGINE, BABA, BYTEDANCE, GOOGL, MSFT, OPENAI, OPENROUTER, SEEDANCE, KELING]
+topics: [gen-ai, video-ai, ai-infrastructure, china-tech, inference-infrastructure]
+companies_detail:
+  - ticker: VOLCANO ENGINE
+    focus: secondary
+  - ticker: BABA
+    focus: secondary
+  - ticker: BYTEDANCE
+    focus: secondary
+  - ticker: GOOGL
+    focus: secondary
+  - ticker: MSFT
+    focus: secondary
+  - ticker: OPENAI
+    focus: secondary
+  - ticker: OPENROUTER
+    focus: secondary
+  - ticker: SEEDANCE
+    focus: secondary
+  - ticker: KELING
+    focus: secondary
 source_length: 1331
 fetch_method: substack_api
 fetch_id: token-tracker-and-implications

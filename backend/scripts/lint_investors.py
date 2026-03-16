@@ -27,7 +27,8 @@ SLUG_RE = re.compile(r"^[a-z][a-z0-9-]+$")
 
 # Required frontmatter fields
 PROFILE_REQUIRED = {"name", "slug", "fund", "role", "sectors", "companies", "sources", "last_updated"}
-APPEARANCE_REQUIRED = {"investor", "date", "source", "type", "companies", "sectors"}
+# Accept either 'topics' (new) or 'sectors' (legacy) — checked dynamically
+APPEARANCE_REQUIRED = {"investor", "date", "source", "type", "companies"}
 
 
 class LintError:
@@ -80,10 +81,10 @@ def lint_profile(path: Path) -> list[LintError]:
     if last_updated and not DATE_RE.match(str(last_updated)):
         errors.append(LintError(path, f"Invalid last_updated format: '{last_updated}' (expected YYYY-MM-DD)"))
 
-    # Validate sectors is a list
-    sectors = meta.get("sectors")
+    # Validate sectors/topics is a list
+    sectors = meta.get("sectors") or meta.get("topics")
     if sectors is not None and not isinstance(sectors, list):
-        errors.append(LintError(path, "sectors must be a list"))
+        errors.append(LintError(path, "sectors/topics must be a list"))
 
     # Check content sections
     content = post.content
@@ -144,10 +145,12 @@ def lint_appearance(path: Path) -> list[LintError]:
     elif companies is not None:
         errors.append(LintError(path, "companies must be a list"))
 
-    # Validate sectors is a list
-    sectors = meta.get("sectors")
-    if sectors is not None and not isinstance(sectors, list):
-        errors.append(LintError(path, "sectors must be a list"))
+    # Validate topics/sectors is a list (accept either)
+    topics = meta.get("topics") or meta.get("sectors")
+    if topics is not None and not isinstance(topics, list):
+        errors.append(LintError(path, "topics/sectors must be a list"))
+    if not meta.get("topics") and not meta.get("sectors"):
+        errors.append(LintError(path, "Missing 'topics' (or legacy 'sectors') field"))
 
     # Check content sections
     content = post.content

@@ -21,8 +21,9 @@ Return a JSON object with these fields:
 - "investors": list of investor name strings as mentioned (e.g. "Brad Gerstner", "Cathie Wood").
   Include partial names, nicknames, or fund names: "Druck" → "Druckenmiller",
   "ARK" → "Cathie Wood", "Chamath" → "Chamath Palihapitiya".
-- "sectors": list of sector/theme strings (e.g. "AI-infrastructure", "fintech", "cloud").
-  Normalize to lowercase-hyphenated.
+- "topics": list of topic/theme strings (e.g. "AI-infrastructure", "agentic-commerce",
+  "ai-investment-bubble", "fintech", "china-tech"). These capture narratives and
+  conversations, not just financial sectors. Normalize to lowercase-hyphenated.
 
 Rules:
 - Only extract entities actually mentioned or clearly implied in the question.
@@ -31,15 +32,15 @@ Rules:
 
 Example:
   Input: "What does Cathie Wood think about Tesla?"
-  Output: {"tickers": ["TSLA"], "investors": ["Cathie Wood"], "sectors": []}
+  Output: {"tickers": ["TSLA"], "investors": ["Cathie Wood"], "topics": []}
 
 Example:
   Input: "Who's bullish on AI infrastructure?"
-  Output: {"tickers": [], "investors": [], "sectors": ["AI-infrastructure"]}
+  Output: {"tickers": [], "investors": [], "topics": ["AI-infrastructure"]}
 
 Example:
   Input: "How do Gerstner and Druckenmiller differ on Snowflake?"
-  Output: {"tickers": ["SNOW"], "investors": ["Gerstner", "Druckenmiller"], "sectors": []}
+  Output: {"tickers": ["SNOW"], "investors": ["Gerstner", "Druckenmiller"], "topics": []}
 """
 
 
@@ -49,11 +50,11 @@ class ExtractedEntities:
 
     tickers: list[str] = field(default_factory=list)
     investors: list[str] = field(default_factory=list)
-    sectors: list[str] = field(default_factory=list)
+    topics: list[str] = field(default_factory=list)
 
     @property
     def is_empty(self) -> bool:
-        return not self.tickers and not self.investors and not self.sectors
+        return not self.tickers and not self.investors and not self.topics
 
 
 def extract_entities(query: str, provider: LLMProvider) -> ExtractedEntities:
@@ -79,7 +80,7 @@ def extract_entities(query: str, provider: LLMProvider) -> ExtractedEntities:
         return ExtractedEntities(
             tickers=[t.upper() for t in parsed.get("tickers", [])],
             investors=parsed.get("investors", []),
-            sectors=parsed.get("sectors", []),
+            topics=parsed.get("topics", []),
         )
     except (json.JSONDecodeError, KeyError, AssertionError) as exc:
         logger.warning("Entity extraction failed, falling back to raw query: %s", exc)

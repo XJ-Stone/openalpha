@@ -34,6 +34,8 @@ import yaml
 _BACKEND_DIR = Path(__file__).resolve().parent.parent
 sys.path.insert(0, str(_BACKEND_DIR))
 
+import frontmatter as fm
+
 from src.appearance import (
     COMPRESS_ABOVE_WORDS,
     AppearanceIndex,
@@ -47,6 +49,31 @@ from src.appearance import (
 from src.config import get_settings
 
 _REGISTRY_PATH = Path(__file__).resolve().parent / "_registry.yaml"
+
+
+# ---------------------------------------------------------------------------
+# Existing topic collection
+# ---------------------------------------------------------------------------
+
+
+def collect_existing_topics(investors_dir: Path) -> list[str]:
+    """Scan all appearance frontmatter and return the union of topic tags."""
+    topics: set[str] = set()
+    if not investors_dir.is_dir():
+        return []
+    for md_path in investors_dir.rglob("*.md"):
+        if md_path.name == "profile.md":
+            continue
+        try:
+            post = fm.load(str(md_path))
+            for t in post.metadata.get("topics", []) or []:
+                topics.add(t)
+            # Also collect from legacy 'sectors' field for transition
+            for s in post.metadata.get("sectors", []) or []:
+                topics.add(s)
+        except Exception:
+            continue
+    return sorted(topics)
 
 
 # ---------------------------------------------------------------------------
@@ -360,6 +387,11 @@ def main() -> None:
         print("Error: OPENAI_API_KEY not set in .env", file=sys.stderr)
         sys.exit(1)
 
+    # Collect existing topics for reuse
+    existing_topics = collect_existing_topics(project_root / "investors")
+    if existing_topics:
+        print(f"Loaded {len(existing_topics)} existing topics for reuse.", file=sys.stderr)
+
     # Process each post
     print(f"\nGenerating appearances with {args.model}...", file=sys.stderr)
     for i, post in enumerate(posts, 1):
@@ -395,6 +427,7 @@ def main() -> None:
                     url=post["url"],
                     api_key=api_key,
                     model=args.model,
+                    existing_topics=existing_topics,
                 )
 
                 md = render_markdown_full(
@@ -441,6 +474,7 @@ def main() -> None:
                     api_key=api_key,
                     model=args.model,
                     image_descriptions=image_descriptions,
+                    existing_topics=existing_topics,
                 )
 
                 md = render_markdown(

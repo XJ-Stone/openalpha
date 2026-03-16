@@ -159,13 +159,13 @@ Synthesize these into a clear, well-structured answer.
 - Never make buy/sell/hold recommendations"""
 
 _SECTOR_RESOLVE_PROMPT = """\
-Given a user query about sectors/themes in investment research, select the \
-most relevant sector tags from the available list.
+Given a user query about topics/themes in investment research, select the \
+most relevant topic tags from the available list.
 
-Available sectors:
+Available topics:
 {sectors}
 
-Return a JSON array of matching sector strings. Include sectors that are \
+Return a JSON array of matching topic strings. Include topics that are \
 directly mentioned OR semantically related to the query. Return [] if none match.
 Return ONLY the JSON array, nothing else."""
 
@@ -187,7 +187,7 @@ Return EXACTLY one word:
 MAX_HISTORY_TURNS = 6
 
 # Max characters per assistant message in history to avoid context blowout
-MAX_ASSISTANT_MSG_CHARS = 4000
+MAX_ASSISTANT_MSG_CHARS = 10000
 
 
 class Agent:
@@ -214,33 +214,31 @@ class Agent:
         # --- 1. Entity extraction ---------------------------------------------
         yield StatusEvent(phase="extract", detail="Analyzing question...")
 
-        entities = await asyncio.to_thread(
-            extract_entities, question, self._provider
-        )
+        entities = await asyncio.to_thread(extract_entities, question, self._provider)
 
         entity_parts: list[str] = []
         if entities.tickers:
             entity_parts.append(", ".join(entities.tickers))
         if entities.investors:
             entity_parts.append(", ".join(entities.investors))
-        if entities.sectors:
-            entity_parts.append(", ".join(entities.sectors))
+        if entities.topics:
+            entity_parts.append(", ".join(entities.topics))
         entity_summary = "; ".join(entity_parts) if entity_parts else "broad query"
         yield StatusEvent(phase="extract", detail=entity_summary)
 
         logger.info(
-            "Extracted entities: tickers=%s investors=%s sectors=%s",
+            "Extracted entities: tickers=%s investors=%s topics=%s",
             entities.tickers,
             entities.investors,
-            entities.sectors,
+            entities.topics,
         )
 
-        # --- 2. Resolve sectors against the full sector union -----------------
+        # --- 2. Resolve topics against the full topic union -------------------
         resolved_sectors = await asyncio.to_thread(
-            self._resolve_sectors, entities.sectors
+            self._resolve_sectors, entities.topics
         )
         if resolved_sectors:
-            logger.info("Resolved sectors: %s", resolved_sectors)
+            logger.info("Resolved topics: %s", resolved_sectors)
 
         # --- 3. Find matching appearances -------------------------------------
         matched = self._find_appearances(entities, resolved_sectors)
@@ -257,10 +255,9 @@ class Agent:
         matched = matched[:MAP_LIMIT]
 
         # Build search detail: investor names + appearance count
-        investor_names = sorted({
-            a.get("investor", a.get("investor_slug", "unknown"))
-            for a in matched
-        })
+        investor_names = sorted(
+            {a.get("investor", a.get("investor_slug", "unknown")) for a in matched}
+        )
         n_investors = len(investor_names)
         n_appearances = len(matched)
         names_display = ", ".join(investor_names[:5])
@@ -297,9 +294,7 @@ class Agent:
         clean_history = self._sanitize_history(history)
 
         # --- Intent classification ---
-        intent = await asyncio.to_thread(
-            self._classify_intent, question, clean_history
-        )
+        intent = await asyncio.to_thread(self._classify_intent, question, clean_history)
         logger.info("Follow-up intent: %s for question: %s", intent, question[:80])
 
         if intent == "RESEARCH":
@@ -313,16 +308,20 @@ class Agent:
 
         system_prompt = load_system_prompt(self._settings.prompts_dir)
         follow_up_system = (
-            f"{system_prompt}\n\n"
-            "You are continuing a conversation about investor research. "
-            "The previous messages contain your earlier analysis. "
-            "Answer the user's follow-up using that context. "
-            "Be concise and direct. If the user asks you to summarize, "
-            "reformat, or dig deeper, work from your previous answer — "
-            "do not re-explain the full pipeline."
-        ) if system_prompt else (
-            "You are continuing a conversation about investor research. "
-            "Answer the follow-up using the prior conversation context."
+            (
+                f"{system_prompt}\n\n"
+                "You are continuing a conversation about investor research. "
+                "The previous messages contain your earlier analysis. "
+                "Answer the user's follow-up using that context. "
+                "Be concise and direct. If the user asks you to summarize, "
+                "reformat, or dig deeper, work from your previous answer — "
+                "do not re-explain the full pipeline."
+            )
+            if system_prompt
+            else (
+                "You are continuing a conversation about investor research. "
+                "Answer the follow-up using the prior conversation context."
+            )
         )
 
         messages: list[dict[str, str]] = [
@@ -399,7 +398,7 @@ class Agent:
 
         # Cap to recent turns (1 turn = user + assistant)
         if len(merged) > MAX_HISTORY_TURNS * 2:
-            merged = merged[-(MAX_HISTORY_TURNS * 2):]
+            merged = merged[-(MAX_HISTORY_TURNS * 2) :]
             # Ensure still starts with user
             while merged and merged[0]["role"] != "user":
                 merged.pop(0)
@@ -418,7 +417,7 @@ class Agent:
     ) -> str | Generator[str, None, None]:
         """Synchronous query — returns string or generator. No status events."""
         entities = extract_entities(question, self._provider)
-        resolved_sectors = self._resolve_sectors(entities.sectors)
+        resolved_sectors = self._resolve_sectors(entities.topics)
         matched = self._find_appearances(entities, resolved_sectors)
 
         if not matched:
@@ -668,9 +667,7 @@ class Agent:
         _sentinel = object()
         loop = asyncio.get_running_loop()
         while True:
-            chunk = await loop.run_in_executor(
-                None, lambda: next(gen, _sentinel)
-            )
+            chunk = await loop.run_in_executor(None, lambda: next(gen, _sentinel))
             if chunk is _sentinel:
                 break
             yield chunk  # type: ignore[misc]
@@ -687,8 +684,7 @@ class Agent:
         """
         # Collect unique investor slugs from the appearances
         slugs = {
-            a.get("investor_slug", "") or a.get("investor", "")
-            for a in appearances
+            a.get("investor_slug", "") or a.get("investor", "") for a in appearances
         }
 
         # Build a lookup from slug -> profile
@@ -740,10 +736,9 @@ class Agent:
         profiles_block = self._investor_context(appearances)
 
         # Count unique investors so the LLM doesn't hallucinate the number
-        unique_investors = sorted({
-            a.get("investor", a.get("investor_slug", "unknown"))
-            for a in appearances
-        })
+        unique_investors = sorted(
+            {a.get("investor", a.get("investor_slug", "unknown")) for a in appearances}
+        )
         investor_count_note = (
             f"**Data scope: {len(unique_investors)} tracked investor(s) "
             f"({', '.join(unique_investors)}) across {len(appearances)} appearance(s).**"
@@ -780,9 +775,7 @@ class Agent:
             )
 
         reduce_system = (
-            f"{system_prompt}\n\n{_REDUCE_PROMPT}"
-            if system_prompt
-            else _REDUCE_PROMPT
+            f"{system_prompt}\n\n{_REDUCE_PROMPT}" if system_prompt else _REDUCE_PROMPT
         )
 
         # Sort newest-first when appearances metadata is available
@@ -811,10 +804,12 @@ class Agent:
         profiles_block = self._investor_context(appearances or [])
 
         # Count unique investors so the LLM doesn't hallucinate the number
-        unique_investors = sorted({
-            a.get("investor", a.get("investor_slug", "unknown"))
-            for a in (appearances or [])
-        })
+        unique_investors = sorted(
+            {
+                a.get("investor", a.get("investor_slug", "unknown"))
+                for a in (appearances or [])
+            }
+        )
         investor_count_note = (
             f"**Data scope: {len(unique_investors)} tracked investor(s) "
             f"({', '.join(unique_investors)}) across {len(extracts)} appearance(s).**"
@@ -839,15 +834,17 @@ class Agent:
         messages: list[dict[str, str]] = []
         if system_prompt:
             messages.append({"role": "system", "content": system_prompt})
-        messages.append({
-            "role": "user",
-            "content": (
-                "(No matching investor data was found in the knowledge base. "
-                "Answer to the best of your general knowledge and note the "
-                "limitation.)\n\n"
-                f"# Question\n\n{question}"
-            ),
-        })
+        messages.append(
+            {
+                "role": "user",
+                "content": (
+                    "(No matching investor data was found in the knowledge base. "
+                    "Answer to the best of your general knowledge and note the "
+                    "limitation.)\n\n"
+                    f"# Question\n\n{question}"
+                ),
+            }
+        )
         return messages
 
     # -----------------------------------------------------------------------
@@ -859,14 +856,18 @@ class Agent:
         """Build a list of source references from appearances for citation display."""
         sources: list[dict] = []
         for i, app in enumerate(appearances):
-            sources.append({
-                "index": i + 1,
-                "investor": app.get("investor", app.get("investor_slug", "unknown")),
-                "date": str(app.get("date", "")),
-                "source": app.get("source", ""),
-                "url": app.get("url", ""),
-                "title": app.get("title", ""),
-            })
+            sources.append(
+                {
+                    "index": i + 1,
+                    "investor": app.get(
+                        "investor", app.get("investor_slug", "unknown")
+                    ),
+                    "date": str(app.get("date", "")),
+                    "source": app.get("source", ""),
+                    "url": app.get("url", ""),
+                    "title": app.get("title", ""),
+                }
+            )
         return sources
 
     @staticmethod
@@ -922,10 +923,7 @@ class Agent:
                 {"role": "system", "content": _MAP_PROMPT},
                 {
                     "role": "user",
-                    "content": (
-                        f"Question: {question}\n\n"
-                        f"---\n\n{file_context}"
-                    ),
+                    "content": (f"Question: {question}\n\n" f"---\n\n{file_context}"),
                 },
             ],
             response_model=MapExtract,

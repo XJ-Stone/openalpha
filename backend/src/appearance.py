@@ -40,6 +40,14 @@ class CompanyView(BaseModel):
         )
     )
     company_name: str = Field(description="Full company name, e.g. NVIDIA, Microsoft, OpenAI")
+    focus: Literal["primary", "secondary", "mention"] = Field(
+        description=(
+            "primary = the report is substantially about this company (deep analysis, "
+            "dedicated section, or central to the thesis); "
+            "secondary = meaningful discussion but not the main focus; "
+            "mention = referenced for comparison, context, or in passing"
+        )
+    )
     sentiment: Literal["Bullish", "Bearish", "Neutral", "Mixed"] = Field(
         description="Overall sentiment expressed toward this company"
     )
@@ -124,11 +132,15 @@ class AppearanceSummary(BaseModel):
             "single ticker."
         ),
     )
-    sectors: list[str] = Field(
+    topics: list[str] = Field(
         default_factory=list,
         description=(
-            "Sector/theme tags for frontmatter indexing. Lowercase hyphenated, "
-            "e.g. ['AI', 'enterprise-software', 'autonomous-vehicles', 'china-tech']"
+            "3-5 topic tags capturing what this appearance is about. Topics are "
+            "broader than sectors — they capture narratives, themes, and conversations "
+            "(e.g. 'AI investment bubble', 'agentic commerce', 'China token economy', "
+            "'ride-hailing competition', 'Fed rate cuts impact on growth'). "
+            "Lowercase hyphenated. Reuse existing topics from the provided list when "
+            "semantically equivalent; only create new ones if nothing fits."
         ),
     )
 
@@ -148,6 +160,13 @@ class CompanyMention(BaseModel):
         )
     )
     company_name: str = Field(description="Full company name")
+    focus: Literal["primary", "secondary", "mention"] = Field(
+        description=(
+            "primary = the report is substantially about this company; "
+            "secondary = meaningful discussion but not the main focus; "
+            "mention = referenced for comparison or in passing"
+        )
+    )
 
 
 class ThemeMention(BaseModel):
@@ -171,11 +190,12 @@ class AppearanceIndex(BaseModel):
         default_factory=list,
         description="Non-company-specific themes discussed.",
     )
-    sectors: list[str] = Field(
+    topics: list[str] = Field(
         default_factory=list,
         description=(
-            "Sector/theme tags for indexing. Lowercase hyphenated, "
-            "e.g. ['AI', 'enterprise-software', 'china-tech']"
+            "3-5 topic tags capturing what this appearance is about. Reuse "
+            "existing topics from the provided list when semantically equivalent; "
+            "only create new ones if nothing fits."
         ),
     )
 
@@ -233,6 +253,18 @@ When the source includes images (marked as [IMAGE: ...] with descriptions), atta
 them to the relevant CompanyView or ThemeView if the image provides analytical value \
 (charts, data visualizations, tables, diagrams). Skip decorative images.
 
+## Company focus levels
+- primary: the report is substantially about this company (deep analysis, dedicated section)
+- secondary: meaningful discussion but not the main focus
+- mention: referenced for comparison, context, or in passing
+
+## Topics
+Extract 3-5 topic tags that capture what this appearance is about. Topics are broader \
+than financial sectors — they capture narratives, themes, and market conversations \
+(e.g. 'agentic commerce', 'AI investment bubble', 'China token economy'). \
+When an existing topics list is provided, REUSE existing topics where semantically \
+equivalent. Only create a new topic if nothing in the list fits.
+
 ## Rules
 - Only extract views actually expressed — do not infer or editorialize
 - Every claim must be traceable to the source text
@@ -246,7 +278,7 @@ them to the relevant CompanyView or ThemeView if the image provides analytical v
 
 INDEX_SYSTEM_PROMPT = """\
 You are an expert financial analyst assistant. Your job is to extract STRUCTURED \
-METADATA from a publication — companies discussed, themes, and sectors.
+METADATA from a publication — companies discussed, themes, and topics.
 
 You are NOT writing a summary. The full text will be kept verbatim. You are only \
 extracting searchable index fields.
@@ -254,7 +286,9 @@ extracting searchable index fields.
 ## CompanyMention
 Create one for each company the investor analyzes or expresses an opinion on. \
 For public companies use standard tickers (NVDA, MSFT, META). For private companies \
-use uppercase name (OPENAI, ANTHROPIC, STRIPE).
+use uppercase name (OPENAI, ANTHROPIC, STRIPE). Set the focus level: primary if the \
+report is substantially about this company, secondary for meaningful but non-central \
+discussion, mention for passing references.
 
 Do NOT create a CompanyMention for companies merely mentioned in passing — those \
 belong in ThemeMention.companies_referenced.
@@ -262,6 +296,13 @@ belong in ThemeMention.companies_referenced.
 ## ThemeMention
 Create one for each non-company-specific perspective: sector views, macro arguments, \
 market observations, geographic analyses, frameworks.
+
+## Topics
+Extract 3-5 topic tags that capture what this appearance is about. Topics are broader \
+than financial sectors — they capture narratives, themes, and market conversations \
+(e.g. 'agentic commerce', 'AI investment bubble', 'China token economy'). \
+When an existing topics list is provided, REUSE existing topics where semantically \
+equivalent. Only create a new topic if nothing in the list fits.
 
 ## Rules
 - Only extract views actually expressed — do not infer
@@ -361,6 +402,7 @@ def summarize_text(
     api_key: str,
     model: str = "gpt-5-mini",
     image_descriptions: list[dict[str, str]] | None = None,
+    existing_topics: list[str] | None = None,
 ) -> AppearanceSummary:
     """Send raw text to OpenAI with structured output and return an AppearanceSummary.
 
@@ -381,6 +423,13 @@ def summarize_text(
             )
         enriched_text = text + chart_section
 
+    topics_hint = ""
+    if existing_topics:
+        topics_hint = (
+            f"\n\nExisting topics (reuse when semantically equivalent):\n"
+            f"{', '.join(existing_topics)}\n"
+        )
+
     user_prompt = (
         f"Extract structured investor opinions from the following publication.\n\n"
         f"Metadata:\n"
@@ -388,7 +437,8 @@ def summarize_text(
         f"- Date: {date}\n"
         f"- Source: {source}\n"
         f"- Type: {appearance_type}\n"
-        f"- URL: {url}\n\n"
+        f"- URL: {url}\n"
+        f"{topics_hint}\n"
         f"Publication text:\n---\n{enriched_text}\n---\n\n"
         f"Extract all company-specific views and thematic perspectives now."
     )
@@ -418,6 +468,7 @@ def extract_index(
     *,
     api_key: str,
     model: str = "gpt-5-mini",
+    existing_topics: list[str] | None = None,
 ) -> AppearanceIndex:
     """Extract lightweight index metadata from short source text.
 
@@ -426,6 +477,13 @@ def extract_index(
     """
     client = openai.OpenAI(api_key=api_key)
 
+    topics_hint = ""
+    if existing_topics:
+        topics_hint = (
+            f"\n\nExisting topics (reuse when semantically equivalent):\n"
+            f"{', '.join(existing_topics)}\n"
+        )
+
     user_prompt = (
         f"Extract structured metadata from the following publication.\n\n"
         f"Metadata:\n"
@@ -433,9 +491,10 @@ def extract_index(
         f"- Date: {date}\n"
         f"- Source: {source}\n"
         f"- Type: {appearance_type}\n"
-        f"- URL: {url}\n\n"
+        f"- URL: {url}\n"
+        f"{topics_hint}\n"
         f"Publication text:\n---\n{text}\n---\n\n"
-        f"Extract all company mentions, themes, and sector tags now."
+        f"Extract all company mentions, themes, and topic tags now."
     )
 
     completion = client.beta.chat.completions.parse(
@@ -485,7 +544,12 @@ def render_markdown(
 
     # Build frontmatter
     tickers_str = ", ".join(all_tickers) if all_tickers else ""
-    sectors_str = ", ".join(summary.sectors) if summary.sectors else ""
+    topics_str = ", ".join(summary.topics) if summary.topics else ""
+
+    # Build companies_detail with focus levels
+    companies_detail: list[dict[str, str]] = []
+    for c in summary.companies:
+        companies_detail.append({"ticker": c.ticker, "focus": c.focus})
 
     lines: list[str] = [
         "---",
@@ -495,8 +559,13 @@ def render_markdown(
         f"type: {appearance_type}",
         f"url: {url}",
         f"companies: [{tickers_str}]",
-        f"sectors: [{sectors_str}]",
+        f"topics: [{topics_str}]",
     ]
+    if companies_detail:
+        lines.append("companies_detail:")
+        for cd in companies_detail:
+            lines.append(f"  - ticker: {cd['ticker']}")
+            lines.append(f"    focus: {cd['focus']}")
     if source_length:
         lines.append(f"source_length: {source_length}")
     if fetch_method:
@@ -518,7 +587,7 @@ def render_markdown(
         for company in summary.companies:
             lines.append(
                 f"### {company.ticker} ({company.company_name}) "
-                f"— {company.sentiment}, {company.conviction}"
+                f"— {company.sentiment}, {company.conviction}, {company.focus}"
             )
             lines.append("")
             lines.append(company.analysis)
@@ -593,11 +662,16 @@ def render_markdown_full(
             if t not in all_tickers:
                 all_tickers.append(t)
 
+    # Build companies_detail with focus levels
+    companies_detail: list[dict[str, str]] = []
+    for c in index.companies:
+        companies_detail.append({"ticker": c.ticker, "focus": c.focus})
+
     dt = datetime.strptime(date, "%Y-%m-%d")
     heading_date = dt.strftime("%B %d, %Y")
 
     tickers_str = ", ".join(all_tickers) if all_tickers else ""
-    sectors_str = ", ".join(index.sectors) if index.sectors else ""
+    topics_str = ", ".join(index.topics) if index.topics else ""
 
     lines: list[str] = [
         "---",
@@ -607,8 +681,13 @@ def render_markdown_full(
         f"type: {appearance_type}",
         f"url: {url}",
         f"companies: [{tickers_str}]",
-        f"sectors: [{sectors_str}]",
+        f"topics: [{topics_str}]",
     ]
+    if companies_detail:
+        lines.append("companies_detail:")
+        for cd in companies_detail:
+            lines.append(f"  - ticker: {cd['ticker']}")
+            lines.append(f"    focus: {cd['focus']}")
     if source_length:
         lines.append(f"source_length: {source_length}")
     if fetch_method:

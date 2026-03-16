@@ -77,12 +77,13 @@ def _score_match_entities(item: dict, entities: ExtractedEntities) -> int:
         if ticker in item_companies:
             score += 100
 
-    # Sector matching — case-insensitive substring
-    item_sectors = [s.lower() for s in (item.get("sectors", []) or [])]
-    for sector in entities.sectors:
-        sector_lower = sector.lower()
-        for item_sector in item_sectors:
-            if sector_lower in item_sector or item_sector in sector_lower:
+    # Topic matching — case-insensitive substring (reads both 'topics' and legacy 'sectors')
+    item_topics = [t.lower() for t in (item.get("topics", []) or [])]
+    item_topics += [s.lower() for s in (item.get("sectors", []) or [])]
+    for topic in entities.topics:
+        topic_lower = topic.lower()
+        for item_topic in item_topics:
+            if topic_lower in item_topic or item_topic in topic_lower:
                 score += 50
 
     # Investor name matching — check against name, slug, fund
@@ -159,7 +160,7 @@ class InvestorIndex:
         self._profiles: list[dict] | None = None
         self._appearances: list[dict] | None = None
         # Reverse indexes: key → list of appearance dicts
-        self._sector_index: dict[str, list[dict]] | None = None
+        self._topic_index: dict[str, list[dict]] | None = None
         self._company_index: dict[str, list[dict]] | None = None
 
     def _ensure_loaded(self) -> None:
@@ -171,14 +172,16 @@ class InvestorIndex:
             self._build_reverse_indexes()
 
     def _build_reverse_indexes(self) -> None:
-        """Build sector→appearances and company→appearances mappings."""
+        """Build topic→appearances and company→appearances mappings."""
         assert self._appearances is not None
-        self._sector_index = {}
+        self._topic_index = {}
         self._company_index = {}
         for app in self._appearances:
-            for sector in app.get("sectors", []) or []:
-                key = sector.lower()
-                self._sector_index.setdefault(key, []).append(app)
+            # Read both 'topics' (new) and 'sectors' (legacy) into the same index
+            all_tags = list(app.get("topics", []) or []) + list(app.get("sectors", []) or [])
+            for tag in all_tags:
+                key = tag.lower()
+                self._topic_index.setdefault(key, []).append(app)
             for company in app.get("companies", []) or []:
                 key = company.upper()
                 self._company_index.setdefault(key, []).append(app)
@@ -199,10 +202,10 @@ class InvestorIndex:
 
     @property
     def all_sectors(self) -> list[str]:
-        """Return the union of all sector tags across appearances."""
+        """Return the union of all topic/sector tags across appearances."""
         self._ensure_loaded()
-        assert self._sector_index is not None
-        return sorted(self._sector_index.keys())
+        assert self._topic_index is not None
+        return sorted(self._topic_index.keys())
 
     @property
     def all_companies(self) -> list[str]:
@@ -212,13 +215,13 @@ class InvestorIndex:
         return sorted(self._company_index.keys())
 
     def appearances_for_sectors(self, sectors: list[str]) -> list[dict]:
-        """Return appearances matching any of the given sector keys."""
+        """Return appearances matching any of the given topic/sector keys."""
         self._ensure_loaded()
-        assert self._sector_index is not None
+        assert self._topic_index is not None
         seen_paths: set[str] = set()
         results: list[dict] = []
         for sector in sectors:
-            for app in self._sector_index.get(sector.lower(), []):
+            for app in self._topic_index.get(sector.lower(), []):
                 path_key = str(app.get("_path", id(app)))
                 if path_key not in seen_paths:
                     seen_paths.add(path_key)
@@ -249,5 +252,5 @@ class InvestorIndex:
         """Force a re-scan of the investors directory."""
         self._profiles = None
         self._appearances = None
-        self._sector_index = None
+        self._topic_index = None
         self._company_index = None

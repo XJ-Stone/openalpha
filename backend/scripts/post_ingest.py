@@ -54,7 +54,7 @@ def reconcile_profile(investor_dir: Path, dry_run: bool = False) -> dict:
 
     # Scan all appearances
     all_companies: set[str] = set()
-    all_sectors: set[str] = set()
+    all_topics: set[str] = set()
     all_sources: set[str] = set()
     appearance_count = 0
     latest_date = ""
@@ -73,9 +73,13 @@ def reconcile_profile(investor_dir: Path, dry_run: bool = False) -> dict:
                 if isinstance(ticker, str):
                     all_companies.add(ticker.upper())
 
-            for sector in app_meta.get("sectors", []):
+            # Read both 'topics' (new) and 'sectors' (legacy)
+            for topic in app_meta.get("topics", []) or []:
+                if isinstance(topic, str):
+                    all_topics.add(topic.lower())
+            for sector in app_meta.get("sectors", []) or []:
                 if isinstance(sector, str):
-                    all_sectors.add(sector.lower())
+                    all_topics.add(sector.lower())
 
             source = app_meta.get("source", "")
             if source:
@@ -87,11 +91,11 @@ def reconcile_profile(investor_dir: Path, dry_run: bool = False) -> dict:
 
     # Determine what changed in profile
     old_companies = set(meta.get("companies", []))
-    old_sectors = set(meta.get("sectors", []))
+    old_topics = set(meta.get("topics", []) or meta.get("sectors", []) or [])
     old_sources = set(meta.get("sources", []))
 
     companies_changed = all_companies != old_companies
-    sectors_changed = all_sectors != old_sectors
+    topics_changed = all_topics != old_topics
     sources_changed = all_sources != old_sources
 
     changes: list[str] = []
@@ -102,10 +106,10 @@ def reconcile_profile(investor_dir: Path, dry_run: bool = False) -> dict:
             changes.append(f"companies +{sorted(added)}")
         if removed:
             changes.append(f"companies -{sorted(removed)}")
-    if sectors_changed:
-        added = all_sectors - old_sectors
+    if topics_changed:
+        added = all_topics - old_topics
         if added:
-            changes.append(f"sectors +{sorted(added)}")
+            changes.append(f"topics +{sorted(added)}")
     if sources_changed:
         added = all_sources - old_sources
         if added:
@@ -118,7 +122,9 @@ def reconcile_profile(investor_dir: Path, dry_run: bool = False) -> dict:
 
     if not dry_run and changes:
         meta["companies"] = sorted(all_companies)
-        meta["sectors"] = sorted(all_sectors)
+        meta["topics"] = sorted(all_topics)
+        # Remove legacy 'sectors' key if present
+        meta.pop("sectors", None)
         meta["sources"] = sorted(all_sources)
         meta["last_updated"] = str(date.today())
 
@@ -129,7 +135,7 @@ def reconcile_profile(investor_dir: Path, dry_run: bool = False) -> dict:
         "name": meta.get("name", slug),
         "slug": slug,
         "fund": meta.get("fund", ""),
-        "sectors": sorted(all_sectors) if all_sectors else meta.get("sectors", []),
+        "topics": sorted(all_topics) if all_topics else meta.get("topics", meta.get("sectors", [])),
         "appearances": appearance_count,
         "sources": sorted(all_sources) if all_sources else meta.get("sources", []),
     }
@@ -178,7 +184,7 @@ slug: lowercase-hyphenated
 fund: Fund Name
 role: Title
 aum: "$XB+" or "N/A"
-sectors: [sector1, sector2]
+topics: [topic1, topic2]
 companies: [TICK1, TICK2]
 sources: [Source1, Source2]
 last_updated: YYYY-MM-DD
@@ -235,9 +241,9 @@ def generate_stats(dry_run: bool = False) -> None:
     per-investor breakdowns so the frontend can render without an API call.
     """
     company_counts: Counter[str] = Counter()
-    sector_counts: Counter[str] = Counter()
+    topic_counts: Counter[str] = Counter()
     company_investors: dict[str, set[str]] = {}
-    sector_investors: dict[str, set[str]] = {}
+    topic_investors: dict[str, set[str]] = {}
     total_appearances = 0
 
     for md in sorted(INVESTORS_DIR.glob("*/appearances/*.md")):
@@ -256,11 +262,13 @@ def generate_stats(dry_run: bool = False) -> None:
                 company_counts[key] += 1
                 company_investors.setdefault(key, set()).add(investor_slug)
 
-        for sector in meta.get("sectors", []) or []:
-            if isinstance(sector, str):
-                key = sector.lower()
-                sector_counts[key] += 1
-                sector_investors.setdefault(key, set()).add(investor_slug)
+        # Read both 'topics' (new) and 'sectors' (legacy)
+        all_tags = list(meta.get("topics", []) or []) + list(meta.get("sectors", []) or [])
+        for tag in all_tags:
+            if isinstance(tag, str):
+                key = tag.lower()
+                topic_counts[key] += 1
+                topic_investors.setdefault(key, set()).add(investor_slug)
 
     stats = {
         "generated": str(date.today()),
@@ -274,21 +282,21 @@ def generate_stats(dry_run: bool = False) -> None:
             }
             for name, count in company_counts.most_common()
         ],
-        "sectors": [
+        "topics": [
             {
                 "name": name,
                 "count": count,
-                "investor_count": len(sector_investors.get(name, set())),
-                "investors": sorted(sector_investors.get(name, set())),
+                "investor_count": len(topic_investors.get(name, set())),
+                "investors": sorted(topic_investors.get(name, set())),
             }
-            for name, count in sector_counts.most_common()
+            for name, count in topic_counts.most_common()
         ],
     }
 
     if dry_run:
         print(
             f"\n  _stats.json would have {len(stats['companies'])} companies, "
-            f"{len(stats['sectors'])} sectors",
+            f"{len(stats['topics'])} topics",
             file=sys.stderr,
         )
     else:
@@ -298,7 +306,7 @@ def generate_stats(dry_run: bool = False) -> None:
         )
         print(
             f"  _stats.json updated ({len(stats['companies'])} companies, "
-            f"{len(stats['sectors'])} sectors, {total_appearances} appearances)",
+            f"{len(stats['topics'])} topics, {total_appearances} appearances)",
             file=sys.stderr,
         )
 
@@ -314,8 +322,8 @@ def regenerate_investors_md(
     for s in summaries:
         name = s["name"]
         fund = s.get("fund", "")
-        focus = ", ".join(s.get("sectors", [])[:4])
-        if len(s.get("sectors", [])) > 4:
+        focus = ", ".join(s.get("topics", s.get("sectors", []))[:4])
+        if len(s.get("topics", s.get("sectors", []))) > 4:
             focus += ", ..."
         appearances = s.get("appearances", 0)
         sources = ", ".join(s.get("sources", []))

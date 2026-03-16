@@ -12,7 +12,7 @@ openalpha = "cli:app"
 [tool.poetry.dependencies]
 python = ">=3.11"
 fastapi = "^0.115"
-"uvicorn[standard]" = "^0.34"
+uvicorn = {version = "^0.34", extras = ["standard"]}
 python-frontmatter = "^1.1"
 rich = "^13.9"
 anthropic = "^0.43"

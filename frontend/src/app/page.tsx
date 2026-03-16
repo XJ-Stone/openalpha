@@ -366,7 +366,7 @@ export default function HomePage() {
       <div
         className={`${
           sidebarOpen ? "w-64" : "w-12"
-        } fixed sm:static z-40 sm:z-auto h-full bg-[var(--card)] flex flex-col transition-all duration-200`}
+        } fixed sm:static z-40 sm:z-auto h-full bg-[var(--card)] flex flex-col transition-[width] duration-200 overflow-hidden`}
       >
         {/* Top controls — fixed position, no layout shift */}
         <div className="flex flex-col p-2 flex-shrink-0">

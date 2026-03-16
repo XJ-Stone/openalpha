@@ -1,6 +1,7 @@
 "use client";
 
 import { useState, useCallback, useRef, useEffect } from "react";
+import Link from "next/link";
 import SearchBar from "@/components/SearchBar";
 import ChatMessage, { Message } from "@/components/ChatMessage";
 import { StatusStep } from "@/components/ThinkingSteps";
@@ -346,7 +347,7 @@ export default function HomePage() {
         setIsLoading(false);
       }
     },
-    [activeChatId]
+    [activeChatId, messages]
   );
 
   const hasMessages = messages.length > 0;
@@ -373,9 +374,9 @@ export default function HomePage() {
           <div className="h-8 flex items-center overflow-hidden whitespace-nowrap">
             {sidebarOpen ? (
               <>
-                <a href="/" className="text-base font-bold tracking-tight text-[var(--foreground)] pl-0.5">
+                <Link href="/" className="text-base font-bold tracking-tight text-[var(--foreground)] pl-0.5">
                   OpenAlpha
-                </a>
+                </Link>
                 <button
                   onClick={() => setSidebarOpen(false)}
                   className="ml-auto w-8 h-8 flex items-center justify-center rounded-lg hover:bg-[var(--card-border)] text-[var(--muted)] hover:text-[var(--foreground)] transition-colors flex-shrink-0"

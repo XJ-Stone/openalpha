@@ -23,7 +23,7 @@ export default function EntityDrawer({
   onSelect,
 }: EntityDrawerProps) {
   const [data, setData] = useState<EntitiesResponse | null>(null);
-  const [tab, setTab] = useState<"companies" | "sectors">("companies");
+  const [tab, setTab] = useState<"companies" | "topics">("companies");
 
   useEffect(() => {
     if (open && !data) {
@@ -34,7 +34,7 @@ export default function EntityDrawer({
   const items = data
     ? tab === "companies"
       ? data.companies
-      : data.sectors
+      : data.topics
     : [];
 
   return (
@@ -85,14 +85,14 @@ export default function EntityDrawer({
               Companies
             </button>
             <button
-              onClick={() => setTab("sectors")}
+              onClick={() => setTab("topics")}
               className={`flex-1 px-3 py-1.5 rounded-md text-xs font-medium transition-colors ${
-                tab === "sectors"
+                tab === "topics"
                   ? "bg-[var(--background)] text-[var(--foreground)] shadow-sm"
                   : "text-[var(--muted)] hover:text-[var(--foreground)]"
               }`}
             >
-              Sectors
+              Topics
             </button>
           </div>
 

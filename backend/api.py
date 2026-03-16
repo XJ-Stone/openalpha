@@ -45,7 +45,7 @@ class InvestorSummary(BaseModel):
     slug: str
     fund: str
     role: str
-    sectors: list[str] = []
+    topics: list[str] = []
     companies: list[str] = []
     last_updated: str = ""
 
@@ -66,7 +66,7 @@ class InvestorDetail(BaseModel):
     slug: str
     fund: str
     role: str
-    sectors: list[str] = []
+    topics: list[str] = []
     companies: list[str] = []
     last_updated: str = ""
     content: str = ""
@@ -77,7 +77,7 @@ class EntityRanking(BaseModel):
     """A ranked entity (company ticker or sector) by mention count."""
 
     name: str
-    kind: str  # "company" or "sector"
+    kind: str  # "company" or "topic"
     count: int = 0  # number of appearances mentioning this entity
     investor_count: int = 0  # number of distinct investors mentioning it
 
@@ -86,7 +86,7 @@ class EntitiesResponse(BaseModel):
     """Ranked entities from recent appearances."""
 
     companies: list[EntityRanking] = []
-    sectors: list[EntityRanking] = []
+    topics: list[EntityRanking] = []
 
 
 class ErrorResponse(BaseModel):
@@ -170,7 +170,7 @@ def _meta_to_summary(meta: dict) -> InvestorSummary:
         slug=meta.get("slug", ""),
         fund=meta.get("fund", ""),
         role=meta.get("role", ""),
-        sectors=meta.get("sectors", []) or [],
+        topics=meta.get("topics", []) or meta.get("sectors", []) or [],
         companies=meta.get("companies", []) or [],
         last_updated=str(meta.get("last_updated", "")),
     )
@@ -303,7 +303,7 @@ async def get_investor(slug: str) -> InvestorDetail:
         slug=meta.get("slug", slug),
         fund=meta.get("fund", ""),
         role=meta.get("role", ""),
-        sectors=meta.get("sectors", []) or [],
+        topics=meta.get("topics", []) or meta.get("sectors", []) or [],
         companies=meta.get("companies", []) or [],
         last_updated=str(meta.get("last_updated", "")),
         content=meta.get("_content", ""),
@@ -317,7 +317,7 @@ async def get_investor(slug: str) -> InvestorDetail:
     summary="Ranked entities from recent investor appearances",
 )
 async def get_entities(months: int = 6) -> EntitiesResponse:
-    """Aggregate companies and sectors from appearance frontmatter.
+    """Aggregate companies and topics from appearance frontmatter.
 
     Only appearances within the last *months* months are counted.
     Each appearance file counts as one mention regardless of how many
@@ -325,10 +325,10 @@ async def get_entities(months: int = 6) -> EntitiesResponse:
     """
     cutoff = date.today() - timedelta(days=months * 30)
     company_counts: Counter[str] = Counter()
-    sector_counts: Counter[str] = Counter()
+    topic_counts: Counter[str] = Counter()
     # Track which investors mention each entity
     company_investors: dict[str, set[str]] = {}
-    sector_investors: dict[str, set[str]] = {}
+    topic_investors: dict[str, set[str]] = {}
 
     if not PROFILES_DIR.is_dir():
         return EntitiesResponse()
@@ -353,10 +353,12 @@ async def get_entities(months: int = 6) -> EntitiesResponse:
             key = ticker.upper()
             company_counts[key] += 1
             company_investors.setdefault(key, set()).add(investor_slug)
-        for sector in meta.get("sectors", []) or []:
-            key = sector.lower()
-            sector_counts[key] += 1
-            sector_investors.setdefault(key, set()).add(investor_slug)
+        # Read both 'topics' (new) and 'sectors' (legacy)
+        all_tags = list(meta.get("topics", []) or []) + list(meta.get("sectors", []) or [])
+        for tag in all_tags:
+            key = tag.lower()
+            topic_counts[key] += 1
+            topic_investors.setdefault(key, set()).add(investor_slug)
 
     companies = [
         EntityRanking(
@@ -367,17 +369,17 @@ async def get_entities(months: int = 6) -> EntitiesResponse:
         )
         for name, count in company_counts.most_common(20)
     ]
-    sectors = [
+    topics = [
         EntityRanking(
             name=name,
-            kind="sector",
+            kind="topic",
             count=count,
-            investor_count=len(sector_investors.get(name, set())),
+            investor_count=len(topic_investors.get(name, set())),
         )
-        for name, count in sector_counts.most_common(20)
+        for name, count in topic_counts.most_common(20)
     ]
 
-    return EntitiesResponse(companies=companies, sectors=sectors)
+    return EntitiesResponse(companies=companies, topics=topics)
 
 
 # ---------------------------------------------------------------------------

@@ -3,7 +3,7 @@ import "./globals.css";
 
 export const metadata: Metadata = {
   title: "OpenAlpha — Investor Intelligence",
-  description: "Track what top investors are saying about the companies and sectors you care about.",
+  description: "Track what top investors are saying about the companies and topics you care about.",
 };
 
 export default function RootLayout({

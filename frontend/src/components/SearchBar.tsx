@@ -27,7 +27,7 @@ export default function SearchBar({ onSubmit, onStop, isLoading = false }: Searc
           type="text"
           value={query}
           onChange={(e) => setQuery(e.target.value)}
-          placeholder="Ask about investors, companies, or sectors..."
+          placeholder="Ask about investors, companies, or topics..."
           className="w-full px-4 py-3 pr-24 rounded-xl bg-[var(--card)] border border-[var(--card-border)] text-[var(--foreground)] placeholder-[var(--muted)] text-sm focus:outline-none focus:border-[var(--accent)] focus:ring-1 focus:ring-[var(--accent)] transition-colors"
           disabled={isLoading}
         />

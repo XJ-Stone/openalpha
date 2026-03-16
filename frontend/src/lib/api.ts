@@ -2,12 +2,12 @@ const API_BASE = process.env.NEXT_PUBLIC_API_URL || "http://localhost:8000";
 
 export interface EntityRanking {
   name: string;
-  kind: "company" | "sector";
+  kind: "company" | "topic";
 }
 
 export interface EntitiesResponse {
   companies: EntityRanking[];
-  sectors: EntityRanking[];
+  topics: EntityRanking[];
 }
 
 export interface Investor {
@@ -16,7 +16,7 @@ export interface Investor {
   fund: string;
   role?: string;
   aum?: string;
-  sectors: string[];
+  topics: string[];
   companies_tracked?: number;
 }
 
@@ -77,7 +77,7 @@ export async function analyzeQuestion(
 }
 
 /**
- * Fetches ranked entities (companies + sectors) from recent appearances.
+ * Fetches ranked entities (companies + topics) from recent appearances.
  */
 export async function getEntities(): Promise<EntitiesResponse> {
   const res = await fetch(`${API_BASE}/entities`, { cache: "no-store" });

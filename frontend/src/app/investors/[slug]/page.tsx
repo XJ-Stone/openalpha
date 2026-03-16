@@ -74,14 +74,14 @@ export default function InvestorProfilePage() {
           )}
         </div>
 
-        {investor.sectors.length > 0 && (
+        {investor.topics.length > 0 && (
           <div className="flex flex-wrap gap-2 mt-4">
-            {investor.sectors.map((sector) => (
+            {investor.topics.map((topic) => (
               <span
-                key={sector}
+                key={topic}
                 className="px-2.5 py-1 text-xs rounded-full bg-[var(--accent)]/10 text-[var(--accent)] border border-[var(--accent)]/20"
               >
-                {sector}
+                {topic}
               </span>
             ))}
           </div>

@@ -57,7 +57,7 @@ export default function InvestorsPage() {
               slug={investor.slug}
               name={investor.name}
               fund={investor.fund}
-              sectors={investor.sectors}
+              topics={investor.topics}
               companiesTracked={investor.companies_tracked}
             />
           ))}

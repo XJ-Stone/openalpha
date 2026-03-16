@@ -17,17 +17,17 @@ function formatLabel(entity: { name: string; kind: string }): string {
 
 export default function EntityChips({ onSelect }: EntityChipsProps) {
   const [data, setData] = useState<EntitiesResponse | null>(null);
-  const [tab, setTab] = useState<"companies" | "sectors">("companies");
+  const [tab, setTab] = useState<"companies" | "topics">("companies");
 
   useEffect(() => {
     getEntities().then(setData).catch(() => {});
   }, []);
 
-  if (!data || (data.companies.length === 0 && data.sectors.length === 0)) {
+  if (!data || (data.companies.length === 0 && data.topics.length === 0)) {
     return null;
   }
 
-  const items = tab === "companies" ? data.companies : data.sectors;
+  const items = tab === "companies" ? data.companies : data.topics;
 
   return (
     <div>
@@ -47,14 +47,14 @@ export default function EntityChips({ onSelect }: EntityChipsProps) {
             Companies
           </button>
           <button
-            onClick={() => setTab("sectors")}
+            onClick={() => setTab("topics")}
             className={`px-3 py-1 rounded-md text-xs font-medium transition-colors ${
-              tab === "sectors"
+              tab === "topics"
                 ? "bg-[var(--background)] text-[var(--foreground)] shadow-sm"
                 : "text-[var(--muted)] hover:text-[var(--foreground)]"
             }`}
           >
-            Sectors
+            Topics
           </button>
         </div>
       </div>

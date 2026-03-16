@@ -366,7 +366,7 @@ export default function HomePage() {
       <div
         className={`${
           sidebarOpen ? "w-64" : "w-0 sm:w-12"
-        } fixed sm:static z-40 sm:z-auto h-full bg-[var(--card)] flex flex-col transition-[width] duration-200 overflow-hidden`}
+        } fixed sm:static z-40 sm:z-auto h-full bg-[var(--card)] flex flex-col sm:transition-[width] sm:duration-200 overflow-hidden`}
       >
         {/* Top controls — fixed position, no layout shift */}
         <div className="flex flex-col p-2 flex-shrink-0">
@@ -445,6 +445,7 @@ export default function HomePage() {
                     <button
                       onClick={() => loadChat(chat)}
                       className="flex-1 text-left px-2 py-1.5 truncate min-w-0"
+                      title={chat.title}
                     >
                       {chat.title}
                     </button>
@@ -480,20 +481,37 @@ export default function HomePage() {
       {/* Main chat area */}
       <div className="flex-1 flex flex-col min-w-0 relative">
 
-        {/* Mobile menu button — only visible on small screens when sidebar is closed */}
-        {!sidebarOpen && (
-          <button
-            onClick={() => setSidebarOpen(true)}
-            className="sm:hidden absolute top-3 left-3 z-20 w-8 h-8 flex items-center justify-center rounded-lg bg-[var(--card)] border border-[var(--card-border)] text-[var(--muted)] hover:text-[var(--foreground)] transition-colors"
-            title="Open menu"
-          >
-            <svg className="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-              <line x1="3" y1="6" x2="21" y2="6" />
-              <line x1="3" y1="12" x2="21" y2="12" />
-              <line x1="3" y1="18" x2="21" y2="18" />
-            </svg>
-          </button>
-        )}
+        {/* Top bar — persistent, not part of chat scroll */}
+        <div className="flex items-center justify-between px-4 py-2 border-b border-[var(--card-border)] bg-[var(--background)] flex-shrink-0">
+          <div className="flex items-center gap-2">
+            {/* Mobile menu button */}
+            {!sidebarOpen && (
+              <button
+                onClick={() => setSidebarOpen(true)}
+                className="sm:hidden w-8 h-8 flex items-center justify-center rounded-lg hover:bg-[var(--card)] text-[var(--muted)] hover:text-[var(--foreground)] transition-colors"
+                title="Open menu"
+              >
+                <svg className="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                  <line x1="3" y1="6" x2="21" y2="6" />
+                  <line x1="3" y1="12" x2="21" y2="12" />
+                  <line x1="3" y1="18" x2="21" y2="18" />
+                </svg>
+              </button>
+            )}
+          </div>
+          <div className="flex items-center gap-2">
+            <button
+              onClick={() => setDrawerOpen(true)}
+              className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg hover:bg-[var(--card)] text-xs text-[var(--muted)] hover:text-[var(--foreground)] transition-all"
+              title="Trending Topics"
+            >
+              <svg className="w-3.5 h-3.5" viewBox="0 0 20 20" fill="currentColor">
+                <path fillRule="evenodd" d="M12 7a1 1 0 110-2h5a1 1 0 011 1v5a1 1 0 11-2 0V8.414l-4.293 4.293a1 1 0 01-1.414 0L8 10.414l-4.293 4.293a1 1 0 01-1.414-1.414l5-5a1 1 0 011.414 0L11 10.586 14.586 7H12z" clipRule="evenodd" />
+              </svg>
+              Trending
+            </button>
+          </div>
+        </div>
 
         {/* Empty state */}
         {!hasMessages && (
@@ -528,22 +546,6 @@ export default function HomePage() {
             <div className="mt-8 w-full max-w-2xl">
               <EntityChips onSelect={handleSearch} />
             </div>
-          </div>
-        )}
-
-        {/* Trending button — visible during chat */}
-        {hasMessages && (
-          <div className="absolute top-3 right-4 z-20">
-            <button
-              onClick={() => setDrawerOpen(true)}
-              className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg bg-[var(--card)] border border-[var(--card-border)] text-xs text-[var(--muted)] hover:text-[var(--foreground)] hover:border-[var(--accent)]/40 transition-all"
-              title="Trending Topics"
-            >
-              <svg className="w-3.5 h-3.5" viewBox="0 0 20 20" fill="currentColor">
-                <path fillRule="evenodd" d="M12 7a1 1 0 110-2h5a1 1 0 011 1v5a1 1 0 11-2 0V8.414l-4.293 4.293a1 1 0 01-1.414 0L8 10.414l-4.293 4.293a1 1 0 01-1.414-1.414l5-5a1 1 0 011.414 0L11 10.586 14.586 7H12z" clipRule="evenodd" />
-              </svg>
-              Trending
-            </button>
           </div>
         )}
 

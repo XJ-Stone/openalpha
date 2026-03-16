@@ -362,10 +362,10 @@ export default function HomePage() {
         />
       )}
 
-      {/* Left rail — always visible, expands into sidebar */}
+      {/* Left rail — hidden on mobile when collapsed, visible on sm+ */}
       <div
         className={`${
-          sidebarOpen ? "w-64" : "w-12"
+          sidebarOpen ? "w-64" : "w-0 sm:w-12"
         } fixed sm:static z-40 sm:z-auto h-full bg-[var(--card)] flex flex-col transition-[width] duration-200 overflow-hidden`}
       >
         {/* Top controls — fixed position, no layout shift */}
@@ -479,6 +479,21 @@ export default function HomePage() {
 
       {/* Main chat area */}
       <div className="flex-1 flex flex-col min-w-0 relative">
+
+        {/* Mobile menu button — only visible on small screens when sidebar is closed */}
+        {!sidebarOpen && (
+          <button
+            onClick={() => setSidebarOpen(true)}
+            className="sm:hidden absolute top-3 left-3 z-20 w-8 h-8 flex items-center justify-center rounded-lg bg-[var(--card)] border border-[var(--card-border)] text-[var(--muted)] hover:text-[var(--foreground)] transition-colors"
+            title="Open menu"
+          >
+            <svg className="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+              <line x1="3" y1="6" x2="21" y2="6" />
+              <line x1="3" y1="12" x2="21" y2="12" />
+              <line x1="3" y1="18" x2="21" y2="18" />
+            </svg>
+          </button>
+        )}
 
         {/* Empty state */}
         {!hasMessages && (

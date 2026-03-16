@@ -1,0 +1,22 @@
+# Substack URL → investor mapping
+#
+# Each entry maps a Substack newsletter to an investor in the knowledge base.
+# The script uses this to auto-resolve --investor and --source-name from a URL.
+#
+# Fields:
+#   url:         Base URL of the Substack (custom domains work too)
+#   investor:    Investor slug matching the directory name in investors/
+#   source_name: Human-readable name used in frontmatter and filenames
+
+substacks:
+  - url: https://robonomics.substack.com
+    investor: freda-duan
+    source_name: Robonomics
+
+  - url: https://www.platformaeronaut.com
+    investor: thomas-reiner
+    source_name: Platform Aeronaut
+
+  - url: https://cloudedjudgement.substack.com
+    investor: jamin-ball
+    source_name: Clouded Judgement

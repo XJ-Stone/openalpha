@@ -1,0 +1,254 @@
+---
+aum: $20B+ (Altimeter)
+companies:
+- AAL
+- AAPL
+- ABNB
+- AIRBNB
+- AMADEUS
+- AMAZON
+- AMERICAN EXPRESS
+- AMEX GBT
+- AMZN
+- ANTHROPIC
+- APALEO
+- AVRIDE
+- AVVIO
+- BBOT
+- BIDU
+- BILL
+- BIZTRIPAI
+- BKNG
+- BOX
+- BREX
+- CANARY
+- CART
+- CENDYN
+- CFLT
+- CLOUDBEDS
+- CONCUR
+- COVEO
+- CTM
+- CVS
+- DAL
+- DASH
+- DDOG
+- DIRECTBOOKER
+- DIS
+- DOORDASH
+- EA
+- EPIC GAMES
+- EXPE
+- FCM
+- FLIGHT CENTRE
+- FOUR
+- FREENOW
+- GDS
+- GETYOURGUIDE
+- GITHUB
+- GOOGL
+- GOOGLE
+- GTM
+- HOOD
+- HOTELS
+- HTZ
+- INSTACART
+- KAYAK
+- KR
+- KROGER
+- LCID
+- LEGO
+- LUCID
+- LYFT
+- MAR
+- MARRIOTT
+- MAY MOBILITY
+- MCP
+- MDB
+- META
+- MEWS
+- MIRAI
+- MMYT
+- MOBILEYE
+- MOIA
+- MSFT
+- MYMA.AI
+- NAVAN
+- NAVN
+- NFLX
+- NISSAN
+- NURO
+- NVDA
+- OPENAI
+- OPENTABLE
+- ORCL
+- OTTO
+- OVERSEE
+- PARTY CITY
+- PERPLEXITY
+- PINS
+- PLATFORM AERONAUT
+- PUBLIX
+- RAMP
+- RBLX
+- RESY
+- ROBLOX
+- ROO
+- SABR
+- SABRE
+- SAUDI PIF
+- SEVENROOMS
+- SHR
+- SILVER LAKE
+- SKYSCANNER
+- SKYTAB
+- SNAP
+- SNOW
+- SOMNISEAT
+- SPOTHERO
+- STLA
+- SYMBIOSYS
+- TIKTOK
+- TOAST
+- TOCK
+- TOST
+- TPG
+- TRAVELCLICK
+- TRIP
+- TRIPADVISOR
+- TRVG
+- TSLA
+- TWLO
+- UBER
+- VALVE
+- VERCEL
+- VOLKSWAGEN
+- W
+- WAYMO
+- WAYVE
+- WING
+- WINN-DIXIE
+- WMT
+- WOLT
+- ZEEKR
+- ZOOX
+fund: Altimeter Capital
+last_updated: '2026-03-15'
+name: Thomas Reiner
+role: Partner
+sectors:
+- ads
+- ai
+- ai-agents
+- airlines
+- automotive
+- autonomous-vehicles
+- autonomy
+- consumer-internet
+- corporate-travel
+- creator-economy
+- data-labeling
+- delivery
+- developer-tools
+- digital-advertising
+- digital-discovery
+- distribution-technology
+- drone-delivery
+- e-commerce
+- earnings-transcripts
+- ecommerce
+- enterprise-software
+- executive-compensation
+- expense-management
+- experience-and-mobility
+- experiences
+- fintech
+- fleet-management
+- food-delivery
+- fulfillment-and-logistics
+- gaming
+- gig-economy
+- grocery-delivery
+- hospitality
+- hotel-tech
+- infrastructure-software
+- international-expansion
+- leisure
+- llm-integration
+- local-delivery
+- m-a
+- marketplaces
+- metasearch
+- metaverse
+- micro-fulfillment
+- mobile-gaming
+- mobility
+- mobility-platforms
+- online-travel-agencies
+- online-travel-agency
+- ota
+- parking-marketplaces
+- payments
+- platform
+- platform-economics
+- platform-marketplaces
+- platforms
+- public-markets
+- research-tools
+- restaurant-pos
+- restaurant-tech
+- retail-delivery
+- retail-media
+- ride-hailing
+- rideshare
+- rideshare-delivery
+- ridesharing
+- robotaxi
+- robotaxis
+- short-term-rentals
+- simulation
+- social-media
+- social-media-ads
+- software
+- subscription-business-models
+- technology
+- tmc
+- transcript-search-tools
+- transportation
+- travel
+- travel-commerce
+- travel-distribution
+- travel-marketplaces
+- travel-tech
+- unit-economics
+- urban-infrastructure
+- user-generated-content
+- valuation
+- video-games
+slug: thomas-reiner
+sources:
+- Robonomics
+---
+
+# Thomas Reiner
+
+## Background
+Thomas Reiner is a Partner at Altimeter Capital, where he has invested for over 15 years since joining in 2010. He holds a B.S. in Business Administration from Northeastern University. Prior to Altimeter, he was a Co-op at PAR Capital Management. He runs Platform Aeronaut, a Substack publishing data-driven deep dives on network-effect businesses using public filings.
+
+## Investment Style
+- Deep focus on platform economics: unit economics, incremental margins, take rates, and dilution analysis
+- Specializes in network-effect businesses: online travel agencies, rideshare, food delivery, and marketplaces
+- Tracks autonomous vehicle implications for rideshare platforms extensively
+- Analyzes how agentic AI reshapes distribution, loyalty, and advertising moats across travel and commerce
+- Uses quantitative frameworks grounded in public filings and earnings transcripts
+- Builds custom tools (MCP/GPT-based) for transcript research
+
+## Current Known Positions (from public statements)
+- **UBER**: Bullish. Extensive coverage of Uber's autonomous vehicle strategy, driver-led AI work as a "third engine," and SpotHero acquisition as AV infrastructure play.
+- **BKNG / EXPE**: Covers OTA competitive dynamics, AI-driven distribution shifts, and the debate over whether AI ends the "10 blue links" era for travel search.
+- **DASH (DoorDash)**: Analyzes TAM expansion into POS systems and restaurant tech stack consolidation.
+- **TOST (Toast)**: Covers restaurant tech vertical integration vs. point solutions.
+- **ABNB / PINS / SNAP**: Tracks dilution trends and platform margin evolution.
+
+## How to Read Thomas Reiner
+Reiner's analysis is highly quantitative and framework-driven, often building financial models from first principles using public filings. His Substack alternates between deep-dive research pieces (autonomous rideshare economics, hotel AI distribution, restaurant tech stacks) and shorter "PA Dispatch" updates covering earnings, market multiples, and industry news. He frequently stress-tests bull/bear cases with scenario analysis. When he covers a topic, pay attention to his unit economics breakdowns and margin analysis — he tends to find insights in the operational details that consensus misses.

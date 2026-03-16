@@ -1,0 +1,317 @@
+---
+aum: $20B+ (Altimeter)
+companies:
+- AAPL
+- ABNB
+- ADYEN
+- AES
+- AIRTABLE
+- AMZN
+- ANTHROPIC
+- ARCB
+- AUR
+- AV.L
+- BABA
+- BAMBU LAB
+- BERKELEY-DEEPDRIVE
+- BERNSTEIN
+- BHP
+- BILI
+- BK
+- BKNG
+- BLOOMBERG
+- BRAVE
+- BYTEDANCE
+- CA
+- CBOE
+- CHECKOUT
+- CHINESE-OEMS
+- CHRW
+- CITADEL
+- CME
+- COIN
+- COINBASE
+- COMMUNICATION SERVICES
+- CONSUMER DISCRETIONARY
+- CONSUMER STAPLES
+- DIS
+- DJIA
+- DKNG
+- DOORDASH
+- DOUBAO
+- DOUYIN
+- ECOFLOW
+- ES
+- ETSY
+- EXPE
+- FANQIE
+- FCX
+- FLUT
+- FROST & SULLIVAN
+- GLD
+- GLOSSIER
+- GMAIL
+- GOOG
+- GOOGL
+- GOOGLE CALENDAR
+- GOOGLE DRIVE
+- GS
+- HEALTHCARE
+- HONGGUO
+- HONOR
+- HOOD
+- HUGGINGFACE
+- HYUNDAI
+- IBKR
+- INSTA360
+- IQ
+- IWM
+- JAGUAR
+- JAGUAR-LAND-ROVER
+- JD
+- JPM
+- KALSHI
+- KELING
+- KIMI
+- KINGSOFT
+- KUAISHOU
+- LCID
+- LENOVO
+- LYFT
+- MANGO TV
+- MBG
+- MEITUAN
+- META
+- MINIMAX
+- MSFT
+- NASDAQ
+- NATIONAL DATA BUREAU
+- NDX
+- NFL
+- NFLX
+- NIELSEN
+- NU
+- NVDA
+- OCC
+- OPENAI
+- OPENROUTER
+- OPPO
+- ORCL
+- PARKS ASSOCIATES
+- PDD
+- PERPLEXITY
+- PG
+- POLYMARKET
+- PWC
+- PYPL
+- QCEX
+- QQQ
+- QWEN
+- REUTERS
+- REVOLUT
+- RIO
+- RKT
+- S&P 500
+- SAMSUNG
+- SEEDANCE
+- SHOP
+- SKIMS
+- SLACK
+- SLV
+- SMAR
+- SPACEX
+- SPANX
+- SPX
+- SPY
+- SQ
+- STEPFUN
+- STRIPE
+- TAOBAO
+- TCEHY
+- TECHNOLOGY
+- TGT
+- THEDESK.NET
+- TIGER GLOBAL
+- TIKTOK
+- TLT
+- TOSS
+- TSLA
+- TX
+- UBER
+- UNG
+- UNILEVER
+- UNITREE
+- UPS
+- USO
+- VIVO
+- VIX
+- VOLCANO ENGINE
+- WAYMO
+- WECHAT
+- WMT
+- X
+- XAI
+- YOUKU
+- ZEEKR
+- ZHIPU
+fund: Altimeter Capital
+last_updated: '2026-03-15'
+name: Freda Duan
+role: Partner
+sectors:
+- ad-tech
+- ads
+- adtech
+- advertising
+- aerospace
+- agentic-commerce
+- ai
+- ai-agents
+- ai-generated-content
+- ai-infrastructure
+- api-integration
+- automotive
+- autonomous-vehicles
+- b2b-commerce
+- biotech
+- checkout
+- china-macro
+- china-tech
+- cleantech-solar
+- cloud-capex
+- cloud-infrastructure
+- commodities
+- communication-services
+- consumer
+- consumer-discretionary
+- consumer-electronics
+- consumer-hardware
+- consumer-internet
+- consumer-packaged-goods
+- consumer-staples
+- consumer-tech
+- corporate-finance
+- creator-economy
+- crypto
+- crypto-exchanges
+- customer-service
+- data-platforms
+- datasets
+- derivatives
+- developer-tools
+- digital-advertising
+- e-commerce
+- ecommerce
+- edge-ai
+- energy
+- enterprise-ai
+- enterprise-software
+- entertainment
+- equities
+- etf
+- etfs
+- ev
+- finance
+- financial-markets
+- financial-services
+- financials
+- fintech
+- gen-ai
+- governance
+- hardware
+- healthcare
+- index-options
+- industrials
+- infrastructure
+- insurance
+- internet-platforms
+- internet-search
+- labor-automation
+- llm
+- logistics
+- macro
+- macro-economics
+- macro-rates
+- market-structure
+- marketplaces
+- media
+- media-entertainment
+- mining-utilities
+- ml-infrastructure
+- mobile-commerce
+- mobile-devices
+- mobile-os
+- mobility
+- mobility-platforms
+- mortgage
+- multimodal-ai
+- nlp
+- online-travel
+- options
+- org-design
+- payments
+- platforms
+- prediction-markets
+- productivity
+- productivity-software
+- real-estate
+- regulation
+- restructuring
+- retail-investing
+- retail-supply-chain
+- retail-trading
+- robotaxi
+- robotics
+- saas
+- saas-cloud
+- search
+- search-engine
+- seasonality
+- semiconductors
+- sensors
+- services
+- short-form-video
+- space
+- sports
+- sports-betting
+- spreadsheets
+- streaming-media
+- streaming-video
+- technology
+- transportation
+- transportation-logistics
+- travel
+- us-equities
+- valuation
+- value
+- video-ai
+- voice-ai
+- voice-assistants
+- voice-interfaces
+- voice-ui
+- volatility
+slug: freda-duan
+sources:
+- Robonomics
+---
+
+# Freda Duan
+
+## Background
+Freda Duan is a Partner at Altimeter Capital, where she focuses on enterprise software and AI investments. She has been a recurring guest on BG2Pod, Brad Gerstner's podcast, where she provides detailed analysis of enterprise software business models, AI adoption trends, and company-specific theses. Prior to Altimeter, Duan built her career in technology investing with deep expertise in SaaS metrics and cloud infrastructure.
+
+## Investment Style
+- Deep focus on enterprise software fundamentals: net retention rates, free cash flow margins, and consumption-based revenue models
+- Emphasizes the importance of product-led growth and developer adoption as leading indicators
+- Analyzes AI's impact on existing software companies, distinguishing between companies that will be disrupted versus enhanced by AI
+- Paraphrased from BG2Pod: evaluates whether AI is a "feature, product, or platform" for each software company
+- Focused on durable competitive advantages in data and workflow integration
+
+## Current Known Positions (from public statements)
+- **SNOW (Snowflake)**: Bullish. Has discussed Snowflake's data platform as essential infrastructure for enterprise AI workloads on BG2Pod.
+- **DDOG (Datadog)**: Positive. Views Datadog as well-positioned in observability, with AI workloads creating more complex infrastructure to monitor.
+- **MDB (MongoDB)**: Has discussed MongoDB's developer mindshare and the potential for AI-driven application development to increase database usage.
+- **CFLT (Confluent)**: Discussed data streaming as a critical layer for real-time AI applications.
+
+## How to Read Freda Duan
+Duan's public commentary is primarily through BG2Pod appearances, where she typically provides enterprise software deep-dives with a focus on product and competitive positioning. She speaks with precision about SaaS metrics and tends to frame her views around multi-year adoption curves rather than near-term trading catalysts. Her analysis often focuses on how AI changes the competitive dynamics within enterprise software categories. When she highlights a company, pay attention to her emphasis on whether AI is additive to the existing business or potentially cannibalistic.

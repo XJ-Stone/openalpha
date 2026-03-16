@@ -1,0 +1,32 @@
+[tool.poetry]
+name = "openalpha"
+version = "0.1.0"
+description = "OpenAlpha — Real investor opinions. Real sources. No roleplay."
+authors = []
+readme = "README.md"
+packages = [{include = "src"}]
+
+[tool.poetry.scripts]
+openalpha = "cli:app"
+
+[tool.poetry.dependencies]
+python = ">=3.11"
+fastapi = "^0.115"
+"uvicorn[standard]" = "^0.34"
+python-frontmatter = "^1.1"
+rich = "^13.9"
+anthropic = "^0.43"
+openai = "^1.58"
+httpx = "^0.28"
+pydantic = "^2.10"
+pydantic-settings = "^2.7"
+python-dotenv = "^1.0"
+pyyaml = "^6.0"
+
+[tool.poetry.group.dev.dependencies]
+pytest = "^8.3"
+pytest-asyncio = "^0.25"
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"

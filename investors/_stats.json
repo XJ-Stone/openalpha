@@ -1,0 +1,4449 @@
+{
+  "generated": "2026-03-15",
+  "total_appearances": 60,
+  "companies": [
+    {
+      "name": "OPENAI",
+      "count": 24,
+      "investor_count": 3,
+      "investors": [
+        "freda-duan",
+        "jamin-ball",
+        "thomas-reiner"
+      ]
+    },
+    {
+      "name": "GOOGL",
+      "count": 19,
+      "investor_count": 3,
+      "investors": [
+        "freda-duan",
+        "jamin-ball",
+        "thomas-reiner"
+      ]
+    },
+    {
+      "name": "UBER",
+      "count": 18,
+      "investor_count": 2,
+      "investors": [
+        "freda-duan",
+        "thomas-reiner"
+      ]
+    },
+    {
+      "name": "WAYMO",
+      "count": 14,
+      "investor_count": 2,
+      "investors": [
+        "freda-duan",
+        "thomas-reiner"
+      ]
+    },
+    {
+      "name": "AAPL",
+      "count": 12,
+      "investor_count": 3,
+      "investors": [
+        "freda-duan",
+        "jamin-ball",
+        "thomas-reiner"
+      ]
+    },
+    {
+      "name": "ANTHROPIC",
+      "count": 12,
+      "investor_count": 3,
+      "investors": [
+        "freda-duan",
+        "jamin-ball",
+        "thomas-reiner"
+      ]
+    },
+    {
+      "name": "AMZN",
+      "count": 12,
+      "investor_count": 3,
+      "investors": [
+        "freda-duan",
+        "jamin-ball",
+        "thomas-reiner"
+      ]
+    },
+    {
+      "name": "BKNG",
+      "count": 12,
+      "investor_count": 3,
+      "investors": [
+        "freda-duan",
+        "jamin-ball",
+        "thomas-reiner"
+      ]
+    },
+    {
+      "name": "LYFT",
+      "count": 11,
+      "investor_count": 2,
+      "investors": [
+        "freda-duan",
+        "thomas-reiner"
+      ]
+    },
+    {
+      "name": "META",
+      "count": 10,
+      "investor_count": 3,
+      "investors": [
+        "freda-duan",
+        "jamin-ball",
+        "thomas-reiner"
+      ]
+    },
+    {
+      "name": "MSFT",
+      "count": 10,
+      "investor_count": 3,
+      "investors": [
+        "freda-duan",
+        "jamin-ball",
+        "thomas-reiner"
+      ]
+    },
+    {
+      "name": "TSLA",
+      "count": 10,
+      "investor_count": 2,
+      "investors": [
+        "freda-duan",
+        "thomas-reiner"
+      ]
+    },
+    {
+      "name": "EXPE",
+      "count": 9,
+      "investor_count": 3,
+      "investors": [
+        "freda-duan",
+        "jamin-ball",
+        "thomas-reiner"
+      ]
+    },
+    {
+      "name": "NVDA",
+      "count": 8,
+      "investor_count": 3,
+      "investors": [
+        "freda-duan",
+        "jamin-ball",
+        "thomas-reiner"
+      ]
+    },
+    {
+      "name": "BLOOMBERG",
+      "count": 7,
+      "investor_count": 2,
+      "investors": [
+        "freda-duan",
+        "jamin-ball"
+      ]
+    },
+    {
+      "name": "SHOP",
+      "count": 6,
+      "investor_count": 1,
+      "investors": [
+        "freda-duan"
+      ]
+    },
+    {
+      "name": "TIKTOK",
+      "count": 6,
+      "investor_count": 2,
+      "investors": [
+        "freda-duan",
+        "thomas-reiner"
+      ]
+    },
+    {
+      "name": "ABNB",
+      "count": 6,
+      "investor_count": 2,
+      "investors": [
+        "freda-duan",
+        "thomas-reiner"
+      ]
+    },
+    {
+      "name": "PITCHBOOK",
+      "count": 6,
+      "investor_count": 1,
+      "investors": [
+        "jamin-ball"
+      ]
+    },
+    {
+      "name": "HOOD",
+      "count": 5,
+      "investor_count": 2,
+      "investors": [
+        "freda-duan",
+        "thomas-reiner"
+      ]
+    },
+    {
+      "name": "PERPLEXITY",
+      "count": 5,
+      "investor_count": 2,
+      "investors": [
+        "freda-duan",
+        "thomas-reiner"
+      ]
+    },
+    {
+      "name": "BABA",
+      "count": 5,
+      "investor_count": 2,
+      "investors": [
+        "freda-duan",
+        "jamin-ball"
+      ]
+    },
+    {
+      "name": "NURO",
+      "count": 5,
+      "investor_count": 1,
+      "investors": [
+        "thomas-reiner"
+      ]
+    },
+    {
+      "name": "DASH",
+      "count": 5,
+      "investor_count": 1,
+      "investors": [
+        "thomas-reiner"
+      ]
+    },
+    {
+      "name": "WMT",
+      "count": 4,
+      "investor_count": 2,
+      "investors": [
+        "freda-duan",
+        "thomas-reiner"
+      ]
+    },
+    {
+      "name": "BYTEDANCE",
+      "count": 4,
+      "investor_count": 1,
+      "investors": [
+        "freda-duan"
+      ]
+    },
+    {
+      "name": "LCID",
+      "count": 4,
+      "investor_count": 2,
+      "investors": [
+        "freda-duan",
+        "thomas-reiner"
+      ]
+    },
+    {
+      "name": "SABR",
+      "count": 4,
+      "investor_count": 2,
+      "investors": [
+        "jamin-ball",
+        "thomas-reiner"
+      ]
+    },
+    {
+      "name": "STRIPE",
+      "count": 3,
+      "investor_count": 1,
+      "investors": [
+        "freda-duan"
+      ]
+    },
+    {
+      "name": "GOOG",
+      "count": 3,
+      "investor_count": 2,
+      "investors": [
+        "freda-duan",
+        "jamin-ball"
+      ]
+    },
+    {
+      "name": "NFLX",
+      "count": 3,
+      "investor_count": 2,
+      "investors": [
+        "freda-duan",
+        "thomas-reiner"
+      ]
+    },
+    {
+      "name": "DOORDASH",
+      "count": 3,
+      "investor_count": 2,
+      "investors": [
+        "freda-duan",
+        "thomas-reiner"
+      ]
+    },
+    {
+      "name": "NOW",
+      "count": 3,
+      "investor_count": 1,
+      "investors": [
+        "jamin-ball"
+      ]
+    },
+    {
+      "name": "SNOW",
+      "count": 3,
+      "investor_count": 2,
+      "investors": [
+        "jamin-ball",
+        "thomas-reiner"
+      ]
+    },
+    {
+      "name": "RBLX",
+      "count": 3,
+      "investor_count": 1,
+      "investors": [
+        "thomas-reiner"
+      ]
+    },
+    {
+      "name": "AMADEUS",
+      "count": 3,
+      "investor_count": 1,
+      "investors": [
+        "thomas-reiner"
+      ]
+    },
+    {
+      "name": "INSTACART",
+      "count": 3,
+      "investor_count": 1,
+      "investors": [
+        "thomas-reiner"
+      ]
+    },
+    {
+      "name": "KR",
+      "count": 3,
+      "investor_count": 1,
+      "investors": [
+        "thomas-reiner"
+      ]
+    },
+    {
+      "name": "ZOOX",
+      "count": 3,
+      "investor_count": 1,
+      "investors": [
+        "thomas-reiner"
+      ]
+    },
+    {
+      "name": "POLYMARKET",
+      "count": 2,
+      "investor_count": 1,
+      "investors": [
+        "freda-duan"
+      ]
+    },
+    {
+      "name": "KALSHI",
+      "count": 2,
+      "investor_count": 1,
+      "investors": [
+        "freda-duan"
+      ]
+    },
+    {
+      "name": "COIN",
+      "count": 2,
+      "investor_count": 1,
+      "investors": [
+        "freda-duan"
+      ]
+    },
+    {
+      "name": "XAI",
+      "count": 2,
+      "investor_count": 1,
+      "investors": [
+        "freda-duan"
+      ]
+    },
+    {
+      "name": "FLUT",
+      "count": 2,
+      "investor_count": 1,
+      "investors": [
+        "freda-duan"
+      ]
+    },
+    {
+      "name": "DKNG",
+      "count": 2,
+      "investor_count": 1,
+      "investors": [
+        "freda-duan"
+      ]
+    },
+    {
+      "name": "QQQ",
+      "count": 2,
+      "investor_count": 1,
+      "investors": [
+        "freda-duan"
+      ]
+    },
+    {
+      "name": "PYPL",
+      "count": 2,
+      "investor_count": 1,
+      "investors": [
+        "freda-duan"
+      ]
+    },
+    {
+      "name": "SKIMS",
+      "count": 2,
+      "investor_count": 1,
+      "investors": [
+        "freda-duan"
+      ]
+    },
+    {
+      "name": "DIS",
+      "count": 2,
+      "investor_count": 2,
+      "investors": [
+        "freda-duan",
+        "thomas-reiner"
+      ]
+    },
+    {
+      "name": "MEITUAN",
+      "count": 2,
+      "investor_count": 1,
+      "investors": [
+        "freda-duan"
+      ]
+    },
+    {
+      "name": "ZEEKR",
+      "count": 2,
+      "investor_count": 2,
+      "investors": [
+        "freda-duan",
+        "thomas-reiner"
+      ]
+    },
+    {
+      "name": "TCEHY",
+      "count": 2,
+      "investor_count": 1,
+      "investors": [
+        "freda-duan"
+      ]
+    },
+    {
+      "name": "SPACEX",
+      "count": 2,
+      "investor_count": 1,
+      "investors": [
+        "freda-duan"
+      ]
+    },
+    {
+      "name": "MINIMAX",
+      "count": 2,
+      "investor_count": 1,
+      "investors": [
+        "freda-duan"
+      ]
+    },
+    {
+      "name": "ORCL",
+      "count": 2,
+      "investor_count": 2,
+      "investors": [
+        "freda-duan",
+        "thomas-reiner"
+      ]
+    },
+    {
+      "name": "DOUBAO",
+      "count": 2,
+      "investor_count": 1,
+      "investors": [
+        "freda-duan"
+      ]
+    },
+    {
+      "name": "SQ",
+      "count": 2,
+      "investor_count": 2,
+      "investors": [
+        "freda-duan",
+        "jamin-ball"
+      ]
+    },
+    {
+      "name": "PLTR",
+      "count": 2,
+      "investor_count": 1,
+      "investors": [
+        "jamin-ball"
+      ]
+    },
+    {
+      "name": "BILL",
+      "count": 2,
+      "investor_count": 2,
+      "investors": [
+        "jamin-ball",
+        "thomas-reiner"
+      ]
+    },
+    {
+      "name": "EGHT",
+      "count": 2,
+      "investor_count": 1,
+      "investors": [
+        "jamin-ball"
+      ]
+    },
+    {
+      "name": "DDOG",
+      "count": 2,
+      "investor_count": 2,
+      "investors": [
+        "jamin-ball",
+        "thomas-reiner"
+      ]
+    },
+    {
+      "name": "NET",
+      "count": 2,
+      "investor_count": 1,
+      "investors": [
+        "jamin-ball"
+      ]
+    },
+    {
+      "name": "MDB",
+      "count": 2,
+      "investor_count": 2,
+      "investors": [
+        "jamin-ball",
+        "thomas-reiner"
+      ]
+    },
+    {
+      "name": "TOST",
+      "count": 2,
+      "investor_count": 1,
+      "investors": [
+        "thomas-reiner"
+      ]
+    },
+    {
+      "name": "CART",
+      "count": 2,
+      "investor_count": 1,
+      "investors": [
+        "thomas-reiner"
+      ]
+    },
+    {
+      "name": "NAVAN",
+      "count": 2,
+      "investor_count": 1,
+      "investors": [
+        "thomas-reiner"
+      ]
+    },
+    {
+      "name": "TOAST",
+      "count": 2,
+      "investor_count": 1,
+      "investors": [
+        "thomas-reiner"
+      ]
+    },
+    {
+      "name": "MAR",
+      "count": 2,
+      "investor_count": 1,
+      "investors": [
+        "thomas-reiner"
+      ]
+    },
+    {
+      "name": "DAL",
+      "count": 2,
+      "investor_count": 1,
+      "investors": [
+        "thomas-reiner"
+      ]
+    },
+    {
+      "name": "GETYOURGUIDE",
+      "count": 2,
+      "investor_count": 1,
+      "investors": [
+        "thomas-reiner"
+      ]
+    },
+    {
+      "name": "MCP",
+      "count": 2,
+      "investor_count": 1,
+      "investors": [
+        "thomas-reiner"
+      ]
+    },
+    {
+      "name": "TRIP",
+      "count": 2,
+      "investor_count": 1,
+      "investors": [
+        "thomas-reiner"
+      ]
+    },
+    {
+      "name": "PINS",
+      "count": 2,
+      "investor_count": 1,
+      "investors": [
+        "thomas-reiner"
+      ]
+    },
+    {
+      "name": "MEWS",
+      "count": 2,
+      "investor_count": 1,
+      "investors": [
+        "thomas-reiner"
+      ]
+    },
+    {
+      "name": "CLOUDBEDS",
+      "count": 2,
+      "investor_count": 1,
+      "investors": [
+        "thomas-reiner"
+      ]
+    },
+    {
+      "name": "SKYSCANNER",
+      "count": 2,
+      "investor_count": 1,
+      "investors": [
+        "thomas-reiner"
+      ]
+    },
+    {
+      "name": "PLATFORM AERONAUT",
+      "count": 2,
+      "investor_count": 1,
+      "investors": [
+        "thomas-reiner"
+      ]
+    },
+    {
+      "name": "IBKR",
+      "count": 1,
+      "investor_count": 1,
+      "investors": [
+        "freda-duan"
+      ]
+    },
+    {
+      "name": "X",
+      "count": 1,
+      "investor_count": 1,
+      "investors": [
+        "freda-duan"
+      ]
+    },
+    {
+      "name": "CME",
+      "count": 1,
+      "investor_count": 1,
+      "investors": [
+        "freda-duan"
+      ]
+    },
+    {
+      "name": "QCEX",
+      "count": 1,
+      "investor_count": 1,
+      "investors": [
+        "freda-duan"
+      ]
+    },
+    {
+      "name": "ETSY",
+      "count": 1,
+      "investor_count": 1,
+      "investors": [
+        "freda-duan"
+      ]
+    },
+    {
+      "name": "PDD",
+      "count": 1,
+      "investor_count": 1,
+      "investors": [
+        "freda-duan"
+      ]
+    },
+    {
+      "name": "PARKS ASSOCIATES",
+      "count": 1,
+      "investor_count": 1,
+      "investors": [
+        "freda-duan"
+      ]
+    },
+    {
+      "name": "PWC",
+      "count": 1,
+      "investor_count": 1,
+      "investors": [
+        "freda-duan"
+      ]
+    },
+    {
+      "name": "NIELSEN",
+      "count": 1,
+      "investor_count": 1,
+      "investors": [
+        "freda-duan"
+      ]
+    },
+    {
+      "name": "THEDESK.NET",
+      "count": 1,
+      "investor_count": 1,
+      "investors": [
+        "freda-duan"
+      ]
+    },
+    {
+      "name": "CITADEL",
+      "count": 1,
+      "investor_count": 1,
+      "investors": [
+        "freda-duan"
+      ]
+    },
+    {
+      "name": "NASDAQ",
+      "count": 1,
+      "investor_count": 1,
+      "investors": [
+        "freda-duan"
+      ]
+    },
+    {
+      "name": "CBOE",
+      "count": 1,
+      "investor_count": 1,
+      "investors": [
+        "freda-duan"
+      ]
+    },
+    {
+      "name": "OCC",
+      "count": 1,
+      "investor_count": 1,
+      "investors": [
+        "freda-duan"
+      ]
+    },
+    {
+      "name": "SPX",
+      "count": 1,
+      "investor_count": 1,
+      "investors": [
+        "freda-duan"
+      ]
+    },
+    {
+      "name": "SPY",
+      "count": 1,
+      "investor_count": 1,
+      "investors": [
+        "freda-duan"
+      ]
+    },
+    {
+      "name": "ES",
+      "count": 1,
+      "investor_count": 1,
+      "investors": [
+        "freda-duan"
+      ]
+    },
+    {
+      "name": "IWM",
+      "count": 1,
+      "investor_count": 1,
+      "investors": [
+        "freda-duan"
+      ]
+    },
+    {
+      "name": "GLD",
+      "count": 1,
+      "investor_count": 1,
+      "investors": [
+        "freda-duan"
+      ]
+    },
+    {
+      "name": "SLV",
+      "count": 1,
+      "investor_count": 1,
+      "investors": [
+        "freda-duan"
+      ]
+    },
+    {
+      "name": "TLT",
+      "count": 1,
+      "investor_count": 1,
+      "investors": [
+        "freda-duan"
+      ]
+    },
+    {
+      "name": "UNG",
+      "count": 1,
+      "investor_count": 1,
+      "investors": [
+        "freda-duan"
+      ]
+    },
+    {
+      "name": "USO",
+      "count": 1,
+      "investor_count": 1,
+      "investors": [
+        "freda-duan"
+      ]
+    },
+    {
+      "name": "REUTERS",
+      "count": 1,
+      "investor_count": 1,
+      "investors": [
+        "freda-duan"
+      ]
+    },
+    {
+      "name": "VIX",
+      "count": 1,
+      "investor_count": 1,
+      "investors": [
+        "freda-duan"
+      ]
+    },
+    {
+      "name": "NDX",
+      "count": 1,
+      "investor_count": 1,
+      "investors": [
+        "freda-duan"
+      ]
+    },
+    {
+      "name": "ADYEN",
+      "count": 1,
+      "investor_count": 1,
+      "investors": [
+        "freda-duan"
+      ]
+    },
+    {
+      "name": "CHECKOUT",
+      "count": 1,
+      "investor_count": 1,
+      "investors": [
+        "freda-duan"
+      ]
+    },
+    {
+      "name": "BRAVE",
+      "count": 1,
+      "investor_count": 1,
+      "investors": [
+        "freda-duan"
+      ]
+    },
+    {
+      "name": "VIVO",
+      "count": 1,
+      "investor_count": 1,
+      "investors": [
+        "freda-duan"
+      ]
+    },
+    {
+      "name": "OPPO",
+      "count": 1,
+      "investor_count": 1,
+      "investors": [
+        "freda-duan"
+      ]
+    },
+    {
+      "name": "HONOR",
+      "count": 1,
+      "investor_count": 1,
+      "investors": [
+        "freda-duan"
+      ]
+    },
+    {
+      "name": "JD",
+      "count": 1,
+      "investor_count": 1,
+      "investors": [
+        "freda-duan"
+      ]
+    },
+    {
+      "name": "TAOBAO",
+      "count": 1,
+      "investor_count": 1,
+      "investors": [
+        "freda-duan"
+      ]
+    },
+    {
+      "name": "WECHAT",
+      "count": 1,
+      "investor_count": 1,
+      "investors": [
+        "freda-duan"
+      ]
+    },
+    {
+      "name": "CHRW",
+      "count": 1,
+      "investor_count": 1,
+      "investors": [
+        "freda-duan"
+      ]
+    },
+    {
+      "name": "UPS",
+      "count": 1,
+      "investor_count": 1,
+      "investors": [
+        "freda-duan"
+      ]
+    },
+    {
+      "name": "ARCB",
+      "count": 1,
+      "investor_count": 1,
+      "investors": [
+        "freda-duan"
+      ]
+    },
+    {
+      "name": "NU",
+      "count": 1,
+      "investor_count": 1,
+      "investors": [
+        "freda-duan"
+      ]
+    },
+    {
+      "name": "BK",
+      "count": 1,
+      "investor_count": 1,
+      "investors": [
+        "freda-duan"
+      ]
+    },
+    {
+      "name": "JPM",
+      "count": 1,
+      "investor_count": 1,
+      "investors": [
+        "freda-duan"
+      ]
+    },
+    {
+      "name": "AV.L",
+      "count": 1,
+      "investor_count": 1,
+      "investors": [
+        "freda-duan"
+      ]
+    },
+    {
+      "name": "RKT",
+      "count": 1,
+      "investor_count": 1,
+      "investors": [
+        "freda-duan"
+      ]
+    },
+    {
+      "name": "RIO",
+      "count": 1,
+      "investor_count": 1,
+      "investors": [
+        "freda-duan"
+      ]
+    },
+    {
+      "name": "BHP",
+      "count": 1,
+      "investor_count": 1,
+      "investors": [
+        "freda-duan"
+      ]
+    },
+    {
+      "name": "FCX",
+      "count": 1,
+      "investor_count": 1,
+      "investors": [
+        "freda-duan"
+      ]
+    },
+    {
+      "name": "AES",
+      "count": 1,
+      "investor_count": 1,
+      "investors": [
+        "freda-duan"
+      ]
+    },
+    {
+      "name": "S&P 500",
+      "count": 1,
+      "investor_count": 1,
+      "investors": [
+        "freda-duan"
+      ]
+    },
+    {
+      "name": "HEALTHCARE",
+      "count": 1,
+      "investor_count": 1,
+      "investors": [
+        "freda-duan"
+      ]
+    },
+    {
+      "name": "CONSUMER STAPLES",
+      "count": 1,
+      "investor_count": 1,
+      "investors": [
+        "freda-duan"
+      ]
+    },
+    {
+      "name": "CONSUMER DISCRETIONARY",
+      "count": 1,
+      "investor_count": 1,
+      "investors": [
+        "freda-duan"
+      ]
+    },
+    {
+      "name": "TECHNOLOGY",
+      "count": 1,
+      "investor_count": 1,
+      "investors": [
+        "freda-duan"
+      ]
+    },
+    {
+      "name": "COMMUNICATION SERVICES",
+      "count": 1,
+      "investor_count": 1,
+      "investors": [
+        "freda-duan"
+      ]
+    },
+    {
+      "name": "HYUNDAI",
+      "count": 1,
+      "investor_count": 1,
+      "investors": [
+        "freda-duan"
+      ]
+    },
+    {
+      "name": "JAGUAR",
+      "count": 1,
+      "investor_count": 1,
+      "investors": [
+        "freda-duan"
+      ]
+    },
+    {
+      "name": "TIGER GLOBAL",
+      "count": 1,
+      "investor_count": 1,
+      "investors": [
+        "freda-duan"
+      ]
+    },
+    {
+      "name": "HONGGUO",
+      "count": 1,
+      "investor_count": 1,
+      "investors": [
+        "freda-duan"
+      ]
+    },
+    {
+      "name": "FANQIE",
+      "count": 1,
+      "investor_count": 1,
+      "investors": [
+        "freda-duan"
+      ]
+    },
+    {
+      "name": "DOUYIN",
+      "count": 1,
+      "investor_count": 1,
+      "investors": [
+        "freda-duan"
+      ]
+    },
+    {
+      "name": "BILI",
+      "count": 1,
+      "investor_count": 1,
+      "investors": [
+        "freda-duan"
+      ]
+    },
+    {
+      "name": "YOUKU",
+      "count": 1,
+      "investor_count": 1,
+      "investors": [
+        "freda-duan"
+      ]
+    },
+    {
+      "name": "IQ",
+      "count": 1,
+      "investor_count": 1,
+      "investors": [
+        "freda-duan"
+      ]
+    },
+    {
+      "name": "MANGO TV",
+      "count": 1,
+      "investor_count": 1,
+      "investors": [
+        "freda-duan"
+      ]
+    },
+    {
+      "name": "KUAISHOU",
+      "count": 1,
+      "investor_count": 1,
+      "investors": [
+        "freda-duan"
+      ]
+    },
+    {
+      "name": "NFL",
+      "count": 1,
+      "investor_count": 1,
+      "investors": [
+        "freda-duan"
+      ]
+    },
+    {
+      "name": "CA",
+      "count": 1,
+      "investor_count": 1,
+      "investors": [
+        "freda-duan"
+      ]
+    },
+    {
+      "name": "TX",
+      "count": 1,
+      "investor_count": 1,
+      "investors": [
+        "freda-duan"
+      ]
+    },
+    {
+      "name": "AUR",
+      "count": 1,
+      "investor_count": 1,
+      "investors": [
+        "freda-duan"
+      ]
+    },
+    {
+      "name": "UNITREE",
+      "count": 1,
+      "investor_count": 1,
+      "investors": [
+        "freda-duan"
+      ]
+    },
+    {
+      "name": "DJIA",
+      "count": 1,
+      "investor_count": 1,
+      "investors": [
+        "freda-duan"
+      ]
+    },
+    {
+      "name": "MBG",
+      "count": 1,
+      "investor_count": 1,
+      "investors": [
+        "freda-duan"
+      ]
+    },
+    {
+      "name": "JAGUAR-LAND-ROVER",
+      "count": 1,
+      "investor_count": 1,
+      "investors": [
+        "freda-duan"
+      ]
+    },
+    {
+      "name": "CHINESE-OEMS",
+      "count": 1,
+      "investor_count": 1,
+      "investors": [
+        "freda-duan"
+      ]
+    },
+    {
+      "name": "HUGGINGFACE",
+      "count": 1,
+      "investor_count": 1,
+      "investors": [
+        "freda-duan"
+      ]
+    },
+    {
+      "name": "BERKELEY-DEEPDRIVE",
+      "count": 1,
+      "investor_count": 1,
+      "investors": [
+        "freda-duan"
+      ]
+    },
+    {
+      "name": "SAMSUNG",
+      "count": 1,
+      "investor_count": 1,
+      "investors": [
+        "freda-duan"
+      ]
+    },
+    {
+      "name": "KINGSOFT",
+      "count": 1,
+      "investor_count": 1,
+      "investors": [
+        "freda-duan"
+      ]
+    },
+    {
+      "name": "AIRTABLE",
+      "count": 1,
+      "investor_count": 1,
+      "investors": [
+        "freda-duan"
+      ]
+    },
+    {
+      "name": "SMAR",
+      "count": 1,
+      "investor_count": 1,
+      "investors": [
+        "freda-duan"
+      ]
+    },
+    {
+      "name": "SLACK",
+      "count": 1,
+      "investor_count": 1,
+      "investors": [
+        "freda-duan"
+      ]
+    },
+    {
+      "name": "GMAIL",
+      "count": 1,
+      "investor_count": 1,
+      "investors": [
+        "freda-duan"
+      ]
+    },
+    {
+      "name": "GOOGLE CALENDAR",
+      "count": 1,
+      "investor_count": 1,
+      "investors": [
+        "freda-duan"
+      ]
+    },
+    {
+      "name": "GOOGLE DRIVE",
+      "count": 1,
+      "investor_count": 1,
+      "investors": [
+        "freda-duan"
+      ]
+    },
+    {
+      "name": "BERNSTEIN",
+      "count": 1,
+      "investor_count": 1,
+      "investors": [
+        "freda-duan"
+      ]
+    },
+    {
+      "name": "GS",
+      "count": 1,
+      "investor_count": 1,
+      "investors": [
+        "freda-duan"
+      ]
+    },
+    {
+      "name": "QWEN",
+      "count": 1,
+      "investor_count": 1,
+      "investors": [
+        "freda-duan"
+      ]
+    },
+    {
+      "name": "ZHIPU",
+      "count": 1,
+      "investor_count": 1,
+      "investors": [
+        "freda-duan"
+      ]
+    },
+    {
+      "name": "KIMI",
+      "count": 1,
+      "investor_count": 1,
+      "investors": [
+        "freda-duan"
+      ]
+    },
+    {
+      "name": "STEPFUN",
+      "count": 1,
+      "investor_count": 1,
+      "investors": [
+        "freda-duan"
+      ]
+    },
+    {
+      "name": "LENOVO",
+      "count": 1,
+      "investor_count": 1,
+      "investors": [
+        "freda-duan"
+      ]
+    },
+    {
+      "name": "BAMBU LAB",
+      "count": 1,
+      "investor_count": 1,
+      "investors": [
+        "freda-duan"
+      ]
+    },
+    {
+      "name": "ECOFLOW",
+      "count": 1,
+      "investor_count": 1,
+      "investors": [
+        "freda-duan"
+      ]
+    },
+    {
+      "name": "INSTA360",
+      "count": 1,
+      "investor_count": 1,
+      "investors": [
+        "freda-duan"
+      ]
+    },
+    {
+      "name": "REVOLUT",
+      "count": 1,
+      "investor_count": 1,
+      "investors": [
+        "freda-duan"
+      ]
+    },
+    {
+      "name": "TOSS",
+      "count": 1,
+      "investor_count": 1,
+      "investors": [
+        "freda-duan"
+      ]
+    },
+    {
+      "name": "PG",
+      "count": 1,
+      "investor_count": 1,
+      "investors": [
+        "freda-duan"
+      ]
+    },
+    {
+      "name": "UNILEVER",
+      "count": 1,
+      "investor_count": 1,
+      "investors": [
+        "freda-duan"
+      ]
+    },
+    {
+      "name": "COINBASE",
+      "count": 1,
+      "investor_count": 1,
+      "investors": [
+        "freda-duan"
+      ]
+    },
+    {
+      "name": "VOLCANO ENGINE",
+      "count": 1,
+      "investor_count": 1,
+      "investors": [
+        "freda-duan"
+      ]
+    },
+    {
+      "name": "OPENROUTER",
+      "count": 1,
+      "investor_count": 1,
+      "investors": [
+        "freda-duan"
+      ]
+    },
+    {
+      "name": "NATIONAL DATA BUREAU",
+      "count": 1,
+      "investor_count": 1,
+      "investors": [
+        "freda-duan"
+      ]
+    },
+    {
+      "name": "FROST & SULLIVAN",
+      "count": 1,
+      "investor_count": 1,
+      "investors": [
+        "freda-duan"
+      ]
+    },
+    {
+      "name": "SEEDANCE",
+      "count": 1,
+      "investor_count": 1,
+      "investors": [
+        "freda-duan"
+      ]
+    },
+    {
+      "name": "KELING",
+      "count": 1,
+      "investor_count": 1,
+      "investors": [
+        "freda-duan"
+      ]
+    },
+    {
+      "name": "TGT",
+      "count": 1,
+      "investor_count": 1,
+      "investors": [
+        "freda-duan"
+      ]
+    },
+    {
+      "name": "GLOSSIER",
+      "count": 1,
+      "investor_count": 1,
+      "investors": [
+        "freda-duan"
+      ]
+    },
+    {
+      "name": "SPANX",
+      "count": 1,
+      "investor_count": 1,
+      "investors": [
+        "freda-duan"
+      ]
+    },
+    {
+      "name": "AMS.MC",
+      "count": 1,
+      "investor_count": 1,
+      "investors": [
+        "jamin-ball"
+      ]
+    },
+    {
+      "name": "GALILEO",
+      "count": 1,
+      "investor_count": 1,
+      "investors": [
+        "jamin-ball"
+      ]
+    },
+    {
+      "name": "WORLDSPAN",
+      "count": 1,
+      "investor_count": 1,
+      "investors": [
+        "jamin-ball"
+      ]
+    },
+    {
+      "name": "TRAVELPORT",
+      "count": 1,
+      "investor_count": 1,
+      "investors": [
+        "jamin-ball"
+      ]
+    },
+    {
+      "name": "CRM",
+      "count": 1,
+      "investor_count": 1,
+      "investors": [
+        "jamin-ball"
+      ]
+    },
+    {
+      "name": "WDAY",
+      "count": 1,
+      "investor_count": 1,
+      "investors": [
+        "jamin-ball"
+      ]
+    },
+    {
+      "name": "HYPERSCALERS",
+      "count": 1,
+      "investor_count": 1,
+      "investors": [
+        "jamin-ball"
+      ]
+    },
+    {
+      "name": "COMPANY-FILINGS",
+      "count": 1,
+      "investor_count": 1,
+      "investors": [
+        "jamin-ball"
+      ]
+    },
+    {
+      "name": "ALTIMETER CAPITAL MANAGEMENT",
+      "count": 1,
+      "investor_count": 1,
+      "investors": [
+        "jamin-ball"
+      ]
+    },
+    {
+      "name": "SALESFORCE",
+      "count": 1,
+      "investor_count": 1,
+      "investors": [
+        "jamin-ball"
+      ]
+    },
+    {
+      "name": "NETSUITE",
+      "count": 1,
+      "investor_count": 1,
+      "investors": [
+        "jamin-ball"
+      ]
+    },
+    {
+      "name": "MICROSOFT",
+      "count": 1,
+      "investor_count": 1,
+      "investors": [
+        "jamin-ball"
+      ]
+    },
+    {
+      "name": "WORKATO",
+      "count": 1,
+      "investor_count": 1,
+      "investors": [
+        "jamin-ball"
+      ]
+    },
+    {
+      "name": "MULESOFT",
+      "count": 1,
+      "investor_count": 1,
+      "investors": [
+        "jamin-ball"
+      ]
+    },
+    {
+      "name": "ZAPIER",
+      "count": 1,
+      "investor_count": 1,
+      "investors": [
+        "jamin-ball"
+      ]
+    },
+    {
+      "name": "INWORLD",
+      "count": 1,
+      "investor_count": 1,
+      "investors": [
+        "jamin-ball"
+      ]
+    },
+    {
+      "name": "FLASHLABS",
+      "count": 1,
+      "investor_count": 1,
+      "investors": [
+        "jamin-ball"
+      ]
+    },
+    {
+      "name": "IGV",
+      "count": 1,
+      "investor_count": 1,
+      "investors": [
+        "jamin-ball"
+      ]
+    },
+    {
+      "name": "TSM",
+      "count": 1,
+      "investor_count": 1,
+      "investors": [
+        "jamin-ball"
+      ]
+    },
+    {
+      "name": "TEAM",
+      "count": 1,
+      "investor_count": 1,
+      "investors": [
+        "jamin-ball"
+      ]
+    },
+    {
+      "name": "PCTY",
+      "count": 1,
+      "investor_count": 1,
+      "investors": [
+        "jamin-ball"
+      ]
+    },
+    {
+      "name": "SAP",
+      "count": 1,
+      "investor_count": 1,
+      "investors": [
+        "jamin-ball"
+      ]
+    },
+    {
+      "name": "FSLY",
+      "count": 1,
+      "investor_count": 1,
+      "investors": [
+        "jamin-ball"
+      ]
+    },
+    {
+      "name": "NOK",
+      "count": 1,
+      "investor_count": 1,
+      "investors": [
+        "jamin-ball"
+      ]
+    },
+    {
+      "name": "000660.KS",
+      "count": 1,
+      "investor_count": 1,
+      "investors": [
+        "jamin-ball"
+      ]
+    },
+    {
+      "name": "005930.KS",
+      "count": 1,
+      "investor_count": 1,
+      "investors": [
+        "jamin-ball"
+      ]
+    },
+    {
+      "name": "KIOXIA",
+      "count": 1,
+      "investor_count": 1,
+      "investors": [
+        "jamin-ball"
+      ]
+    },
+    {
+      "name": "SANDISK",
+      "count": 1,
+      "investor_count": 1,
+      "investors": [
+        "jamin-ball"
+      ]
+    },
+    {
+      "name": "MU",
+      "count": 1,
+      "investor_count": 1,
+      "investors": [
+        "jamin-ball"
+      ]
+    },
+    {
+      "name": "WDC",
+      "count": 1,
+      "investor_count": 1,
+      "investors": [
+        "jamin-ball"
+      ]
+    },
+    {
+      "name": "HAMMERSPACE",
+      "count": 1,
+      "investor_count": 1,
+      "investors": [
+        "jamin-ball"
+      ]
+    },
+    {
+      "name": "SAB",
+      "count": 1,
+      "investor_count": 1,
+      "investors": [
+        "jamin-ball"
+      ]
+    },
+    {
+      "name": "TRAVELOCITY",
+      "count": 1,
+      "investor_count": 1,
+      "investors": [
+        "jamin-ball"
+      ]
+    },
+    {
+      "name": "PRICELINE",
+      "count": 1,
+      "investor_count": 1,
+      "investors": [
+        "jamin-ball"
+      ]
+    },
+    {
+      "name": "BOOKING",
+      "count": 1,
+      "investor_count": 1,
+      "investors": [
+        "jamin-ball"
+      ]
+    },
+    {
+      "name": "CHATGPT",
+      "count": 1,
+      "investor_count": 1,
+      "investors": [
+        "jamin-ball"
+      ]
+    },
+    {
+      "name": "DATABRICKS",
+      "count": 1,
+      "investor_count": 1,
+      "investors": [
+        "jamin-ball"
+      ]
+    },
+    {
+      "name": "DOCKER",
+      "count": 1,
+      "investor_count": 1,
+      "investors": [
+        "jamin-ball"
+      ]
+    },
+    {
+      "name": "LIMELIGHT NETWORKS",
+      "count": 1,
+      "investor_count": 1,
+      "investors": [
+        "jamin-ball"
+      ]
+    },
+    {
+      "name": "EDGIO",
+      "count": 1,
+      "investor_count": 1,
+      "investors": [
+        "jamin-ball"
+      ]
+    },
+    {
+      "name": "CURSOR",
+      "count": 1,
+      "investor_count": 1,
+      "investors": [
+        "jamin-ball"
+      ]
+    },
+    {
+      "name": "INFERACT",
+      "count": 1,
+      "investor_count": 1,
+      "investors": [
+        "jamin-ball"
+      ]
+    },
+    {
+      "name": "BASETEN",
+      "count": 1,
+      "investor_count": 1,
+      "investors": [
+        "jamin-ball"
+      ]
+    },
+    {
+      "name": "FIREWORKS",
+      "count": 1,
+      "investor_count": 1,
+      "investors": [
+        "jamin-ball"
+      ]
+    },
+    {
+      "name": "TOGETHER",
+      "count": 1,
+      "investor_count": 1,
+      "investors": [
+        "jamin-ball"
+      ]
+    },
+    {
+      "name": "LLAMA",
+      "count": 1,
+      "investor_count": 1,
+      "investors": [
+        "jamin-ball"
+      ]
+    },
+    {
+      "name": "MISTRAL",
+      "count": 1,
+      "investor_count": 1,
+      "investors": [
+        "jamin-ball"
+      ]
+    },
+    {
+      "name": "DEEPSEEK",
+      "count": 1,
+      "investor_count": 1,
+      "investors": [
+        "jamin-ball"
+      ]
+    },
+    {
+      "name": "CRWD",
+      "count": 1,
+      "investor_count": 1,
+      "investors": [
+        "jamin-ball"
+      ]
+    },
+    {
+      "name": "CLOUDFLARE",
+      "count": 1,
+      "investor_count": 1,
+      "investors": [
+        "jamin-ball"
+      ]
+    },
+    {
+      "name": "PALANTIR",
+      "count": 1,
+      "investor_count": 1,
+      "investors": [
+        "jamin-ball"
+      ]
+    },
+    {
+      "name": "FIGMA",
+      "count": 1,
+      "investor_count": 1,
+      "investors": [
+        "jamin-ball"
+      ]
+    },
+    {
+      "name": "CONFLUENT",
+      "count": 1,
+      "investor_count": 1,
+      "investors": [
+        "jamin-ball"
+      ]
+    },
+    {
+      "name": "FASTLY",
+      "count": 1,
+      "investor_count": 1,
+      "investors": [
+        "jamin-ball"
+      ]
+    },
+    {
+      "name": "DATADOG",
+      "count": 1,
+      "investor_count": 1,
+      "investors": [
+        "jamin-ball"
+      ]
+    },
+    {
+      "name": "SPRINKLR",
+      "count": 1,
+      "investor_count": 1,
+      "investors": [
+        "jamin-ball"
+      ]
+    },
+    {
+      "name": "ADBE",
+      "count": 1,
+      "investor_count": 1,
+      "investors": [
+        "jamin-ball"
+      ]
+    },
+    {
+      "name": "YEXT",
+      "count": 1,
+      "investor_count": 1,
+      "investors": [
+        "jamin-ball"
+      ]
+    },
+    {
+      "name": "DOMO",
+      "count": 1,
+      "investor_count": 1,
+      "investors": [
+        "jamin-ball"
+      ]
+    },
+    {
+      "name": "PATH",
+      "count": 1,
+      "investor_count": 1,
+      "investors": [
+        "jamin-ball"
+      ]
+    },
+    {
+      "name": "PAGERDUTY",
+      "count": 1,
+      "investor_count": 1,
+      "investors": [
+        "jamin-ball"
+      ]
+    },
+    {
+      "name": "SERVICETITAN",
+      "count": 1,
+      "investor_count": 1,
+      "investors": [
+        "jamin-ball"
+      ]
+    },
+    {
+      "name": "RUBRIK",
+      "count": 1,
+      "investor_count": 1,
+      "investors": [
+        "jamin-ball"
+      ]
+    },
+    {
+      "name": "SENTINELONE",
+      "count": 1,
+      "investor_count": 1,
+      "investors": [
+        "jamin-ball"
+      ]
+    },
+    {
+      "name": "EPIC GAMES",
+      "count": 1,
+      "investor_count": 1,
+      "investors": [
+        "thomas-reiner"
+      ]
+    },
+    {
+      "name": "VALVE",
+      "count": 1,
+      "investor_count": 1,
+      "investors": [
+        "thomas-reiner"
+      ]
+    },
+    {
+      "name": "LEGO",
+      "count": 1,
+      "investor_count": 1,
+      "investors": [
+        "thomas-reiner"
+      ]
+    },
+    {
+      "name": "NAVN",
+      "count": 1,
+      "investor_count": 1,
+      "investors": [
+        "thomas-reiner"
+      ]
+    },
+    {
+      "name": "APALEO",
+      "count": 1,
+      "investor_count": 1,
+      "investors": [
+        "thomas-reiner"
+      ]
+    },
+    {
+      "name": "SABRE",
+      "count": 1,
+      "investor_count": 1,
+      "investors": [
+        "thomas-reiner"
+      ]
+    },
+    {
+      "name": "LUCID",
+      "count": 1,
+      "investor_count": 1,
+      "investors": [
+        "thomas-reiner"
+      ]
+    },
+    {
+      "name": "AMAZON",
+      "count": 1,
+      "investor_count": 1,
+      "investors": [
+        "thomas-reiner"
+      ]
+    },
+    {
+      "name": "WINN-DIXIE",
+      "count": 1,
+      "investor_count": 1,
+      "investors": [
+        "thomas-reiner"
+      ]
+    },
+    {
+      "name": "PUBLIX",
+      "count": 1,
+      "investor_count": 1,
+      "investors": [
+        "thomas-reiner"
+      ]
+    },
+    {
+      "name": "AMEX GBT",
+      "count": 1,
+      "investor_count": 1,
+      "investors": [
+        "thomas-reiner"
+      ]
+    },
+    {
+      "name": "CTM",
+      "count": 1,
+      "investor_count": 1,
+      "investors": [
+        "thomas-reiner"
+      ]
+    },
+    {
+      "name": "FLIGHT CENTRE",
+      "count": 1,
+      "investor_count": 1,
+      "investors": [
+        "thomas-reiner"
+      ]
+    },
+    {
+      "name": "BREX",
+      "count": 1,
+      "investor_count": 1,
+      "investors": [
+        "thomas-reiner"
+      ]
+    },
+    {
+      "name": "RAMP",
+      "count": 1,
+      "investor_count": 1,
+      "investors": [
+        "thomas-reiner"
+      ]
+    },
+    {
+      "name": "AMERICAN EXPRESS",
+      "count": 1,
+      "investor_count": 1,
+      "investors": [
+        "thomas-reiner"
+      ]
+    },
+    {
+      "name": "CONCUR",
+      "count": 1,
+      "investor_count": 1,
+      "investors": [
+        "thomas-reiner"
+      ]
+    },
+    {
+      "name": "SEVENROOMS",
+      "count": 1,
+      "investor_count": 1,
+      "investors": [
+        "thomas-reiner"
+      ]
+    },
+    {
+      "name": "BBOT",
+      "count": 1,
+      "investor_count": 1,
+      "investors": [
+        "thomas-reiner"
+      ]
+    },
+    {
+      "name": "SYMBIOSYS",
+      "count": 1,
+      "investor_count": 1,
+      "investors": [
+        "thomas-reiner"
+      ]
+    },
+    {
+      "name": "SKYTAB",
+      "count": 1,
+      "investor_count": 1,
+      "investors": [
+        "thomas-reiner"
+      ]
+    },
+    {
+      "name": "WOLT",
+      "count": 1,
+      "investor_count": 1,
+      "investors": [
+        "thomas-reiner"
+      ]
+    },
+    {
+      "name": "ROO",
+      "count": 1,
+      "investor_count": 1,
+      "investors": [
+        "thomas-reiner"
+      ]
+    },
+    {
+      "name": "CVS",
+      "count": 1,
+      "investor_count": 1,
+      "investors": [
+        "thomas-reiner"
+      ]
+    },
+    {
+      "name": "PARTY CITY",
+      "count": 1,
+      "investor_count": 1,
+      "investors": [
+        "thomas-reiner"
+      ]
+    },
+    {
+      "name": "OPENTABLE",
+      "count": 1,
+      "investor_count": 1,
+      "investors": [
+        "thomas-reiner"
+      ]
+    },
+    {
+      "name": "RESY",
+      "count": 1,
+      "investor_count": 1,
+      "investors": [
+        "thomas-reiner"
+      ]
+    },
+    {
+      "name": "TOCK",
+      "count": 1,
+      "investor_count": 1,
+      "investors": [
+        "thomas-reiner"
+      ]
+    },
+    {
+      "name": "OTTO",
+      "count": 1,
+      "investor_count": 1,
+      "investors": [
+        "thomas-reiner"
+      ]
+    },
+    {
+      "name": "EA",
+      "count": 1,
+      "investor_count": 1,
+      "investors": [
+        "thomas-reiner"
+      ]
+    },
+    {
+      "name": "SAUDI PIF",
+      "count": 1,
+      "investor_count": 1,
+      "investors": [
+        "thomas-reiner"
+      ]
+    },
+    {
+      "name": "SILVER LAKE",
+      "count": 1,
+      "investor_count": 1,
+      "investors": [
+        "thomas-reiner"
+      ]
+    },
+    {
+      "name": "FREENOW",
+      "count": 1,
+      "investor_count": 1,
+      "investors": [
+        "thomas-reiner"
+      ]
+    },
+    {
+      "name": "GDS",
+      "count": 1,
+      "investor_count": 1,
+      "investors": [
+        "thomas-reiner"
+      ]
+    },
+    {
+      "name": "HOTELS",
+      "count": 1,
+      "investor_count": 1,
+      "investors": [
+        "thomas-reiner"
+      ]
+    },
+    {
+      "name": "STLA",
+      "count": 1,
+      "investor_count": 1,
+      "investors": [
+        "thomas-reiner"
+      ]
+    },
+    {
+      "name": "OVERSEE",
+      "count": 1,
+      "investor_count": 1,
+      "investors": [
+        "thomas-reiner"
+      ]
+    },
+    {
+      "name": "FCM",
+      "count": 1,
+      "investor_count": 1,
+      "investors": [
+        "thomas-reiner"
+      ]
+    },
+    {
+      "name": "BOX",
+      "count": 1,
+      "investor_count": 1,
+      "investors": [
+        "thomas-reiner"
+      ]
+    },
+    {
+      "name": "GTM",
+      "count": 1,
+      "investor_count": 1,
+      "investors": [
+        "thomas-reiner"
+      ]
+    },
+    {
+      "name": "W",
+      "count": 1,
+      "investor_count": 1,
+      "investors": [
+        "thomas-reiner"
+      ]
+    },
+    {
+      "name": "SNAP",
+      "count": 1,
+      "investor_count": 1,
+      "investors": [
+        "thomas-reiner"
+      ]
+    },
+    {
+      "name": "TWLO",
+      "count": 1,
+      "investor_count": 1,
+      "investors": [
+        "thomas-reiner"
+      ]
+    },
+    {
+      "name": "CFLT",
+      "count": 1,
+      "investor_count": 1,
+      "investors": [
+        "thomas-reiner"
+      ]
+    },
+    {
+      "name": "CENDYN",
+      "count": 1,
+      "investor_count": 1,
+      "investors": [
+        "thomas-reiner"
+      ]
+    },
+    {
+      "name": "SHR",
+      "count": 1,
+      "investor_count": 1,
+      "investors": [
+        "thomas-reiner"
+      ]
+    },
+    {
+      "name": "TRAVELCLICK",
+      "count": 1,
+      "investor_count": 1,
+      "investors": [
+        "thomas-reiner"
+      ]
+    },
+    {
+      "name": "MIRAI",
+      "count": 1,
+      "investor_count": 1,
+      "investors": [
+        "thomas-reiner"
+      ]
+    },
+    {
+      "name": "AVVIO",
+      "count": 1,
+      "investor_count": 1,
+      "investors": [
+        "thomas-reiner"
+      ]
+    },
+    {
+      "name": "MYMA.AI",
+      "count": 1,
+      "investor_count": 1,
+      "investors": [
+        "thomas-reiner"
+      ]
+    },
+    {
+      "name": "CANARY",
+      "count": 1,
+      "investor_count": 1,
+      "investors": [
+        "thomas-reiner"
+      ]
+    },
+    {
+      "name": "TPG",
+      "count": 1,
+      "investor_count": 1,
+      "investors": [
+        "thomas-reiner"
+      ]
+    },
+    {
+      "name": "FOUR",
+      "count": 1,
+      "investor_count": 1,
+      "investors": [
+        "thomas-reiner"
+      ]
+    },
+    {
+      "name": "MMYT",
+      "count": 1,
+      "investor_count": 1,
+      "investors": [
+        "thomas-reiner"
+      ]
+    },
+    {
+      "name": "HTZ",
+      "count": 1,
+      "investor_count": 1,
+      "investors": [
+        "thomas-reiner"
+      ]
+    },
+    {
+      "name": "TRVG",
+      "count": 1,
+      "investor_count": 1,
+      "investors": [
+        "thomas-reiner"
+      ]
+    },
+    {
+      "name": "GITHUB",
+      "count": 1,
+      "investor_count": 1,
+      "investors": [
+        "thomas-reiner"
+      ]
+    },
+    {
+      "name": "VERCEL",
+      "count": 1,
+      "investor_count": 1,
+      "investors": [
+        "thomas-reiner"
+      ]
+    },
+    {
+      "name": "KAYAK",
+      "count": 1,
+      "investor_count": 1,
+      "investors": [
+        "thomas-reiner"
+      ]
+    },
+    {
+      "name": "DIRECTBOOKER",
+      "count": 1,
+      "investor_count": 1,
+      "investors": [
+        "thomas-reiner"
+      ]
+    },
+    {
+      "name": "SOMNISEAT",
+      "count": 1,
+      "investor_count": 1,
+      "investors": [
+        "thomas-reiner"
+      ]
+    },
+    {
+      "name": "WING",
+      "count": 1,
+      "investor_count": 1,
+      "investors": [
+        "thomas-reiner"
+      ]
+    },
+    {
+      "name": "BIZTRIPAI",
+      "count": 1,
+      "investor_count": 1,
+      "investors": [
+        "thomas-reiner"
+      ]
+    },
+    {
+      "name": "AAL",
+      "count": 1,
+      "investor_count": 1,
+      "investors": [
+        "thomas-reiner"
+      ]
+    },
+    {
+      "name": "ROBLOX",
+      "count": 1,
+      "investor_count": 1,
+      "investors": [
+        "thomas-reiner"
+      ]
+    },
+    {
+      "name": "COVEO",
+      "count": 1,
+      "investor_count": 1,
+      "investors": [
+        "thomas-reiner"
+      ]
+    },
+    {
+      "name": "MARRIOTT",
+      "count": 1,
+      "investor_count": 1,
+      "investors": [
+        "thomas-reiner"
+      ]
+    },
+    {
+      "name": "GOOGLE",
+      "count": 1,
+      "investor_count": 1,
+      "investors": [
+        "thomas-reiner"
+      ]
+    },
+    {
+      "name": "TRIPADVISOR",
+      "count": 1,
+      "investor_count": 1,
+      "investors": [
+        "thomas-reiner"
+      ]
+    },
+    {
+      "name": "AIRBNB",
+      "count": 1,
+      "investor_count": 1,
+      "investors": [
+        "thomas-reiner"
+      ]
+    },
+    {
+      "name": "SPOTHERO",
+      "count": 1,
+      "investor_count": 1,
+      "investors": [
+        "thomas-reiner"
+      ]
+    },
+    {
+      "name": "KROGER",
+      "count": 1,
+      "investor_count": 1,
+      "investors": [
+        "thomas-reiner"
+      ]
+    },
+    {
+      "name": "WAYVE",
+      "count": 1,
+      "investor_count": 1,
+      "investors": [
+        "thomas-reiner"
+      ]
+    },
+    {
+      "name": "NISSAN",
+      "count": 1,
+      "investor_count": 1,
+      "investors": [
+        "thomas-reiner"
+      ]
+    },
+    {
+      "name": "VOLKSWAGEN",
+      "count": 1,
+      "investor_count": 1,
+      "investors": [
+        "thomas-reiner"
+      ]
+    },
+    {
+      "name": "MOIA",
+      "count": 1,
+      "investor_count": 1,
+      "investors": [
+        "thomas-reiner"
+      ]
+    },
+    {
+      "name": "AVRIDE",
+      "count": 1,
+      "investor_count": 1,
+      "investors": [
+        "thomas-reiner"
+      ]
+    },
+    {
+      "name": "MAY MOBILITY",
+      "count": 1,
+      "investor_count": 1,
+      "investors": [
+        "thomas-reiner"
+      ]
+    },
+    {
+      "name": "MOBILEYE",
+      "count": 1,
+      "investor_count": 1,
+      "investors": [
+        "thomas-reiner"
+      ]
+    },
+    {
+      "name": "BIDU",
+      "count": 1,
+      "investor_count": 1,
+      "investors": [
+        "thomas-reiner"
+      ]
+    }
+  ],
+  "sectors": [
+    {
+      "name": "ai",
+      "count": 43,
+      "investor_count": 3,
+      "investors": [
+        "freda-duan",
+        "jamin-ball",
+        "thomas-reiner"
+      ]
+    },
+    {
+      "name": "enterprise-software",
+      "count": 16,
+      "investor_count": 3,
+      "investors": [
+        "freda-duan",
+        "jamin-ball",
+        "thomas-reiner"
+      ]
+    },
+    {
+      "name": "autonomous-vehicles",
+      "count": 14,
+      "investor_count": 2,
+      "investors": [
+        "freda-duan",
+        "thomas-reiner"
+      ]
+    },
+    {
+      "name": "saas",
+      "count": 12,
+      "investor_count": 2,
+      "investors": [
+        "freda-duan",
+        "jamin-ball"
+      ]
+    },
+    {
+      "name": "travel-tech",
+      "count": 10,
+      "investor_count": 2,
+      "investors": [
+        "jamin-ball",
+        "thomas-reiner"
+      ]
+    },
+    {
+      "name": "payments",
+      "count": 9,
+      "investor_count": 2,
+      "investors": [
+        "freda-duan",
+        "thomas-reiner"
+      ]
+    },
+    {
+      "name": "cloud-software",
+      "count": 9,
+      "investor_count": 1,
+      "investors": [
+        "jamin-ball"
+      ]
+    },
+    {
+      "name": "fintech",
+      "count": 8,
+      "investor_count": 2,
+      "investors": [
+        "freda-duan",
+        "thomas-reiner"
+      ]
+    },
+    {
+      "name": "marketplaces",
+      "count": 8,
+      "investor_count": 2,
+      "investors": [
+        "freda-duan",
+        "thomas-reiner"
+      ]
+    },
+    {
+      "name": "mobility",
+      "count": 8,
+      "investor_count": 2,
+      "investors": [
+        "freda-duan",
+        "thomas-reiner"
+      ]
+    },
+    {
+      "name": "e-commerce",
+      "count": 7,
+      "investor_count": 2,
+      "investors": [
+        "freda-duan",
+        "thomas-reiner"
+      ]
+    },
+    {
+      "name": "china-tech",
+      "count": 7,
+      "investor_count": 2,
+      "investors": [
+        "freda-duan",
+        "jamin-ball"
+      ]
+    },
+    {
+      "name": "semiconductors",
+      "count": 6,
+      "investor_count": 2,
+      "investors": [
+        "freda-duan",
+        "jamin-ball"
+      ]
+    },
+    {
+      "name": "consumer-internet",
+      "count": 5,
+      "investor_count": 2,
+      "investors": [
+        "freda-duan",
+        "thomas-reiner"
+      ]
+    },
+    {
+      "name": "travel",
+      "count": 5,
+      "investor_count": 2,
+      "investors": [
+        "freda-duan",
+        "thomas-reiner"
+      ]
+    },
+    {
+      "name": "platforms",
+      "count": 5,
+      "investor_count": 2,
+      "investors": [
+        "freda-duan",
+        "thomas-reiner"
+      ]
+    },
+    {
+      "name": "transportation",
+      "count": 5,
+      "investor_count": 2,
+      "investors": [
+        "freda-duan",
+        "thomas-reiner"
+      ]
+    },
+    {
+      "name": "cloud-infrastructure",
+      "count": 5,
+      "investor_count": 2,
+      "investors": [
+        "freda-duan",
+        "jamin-ball"
+      ]
+    },
+    {
+      "name": "hospitality",
+      "count": 5,
+      "investor_count": 1,
+      "investors": [
+        "thomas-reiner"
+      ]
+    },
+    {
+      "name": "digital-advertising",
+      "count": 4,
+      "investor_count": 2,
+      "investors": [
+        "freda-duan",
+        "thomas-reiner"
+      ]
+    },
+    {
+      "name": "ecommerce",
+      "count": 4,
+      "investor_count": 2,
+      "investors": [
+        "freda-duan",
+        "thomas-reiner"
+      ]
+    },
+    {
+      "name": "technology",
+      "count": 4,
+      "investor_count": 2,
+      "investors": [
+        "freda-duan",
+        "thomas-reiner"
+      ]
+    },
+    {
+      "name": "robotaxi",
+      "count": 4,
+      "investor_count": 2,
+      "investors": [
+        "freda-duan",
+        "thomas-reiner"
+      ]
+    },
+    {
+      "name": "developer-tools",
+      "count": 4,
+      "investor_count": 3,
+      "investors": [
+        "freda-duan",
+        "jamin-ball",
+        "thomas-reiner"
+      ]
+    },
+    {
+      "name": "software-valuation",
+      "count": 4,
+      "investor_count": 1,
+      "investors": [
+        "jamin-ball"
+      ]
+    },
+    {
+      "name": "public-markets",
+      "count": 4,
+      "investor_count": 2,
+      "investors": [
+        "jamin-ball",
+        "thomas-reiner"
+      ]
+    },
+    {
+      "name": "grocery-delivery",
+      "count": 4,
+      "investor_count": 1,
+      "investors": [
+        "thomas-reiner"
+      ]
+    },
+    {
+      "name": "prediction-markets",
+      "count": 3,
+      "investor_count": 1,
+      "investors": [
+        "freda-duan"
+      ]
+    },
+    {
+      "name": "agentic-commerce",
+      "count": 3,
+      "investor_count": 1,
+      "investors": [
+        "freda-duan"
+      ]
+    },
+    {
+      "name": "ads",
+      "count": 3,
+      "investor_count": 2,
+      "investors": [
+        "freda-duan",
+        "thomas-reiner"
+      ]
+    },
+    {
+      "name": "ai-agents",
+      "count": 3,
+      "investor_count": 3,
+      "investors": [
+        "freda-duan",
+        "jamin-ball",
+        "thomas-reiner"
+      ]
+    },
+    {
+      "name": "automotive",
+      "count": 3,
+      "investor_count": 2,
+      "investors": [
+        "freda-duan",
+        "thomas-reiner"
+      ]
+    },
+    {
+      "name": "valuation",
+      "count": 3,
+      "investor_count": 3,
+      "investors": [
+        "freda-duan",
+        "jamin-ball",
+        "thomas-reiner"
+      ]
+    },
+    {
+      "name": "valuations",
+      "count": 3,
+      "investor_count": 1,
+      "investors": [
+        "jamin-ball"
+      ]
+    },
+    {
+      "name": "gaming",
+      "count": 3,
+      "investor_count": 1,
+      "investors": [
+        "thomas-reiner"
+      ]
+    },
+    {
+      "name": "online-travel-agencies",
+      "count": 3,
+      "investor_count": 1,
+      "investors": [
+        "thomas-reiner"
+      ]
+    },
+    {
+      "name": "fleet-management",
+      "count": 3,
+      "investor_count": 1,
+      "investors": [
+        "thomas-reiner"
+      ]
+    },
+    {
+      "name": "sports-betting",
+      "count": 2,
+      "investor_count": 1,
+      "investors": [
+        "freda-duan"
+      ]
+    },
+    {
+      "name": "infrastructure",
+      "count": 2,
+      "investor_count": 2,
+      "investors": [
+        "freda-duan",
+        "jamin-ball"
+      ]
+    },
+    {
+      "name": "creator-economy",
+      "count": 2,
+      "investor_count": 2,
+      "investors": [
+        "freda-duan",
+        "thomas-reiner"
+      ]
+    },
+    {
+      "name": "consumer-hardware",
+      "count": 2,
+      "investor_count": 1,
+      "investors": [
+        "freda-duan"
+      ]
+    },
+    {
+      "name": "healthcare",
+      "count": 2,
+      "investor_count": 1,
+      "investors": [
+        "freda-duan"
+      ]
+    },
+    {
+      "name": "hardware",
+      "count": 2,
+      "investor_count": 1,
+      "investors": [
+        "freda-duan"
+      ]
+    },
+    {
+      "name": "adtech",
+      "count": 2,
+      "investor_count": 1,
+      "investors": [
+        "freda-duan"
+      ]
+    },
+    {
+      "name": "robotics",
+      "count": 2,
+      "investor_count": 1,
+      "investors": [
+        "freda-duan"
+      ]
+    },
+    {
+      "name": "mobility-platforms",
+      "count": 2,
+      "investor_count": 2,
+      "investors": [
+        "freda-duan",
+        "thomas-reiner"
+      ]
+    },
+    {
+      "name": "productivity-software",
+      "count": 2,
+      "investor_count": 1,
+      "investors": [
+        "freda-duan"
+      ]
+    },
+    {
+      "name": "video-ai",
+      "count": 2,
+      "investor_count": 1,
+      "investors": [
+        "freda-duan"
+      ]
+    },
+    {
+      "name": "ai-infrastructure",
+      "count": 2,
+      "investor_count": 2,
+      "investors": [
+        "freda-duan",
+        "jamin-ball"
+      ]
+    },
+    {
+      "name": "infrastructure-software",
+      "count": 2,
+      "investor_count": 2,
+      "investors": [
+        "jamin-ball",
+        "thomas-reiner"
+      ]
+    },
+    {
+      "name": "ridesharing",
+      "count": 2,
+      "investor_count": 1,
+      "investors": [
+        "thomas-reiner"
+      ]
+    },
+    {
+      "name": "software",
+      "count": 2,
+      "investor_count": 1,
+      "investors": [
+        "thomas-reiner"
+      ]
+    },
+    {
+      "name": "corporate-travel",
+      "count": 2,
+      "investor_count": 1,
+      "investors": [
+        "thomas-reiner"
+      ]
+    },
+    {
+      "name": "online-travel-agency",
+      "count": 2,
+      "investor_count": 1,
+      "investors": [
+        "thomas-reiner"
+      ]
+    },
+    {
+      "name": "ride-hailing",
+      "count": 2,
+      "investor_count": 1,
+      "investors": [
+        "thomas-reiner"
+      ]
+    },
+    {
+      "name": "food-delivery",
+      "count": 2,
+      "investor_count": 1,
+      "investors": [
+        "thomas-reiner"
+      ]
+    },
+    {
+      "name": "crypto",
+      "count": 1,
+      "investor_count": 1,
+      "investors": [
+        "freda-duan"
+      ]
+    },
+    {
+      "name": "regulation",
+      "count": 1,
+      "investor_count": 1,
+      "investors": [
+        "freda-duan"
+      ]
+    },
+    {
+      "name": "data-platforms",
+      "count": 1,
+      "investor_count": 1,
+      "investors": [
+        "freda-duan"
+      ]
+    },
+    {
+      "name": "retail-investing",
+      "count": 1,
+      "investor_count": 1,
+      "investors": [
+        "freda-duan"
+      ]
+    },
+    {
+      "name": "financial-markets",
+      "count": 1,
+      "investor_count": 1,
+      "investors": [
+        "freda-duan"
+      ]
+    },
+    {
+      "name": "advertising",
+      "count": 1,
+      "investor_count": 1,
+      "investors": [
+        "freda-duan"
+      ]
+    },
+    {
+      "name": "saas-cloud",
+      "count": 1,
+      "investor_count": 1,
+      "investors": [
+        "freda-duan"
+      ]
+    },
+    {
+      "name": "media-entertainment",
+      "count": 1,
+      "investor_count": 1,
+      "investors": [
+        "freda-duan"
+      ]
+    },
+    {
+      "name": "macro-economics",
+      "count": 1,
+      "investor_count": 1,
+      "investors": [
+        "freda-duan"
+      ]
+    },
+    {
+      "name": "customer-service",
+      "count": 1,
+      "investor_count": 1,
+      "investors": [
+        "freda-duan"
+      ]
+    },
+    {
+      "name": "labor-automation",
+      "count": 1,
+      "investor_count": 1,
+      "investors": [
+        "freda-duan"
+      ]
+    },
+    {
+      "name": "productivity",
+      "count": 1,
+      "investor_count": 1,
+      "investors": [
+        "freda-duan"
+      ]
+    },
+    {
+      "name": "options",
+      "count": 1,
+      "investor_count": 1,
+      "investors": [
+        "freda-duan"
+      ]
+    },
+    {
+      "name": "derivatives",
+      "count": 1,
+      "investor_count": 1,
+      "investors": [
+        "freda-duan"
+      ]
+    },
+    {
+      "name": "retail-trading",
+      "count": 1,
+      "investor_count": 1,
+      "investors": [
+        "freda-duan"
+      ]
+    },
+    {
+      "name": "etf",
+      "count": 1,
+      "investor_count": 1,
+      "investors": [
+        "freda-duan"
+      ]
+    },
+    {
+      "name": "index-options",
+      "count": 1,
+      "investor_count": 1,
+      "investors": [
+        "freda-duan"
+      ]
+    },
+    {
+      "name": "volatility",
+      "count": 1,
+      "investor_count": 1,
+      "investors": [
+        "freda-duan"
+      ]
+    },
+    {
+      "name": "market-structure",
+      "count": 1,
+      "investor_count": 1,
+      "investors": [
+        "freda-duan"
+      ]
+    },
+    {
+      "name": "us-equities",
+      "count": 1,
+      "investor_count": 1,
+      "investors": [
+        "freda-duan"
+      ]
+    },
+    {
+      "name": "checkout",
+      "count": 1,
+      "investor_count": 1,
+      "investors": [
+        "freda-duan"
+      ]
+    },
+    {
+      "name": "ml-infrastructure",
+      "count": 1,
+      "investor_count": 1,
+      "investors": [
+        "freda-duan"
+      ]
+    },
+    {
+      "name": "cloud-capex",
+      "count": 1,
+      "investor_count": 1,
+      "investors": [
+        "freda-duan"
+      ]
+    },
+    {
+      "name": "streaming-media",
+      "count": 1,
+      "investor_count": 1,
+      "investors": [
+        "freda-duan"
+      ]
+    },
+    {
+      "name": "search",
+      "count": 1,
+      "investor_count": 1,
+      "investors": [
+        "freda-duan"
+      ]
+    },
+    {
+      "name": "consumer-tech",
+      "count": 1,
+      "investor_count": 1,
+      "investors": [
+        "freda-duan"
+      ]
+    },
+    {
+      "name": "search-engine",
+      "count": 1,
+      "investor_count": 1,
+      "investors": [
+        "freda-duan"
+      ]
+    },
+    {
+      "name": "nlp",
+      "count": 1,
+      "investor_count": 1,
+      "investors": [
+        "freda-duan"
+      ]
+    },
+    {
+      "name": "internet-search",
+      "count": 1,
+      "investor_count": 1,
+      "investors": [
+        "freda-duan"
+      ]
+    },
+    {
+      "name": "mobile-os",
+      "count": 1,
+      "investor_count": 1,
+      "investors": [
+        "freda-duan"
+      ]
+    },
+    {
+      "name": "voice-ui",
+      "count": 1,
+      "investor_count": 1,
+      "investors": [
+        "freda-duan"
+      ]
+    },
+    {
+      "name": "mobile-commerce",
+      "count": 1,
+      "investor_count": 1,
+      "investors": [
+        "freda-duan"
+      ]
+    },
+    {
+      "name": "transportation-logistics",
+      "count": 1,
+      "investor_count": 1,
+      "investors": [
+        "freda-duan"
+      ]
+    },
+    {
+      "name": "financial-services",
+      "count": 1,
+      "investor_count": 1,
+      "investors": [
+        "freda-duan"
+      ]
+    },
+    {
+      "name": "retail-supply-chain",
+      "count": 1,
+      "investor_count": 1,
+      "investors": [
+        "freda-duan"
+      ]
+    },
+    {
+      "name": "insurance",
+      "count": 1,
+      "investor_count": 1,
+      "investors": [
+        "freda-duan"
+      ]
+    },
+    {
+      "name": "mortgage",
+      "count": 1,
+      "investor_count": 1,
+      "investors": [
+        "freda-duan"
+      ]
+    },
+    {
+      "name": "mining-utilities",
+      "count": 1,
+      "investor_count": 1,
+      "investors": [
+        "freda-duan"
+      ]
+    },
+    {
+      "name": "consumer-staples",
+      "count": 1,
+      "investor_count": 1,
+      "investors": [
+        "freda-duan"
+      ]
+    },
+    {
+      "name": "consumer-discretionary",
+      "count": 1,
+      "investor_count": 1,
+      "investors": [
+        "freda-duan"
+      ]
+    },
+    {
+      "name": "communication-services",
+      "count": 1,
+      "investor_count": 1,
+      "investors": [
+        "freda-duan"
+      ]
+    },
+    {
+      "name": "sensors",
+      "count": 1,
+      "investor_count": 1,
+      "investors": [
+        "freda-duan"
+      ]
+    },
+    {
+      "name": "short-form-video",
+      "count": 1,
+      "investor_count": 1,
+      "investors": [
+        "freda-duan"
+      ]
+    },
+    {
+      "name": "streaming-video",
+      "count": 1,
+      "investor_count": 1,
+      "investors": [
+        "freda-duan"
+      ]
+    },
+    {
+      "name": "ai-generated-content",
+      "count": 1,
+      "investor_count": 1,
+      "investors": [
+        "freda-duan"
+      ]
+    },
+    {
+      "name": "entertainment",
+      "count": 1,
+      "investor_count": 1,
+      "investors": [
+        "freda-duan"
+      ]
+    },
+    {
+      "name": "crypto-exchanges",
+      "count": 1,
+      "investor_count": 1,
+      "investors": [
+        "freda-duan"
+      ]
+    },
+    {
+      "name": "sports",
+      "count": 1,
+      "investor_count": 1,
+      "investors": [
+        "freda-duan"
+      ]
+    },
+    {
+      "name": "multimodal-ai",
+      "count": 1,
+      "investor_count": 1,
+      "investors": [
+        "freda-duan"
+      ]
+    },
+    {
+      "name": "edge-ai",
+      "count": 1,
+      "investor_count": 1,
+      "investors": [
+        "freda-duan"
+      ]
+    },
+    {
+      "name": "enterprise-ai",
+      "count": 1,
+      "investor_count": 1,
+      "investors": [
+        "freda-duan"
+      ]
+    },
+    {
+      "name": "space",
+      "count": 1,
+      "investor_count": 1,
+      "investors": [
+        "freda-duan"
+      ]
+    },
+    {
+      "name": "macro",
+      "count": 1,
+      "investor_count": 1,
+      "investors": [
+        "freda-duan"
+      ]
+    },
+    {
+      "name": "value",
+      "count": 1,
+      "investor_count": 1,
+      "investors": [
+        "freda-duan"
+      ]
+    },
+    {
+      "name": "energy",
+      "count": 1,
+      "investor_count": 1,
+      "investors": [
+        "freda-duan"
+      ]
+    },
+    {
+      "name": "financials",
+      "count": 1,
+      "investor_count": 1,
+      "investors": [
+        "freda-duan"
+      ]
+    },
+    {
+      "name": "industrials",
+      "count": 1,
+      "investor_count": 1,
+      "investors": [
+        "freda-duan"
+      ]
+    },
+    {
+      "name": "commodities",
+      "count": 1,
+      "investor_count": 1,
+      "investors": [
+        "freda-duan"
+      ]
+    },
+    {
+      "name": "macro-rates",
+      "count": 1,
+      "investor_count": 1,
+      "investors": [
+        "freda-duan"
+      ]
+    },
+    {
+      "name": "equities",
+      "count": 1,
+      "investor_count": 1,
+      "investors": [
+        "freda-duan"
+      ]
+    },
+    {
+      "name": "etfs",
+      "count": 1,
+      "investor_count": 1,
+      "investors": [
+        "freda-duan"
+      ]
+    },
+    {
+      "name": "datasets",
+      "count": 1,
+      "investor_count": 1,
+      "investors": [
+        "freda-duan"
+      ]
+    },
+    {
+      "name": "consumer-electronics",
+      "count": 1,
+      "investor_count": 1,
+      "investors": [
+        "freda-duan"
+      ]
+    },
+    {
+      "name": "mobile-devices",
+      "count": 1,
+      "investor_count": 1,
+      "investors": [
+        "freda-duan"
+      ]
+    },
+    {
+      "name": "seasonality",
+      "count": 1,
+      "investor_count": 1,
+      "investors": [
+        "freda-duan"
+      ]
+    },
+    {
+      "name": "spreadsheets",
+      "count": 1,
+      "investor_count": 1,
+      "investors": [
+        "freda-duan"
+      ]
+    },
+    {
+      "name": "finance",
+      "count": 1,
+      "investor_count": 1,
+      "investors": [
+        "freda-duan"
+      ]
+    },
+    {
+      "name": "internet-platforms",
+      "count": 1,
+      "investor_count": 1,
+      "investors": [
+        "freda-duan"
+      ]
+    },
+    {
+      "name": "corporate-finance",
+      "count": 1,
+      "investor_count": 1,
+      "investors": [
+        "freda-duan"
+      ]
+    },
+    {
+      "name": "api-integration",
+      "count": 1,
+      "investor_count": 1,
+      "investors": [
+        "freda-duan"
+      ]
+    },
+    {
+      "name": "voice-assistants",
+      "count": 1,
+      "investor_count": 1,
+      "investors": [
+        "freda-duan"
+      ]
+    },
+    {
+      "name": "ad-tech",
+      "count": 1,
+      "investor_count": 1,
+      "investors": [
+        "freda-duan"
+      ]
+    },
+    {
+      "name": "media",
+      "count": 1,
+      "investor_count": 1,
+      "investors": [
+        "freda-duan"
+      ]
+    },
+    {
+      "name": "services",
+      "count": 1,
+      "investor_count": 1,
+      "investors": [
+        "freda-duan"
+      ]
+    },
+    {
+      "name": "llm",
+      "count": 1,
+      "investor_count": 1,
+      "investors": [
+        "freda-duan"
+      ]
+    },
+    {
+      "name": "voice-ai",
+      "count": 1,
+      "investor_count": 1,
+      "investors": [
+        "freda-duan"
+      ]
+    },
+    {
+      "name": "gen-ai",
+      "count": 1,
+      "investor_count": 1,
+      "investors": [
+        "freda-duan"
+      ]
+    },
+    {
+      "name": "china-macro",
+      "count": 1,
+      "investor_count": 1,
+      "investors": [
+        "freda-duan"
+      ]
+    },
+    {
+      "name": "aerospace",
+      "count": 1,
+      "investor_count": 1,
+      "investors": [
+        "freda-duan"
+      ]
+    },
+    {
+      "name": "biotech",
+      "count": 1,
+      "investor_count": 1,
+      "investors": [
+        "freda-duan"
+      ]
+    },
+    {
+      "name": "real-estate",
+      "count": 1,
+      "investor_count": 1,
+      "investors": [
+        "freda-duan"
+      ]
+    },
+    {
+      "name": "ev",
+      "count": 1,
+      "investor_count": 1,
+      "investors": [
+        "freda-duan"
+      ]
+    },
+    {
+      "name": "cleantech-solar",
+      "count": 1,
+      "investor_count": 1,
+      "investors": [
+        "freda-duan"
+      ]
+    },
+    {
+      "name": "voice-interfaces",
+      "count": 1,
+      "investor_count": 1,
+      "investors": [
+        "freda-duan"
+      ]
+    },
+    {
+      "name": "consumer",
+      "count": 1,
+      "investor_count": 1,
+      "investors": [
+        "freda-duan"
+      ]
+    },
+    {
+      "name": "org-design",
+      "count": 1,
+      "investor_count": 1,
+      "investors": [
+        "freda-duan"
+      ]
+    },
+    {
+      "name": "restructuring",
+      "count": 1,
+      "investor_count": 1,
+      "investors": [
+        "freda-duan"
+      ]
+    },
+    {
+      "name": "consumer-packaged-goods",
+      "count": 1,
+      "investor_count": 1,
+      "investors": [
+        "freda-duan"
+      ]
+    },
+    {
+      "name": "governance",
+      "count": 1,
+      "investor_count": 1,
+      "investors": [
+        "freda-duan"
+      ]
+    },
+    {
+      "name": "b2b-commerce",
+      "count": 1,
+      "investor_count": 1,
+      "investors": [
+        "freda-duan"
+      ]
+    },
+    {
+      "name": "online-travel",
+      "count": 1,
+      "investor_count": 1,
+      "investors": [
+        "freda-duan"
+      ]
+    },
+    {
+      "name": "logistics",
+      "count": 1,
+      "investor_count": 1,
+      "investors": [
+        "freda-duan"
+      ]
+    },
+    {
+      "name": "venture-capital",
+      "count": 1,
+      "investor_count": 1,
+      "investors": [
+        "jamin-ball"
+      ]
+    },
+    {
+      "name": "private-markets",
+      "count": 1,
+      "investor_count": 1,
+      "investors": [
+        "jamin-ball"
+      ]
+    },
+    {
+      "name": "valuation-metrics",
+      "count": 1,
+      "investor_count": 1,
+      "investors": [
+        "jamin-ball"
+      ]
+    },
+    {
+      "name": "go-to-market",
+      "count": 1,
+      "investor_count": 1,
+      "investors": [
+        "jamin-ball"
+      ]
+    },
+    {
+      "name": "integration-platforms",
+      "count": 1,
+      "investor_count": 1,
+      "investors": [
+        "jamin-ball"
+      ]
+    },
+    {
+      "name": "multi-modal-ai",
+      "count": 1,
+      "investor_count": 1,
+      "investors": [
+        "jamin-ball"
+      ]
+    },
+    {
+      "name": "speech-technology",
+      "count": 1,
+      "investor_count": 1,
+      "investors": [
+        "jamin-ball"
+      ]
+    },
+    {
+      "name": "inference-infrastructure",
+      "count": 1,
+      "investor_count": 1,
+      "investors": [
+        "jamin-ball"
+      ]
+    },
+    {
+      "name": "software-etf",
+      "count": 1,
+      "investor_count": 1,
+      "investors": [
+        "jamin-ball"
+      ]
+    },
+    {
+      "name": "internet-media",
+      "count": 1,
+      "investor_count": 1,
+      "investors": [
+        "jamin-ball"
+      ]
+    },
+    {
+      "name": "flash-memory",
+      "count": 1,
+      "investor_count": 1,
+      "investors": [
+        "jamin-ball"
+      ]
+    },
+    {
+      "name": "ssd-storage",
+      "count": 1,
+      "investor_count": 1,
+      "investors": [
+        "jamin-ball"
+      ]
+    },
+    {
+      "name": "storage",
+      "count": 1,
+      "investor_count": 1,
+      "investors": [
+        "jamin-ball"
+      ]
+    },
+    {
+      "name": "cloud",
+      "count": 1,
+      "investor_count": 1,
+      "investors": [
+        "jamin-ball"
+      ]
+    },
+    {
+      "name": "enterprise-storage",
+      "count": 1,
+      "investor_count": 1,
+      "investors": [
+        "jamin-ball"
+      ]
+    },
+    {
+      "name": "data-orchestration",
+      "count": 1,
+      "investor_count": 1,
+      "investors": [
+        "jamin-ball"
+      ]
+    },
+    {
+      "name": "platform-pricing",
+      "count": 1,
+      "investor_count": 1,
+      "investors": [
+        "jamin-ball"
+      ]
+    },
+    {
+      "name": "saas-valuation",
+      "count": 1,
+      "investor_count": 1,
+      "investors": [
+        "jamin-ball"
+      ]
+    },
+    {
+      "name": "video-games",
+      "count": 1,
+      "investor_count": 1,
+      "investors": [
+        "thomas-reiner"
+      ]
+    },
+    {
+      "name": "user-generated-content",
+      "count": 1,
+      "investor_count": 1,
+      "investors": [
+        "thomas-reiner"
+      ]
+    },
+    {
+      "name": "mobile-gaming",
+      "count": 1,
+      "investor_count": 1,
+      "investors": [
+        "thomas-reiner"
+      ]
+    },
+    {
+      "name": "metaverse",
+      "count": 1,
+      "investor_count": 1,
+      "investors": [
+        "thomas-reiner"
+      ]
+    },
+    {
+      "name": "digital-discovery",
+      "count": 1,
+      "investor_count": 1,
+      "investors": [
+        "thomas-reiner"
+      ]
+    },
+    {
+      "name": "delivery",
+      "count": 1,
+      "investor_count": 1,
+      "investors": [
+        "thomas-reiner"
+      ]
+    },
+    {
+      "name": "tmc",
+      "count": 1,
+      "investor_count": 1,
+      "investors": [
+        "thomas-reiner"
+      ]
+    },
+    {
+      "name": "expense-management",
+      "count": 1,
+      "investor_count": 1,
+      "investors": [
+        "thomas-reiner"
+      ]
+    },
+    {
+      "name": "local-delivery",
+      "count": 1,
+      "investor_count": 1,
+      "investors": [
+        "thomas-reiner"
+      ]
+    },
+    {
+      "name": "fulfillment-and-logistics",
+      "count": 1,
+      "investor_count": 1,
+      "investors": [
+        "thomas-reiner"
+      ]
+    },
+    {
+      "name": "micro-fulfillment",
+      "count": 1,
+      "investor_count": 1,
+      "investors": [
+        "thomas-reiner"
+      ]
+    },
+    {
+      "name": "retail-media",
+      "count": 1,
+      "investor_count": 1,
+      "investors": [
+        "thomas-reiner"
+      ]
+    },
+    {
+      "name": "restaurant-pos",
+      "count": 1,
+      "investor_count": 1,
+      "investors": [
+        "thomas-reiner"
+      ]
+    },
+    {
+      "name": "restaurant-tech",
+      "count": 1,
+      "investor_count": 1,
+      "investors": [
+        "thomas-reiner"
+      ]
+    },
+    {
+      "name": "international-expansion",
+      "count": 1,
+      "investor_count": 1,
+      "investors": [
+        "thomas-reiner"
+      ]
+    },
+    {
+      "name": "social-media-ads",
+      "count": 1,
+      "investor_count": 1,
+      "investors": [
+        "thomas-reiner"
+      ]
+    },
+    {
+      "name": "m-a",
+      "count": 1,
+      "investor_count": 1,
+      "investors": [
+        "thomas-reiner"
+      ]
+    },
+    {
+      "name": "gig-economy",
+      "count": 1,
+      "investor_count": 1,
+      "investors": [
+        "thomas-reiner"
+      ]
+    },
+    {
+      "name": "data-labeling",
+      "count": 1,
+      "investor_count": 1,
+      "investors": [
+        "thomas-reiner"
+      ]
+    },
+    {
+      "name": "robotaxis",
+      "count": 1,
+      "investor_count": 1,
+      "investors": [
+        "thomas-reiner"
+      ]
+    },
+    {
+      "name": "simulation",
+      "count": 1,
+      "investor_count": 1,
+      "investors": [
+        "thomas-reiner"
+      ]
+    },
+    {
+      "name": "experience-and-mobility",
+      "count": 1,
+      "investor_count": 1,
+      "investors": [
+        "thomas-reiner"
+      ]
+    },
+    {
+      "name": "travel-commerce",
+      "count": 1,
+      "investor_count": 1,
+      "investors": [
+        "thomas-reiner"
+      ]
+    },
+    {
+      "name": "rideshare-delivery",
+      "count": 1,
+      "investor_count": 1,
+      "investors": [
+        "thomas-reiner"
+      ]
+    },
+    {
+      "name": "short-term-rentals",
+      "count": 1,
+      "investor_count": 1,
+      "investors": [
+        "thomas-reiner"
+      ]
+    },
+    {
+      "name": "autonomy",
+      "count": 1,
+      "investor_count": 1,
+      "investors": [
+        "thomas-reiner"
+      ]
+    },
+    {
+      "name": "retail-delivery",
+      "count": 1,
+      "investor_count": 1,
+      "investors": [
+        "thomas-reiner"
+      ]
+    },
+    {
+      "name": "executive-compensation",
+      "count": 1,
+      "investor_count": 1,
+      "investors": [
+        "thomas-reiner"
+      ]
+    },
+    {
+      "name": "hotel-tech",
+      "count": 1,
+      "investor_count": 1,
+      "investors": [
+        "thomas-reiner"
+      ]
+    },
+    {
+      "name": "distribution-technology",
+      "count": 1,
+      "investor_count": 1,
+      "investors": [
+        "thomas-reiner"
+      ]
+    },
+    {
+      "name": "platform",
+      "count": 1,
+      "investor_count": 1,
+      "investors": [
+        "thomas-reiner"
+      ]
+    },
+    {
+      "name": "leisure",
+      "count": 1,
+      "investor_count": 1,
+      "investors": [
+        "thomas-reiner"
+      ]
+    },
+    {
+      "name": "airlines",
+      "count": 1,
+      "investor_count": 1,
+      "investors": [
+        "thomas-reiner"
+      ]
+    },
+    {
+      "name": "metasearch",
+      "count": 1,
+      "investor_count": 1,
+      "investors": [
+        "thomas-reiner"
+      ]
+    },
+    {
+      "name": "drone-delivery",
+      "count": 1,
+      "investor_count": 1,
+      "investors": [
+        "thomas-reiner"
+      ]
+    },
+    {
+      "name": "platform-marketplaces",
+      "count": 1,
+      "investor_count": 1,
+      "investors": [
+        "thomas-reiner"
+      ]
+    },
+    {
+      "name": "unit-economics",
+      "count": 1,
+      "investor_count": 1,
+      "investors": [
+        "thomas-reiner"
+      ]
+    },
+    {
+      "name": "ota",
+      "count": 1,
+      "investor_count": 1,
+      "investors": [
+        "thomas-reiner"
+      ]
+    },
+    {
+      "name": "travel-distribution",
+      "count": 1,
+      "investor_count": 1,
+      "investors": [
+        "thomas-reiner"
+      ]
+    },
+    {
+      "name": "earnings-transcripts",
+      "count": 1,
+      "investor_count": 1,
+      "investors": [
+        "thomas-reiner"
+      ]
+    },
+    {
+      "name": "research-tools",
+      "count": 1,
+      "investor_count": 1,
+      "investors": [
+        "thomas-reiner"
+      ]
+    },
+    {
+      "name": "llm-integration",
+      "count": 1,
+      "investor_count": 1,
+      "investors": [
+        "thomas-reiner"
+      ]
+    },
+    {
+      "name": "social-media",
+      "count": 1,
+      "investor_count": 1,
+      "investors": [
+        "thomas-reiner"
+      ]
+    },
+    {
+      "name": "subscription-business-models",
+      "count": 1,
+      "investor_count": 1,
+      "investors": [
+        "thomas-reiner"
+      ]
+    },
+    {
+      "name": "parking-marketplaces",
+      "count": 1,
+      "investor_count": 1,
+      "investors": [
+        "thomas-reiner"
+      ]
+    },
+    {
+      "name": "urban-infrastructure",
+      "count": 1,
+      "investor_count": 1,
+      "investors": [
+        "thomas-reiner"
+      ]
+    },
+    {
+      "name": "platform-economics",
+      "count": 1,
+      "investor_count": 1,
+      "investors": [
+        "thomas-reiner"
+      ]
+    },
+    {
+      "name": "travel-marketplaces",
+      "count": 1,
+      "investor_count": 1,
+      "investors": [
+        "thomas-reiner"
+      ]
+    },
+    {
+      "name": "experiences",
+      "count": 1,
+      "investor_count": 1,
+      "investors": [
+        "thomas-reiner"
+      ]
+    },
+    {
+      "name": "transcript-search-tools",
+      "count": 1,
+      "investor_count": 1,
+      "investors": [
+        "thomas-reiner"
+      ]
+    },
+    {
+      "name": "rideshare",
+      "count": 1,
+      "investor_count": 1,
+      "investors": [
+        "thomas-reiner"
+      ]
+    }
+  ]
+}

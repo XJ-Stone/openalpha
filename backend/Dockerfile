@@ -11,7 +11,7 @@ COPY backend/pyproject.toml backend/poetry.lock* ./backend/
 # Install dependencies (no dev deps, no virtualenv in container)
 WORKDIR /app/backend
 RUN poetry config virtualenvs.create false \
-    && poetry install --no-interaction --no-ansi --without dev
+    && poetry install --no-interaction --no-ansi --without dev --no-root
 
 # Copy the rest of the project
 WORKDIR /app

@@ -3,8 +3,7 @@ name = "openalpha"
 version = "0.1.0"
 description = "OpenAlpha — Real investor opinions. Real sources. No roleplay."
 authors = []
-readme = "README.md"
-packages = [{include = "src"}]
+package-mode = false
 
 [tool.poetry.scripts]
 openalpha = "cli:app"

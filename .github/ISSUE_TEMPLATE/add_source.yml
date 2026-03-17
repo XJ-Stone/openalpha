@@ -1,0 +1,61 @@
+name: Add Source / Investor Data
+description: Submit a source (podcast, Substack, interview) to be added to the knowledge base
+labels: ["data", "good first issue"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Found a great podcast episode, Substack post, or interview where an investor
+        discusses specific companies? Submit it here and we'll add it to the knowledge base!
+
+        You don't need to be a developer to contribute data.
+
+  - type: input
+    id: source_url
+    attributes:
+      label: Source URL
+      description: Link to the podcast, article, or interview
+      placeholder: https://youtube.com/watch?v=... or https://newsletter.substack.com/p/...
+    validations:
+      required: true
+
+  - type: input
+    id: investor
+    attributes:
+      label: Investor name
+      description: Who is the investor featured in this source?
+      placeholder: e.g. Brad Gerstner, Cathie Wood
+    validations:
+      required: true
+
+  - type: dropdown
+    id: source_type
+    attributes:
+      label: Source type
+      options:
+        - Podcast episode
+        - Substack / Newsletter
+        - TV interview (CNBC, Bloomberg, etc.)
+        - Conference talk
+        - Twitter/X thread
+        - Other
+    validations:
+      required: true
+
+  - type: textarea
+    id: summary
+    attributes:
+      label: Brief summary
+      description: What companies or topics does the investor discuss? (1-2 sentences is fine)
+      placeholder: "Gerstner discusses NVDA, MSFT, and the AI infrastructure buildout. Bullish on NVDA."
+    validations:
+      required: true
+
+  - type: input
+    id: date
+    attributes:
+      label: Date of appearance
+      description: When was this published or aired?
+      placeholder: YYYY-MM-DD or approximate
+    validations:
+      required: false

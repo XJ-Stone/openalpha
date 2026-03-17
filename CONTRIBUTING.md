@@ -1,10 +1,10 @@
 # Contributing to OpenAlpha
 
-There are three ways to contribute to OpenAlpha. Pick whichever matches your background -- you don't need to be an engineer to add valuable data.
+There are four ways to contribute to OpenAlpha. Pick whichever matches your background -- you don't need to be an engineer to add valuable data.
 
 ---
 
-## Path 1: Add Investor Opinions (for finance people)
+## Path 1: Add Investor Opinions (for anyone)
 
 This is the highest-impact contribution. Every appearance you add makes the knowledge base more useful for everyone.
 
@@ -14,49 +14,34 @@ An appearance is a markdown file summarizing what an investor said in a specific
 
 ### Steps to add an appearance
 
-#### Option A: Use the generation script (recommended)
+#### Option A: Use the ingestion pipeline (recommended)
 
-If you have a transcript or source text, the `generate_appearance.py` script will extract structured opinions using an LLM:
-
-```bash
-cd backend
-
-# From a transcript file
-python scripts/generate_appearance.py \
-  --transcript path/to/transcript.txt \
-  --investor brad-gerstner \
-  --date 2025-03-01 \
-  --source "BG2Pod" \
-  --type podcast \
-  --url "https://youtube.com/watch?v=..."
-
-# From pasted text (reads from stdin if no --transcript file)
-python scripts/generate_appearance.py \
-  --investor brad-gerstner \
-  --date 2025-03-01 \
-  --source "BG2Pod" \
-  --type podcast \
-  --url "https://youtube.com/watch?v=..." \
-  < transcript.txt
-```
-
-The script outputs a formatted appearance file. Review it for accuracy before committing.
-
-#### Option B: Ingest from Substack (easiest for newsletters)
-
-If the investor publishes on Substack, you can ingest all their posts in one command:
+The ingestion pipeline handles fetching, LLM extraction, and markdown generation in one command:
 
 ```bash
 cd backend
 
-# If the Substack is already in the registry — just URL + time range:
-python data-ingestion/substack.py --url https://robonomics.substack.com --months 6
+# Ingest from Substack (auto-resolves investor from registry):
+python -m ingestion substack --url https://robonomics.substack.com --months 6
 
 # Dry run first to see what will be fetched:
-python data-ingestion/substack.py --url https://robonomics.substack.com --months 6 --dry-run
+python -m ingestion substack --url https://robonomics.substack.com --months 6 --dry-run
+
+# From a local transcript file:
+python -m ingestion manual --file transcript.txt \
+  --investor brad-gerstner \
+  --date 2025-03-01 \
+  --source-name "BG2Pod" \
+  --type podcast
+
+# YouTube transcript (requires: pip install youtube-transcript-api):
+python -m ingestion youtube --url "https://youtube.com/watch?v=..." \
+  --investor brad-gerstner \
+  --date 2025-03-01 \
+  --source-name "BG2Pod"
 ```
 
-The script auto-resolves the investor slug and source name from `backend/data-ingestion/_registry.yaml`. It skips posts that already have appearance files, so it's safe to re-run.
+The pipeline skips posts that already have appearance files, so it's safe to re-run.
 
 **Adding a new Substack to the registry:**
 
@@ -73,19 +58,19 @@ Then create the investor directory and profile (see "Adding a new investor" belo
 **One-off ingestion without editing the registry:**
 
 ```bash
-python data-ingestion/substack.py \
+python -m ingestion substack \
   --url https://somenewsletter.substack.com \
   --investor investor-slug \
   --source-name "Newsletter Name" \
   --months 3
 ```
 
-#### Option C: Write it manually
+#### Option B: Write it manually
 
 1. Copy the template from `templates/appearance-template.md`
 2. Fill in the frontmatter (see requirements below)
 3. Write up company-specific views and broader themes
-4. Save as `investors/<slug>/YYYY-MM-DD-source-topic.md`
+4. Save as `investors/<slug>/appearances/YYYY-MM-DD-source-topic.md`
 
 ### Frontmatter requirements
 
@@ -115,9 +100,9 @@ topics_detail:
 ---
 ```
 
-**Flat lists (`companies`, `topics`) are the search index.** The search engine greps these to find relevant files. The `_detail` sections with focus levels control how much detail the AI extracts when reading the file (primary gets full analysis, mention gets one sentence).
+**Flat lists (`companies`, `topics`) are the search index.** The search engine scans these to find relevant files. The `_detail` sections with focus levels control how much detail the AI extracts when reading the file (primary gets full analysis, mention gets one sentence).
 
-If you use the generation scripts, all of this is produced automatically — you don't need to write it by hand.
+If you use the ingestion pipeline, all of this is produced automatically — you don't need to write it by hand.
 
 ### Content guidelines
 
@@ -139,21 +124,6 @@ Before adding appearances, the investor needs a directory and profile:
 ```bash
 cd backend
 python scripts/generate_profile.py --investor <slug>
-```
-
-#### Re-indexing existing appearances
-
-If the frontmatter schema changes (e.g. new fields like `topics_detail`), you can re-run ingestion to update existing files. The substack script skips files that already exist, so to force re-extraction, delete the files first and re-ingest:
-
-```bash
-cd backend
-
-# Re-ingest all posts for an investor (skips existing files)
-python data-ingestion/substack.py --url https://robonomics.substack.com --months 24
-
-# To force re-extraction: delete appearances first, then re-ingest
-rm investors/<slug>/appearances/*.md
-python data-ingestion/substack.py --url <substack-url> --months 24
 ```
 
 ### After adding appearances: run post-ingest
@@ -192,7 +162,71 @@ This does three things (no LLM needed):
 
 ---
 
-## Path 2: Add Skills (for analysts)
+## Path 2: Add a New Source Extractor (for engineers)
+
+The ingestion pipeline is modular — each source type (Substack, YouTube, etc.) is a separate extractor. Adding a new one is a small, well-scoped contribution.
+
+### Architecture
+
+```
+backend/ingestion/
+├── extractors/
+│   ├── base.py           # BaseExtractor ABC — your extractor inherits from this
+│   ├── substack.py       # Substack API fetcher (~150 lines)
+│   ├── youtube.py        # YouTube transcript extractor
+│   └── manual.py         # Local file / stdin reader
+├── processors/           # Source-agnostic LLM processing (you don't touch this)
+│   ├── short.py          # ≤3000 words: metadata extraction only
+│   └── long.py           # >3000 words: LLM summarization
+├── rendering.py          # Markdown output (you don't touch this)
+├── models.py             # RawContent dataclass (what your extractor returns)
+└── cli.py                # Unified CLI
+```
+
+### How to add a new extractor
+
+1. Create `backend/ingestion/extractors/yourextractor.py`
+2. Subclass `BaseExtractor` and implement `fetch()`:
+
+```python
+from ingestion.extractors.base import BaseExtractor
+from ingestion.models import RawContent
+
+class RSSExtractor(BaseExtractor):
+    source_type = "rss"
+
+    def fetch(self, url: str, **kwargs) -> list[RawContent]:
+        # Your fetching logic here — return a list of RawContent
+        return [
+            RawContent(
+                text="...",          # The extracted text content
+                title="...",         # Title of the article/episode
+                date="2025-06-01",   # YYYY-MM-DD
+                url="https://...",   # Link to original
+                source_type="rss",
+            )
+        ]
+```
+
+3. Register it in `backend/ingestion/extractors/__init__.py`:
+
+```python
+from .rss import RSSExtractor
+
+EXTRACTOR_REGISTRY: dict[str, type[BaseExtractor]] = {
+    ...
+    "rss": RSSExtractor,
+}
+```
+
+4. Add a subcommand in `backend/ingestion/cli.py`
+5. Add tests in `backend/tests/test_ingestion.py`
+
+That's it — the processing and rendering layers handle everything else automatically.
+
+---
+
+## Path 3: Add Skills (for analysts)
 
 Skills teach the agent analytical frameworks. When a user's query matches certain keywords, the relevant skill is loaded into the LLM's context.
 
@@ -217,21 +251,6 @@ The loader (`src/loader.py`) maps keywords in the user's query to skill files:
 3. Write concise instructions (the LLM reads this as context, so shorter is better)
 4. Add keyword mappings to `src/loader.py` in the `_SKILL_KEYWORDS` list
 
-### Skill template
-
-```yaml
----
-name: your-skill-name
-description: >
-  1-3 sentences: what this skill does and when it should activate.
----
-
-# Skill Name
-
-[Concise instructions for the agent. What framework to apply,
-what to look for, how to structure the output.]
-```
-
 ### Guidelines
 
 - Keep skills focused. One analytical lens per skill.
@@ -241,7 +260,7 @@ what to look for, how to structure the output.]
 
 ---
 
-## Path 3: Improve the Engine (for engineers)
+## Path 4: Improve the Engine (for engineers)
 
 ### Architecture overview
 
@@ -274,7 +293,6 @@ src/llm.py                Provider abstraction (Anthropic, OpenAI, Ollama)
 
 - Python 3.11+ with type annotations
 - Use `from __future__ import annotations` for PEP 604 style
-- Format with `black`, lint with `ruff`
 - Tests go in `tests/` using pytest
 - Keep dependencies minimal -- check `pyproject.toml` before adding new ones
 
@@ -287,16 +305,17 @@ poetry run pytest
 
 When adding new functionality:
 - Unit test search scoring logic in `tests/test_search.py`
-- Unit test loader assembly in `tests/test_loader.py`
+- Test ingestion extractors/rendering in `tests/test_ingestion.py`
+- Test API endpoints in `tests/test_api.py`
 - Test LLM integration with mocks (don't call real APIs in CI)
 
 ### Areas for contribution
 
+- **New extractors**: RSS, Twitter/X, earnings call transcripts, SEC filings
 - **Search improvements**: Better relevance scoring, fuzzy matching, synonym handling
 - **New LLM providers**: Gemini, Mistral, local models
 - **Frontend**: The Next.js frontend in `frontend/` needs work
 - **Caching**: Cache LLM responses for identical queries
-- **Tools**: Give the agent the ability to fetch live price data, SEC filings, etc.
 - **Testing**: More test coverage across all modules
 
 ---

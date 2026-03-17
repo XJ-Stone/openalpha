@@ -3,6 +3,7 @@ const API_BASE = process.env.NEXT_PUBLIC_API_URL || "http://localhost:8000";
 export interface EntityRanking {
   name: string;
   kind: "company" | "topic";
+  score: number;
 }
 
 export interface EntitiesResponse {

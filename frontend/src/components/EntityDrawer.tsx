@@ -118,9 +118,10 @@ export default function EntityDrawer({
                       );
                       onClose();
                     }}
-                    className="px-3 py-1.5 rounded-full border border-[var(--card-border)] text-xs font-medium text-[var(--muted)] hover:border-[var(--accent)]/50 hover:text-[var(--accent)] hover:bg-[var(--accent)]/5 transition-all duration-150 cursor-pointer"
+                    className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full border border-[var(--card-border)] text-xs font-medium text-[var(--muted)] hover:border-[var(--accent)]/50 hover:text-[var(--accent)] hover:bg-[var(--accent)]/5 transition-all duration-150 cursor-pointer"
                   >
                     {label}
+                    <span className="text-[10px] opacity-50">{entity.score}</span>
                   </button>
                 );
               })}

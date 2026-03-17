@@ -74,12 +74,13 @@ class InvestorDetail(BaseModel):
 
 
 class EntityRanking(BaseModel):
-    """A ranked entity (company ticker or sector) by mention count."""
+    """A ranked entity (company ticker or topic) by weighted score."""
 
     name: str
     kind: str  # "company" or "topic"
     count: int = 0  # number of appearances mentioning this entity
     investor_count: int = 0  # number of distinct investors mentioning it
+    score: int = 0  # weighted popularity score (primary=3, secondary=1, mention=0.2)
 
 
 class EntitiesResponse(BaseModel):
@@ -323,10 +324,13 @@ async def get_entities(months: int = 6) -> EntitiesResponse:
     Each appearance file counts as one mention regardless of how many
     times the entity appears in the content.
     """
+    FOCUS_WEIGHTS = {"primary": 3.0, "secondary": 1.0, "mention": 0.2}
+
     cutoff = date.today() - timedelta(days=months * 30)
+    company_scores: dict[str, float] = {}
+    topic_scores: dict[str, float] = {}
     company_counts: Counter[str] = Counter()
     topic_counts: Counter[str] = Counter()
-    # Track which investors mention each entity
     company_investors: dict[str, set[str]] = {}
     topic_investors: dict[str, set[str]] = {}
 
@@ -349,34 +353,57 @@ async def get_entities(months: int = 6) -> EntitiesResponse:
 
         investor_slug = meta.get("investor", md.parts[-3] if len(md.parts) >= 3 else "")
 
+        # Build focus lookup from companies_detail
+        company_focus: dict[str, str] = {}
+        for entry in meta.get("companies_detail", []) or []:
+            if isinstance(entry, dict):
+                company_focus[entry.get("ticker", "").upper()] = entry.get("focus", "mention")
+
         for ticker in meta.get("companies", []) or []:
             key = ticker.upper()
+            focus = company_focus.get(key, "mention")
+            company_scores[key] = company_scores.get(key, 0.0) + FOCUS_WEIGHTS.get(focus, 0.2)
             company_counts[key] += 1
             company_investors.setdefault(key, set()).add(investor_slug)
+
+        # Build focus lookup from topics_detail
+        topic_focus: dict[str, str] = {}
+        for entry in meta.get("topics_detail", []) or []:
+            if isinstance(entry, dict):
+                topic_focus[entry.get("topic", "").lower()] = entry.get("focus", "mention")
+
         # Read both 'topics' (new) and 'sectors' (legacy)
         all_tags = list(meta.get("topics", []) or []) + list(meta.get("sectors", []) or [])
         for tag in all_tags:
             key = tag.lower()
+            focus = topic_focus.get(key, "mention")
+            topic_scores[key] = topic_scores.get(key, 0.0) + FOCUS_WEIGHTS.get(focus, 0.2)
             topic_counts[key] += 1
             topic_investors.setdefault(key, set()).add(investor_slug)
+
+    # Sort by weighted score descending, take top 20
+    top_companies = sorted(company_scores.items(), key=lambda x: x[1], reverse=True)[:20]
+    top_topics = sorted(topic_scores.items(), key=lambda x: x[1], reverse=True)[:20]
 
     companies = [
         EntityRanking(
             name=name,
             kind="company",
-            count=count,
+            count=company_counts[name],
             investor_count=len(company_investors.get(name, set())),
+            score=round(score),
         )
-        for name, count in company_counts.most_common(20)
+        for name, score in top_companies
     ]
     topics = [
         EntityRanking(
             name=name,
             kind="topic",
-            count=count,
+            count=topic_counts[name],
             investor_count=len(topic_investors.get(name, set())),
+            score=round(score),
         )
-        for name, count in topic_counts.most_common(20)
+        for name, score in top_topics
     ]
 
     return EntitiesResponse(companies=companies, topics=topics)

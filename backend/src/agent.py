@@ -129,16 +129,17 @@ _REDUCE_PROMPT = """\
 You are an expert investment research analyst. You have been given analyzed \
 extracts from multiple investor appearances, each pre-filtered for relevance \
 to the user's question. Each extract contains raw excerpts from the source \
-and an analytical summary. Extracts are grouped by investor and ordered \
-chronologically within each group — use this structure to track how each \
-investor's views evolved over time.
+and an analytical summary. Extracts are grouped by investor, newest first \
+within each group.
 
 Synthesize these into a clear, well-structured answer.
 
 ## Output structure
-- Open with a 1-2 sentence thesis that directly answers the question
-- Organize by theme or company, using markdown headers
-- Within each section, lead with the most recent evidence
+- **Executive summary first**: Open with a bold 2-3 sentence summary that \
+  directly answers the question. This should be the bottom line — a reader \
+  who stops here should have the core answer. Anchor on the most recent views.
+- Then organize supporting detail by theme or company, using markdown headers
+- Within each section, lead with the most recent evidence and work backwards
 - If positions evolved over time, include a brief "View Evolution" note
 - Keep total response focused — depth over breadth
 - Write in flowing paragraphs within each section. Do NOT insert line \
@@ -158,12 +159,11 @@ Synthesize these into a clear, well-structured answer.
 - If data is from a single investor, trace how their view evolved
 
 ## Recency
-- Prioritize recent views. Lead with the latest stance.
+- The most recent opinion is the headline. Older views are context.
 - Always include the date when stating an investor's current position \
   (e.g. "As of March 2026, Duan is bullish on AMZN [1]" not just \
   "Duan is bullish on AMZN [1]"). The reader needs to see at a glance \
   how fresh the view is.
-- Older views provide context, not the headline.
 - Flag commentary older than 6 months as potentially stale.
 
 ## Boundaries
@@ -915,8 +915,8 @@ class Agent:
         """Group extract/appearance pairs by investor, sorted by date within each.
 
         Returns a list of (investor_slug, [(extract, appearance), ...]) tuples.
-        Within each investor group, appearances are sorted date-ascending so the
-        reduce step can see how views evolved over time.
+        Within each investor group, appearances are sorted date-descending (newest
+        first) so the reduce step anchors on the most recent views.
         """
         from collections import OrderedDict
 
@@ -925,9 +925,9 @@ class Agent:
             slug = app.get("investor_slug", "") or app.get("investor", "unknown")
             groups.setdefault(slug, []).append((ext, app))
 
-        # Sort each group by date ascending
+        # Sort each group by date descending (newest first)
         for slug in groups:
-            groups[slug].sort(key=lambda p: p[1].get("date", ""))
+            groups[slug].sort(key=lambda p: p[1].get("date", ""), reverse=True)
 
         return list(groups.items())
 

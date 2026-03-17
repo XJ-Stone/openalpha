@@ -45,3 +45,23 @@ body {
   background: var(--card-border);
   border-radius: 3px;
 }
+
+/* Thinking drawer shimmer effect */
+.thinking-shimmer {
+  background: linear-gradient(
+    90deg,
+    var(--foreground) 0%,
+    var(--accent) 40%,
+    var(--foreground) 80%
+  );
+  background-size: 200% 100%;
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  animation: shimmer 2s ease-in-out infinite;
+}
+
+@keyframes shimmer {
+  0% { background-position: 200% 0; }
+  100% { background-position: -200% 0; }
+}

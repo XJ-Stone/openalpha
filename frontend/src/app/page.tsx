@@ -1,13 +1,13 @@
 "use client";
 
 import { useState, useCallback, useRef, useEffect } from "react";
-import Link from "next/link";
 import SearchBar from "@/components/SearchBar";
 import ChatMessage, { Message } from "@/components/ChatMessage";
 import { StatusStep } from "@/components/ThinkingSteps";
 import { Source } from "@/components/ResponseStream";
 import EntityChips from "@/components/EntityChips";
 import EntityDrawer from "@/components/EntityDrawer";
+import ThinkingPanel from "@/components/ThinkingPanel";
 import ThemeToggle from "@/components/ThemeToggle";
 import { analyzeQuestion } from "@/lib/api";
 
@@ -59,6 +59,7 @@ function nextMsgId() {
 // ---------------------------------------------------------------------------
 
 export default function HomePage() {
+  const [hydrated, setHydrated] = useState(false);
   const [chats, setChats] = useState<ChatSession[]>([]);
   const [activeChatId, setActiveChatId] = useState<string | null>(null);
   const [messages, setMessages] = useState<Message[]>([]);
@@ -69,10 +70,39 @@ export default function HomePage() {
   const abortRef = useRef<AbortController | null>(null);
   const userScrolledUpRef = useRef(false);
 
-  // Load chats from localStorage on mount
+  // Load chats and restore active chat from localStorage on mount
   useEffect(() => {
-    setChats(loadChats());
+    const loaded = loadChats();
+    setChats(loaded);
+    try {
+      const savedActiveId = localStorage.getItem("openalpha_active_chat");
+      if (savedActiveId) {
+        const chat = loaded.find((c) => c.id === savedActiveId);
+        if (chat) {
+          setActiveChatId(chat.id);
+          setMessages(
+            chat.messages.map((m) => ({
+              ...m,
+              isStreaming: false,
+              isThinking: false,
+            }))
+          );
+        }
+      }
+    } catch {}
+    setHydrated(true);
   }, []);
+
+  // Persist active chat ID
+  useEffect(() => {
+    try {
+      if (activeChatId) {
+        localStorage.setItem("openalpha_active_chat", activeChatId);
+      } else {
+        localStorage.removeItem("openalpha_active_chat");
+      }
+    } catch {}
+  }, [activeChatId]);
 
   // Persist current chat whenever messages change (and not streaming)
   useEffect(() => {
@@ -226,6 +256,8 @@ export default function HomePage() {
         let steps: StatusStep[] = [];
         let sources: Source[] = [];
         let buffer = "";
+        const thinkingStartTime = Date.now();
+        let thinkingDuration: number | undefined;
 
         while (true) {
           const { done, value } = await reader.read();
@@ -262,8 +294,12 @@ export default function HomePage() {
                   )
                 );
               } else if (parsed.type === "token" && parsed.token) {
+                if (thinkingDuration === undefined) {
+                  thinkingDuration = Math.round((Date.now() - thinkingStartTime) / 1000);
+                }
                 accumulated += parsed.token;
                 const content = accumulated;
+                const dur = thinkingDuration;
                 setMessages((prev) =>
                   prev.map((m) =>
                     m.id === assistantId
@@ -272,6 +308,7 @@ export default function HomePage() {
                           content,
                           isThinking: false,
                           isStreaming: true,
+                          thinkingDuration: dur,
                         }
                       : m
                   )
@@ -352,6 +389,19 @@ export default function HomePage() {
 
   const hasMessages = messages.length > 0;
 
+  // Thinking panel: only shown when user clicks "Thought for Xs"
+  const [thinkingPanelMsgId, setThinkingPanelMsgId] = useState<string | null>(null);
+
+  const thinkingMsg = thinkingPanelMsgId
+    ? messages.find((m) => m.id === thinkingPanelMsgId)
+    : null;
+  const showThinkingPanel = !!thinkingMsg && !!thinkingMsg.steps?.length;
+
+  // Prevent flash of empty state before localStorage hydrates
+  if (!hydrated) {
+    return <div className="flex h-screen bg-[var(--background)]" />;
+  }
+
   return (
     <div className="flex h-screen">
       {/* Sidebar overlay for mobile */}
@@ -374,9 +424,9 @@ export default function HomePage() {
           <div className="h-8 flex items-center overflow-hidden whitespace-nowrap">
             {sidebarOpen ? (
               <>
-                <Link href="/" className="text-base font-bold tracking-tight text-[var(--foreground)] pl-0.5">
+                <button onClick={startNewChat} className="text-base font-bold tracking-tight text-[var(--foreground)] pl-0.5">
                   OpenAlpha
-                </Link>
+                </button>
                 <button
                   onClick={() => setSidebarOpen(false)}
                   className="ml-auto w-8 h-8 flex items-center justify-center rounded-lg hover:bg-[var(--card-border)] text-[var(--muted)] hover:text-[var(--foreground)] transition-colors flex-shrink-0"
@@ -531,7 +581,7 @@ export default function HomePage() {
 
         {/* Empty state */}
         {!hasMessages && (
-          <div className="flex-1 flex flex-col items-center justify-center px-4">
+          <div className="flex-1 flex flex-col items-center px-4 pt-[20vh]">
             <h1 className="text-4xl sm:text-5xl font-bold tracking-tight text-[var(--foreground)] mb-3">
               Investor Intelligence
             </h1>
@@ -570,7 +620,15 @@ export default function HomePage() {
           <div ref={scrollRef} className="flex-1 overflow-y-auto px-4 py-6">
             <div className="max-w-3xl mx-auto">
               {messages.map((msg) => (
-                <ChatMessage key={msg.id} message={msg} />
+                <ChatMessage
+                  key={msg.id}
+                  message={msg}
+                  onToggleThinking={
+                    msg.role === "assistant" && msg.steps && msg.steps.length > 0
+                      ? () => setThinkingPanelMsgId((prev) => prev === msg.id ? null : msg.id)
+                      : undefined
+                  }
+                />
               ))}
             </div>
           </div>
@@ -586,12 +644,31 @@ export default function HomePage() {
         )}
       </div>
 
+      {/* Thinking side panel — part of flex layout, smooth width transition */}
+      <div
+        className={`hidden sm:block flex-shrink-0 overflow-hidden transition-[width] duration-300 ease-in-out ${
+          showThinkingPanel ? "w-80" : "w-0"
+        }`}
+      >
+        {thinkingMsg && thinkingMsg.steps && thinkingMsg.steps.length > 0 && (
+          <div className="w-80">
+            <ThinkingPanel
+              steps={thinkingMsg.steps}
+              isActive={thinkingMsg.isThinking ?? false}
+              savedDuration={thinkingMsg.thinkingDuration}
+              onClose={() => setThinkingPanelMsgId(null)}
+            />
+          </div>
+        )}
+      </div>
+
       {/* Entity drawer for chat view */}
       <EntityDrawer
         open={drawerOpen}
         onClose={() => setDrawerOpen(false)}
         onSelect={handleSearch}
       />
+
     </div>
   );
 }

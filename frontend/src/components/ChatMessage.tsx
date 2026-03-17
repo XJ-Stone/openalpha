@@ -12,11 +12,13 @@ export interface Message {
   sources?: Source[];
   isStreaming?: boolean;
   isThinking?: boolean;
+  thinkingDuration?: number; // elapsed seconds when thinking finished
 }
 
 interface ChatMessageProps {
   message: Message;
   onRetry?: () => void;
+  onToggleThinking?: () => void;
 }
 
 function ActionButtons({
@@ -72,9 +74,9 @@ function ActionButtons({
             <path fillRule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clipRule="evenodd" />
           </svg>
         ) : (
-          <svg className="w-3.5 h-3.5" viewBox="0 0 20 20" fill="currentColor">
-            <path d="M8 2a1 1 0 000 2h2a1 1 0 100-2H8z" />
-            <path d="M3 5a2 2 0 012-2 3 3 0 003 3h2a3 3 0 003-3 2 2 0 012 2v6h-4.586l1.293-1.293a1 1 0 00-1.414-1.414l-3 3a1 1 0 000 1.414l3 3a1 1 0 001.414-1.414L10.414 13H15v3a2 2 0 01-2 2H5a2 2 0 01-2-2V5zM15 11h2a1 1 0 110 2h-2v-2z" />
+          <svg className="w-3.5 h-3.5" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+            <rect x="9" y="9" width="13" height="13" rx="2" ry="2" />
+            <path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1" />
           </svg>
         )}
       </button>
@@ -106,7 +108,7 @@ function ActionButtons({
   );
 }
 
-export default function ChatMessage({ message, onRetry }: ChatMessageProps) {
+export default function ChatMessage({ message, onRetry, onToggleThinking }: ChatMessageProps) {
   if (message.role === "user") {
     return (
       <div className="flex justify-end mb-6">
@@ -128,6 +130,8 @@ export default function ChatMessage({ message, onRetry }: ChatMessageProps) {
           <ThinkingSteps
             steps={message.steps}
             isActive={message.isThinking ?? false}
+            savedDuration={message.thinkingDuration}
+            onTogglePanel={onToggleThinking}
           />
         )}
 

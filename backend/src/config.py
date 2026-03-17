@@ -31,6 +31,9 @@ class Settings(BaseSettings):
     ollama_base_url: str = "http://localhost:11434"
     ollama_model: str = "llama3"
 
+    # CORS (comma-separated origins, or "*" for dev)
+    cors_origins: str = "*"
+
     # Display
     verbose: bool = False
 

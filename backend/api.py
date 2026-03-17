@@ -187,10 +187,17 @@ app = FastAPI(
     description="AI-powered investor research engine",
 )
 
+_settings = get_settings()
+_cors_origins = (
+    ["*"]
+    if _settings.cors_origins == "*"
+    else [o.strip() for o in _settings.cors_origins.split(",")]
+)
+
 app.add_middleware(
     CORSMiddleware,
-    allow_origins=["*"],  # dev — lock down in production
-    allow_credentials=True,
+    allow_origins=_cors_origins,
+    allow_credentials=_settings.cors_origins != "*",
     allow_methods=["*"],
     allow_headers=["*"],
 )

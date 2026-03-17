@@ -708,11 +708,10 @@ class Agent:
         self,
         question: str,
     ) -> AsyncGenerator[StreamEvent, None]:
-        """Stream answer when no matching data found."""
-        yield StatusEvent(phase="reduce", detail="Answering from general knowledge...")
-        messages = self._build_no_data_messages(question)
-        async for chunk in self._async_stream(messages):
-            yield ContentEvent(token=chunk)
+        """Emit a static message when no matching data found, encouraging contribution."""
+        yield StatusEvent(phase="reduce", detail="No coverage in knowledge base")
+        answer = self._no_data_message(question)
+        yield ContentEvent(token=answer)
 
     # -----------------------------------------------------------------------
     # Async streaming helper
@@ -888,23 +887,25 @@ class Agent:
             {"role": "user", "content": "\n\n".join(user_parts)},
         ]
 
-    def _build_no_data_messages(self, question: str) -> list[dict[str, str]]:
-        system_prompt = load_system_prompt(self._settings.prompts_dir)
-        messages: list[dict[str, str]] = []
-        if system_prompt:
-            messages.append({"role": "system", "content": system_prompt})
-        messages.append(
-            {
-                "role": "user",
-                "content": (
-                    "(No matching investor data was found in the knowledge base. "
-                    "Answer to the best of your general knowledge and note the "
-                    "limitation.)\n\n"
-                    f"# Question\n\n{question}"
-                ),
-            }
+    @staticmethod
+    def _no_data_message(question: str) -> str:
+        """Return a static message when no data matches, encouraging contribution."""
+        return (
+            "## No Coverage Yet\n\n"
+            f"None of the investors in our knowledge base have publicly commented "
+            f"on this topic — so we don't have sourced opinions to show you.\n\n"
+            "OpenAlpha only surfaces views that investors actually expressed in "
+            "podcasts, newsletters, interviews, and conferences. We never guess "
+            "or use AI-generated opinions.\n\n"
+            "### Help us grow the knowledge base\n\n"
+            "If you know of a reputable source (podcast episode, Substack post, "
+            "interview transcript) where an investor discusses this topic, "
+            "consider contributing it:\n\n"
+            "1. **Easiest** — [open an issue](https://github.com/XJ-Stone/openalpha/issues/new) "
+            "with the source link and we'll ingest it\n"
+            "2. **Hands-on** — follow the [contribution guide](https://github.com/XJ-Stone/openalpha/blob/main/CONTRIBUTING.md) "
+            "to add an appearance file and open a PR\n"
         )
-        return messages
 
     # -----------------------------------------------------------------------
     # Grouping and batching for reduce phase
@@ -1137,8 +1138,10 @@ class Agent:
     def _answer_no_data(
         self, question: str, *, stream: bool
     ) -> str | Generator[str, None, None]:
-        messages = self._build_no_data_messages(question)
-        return self._provider.chat(messages, stream=stream)
+        answer = self._no_data_message(question)
+        if stream:
+            return iter([answer])  # type: ignore[return-value]
+        return answer
 
     def reload_index(self) -> None:
         """Force-reload the investor index from disk."""

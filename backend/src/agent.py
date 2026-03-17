@@ -135,13 +135,16 @@ within each group.
 Synthesize these into a clear, well-structured answer.
 
 ## Output structure
-- **Executive summary first**: Open with a bold 2-3 sentence summary that \
-  directly answers the question. This should be the bottom line — a reader \
-  who stops here should have the core answer. Anchor on the most recent views.
-- Then organize supporting detail by theme or company, using markdown headers
-- Within each section, lead with the most recent evidence and work backwards
-- If positions evolved over time, include a brief "View Evolution" note
-- Keep total response focused — depth over breadth
+- **Start with "## Executive Summary"**: 2-3 sentences that directly answer \
+  the question using the most recent data. A reader who stops here should \
+  have the core answer with a date and citation.
+- Then organize supporting detail in subsequent sections with markdown headers.
+- **Recency order is mandatory**: within every section, start with the most \
+  recent evidence and work backwards in time. Do NOT organize chronologically \
+  from oldest to newest. The reader cares about the current view first.
+- If positions evolved over time, note it briefly inline or add a short \
+  "View Evolution" note at the end.
+- Keep total response focused — depth over breadth.
 - Write in flowing paragraphs within each section. Do NOT insert line \
   breaks mid-paragraph or between closely related sentences.
 
@@ -159,7 +162,7 @@ Synthesize these into a clear, well-structured answer.
 - If data is from a single investor, trace how their view evolved
 
 ## Recency
-- The most recent opinion is the headline. Older views are context.
+- The most recent opinion is the headline. Older views are supporting context.
 - Always include the date when stating an investor's current position \
   (e.g. "As of March 2026, Duan is bullish on AMZN [1]" not just \
   "Duan is bullish on AMZN [1]"). The reader needs to see at a glance \

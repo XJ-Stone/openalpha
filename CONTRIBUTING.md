@@ -98,12 +98,26 @@ date: 2025-01-14                 # ISO date of the appearance
 source: BG2Pod                   # Source name (podcast, publication, etc.)
 type: podcast                    # One of: podcast, substack, interview, conference, tv, twitter
 url: https://...                 # Link to the original source
-companies: [NVDA, MSFT, SNOW]   # Tickers mentioned (THIS IS THE SEARCH INDEX)
-sectors: [AI-infrastructure]     # Sectors discussed
+companies: [NVDA, MSFT, SNOW]   # Flat ticker list (THIS IS THE SEARCH INDEX)
+topics: [ai-infrastructure, cloud-repatriation]  # Flat topic list (also searched)
+companies_detail:                # Focus levels for token budgeting
+  - ticker: NVDA
+    focus: primary               # primary | secondary | mention
+  - ticker: MSFT
+    focus: secondary
+  - ticker: SNOW
+    focus: mention
+topics_detail:
+  - topic: ai-infrastructure
+    focus: primary
+  - topic: cloud-repatriation
+    focus: secondary
 ---
 ```
 
-**The `companies` array is the search index.** If a user asks "What do investors think about NVDA?" the search engine finds appearances where `NVDA` appears in the `companies` frontmatter. If you forget a ticker, that opinion won't surface in search results.
+**Flat lists (`companies`, `topics`) are the search index.** The search engine greps these to find relevant files. The `_detail` sections with focus levels control how much detail the AI extracts when reading the file (primary gets full analysis, mention gets one sentence).
+
+If you use the generation scripts, all of this is produced automatically — you don't need to write it by hand.
 
 ### Content guidelines
 
@@ -111,7 +125,7 @@ sectors: [AI-infrastructure]     # Sectors discussed
 - **Date everything.** Opinions change. The date is essential context.
 - **No fabricated quotes.** Use direct quotes when the investor said something memorable. Otherwise, paraphrase clearly (e.g., "Gerstner argued that..." not "Gerstner said '...'").
 - **Include sentiment and conviction.** For each company view, note whether the investor is Bullish/Bearish/Neutral/Mixed and estimate conviction (high, medium, mentioned-in-passing).
-- **Capture broader themes.** Market-level or sector-level views that aren't tied to a single company go in the "Broader Themes" section.
+- **Capture broader topics.** Market-level or thematic views that aren't tied to a single company go in the "Broader Topics" section.
 
 ### Adding a new investor
 
@@ -125,6 +139,21 @@ Before adding appearances, the investor needs a directory and profile:
 ```bash
 cd backend
 python scripts/generate_profile.py --investor <slug>
+```
+
+#### Re-indexing existing appearances
+
+If the frontmatter schema changes (e.g. new fields like `topics_detail`), you can re-run ingestion to update existing files. The substack script skips files that already exist, so to force re-extraction, delete the files first and re-ingest:
+
+```bash
+cd backend
+
+# Re-ingest all posts for an investor (skips existing files)
+python data-ingestion/substack.py --url https://robonomics.substack.com --months 24
+
+# To force re-extraction: delete appearances first, then re-ingest
+rm investors/<slug>/appearances/*.md
+python data-ingestion/substack.py --url <substack-url> --months 24
 ```
 
 ### After adding appearances: run post-ingest
@@ -145,7 +174,7 @@ python scripts/post_ingest.py --all --dry-run
 ```
 
 This does three things (no LLM needed):
-1. **Updates `profile.md` frontmatter** — aggregates `companies`, `sectors`, and `sources` from all appearances
+1. **Updates `profile.md` frontmatter** — aggregates `companies`, `topics`, and `sources` from all appearances
 2. **Regenerates `INVESTORS.md`** — the top-level index table with accurate appearance counts
 3. **Runs lint** — catches frontmatter issues (missing fields, invalid tickers, etc.)
 
@@ -279,7 +308,7 @@ These apply to every contribution:
 1. **Source everything.** No unsourced claims in the knowledge base.
 2. **Date everything.** Opinions without dates are nearly useless.
 3. **No fabricated quotes.** If you're not sure of the exact words, paraphrase.
-4. **Frontmatter consistency.** The `companies` array is the search index. Missing tickers mean missing search results.
+4. **Frontmatter consistency.** The `companies` and `topics` arrays are the search index. Missing tickers or topics mean missing search results.
 5. **Use standard tickers.** `NVDA` not `Nvidia`, `MSFT` not `Microsoft`, `META` not `Facebook`.
 6. **Keep appearance files focused.** One source per file. If an investor appeared on two podcasts the same day, those are two files.
 7. **Review LLM-generated content.** The generation scripts are helpful but not infallible. Always verify against the source.

@@ -4,8 +4,32 @@ date: 2025-12-19
 source: Robonomics
 type: substack
 url: https://robonomics.substack.com/p/micro-drama-impact
-companies: [HONGGUO, BYTEDANCE, FANQIE, DOUYIN, BILI, YOUKU, IQ, TCEHY, MANGO TV, KUAISHOU]
-sectors: [short-form-video, streaming-video, china-tech, adtech, ai-generated-content, entertainment]
+companies: [BYTEDANCE, BILI, IQ, TCEHY, BABA, 1024.HK, MANGO TV]
+topics: [micro-drama-format, short-form-monetization, ai-assisted-production, platform-content-flywheel]
+companies_detail:
+  - ticker: BYTEDANCE
+    focus: primary
+  - ticker: BILI
+    focus: mention
+  - ticker: IQ
+    focus: mention
+  - ticker: TCEHY
+    focus: mention
+  - ticker: BABA
+    focus: mention
+  - ticker: 1024.HK
+    focus: secondary
+  - ticker: MANGO TV
+    focus: mention
+topics_detail:
+  - topic: micro-drama-format
+    focus: primary
+  - topic: short-form-monetization
+    focus: secondary
+  - topic: ai-assisted-production
+    focus: secondary
+  - topic: platform-content-flywheel
+    focus: secondary
 source_length: 500
 fetch_method: substack_api
 fetch_id: micro-drama-impact

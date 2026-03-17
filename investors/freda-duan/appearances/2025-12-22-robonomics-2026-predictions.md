@@ -4,8 +4,52 @@ date: 2025-12-22
 source: Robonomics
 type: substack
 url: https://robonomics.substack.com/p/2026-predictions
-companies: [NVDA, OPENAI, WAYMO, AUR, TSLA, META, GOOGL, AAPL, SPACEX, ANTHROPIC, SHOP, WMT, AMZN, MSFT, TIKTOK, MINIMAX, UNITREE]
-sectors: [ai, autonomous-vehicles, multimodal-ai, edge-ai, enterprise-ai, space, robotics, agentic-commerce, e-commerce, semiconductors, developer-tools, prediction-markets, china-tech, macro]
+companies: [OPENAI, GOOGL, AUR, TSLA, META, AAPL, MSFT, NVDA, SPACEX, AMZN, SHOP, WMT, ANTHROPIC, UNITREE, MINIMAX, BYTEDANCE]
+topics: [autonomous-vehicles, multimodal-ai, enterprise-ai, agentic-commerce, edge-ai]
+companies_detail:
+  - ticker: OPENAI
+    focus: secondary
+  - ticker: GOOGL
+    focus: secondary
+  - ticker: AUR
+    focus: secondary
+  - ticker: TSLA
+    focus: secondary
+  - ticker: META
+    focus: secondary
+  - ticker: AAPL
+    focus: secondary
+  - ticker: MSFT
+    focus: secondary
+  - ticker: NVDA
+    focus: mention
+  - ticker: SPACEX
+    focus: secondary
+  - ticker: AMZN
+    focus: mention
+  - ticker: SHOP
+    focus: mention
+  - ticker: WMT
+    focus: mention
+  - ticker: ANTHROPIC
+    focus: secondary
+  - ticker: UNITREE
+    focus: mention
+  - ticker: MINIMAX
+    focus: mention
+  - ticker: BYTEDANCE
+    focus: mention
+topics_detail:
+  - topic: autonomous-vehicles
+    focus: primary
+  - topic: multimodal-ai
+    focus: primary
+  - topic: enterprise-ai
+    focus: secondary
+  - topic: agentic-commerce
+    focus: secondary
+  - topic: edge-ai
+    focus: secondary
 source_length: 1134
 fetch_method: substack_api
 fetch_id: 2026-predictions

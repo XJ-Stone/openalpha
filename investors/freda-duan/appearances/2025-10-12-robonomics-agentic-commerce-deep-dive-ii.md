@@ -4,8 +4,36 @@ date: 2025-10-12
 source: Robonomics
 type: substack
 url: https://robonomics.substack.com/p/agentic-commerce-deep-dive-ii
-companies: [OPENAI, PERPLEXITY, STRIPE, SHOP, GOOG, AAPL, PDD, BABA]
-sectors: [ai, agentic-commerce, ads, payments, marketplaces, e-commerce, infrastructure, travel, creator-economy, china-tech]
+companies: [SHOP, STRIPE, OPENAI, PERPLEXITY, GOOGL, AAPL, PDD, BABA]
+topics: [agentic-commerce, ads-vs-take-rate, platform-economics, payments, digital-advertising]
+companies_detail:
+  - ticker: SHOP
+    focus: secondary
+  - ticker: STRIPE
+    focus: secondary
+  - ticker: OPENAI
+    focus: secondary
+  - ticker: PERPLEXITY
+    focus: mention
+  - ticker: GOOGL
+    focus: secondary
+  - ticker: AAPL
+    focus: mention
+  - ticker: PDD
+    focus: mention
+  - ticker: BABA
+    focus: mention
+topics_detail:
+  - topic: agentic-commerce
+    focus: primary
+  - topic: ads-vs-take-rate
+    focus: secondary
+  - topic: platform-economics
+    focus: secondary
+  - topic: payments
+    focus: secondary
+  - topic: digital-advertising
+    focus: secondary
 source_length: 1141
 fetch_method: substack_api
 fetch_id: agentic-commerce-deep-dive-ii

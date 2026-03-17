@@ -4,8 +4,30 @@ date: 2025-11-27
 source: Robonomics
 type: substack
 url: https://robonomics.substack.com/p/search-the-moat-of-the-search-index
-companies: [GOOGL, MSFT, OPENAI, ANTHROPIC, PERPLEXITY, BRAVE]
-sectors: [ai, search-engine, nlp, internet-search]
+companies: [GOOGL, MSFT, OPENAI, ANTHROPIC, BRAVE, PERPLEXITY]
+topics: [search-index-moat, ai-agents, retrieval-synthesis, freshness-limitations]
+companies_detail:
+  - ticker: GOOGL
+    focus: mention
+  - ticker: MSFT
+    focus: mention
+  - ticker: OPENAI
+    focus: mention
+  - ticker: ANTHROPIC
+    focus: mention
+  - ticker: BRAVE
+    focus: mention
+  - ticker: PERPLEXITY
+    focus: mention
+topics_detail:
+  - topic: search-index-moat
+    focus: primary
+  - topic: ai-agents
+    focus: secondary
+  - topic: retrieval-synthesis
+    focus: secondary
+  - topic: freshness-limitations
+    focus: mention
 source_length: 270
 fetch_method: substack_api
 fetch_id: search-the-moat-of-the-search-index

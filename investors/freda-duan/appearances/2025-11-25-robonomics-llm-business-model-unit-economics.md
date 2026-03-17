@@ -4,8 +4,36 @@ date: 2025-11-25
 source: Robonomics
 type: substack
 url: https://robonomics.substack.com/p/llm-unit-economics
-companies: [OPENAI, ANTHROPIC, GOOGL, MSFT, AAPL, META, AMZN, NFLX, DIS]
-sectors: [ai, ml-infrastructure, cloud-capex, streaming-media, search, digital-advertising, consumer-tech]
+companies: [OPENAI, ANTHROPIC, GOOG, MSFT, AAPL, META, AMZN, NFLX, DIS]
+topics: [unit-economics, ai-infrastructure, ai-agents, model-pricing-power]
+companies_detail:
+  - ticker: OPENAI
+    focus: primary
+  - ticker: ANTHROPIC
+    focus: primary
+  - ticker: GOOG
+    focus: secondary
+  - ticker: MSFT
+    focus: secondary
+  - ticker: AAPL
+    focus: secondary
+  - ticker: META
+    focus: secondary
+  - ticker: AMZN
+    focus: secondary
+  - ticker: NFLX
+    focus: mention
+  - ticker: DIS
+    focus: mention
+topics_detail:
+  - topic: unit-economics
+    focus: primary
+  - topic: ai-infrastructure
+    focus: secondary
+  - topic: ai-agents
+    focus: secondary
+  - topic: model-pricing-power
+    focus: mention
 source_length: 1258
 fetch_method: substack_api
 fetch_id: llm-unit-economics

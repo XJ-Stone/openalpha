@@ -4,8 +4,26 @@ date: 2026-01-09
 source: Robonomics
 type: substack
 url: https://robonomics.substack.com/p/aapl-2026-setup
-companies: [AAPL, GOOGL, SAMSUNG, OPENAI]
-sectors: [ai, consumer-electronics, mobile-devices, cloud-infrastructure, semiconductors, seasonality]
+companies: [AAPL, GOOGL, SSNLF, OPENAI]
+topics: [llm-integration, inference-infrastructure, model-pricing-power, flash-memory]
+companies_detail:
+  - ticker: AAPL
+    focus: primary
+  - ticker: GOOGL
+    focus: secondary
+  - ticker: SSNLF
+    focus: mention
+  - ticker: OPENAI
+    focus: mention
+topics_detail:
+  - topic: llm-integration
+    focus: primary
+  - topic: inference-infrastructure
+    focus: secondary
+  - topic: model-pricing-power
+    focus: secondary
+  - topic: flash-memory
+    focus: mention
 source_length: 956
 fetch_method: substack_api
 fetch_id: aapl-2026-setup

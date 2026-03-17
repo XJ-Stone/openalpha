@@ -4,8 +4,28 @@ date: 2026-01-21
 source: Robonomics
 type: substack
 url: https://robonomics.substack.com/p/googl-ads-tam
-companies: [OPENAI, TIKTOK, AMZN, GOOGL, META, BERNSTEIN, GS]
-sectors: [digital-advertising, ecommerce, ad-tech, consumer-internet, media, ai, services]
+companies: [GOOGL, AMZN, META, OPENAI, BYTEDANCE]
+topics: [trade-and-promo, digital-advertising, ecommerce-ads, linear-tv-advertising]
+companies_detail:
+  - ticker: GOOGL
+    focus: primary
+  - ticker: AMZN
+    focus: primary
+  - ticker: META
+    focus: secondary
+  - ticker: OPENAI
+    focus: secondary
+  - ticker: BYTEDANCE
+    focus: mention
+topics_detail:
+  - topic: trade-and-promo
+    focus: primary
+  - topic: digital-advertising
+    focus: primary
+  - topic: ecommerce-ads
+    focus: secondary
+  - topic: linear-tv-advertising
+    focus: secondary
 source_length: 489
 fetch_method: substack_api
 fetch_id: googl-ads-tam

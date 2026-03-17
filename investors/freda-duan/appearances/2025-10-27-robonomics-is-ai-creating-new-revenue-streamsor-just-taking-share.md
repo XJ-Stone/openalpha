@@ -4,8 +4,28 @@ date: 2025-10-27
 source: Robonomics
 type: substack
 url: https://robonomics.substack.com/p/is-ai-creating-new-revenue-streamsor
-companies: [OPENAI, GOOGL, META, Parks Associates, PwC, Nielsen, TheDesk.net]
-sectors: [ai, digital-advertising, e-commerce, payments, saas-cloud, media-entertainment, macro-economics, customer-service, labor-automation, productivity]
+companies: [OPENAI, GOOGL, META, AMZN, TGT]
+topics: [ai-revenue-creation, digital-advertising, enterprise-ai, labor-automation]
+companies_detail:
+  - ticker: OPENAI
+    focus: primary
+  - ticker: GOOGL
+    focus: mention
+  - ticker: META
+    focus: mention
+  - ticker: AMZN
+    focus: mention
+  - ticker: TGT
+    focus: mention
+topics_detail:
+  - topic: ai-revenue-creation
+    focus: primary
+  - topic: digital-advertising
+    focus: secondary
+  - topic: enterprise-ai
+    focus: secondary
+  - topic: labor-automation
+    focus: secondary
 source_length: 905
 fetch_method: substack_api
 fetch_id: is-ai-creating-new-revenue-streamsor

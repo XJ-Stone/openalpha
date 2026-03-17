@@ -5,7 +5,25 @@ source: Robonomics
 type: substack
 url: https://robonomics.substack.com/p/ai-roi-202601
 companies: [GOOGL, META, AMZN, MSFT, ORCL]
-sectors: [cloud-infrastructure, internet-platforms, enterprise-software, ecommerce, corporate-finance]
+topics: [capex-trends, capex-as-cfo, fcf-margins]
+companies_detail:
+  - ticker: GOOGL
+    focus: secondary
+  - ticker: META
+    focus: secondary
+  - ticker: AMZN
+    focus: secondary
+  - ticker: MSFT
+    focus: secondary
+  - ticker: ORCL
+    focus: secondary
+topics_detail:
+  - topic: capex-trends
+    focus: primary
+  - topic: capex-as-cfo
+    focus: secondary
+  - topic: fcf-margins
+    focus: secondary
 source_length: 74
 fetch_method: substack_api
 fetch_id: ai-roi-202601

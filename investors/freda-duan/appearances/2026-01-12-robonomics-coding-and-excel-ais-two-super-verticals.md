@@ -4,8 +4,32 @@ date: 2026-01-12
 source: Robonomics
 type: substack
 url: https://robonomics.substack.com/p/coding-and-excel-ais-two-super-verticals
-companies: [OPENAI, ANTHROPIC, MSFT, GOOGL, KINGSOFT, AIRTABLE, SMAR]
-sectors: [ai, developer-tools, productivity-software, spreadsheets, finance, enterprise-software, saas]
+companies: [OPENAI, ANTHROPIC, MSFT, GOOGL, 3888.HK, AIRTABLE, SMAR]
+topics: [developer-tools, spreadsheet-productivity, product-led-growth, finance-wedge]
+companies_detail:
+  - ticker: OPENAI
+    focus: secondary
+  - ticker: ANTHROPIC
+    focus: secondary
+  - ticker: MSFT
+    focus: secondary
+  - ticker: GOOGL
+    focus: secondary
+  - ticker: 3888.HK
+    focus: secondary
+  - ticker: AIRTABLE
+    focus: mention
+  - ticker: SMAR
+    focus: mention
+topics_detail:
+  - topic: developer-tools
+    focus: primary
+  - topic: spreadsheet-productivity
+    focus: primary
+  - topic: product-led-growth
+    focus: secondary
+  - topic: finance-wedge
+    focus: secondary
 source_length: 623
 fetch_method: substack_api
 fetch_id: coding-and-excel-ais-two-super-verticals

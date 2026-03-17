@@ -5,7 +5,25 @@ source: Robonomics
 type: substack
 url: https://robonomics.substack.com/p/china-observations
 companies: [BAMBU LAB, ECOFLOW, INSTA360, DOUBAO]
-sectors: [china-macro, consumer-hardware, robotics, aerospace, semiconductors, healthcare, biotech, real-estate, ev, cleantech-solar, voice-interfaces, consumer]
+topics: [china-industrial-policy, china-consumer-recovery, china-healthcare-execution, china-consumer-hardware]
+companies_detail:
+  - ticker: BAMBU LAB
+    focus: mention
+  - ticker: ECOFLOW
+    focus: mention
+  - ticker: INSTA360
+    focus: mention
+  - ticker: DOUBAO
+    focus: mention
+topics_detail:
+  - topic: china-industrial-policy
+    focus: primary
+  - topic: china-consumer-recovery
+    focus: secondary
+  - topic: china-healthcare-execution
+    focus: secondary
+  - topic: china-consumer-hardware
+    focus: secondary
 source_length: 1009
 fetch_method: substack_api
 fetch_id: china-observations

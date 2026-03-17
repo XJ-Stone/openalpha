@@ -4,8 +4,42 @@ date: 2025-12-01
 source: Robonomics
 type: substack
 url: https://robonomics.substack.com/p/os-agent-bytes-mobile-assistant-and
-companies: [BYTEDANCE, AAPL, GOOGL, OPENAI, VIVO, OPPO, HONOR, JD, MEITUAN, TAOBAO, WECHAT]
-sectors: [ai, mobile-os, consumer-hardware, china-tech, platforms, voice-ui, mobile-commerce]
+companies: [BYTEDANCE, AAPL, GOOGL, OPENAI, VIVO, OPPO, HONOR, JD, MEITUAN, TAOBAO, WECHAT, KFC]
+topics: [os-level-agents, agentic-commerce, ios-android-divergence, voice-assistants]
+companies_detail:
+  - ticker: BYTEDANCE
+    focus: primary
+  - ticker: AAPL
+    focus: secondary
+  - ticker: GOOGL
+    focus: secondary
+  - ticker: OPENAI
+    focus: secondary
+  - ticker: VIVO
+    focus: mention
+  - ticker: OPPO
+    focus: mention
+  - ticker: HONOR
+    focus: mention
+  - ticker: JD
+    focus: mention
+  - ticker: MEITUAN
+    focus: mention
+  - ticker: TAOBAO
+    focus: mention
+  - ticker: WECHAT
+    focus: mention
+  - ticker: KFC
+    focus: mention
+topics_detail:
+  - topic: os-level-agents
+    focus: primary
+  - topic: agentic-commerce
+    focus: secondary
+  - topic: ios-android-divergence
+    focus: secondary
+  - topic: voice-assistants
+    focus: secondary
 source_length: 503
 fetch_method: substack_api
 fetch_id: os-agent-bytes-mobile-assistant-and

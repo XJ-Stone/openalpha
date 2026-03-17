@@ -4,8 +4,40 @@ date: 2025-11-05
 source: Robonomics
 type: substack
 url: https://robonomics.substack.com/p/hood-options
-companies: [HOOD, CITADEL, NASDAQ, CBOE, OCC, SPX, SPY, ES, QQQ, IWM, GLD, SLV, TLT, UNG, USO, REUTERS, VIX, NDX]
-sectors: [options, derivatives, retail-trading, etf, index-options, volatility, market-structure, us-equities]
+companies: [HOOD, SPX, SPY, QQQ, IWM, GLD, SLV, TLT, UNG, USO, ES]
+topics: [retail-options-participation, 0dte-options, spx-dominance, etf-daily-expirations]
+companies_detail:
+  - ticker: HOOD
+    focus: secondary
+  - ticker: SPX
+    focus: secondary
+  - ticker: SPY
+    focus: mention
+  - ticker: QQQ
+    focus: mention
+  - ticker: IWM
+    focus: mention
+  - ticker: GLD
+    focus: mention
+  - ticker: SLV
+    focus: mention
+  - ticker: TLT
+    focus: mention
+  - ticker: UNG
+    focus: mention
+  - ticker: USO
+    focus: mention
+  - ticker: ES
+    focus: mention
+topics_detail:
+  - topic: retail-options-participation
+    focus: primary
+  - topic: 0dte-options
+    focus: secondary
+  - topic: spx-dominance
+    focus: secondary
+  - topic: etf-daily-expirations
+    focus: mention
 source_length: 383
 fetch_method: substack_api
 fetch_id: hood-options

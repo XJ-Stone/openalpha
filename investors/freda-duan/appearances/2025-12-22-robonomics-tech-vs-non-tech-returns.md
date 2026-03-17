@@ -4,8 +4,24 @@ date: 2025-12-22
 source: Robonomics
 type: substack
 url: https://robonomics.substack.com/p/tech-vs-non-tech-returns
-companies: [QQQ, DJIA]
-sectors: [technology, value, energy, financials, industrials, commodities, macro-rates, equities, etfs]
+companies: [QQQ, DJIA, SPX]
+topics: [growth-vs-value-rotation, rate-impact-on-valuation, valuation-resets, secular-tech-earnings]
+companies_detail:
+  - ticker: QQQ
+    focus: primary
+  - ticker: DJIA
+    focus: primary
+  - ticker: SPX
+    focus: secondary
+topics_detail:
+  - topic: growth-vs-value-rotation
+    focus: primary
+  - topic: rate-impact-on-valuation
+    focus: secondary
+  - topic: valuation-resets
+    focus: secondary
+  - topic: secular-tech-earnings
+    focus: mention
 source_length: 196
 fetch_method: substack_api
 fetch_id: tech-vs-non-tech-returns

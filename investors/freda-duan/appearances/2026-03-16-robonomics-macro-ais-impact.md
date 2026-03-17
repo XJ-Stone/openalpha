@@ -5,7 +5,21 @@ source: Robonomics
 type: substack
 url: https://robonomics.substack.com/p/macro-ais-impact
 companies: [T, GM]
-topics: [macro, ai, labor-automation, productivity]
+topics: [labor-automation, gen-ai, macro, monetary-fiscal-response]
+companies_detail:
+  - ticker: T
+    focus: secondary
+  - ticker: GM
+    focus: mention
+topics_detail:
+  - topic: labor-automation
+    focus: primary
+  - topic: gen-ai
+    focus: secondary
+  - topic: macro
+    focus: secondary
+  - topic: monetary-fiscal-response
+    focus: secondary
 source_length: 1246
 fetch_method: substack_api
 fetch_id: macro-ais-impact

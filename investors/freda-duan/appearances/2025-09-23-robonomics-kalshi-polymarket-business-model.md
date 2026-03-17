@@ -4,8 +4,48 @@ date: 2025-09-23
 source: Robonomics
 type: substack
 url: https://robonomics.substack.com/p/kalshi-polymarket-business-model
-companies: [POLYMARKET, KALSHI, HOOD, COIN, IBKR, X, XAI, BLOOMBERG, CME, FLUT, DKNG, QCEX]
-sectors: [prediction-markets, fintech, crypto, sports-betting, regulation, data-platforms, retail-investing, financial-markets]
+companies: [POLYMARKET, KALSHI, HOOD, COIN, IBKR, X, XAI, FLUT, DKNG, QCEX, CME, SOLANA, TSLA, NFLX, PDD]
+topics: [prediction-markets, knowledge-market-platform, crypto-vs-regulated, retail-distribution]
+companies_detail:
+  - ticker: POLYMARKET
+    focus: primary
+  - ticker: KALSHI
+    focus: primary
+  - ticker: HOOD
+    focus: secondary
+  - ticker: COIN
+    focus: secondary
+  - ticker: IBKR
+    focus: secondary
+  - ticker: X
+    focus: secondary
+  - ticker: XAI
+    focus: secondary
+  - ticker: FLUT
+    focus: secondary
+  - ticker: DKNG
+    focus: secondary
+  - ticker: QCEX
+    focus: secondary
+  - ticker: CME
+    focus: secondary
+  - ticker: SOLANA
+    focus: mention
+  - ticker: TSLA
+    focus: mention
+  - ticker: NFLX
+    focus: mention
+  - ticker: PDD
+    focus: mention
+topics_detail:
+  - topic: prediction-markets
+    focus: primary
+  - topic: knowledge-market-platform
+    focus: secondary
+  - topic: crypto-vs-regulated
+    focus: secondary
+  - topic: retail-distribution
+    focus: secondary
 source_length: 1712
 fetch_method: substack_api
 fetch_id: kalshi-polymarket-business-model

@@ -4,8 +4,30 @@ date: 2026-01-16
 source: Robonomics
 type: substack
 url: https://robonomics.substack.com/p/llm-connectors-and-enterprise-adoption
-companies: [GOOGL, MSFT, AAPL, OPENAI, ANTHROPIC, Slack, Gmail, Google Calendar, Google Drive]
-sectors: [ai, enterprise-software, productivity-software, api-integration, voice-assistants]
+companies: [GOOGL, OPENAI, ANTHROPIC, MSFT, AAPL, CRM]
+topics: [llm-integration, enterprise-ai, integration-platforms, go-to-market]
+companies_detail:
+  - ticker: GOOGL
+    focus: secondary
+  - ticker: OPENAI
+    focus: secondary
+  - ticker: ANTHROPIC
+    focus: secondary
+  - ticker: MSFT
+    focus: secondary
+  - ticker: AAPL
+    focus: secondary
+  - ticker: CRM
+    focus: mention
+topics_detail:
+  - topic: llm-integration
+    focus: primary
+  - topic: enterprise-ai
+    focus: secondary
+  - topic: integration-platforms
+    focus: secondary
+  - topic: go-to-market
+    focus: mention
 source_length: 320
 fetch_method: substack_api
 fetch_id: llm-connectors-and-enterprise-adoption

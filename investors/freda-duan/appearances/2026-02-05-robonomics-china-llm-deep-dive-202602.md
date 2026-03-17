@@ -4,8 +4,40 @@ date: 2026-02-05
 source: Robonomics
 type: substack
 url: https://robonomics.substack.com/p/china-llm-deep-dive-202602
-companies: [DOUBAO, BYTEDANCE, QWEN, BABA, TCEHY, OPENAI, ANTHROPIC, MINIMAX, ZHIPU, KIMI, STEPFUN, LENOVO, MEITUAN]
-sectors: [ai, llm, china-tech, consumer-internet, enterprise-software, voice-ai, video-ai, gen-ai]
+companies: [BYTEDANCE, BABA, TCEHY, OPENAI, ANTHROPIC, MINIMAX, ZHIPU, KIMI, STEPFUN, LNVGY, MPNGY]
+topics: [china-llm-market, voice-assistants, model-pricing-power, enterprise-ai]
+companies_detail:
+  - ticker: BYTEDANCE
+    focus: primary
+  - ticker: BABA
+    focus: secondary
+  - ticker: TCEHY
+    focus: secondary
+  - ticker: OPENAI
+    focus: mention
+  - ticker: ANTHROPIC
+    focus: mention
+  - ticker: MINIMAX
+    focus: secondary
+  - ticker: ZHIPU
+    focus: secondary
+  - ticker: KIMI
+    focus: mention
+  - ticker: STEPFUN
+    focus: mention
+  - ticker: LNVGY
+    focus: mention
+  - ticker: MPNGY
+    focus: mention
+topics_detail:
+  - topic: china-llm-market
+    focus: primary
+  - topic: voice-assistants
+    focus: secondary
+  - topic: model-pricing-power
+    focus: secondary
+  - topic: enterprise-ai
+    focus: secondary
 source_length: 1069
 fetch_method: substack_api
 fetch_id: china-llm-deep-dive-202602

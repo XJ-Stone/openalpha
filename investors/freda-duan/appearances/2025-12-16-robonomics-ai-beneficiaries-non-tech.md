@@ -4,8 +4,46 @@ date: 2025-12-16
 source: Robonomics
 type: substack
 url: https://robonomics.substack.com/p/ai-beneficiaries-non-tech
-companies: [CHRW, UPS, ARCB, NU, BK, JPM, WMT, AV.L, RKT, RIO, BHP, FCX, AES, S&P 500, healthcare, consumer staples, consumer discretionary, technology, communication services]
-sectors: [ai, transportation-logistics, financial-services, retail-supply-chain, insurance, mortgage, mining-utilities, healthcare, consumer-staples, consumer-discretionary, technology, communication-services]
+companies: [CHRW, UPS, ARCB, NU, BK, JPM, WMT, AV, RKT, RIO, BHP, FCX, AES]
+topics: [labor-productivity-eps, route-optimization, underwriting-automation, predictive-maintenance, retail-supply-chain-automation]
+companies_detail:
+  - ticker: CHRW
+    focus: secondary
+  - ticker: UPS
+    focus: secondary
+  - ticker: ARCB
+    focus: secondary
+  - ticker: NU
+    focus: secondary
+  - ticker: BK
+    focus: secondary
+  - ticker: JPM
+    focus: secondary
+  - ticker: WMT
+    focus: secondary
+  - ticker: AV
+    focus: secondary
+  - ticker: RKT
+    focus: secondary
+  - ticker: RIO
+    focus: secondary
+  - ticker: BHP
+    focus: secondary
+  - ticker: FCX
+    focus: secondary
+  - ticker: AES
+    focus: secondary
+topics_detail:
+  - topic: labor-productivity-eps
+    focus: primary
+  - topic: route-optimization
+    focus: secondary
+  - topic: underwriting-automation
+    focus: secondary
+  - topic: predictive-maintenance
+    focus: secondary
+  - topic: retail-supply-chain-automation
+    focus: secondary
 source_length: 601
 fetch_method: substack_api
 fetch_id: ai-beneficiaries-non-tech

@@ -4,8 +4,26 @@ date: 2025-12-16
 source: Robonomics
 type: substack
 url: https://robonomics.substack.com/p/waymo-update-202512
-companies: [WAYMO, UBER, HYUNDAI, JAGUAR, ZEEKR, TIGER GLOBAL]
-sectors: [autonomous-vehicles, robotaxi, automotive, mobility, hardware, sensors, transportation, valuation]
+companies: [GOOGL, HYMTF, TTM, ZEEKR]
+topics: [gmv-run-rate, robotaxis, fleet-management, vehicle-bom-costs]
+companies_detail:
+  - ticker: GOOGL
+    focus: primary
+  - ticker: HYMTF
+    focus: secondary
+  - ticker: TTM
+    focus: mention
+  - ticker: ZEEKR
+    focus: mention
+topics_detail:
+  - topic: gmv-run-rate
+    focus: primary
+  - topic: robotaxis
+    focus: secondary
+  - topic: fleet-management
+    focus: secondary
+  - topic: vehicle-bom-costs
+    focus: secondary
 source_length: 421
 fetch_method: substack_api
 fetch_id: waymo-update-202512

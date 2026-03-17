@@ -4,8 +4,50 @@ date: 2026-02-08
 source: Robonomics
 type: substack
 url: https://robonomics.substack.com/p/org-design-and-reorgs
-companies: [HOOD, REVOLUT, TOSS, META, SHOP, AAPL, SQ, ABNB, PG, UNILEVER, UBER, DOORDASH, COINBASE, SPACEX, xAI, TSLA]
-sectors: [org-design, restructuring, fintech, ai, marketplaces, e-commerce, hardware, consumer-packaged-goods, governance]
+companies: [META, HOOD, REVOLUT, TOSS, SHOP, AAPL, SQ, COIN, UBER, DASH, ABNB, PG, UL, SPACEX, XAI, TSLA]
+topics: [org-design, reorg-investment-opportunity, gm-vs-centralized, ai-org-centralization]
+companies_detail:
+  - ticker: META
+    focus: primary
+  - ticker: HOOD
+    focus: primary
+  - ticker: REVOLUT
+    focus: primary
+  - ticker: TOSS
+    focus: primary
+  - ticker: SHOP
+    focus: primary
+  - ticker: AAPL
+    focus: primary
+  - ticker: SQ
+    focus: secondary
+  - ticker: COIN
+    focus: mention
+  - ticker: UBER
+    focus: mention
+  - ticker: DASH
+    focus: mention
+  - ticker: ABNB
+    focus: mention
+  - ticker: PG
+    focus: mention
+  - ticker: UL
+    focus: mention
+  - ticker: SPACEX
+    focus: mention
+  - ticker: XAI
+    focus: mention
+  - ticker: TSLA
+    focus: mention
+topics_detail:
+  - topic: org-design
+    focus: primary
+  - topic: reorg-investment-opportunity
+    focus: primary
+  - topic: gm-vs-centralized
+    focus: secondary
+  - topic: ai-org-centralization
+    focus: secondary
 source_length: 1403
 fetch_method: substack_api
 fetch_id: org-design-and-reorgs

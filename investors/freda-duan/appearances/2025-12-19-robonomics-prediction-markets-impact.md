@@ -4,8 +4,30 @@ date: 2025-12-19
 source: Robonomics
 type: substack
 url: https://robonomics.substack.com/p/prediction-markets-impact
-companies: [KALSHI, POLYMARKET, HOOD, COIN, DKNG, FLUT, NFL, CA, TX]
-sectors: [prediction-markets, sports-betting, fintech, crypto-exchanges, sports]
+companies: [KALSHI, POLYMARKET, HOOD, COIN, DKNG, FLUT]
+topics: [prediction-markets-adoption, sports-betting-displacement, world-cup-betting, betting-market-sizing]
+companies_detail:
+  - ticker: KALSHI
+    focus: secondary
+  - ticker: POLYMARKET
+    focus: secondary
+  - ticker: HOOD
+    focus: secondary
+  - ticker: COIN
+    focus: secondary
+  - ticker: DKNG
+    focus: secondary
+  - ticker: FLUT
+    focus: secondary
+topics_detail:
+  - topic: prediction-markets-adoption
+    focus: primary
+  - topic: sports-betting-displacement
+    focus: secondary
+  - topic: world-cup-betting
+    focus: secondary
+  - topic: betting-market-sizing
+    focus: secondary
 source_length: 253
 fetch_method: substack_api
 fetch_id: prediction-markets-impact

@@ -4,24 +4,41 @@ date: 2026-03-12
 source: Robonomics
 type: substack
 url: https://robonomics.substack.com/p/agentic-commerce-202603
-companies: [AMZN, SHOP, OPENAI, BABA, BKNG, EXPE, GOOGL, PYPL, TGT, SKIMS, GLOSSIER, SPANX]
-topics: [agentic-commerce, ai-agents, e-commerce, payments, platform-marketplaces]
+companies: [OPENAI, AMZN, SHOP, BKNG, EXPE, BABA, GOOGL, PYPL, TGT, SKIMS, GLOSSIER, SPANX]
+topics: [agentic-commerce, b2b-commerce, platform-marketplaces, checkout]
 companies_detail:
+  - ticker: OPENAI
+    focus: secondary
   - ticker: AMZN
     focus: secondary
   - ticker: SHOP
-    focus: secondary
-  - ticker: OPENAI
-    focus: secondary
-  - ticker: BABA
     focus: secondary
   - ticker: BKNG
     focus: secondary
   - ticker: EXPE
     focus: secondary
+  - ticker: BABA
+    focus: secondary
   - ticker: GOOGL
     focus: secondary
   - ticker: PYPL
+    focus: secondary
+  - ticker: TGT
+    focus: mention
+  - ticker: SKIMS
+    focus: mention
+  - ticker: GLOSSIER
+    focus: mention
+  - ticker: SPANX
+    focus: mention
+topics_detail:
+  - topic: agentic-commerce
+    focus: primary
+  - topic: b2b-commerce
+    focus: secondary
+  - topic: platform-marketplaces
+    focus: secondary
+  - topic: checkout
     focus: secondary
 source_length: 1517
 fetch_method: substack_api

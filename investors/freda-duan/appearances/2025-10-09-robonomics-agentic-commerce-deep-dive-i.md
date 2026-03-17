@@ -4,8 +4,40 @@ date: 2025-10-09
 source: Robonomics
 type: substack
 url: https://robonomics.substack.com/p/agentic-commerce-deep-dive-i
-companies: [OPENAI, PERPLEXITY, ETSY, SHOP, STRIPE, META, GOOG, WMT]
-sectors: [ai, e-commerce, payments, marketplaces, advertising, fintech, consumer-internet]
+companies: [OPENAI, PERPLEXITY, STRIPE, ETSY, SHOP, META, GOOGL, WMT, PYPL, AMZN, BABA]
+topics: [agentic-commerce, platform-marketplaces, payments, agentic-checkout]
+companies_detail:
+  - ticker: OPENAI
+    focus: primary
+  - ticker: PERPLEXITY
+    focus: secondary
+  - ticker: STRIPE
+    focus: secondary
+  - ticker: ETSY
+    focus: secondary
+  - ticker: SHOP
+    focus: secondary
+  - ticker: META
+    focus: secondary
+  - ticker: GOOGL
+    focus: secondary
+  - ticker: WMT
+    focus: mention
+  - ticker: PYPL
+    focus: mention
+  - ticker: AMZN
+    focus: mention
+  - ticker: BABA
+    focus: mention
+topics_detail:
+  - topic: agentic-commerce
+    focus: primary
+  - topic: platform-marketplaces
+    focus: secondary
+  - topic: payments
+    focus: secondary
+  - topic: agentic-checkout
+    focus: secondary
 source_length: 1004
 fetch_method: substack_api
 fetch_id: agentic-commerce-deep-dive-i

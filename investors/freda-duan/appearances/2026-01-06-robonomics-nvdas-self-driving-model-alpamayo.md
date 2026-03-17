@@ -4,8 +4,32 @@ date: 2026-01-06
 source: Robonomics
 type: substack
 url: https://robonomics.substack.com/p/nvdas-self-driving-model-alpamayo
-companies: [NVDA, TSLA, MBG, UBER, LYFT, JAGUAR-LAND-ROVER, LCID, CHINESE-OEMS, HUGGINGFACE, BERKELEY-DEEPDRIVE]
-sectors: [ai, autonomous-vehicles, automotive, semiconductors, mobility-platforms, datasets]
+companies: [NVDA, TSLA, MBG, UBER, LYFT, LCID, TTM]
+topics: [autonomous-vehicles, ai-infrastructure, platform-economics, multi-modal-ai]
+companies_detail:
+  - ticker: NVDA
+    focus: primary
+  - ticker: TSLA
+    focus: secondary
+  - ticker: MBG
+    focus: secondary
+  - ticker: UBER
+    focus: secondary
+  - ticker: LYFT
+    focus: secondary
+  - ticker: LCID
+    focus: mention
+  - ticker: TTM
+    focus: mention
+topics_detail:
+  - topic: autonomous-vehicles
+    focus: primary
+  - topic: ai-infrastructure
+    focus: secondary
+  - topic: platform-economics
+    focus: secondary
+  - topic: multi-modal-ai
+    focus: secondary
 source_length: 625
 fetch_method: substack_api
 fetch_id: nvdas-self-driving-model-alpamayo

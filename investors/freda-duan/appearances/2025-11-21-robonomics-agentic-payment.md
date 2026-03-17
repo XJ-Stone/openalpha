@@ -4,8 +4,48 @@ date: 2025-11-21
 source: Robonomics
 type: substack
 url: https://robonomics.substack.com/p/agentic-payment
-companies: [SHOP, STRIPE, OPENAI, PYPL, AAPL, ADYEN, CHECKOUT, PERPLEXITY, SKIMS]
-sectors: [payments, fintech, ecommerce, ai-agents, platforms, checkout]
+companies: [OPENAI, STRIPE, SHOP, PYPL, AAPL, ADYEN, CHECKOUT, V, MA, AFRM, KLARNA, AMZN, PERPLEXITY, SKIMS, SQ]
+topics: [agentic-commerce, payments, checkout, platform-economics]
+companies_detail:
+  - ticker: OPENAI
+    focus: primary
+  - ticker: STRIPE
+    focus: primary
+  - ticker: SHOP
+    focus: primary
+  - ticker: PYPL
+    focus: mention
+  - ticker: AAPL
+    focus: mention
+  - ticker: ADYEN
+    focus: mention
+  - ticker: CHECKOUT
+    focus: mention
+  - ticker: V
+    focus: mention
+  - ticker: MA
+    focus: mention
+  - ticker: AFRM
+    focus: mention
+  - ticker: KLARNA
+    focus: mention
+  - ticker: AMZN
+    focus: mention
+  - ticker: PERPLEXITY
+    focus: mention
+  - ticker: SKIMS
+    focus: mention
+  - ticker: SQ
+    focus: mention
+topics_detail:
+  - topic: agentic-commerce
+    focus: primary
+  - topic: payments
+    focus: secondary
+  - topic: checkout
+    focus: secondary
+  - topic: platform-economics
+    focus: secondary
 source_length: 437
 fetch_method: substack_api
 fetch_id: agentic-payment

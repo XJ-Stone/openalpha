@@ -4,12 +4,48 @@ date: 2025-12-19
 source: Clouded Judgement
 type: substack
 url: https://cloudedjudgement.substack.com/p/clouded-judgement-121925-the-front
-companies: [SABR, AMS.MC, GALILEO, WORLDSPAN, TRAVELPORT, BKNG, EXPE, CRM, WDAY, NOW, HYPERSCALERS, BLOOMBERG, PITCHBOOK, COMPANY-FILINGS]
-sectors: [saas, enterprise-software, ai-agents, travel-tech, software-valuation, public-markets]
-source_length: 1896
+companies: [SABR, AMS.MC, GALILEO, WORLDSPAN, TRAVELPORT, BKNG, EXPE, PRICELINE, TRAVELOCITY, CRM, WDAY, NOW]
+topics: [agent-front-door, system-of-records-evolution, saas-valuation, travel-gds-analogy]
+companies_detail:
+  - ticker: SABR
+    focus: secondary
+  - ticker: AMS.MC
+    focus: secondary
+  - ticker: GALILEO
+    focus: mention
+  - ticker: WORLDSPAN
+    focus: mention
+  - ticker: TRAVELPORT
+    focus: mention
+  - ticker: BKNG
+    focus: secondary
+  - ticker: EXPE
+    focus: secondary
+  - ticker: PRICELINE
+    focus: mention
+  - ticker: TRAVELOCITY
+    focus: mention
+  - ticker: CRM
+    focus: secondary
+  - ticker: WDAY
+    focus: secondary
+  - ticker: NOW
+    focus: secondary
+topics_detail:
+  - topic: agent-front-door
+    focus: primary
+  - topic: system-of-records-evolution
+    focus: secondary
+  - topic: saas-valuation
+    focus: secondary
+  - topic: travel-gds-analogy
+    focus: mention
+source_length: 1903
 fetch_method: substack_api
 fetch_id: clouded-judgement-121925-the-front
 ---
+
+# Clouded Judgement — December 19, 2025
 
 # Clouded Judgement — December 19, 2025
 

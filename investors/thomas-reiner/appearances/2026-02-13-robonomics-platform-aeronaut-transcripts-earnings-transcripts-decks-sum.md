@@ -4,12 +4,48 @@ date: 2026-02-13
 source: Robonomics
 type: substack
 url: https://www.platformaeronaut.com/p/platform-aeronaut-transcripts-earnings
-companies: [PLATFORM AERONAUT, ROBLOX, OPENAI, ANTHROPIC, COVEO, MARRIOTT, GOOGLE, WAYMO, DOORDASH, TRIPADVISOR, UBER, TIKTOK, AIRBNB]
-sectors: [ai, earnings-transcripts, research-tools, llm-integration, autonomous-vehicles, travel-tech, food-delivery, social-media, enterprise-software, subscription-business-models]
-source_length: 1390
+companies: [PLATFORM AERONAUT, RBLX, MAR, GOOGL, DASH, TRIP, UBER, BYTEDANCE, COVEO, ABNB, OPENAI, ANTHROPIC]
+topics: [earnings-transcripts, transcript-search-tools, llm-integration, subscription-business-models]
+companies_detail:
+  - ticker: PLATFORM AERONAUT
+    focus: primary
+  - ticker: RBLX
+    focus: secondary
+  - ticker: MAR
+    focus: mention
+  - ticker: GOOGL
+    focus: mention
+  - ticker: DASH
+    focus: mention
+  - ticker: TRIP
+    focus: mention
+  - ticker: UBER
+    focus: mention
+  - ticker: BYTEDANCE
+    focus: mention
+  - ticker: COVEO
+    focus: mention
+  - ticker: ABNB
+    focus: mention
+  - ticker: OPENAI
+    focus: mention
+  - ticker: ANTHROPIC
+    focus: mention
+topics_detail:
+  - topic: earnings-transcripts
+    focus: primary
+  - topic: transcript-search-tools
+    focus: secondary
+  - topic: llm-integration
+    focus: secondary
+  - topic: subscription-business-models
+    focus: secondary
+source_length: 1396
 fetch_method: substack_api
 fetch_id: platform-aeronaut-transcripts-earnings
 ---
+
+# Robonomics — February 13, 2026
 
 # Robonomics — February 13, 2026
 

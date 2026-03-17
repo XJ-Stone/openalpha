@@ -4,12 +4,52 @@ date: 2025-10-30
 source: Robonomics
 type: substack
 url: https://www.platformaeronaut.com/p/uber-nuro-lucid-stellantis-nvidia
-companies: [UBER, NURO, LCID, STLA, NVDA, WAYMO, ZOOX, LYFT]
-sectors: [autonomous-vehicles, robotaxis, automotive, ai, simulation, mobility]
-source_length: 1079
+companies: [UBER, STLA, NVDA, NURO, LCID, GOOGL, AMZN, LYFT, FOXCONN, GRUB, AVRIDE, EXPE, TSLA, RBLX]
+topics: [autonomy-partnerships, simulation, inference-infrastructure, robotaxis]
+companies_detail:
+  - ticker: UBER
+    focus: primary
+  - ticker: STLA
+    focus: secondary
+  - ticker: NVDA
+    focus: secondary
+  - ticker: NURO
+    focus: secondary
+  - ticker: LCID
+    focus: secondary
+  - ticker: GOOGL
+    focus: mention
+  - ticker: AMZN
+    focus: mention
+  - ticker: LYFT
+    focus: mention
+  - ticker: FOXCONN
+    focus: mention
+  - ticker: GRUB
+    focus: mention
+  - ticker: AVRIDE
+    focus: mention
+  - ticker: EXPE
+    focus: mention
+  - ticker: TSLA
+    focus: mention
+  - ticker: RBLX
+    focus: mention
+topics_detail:
+  - topic: autonomy-partnerships
+    focus: primary
+  - topic: simulation
+    focus: secondary
+  - topic: inference-infrastructure
+    focus: secondary
+  - topic: robotaxis
+    focus: secondary
+source_length: 1085
 fetch_method: substack_api
 fetch_id: uber-nuro-lucid-stellantis-nvidia
 ---
+
+# Robonomics — October 30, 2025
 
 # Robonomics — October 30, 2025
 

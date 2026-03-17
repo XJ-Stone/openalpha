@@ -4,12 +4,48 @@ date: 2025-10-09
 source: Robonomics
 type: substack
 url: https://www.platformaeronaut.com/p/openai-app-store-what-it-means-for
-companies: [EXPE, BKNG, OPENAI, GOOGL, AAPL, META, RBLX, DASH, INSTACART, TIKTOK, TSLA, WAYMO, AMZN, GDS, HOTELS, MCP]
-sectors: [ai, travel, travel-tech, platforms, marketplaces, payments, consumer-internet, digital-advertising, autonomous-vehicles, valuation]
-source_length: 1368
+companies: [OPENAI, EXPE, BKNG, GOOG, AAPL, META, RBLX, DASH, INSTACART, BYTEDANCE, TSLA, AMZN]
+topics: [agentic-commerce, agentic-checkout, platform-economics, agent-latency-constraints]
+companies_detail:
+  - ticker: OPENAI
+    focus: primary
+  - ticker: EXPE
+    focus: secondary
+  - ticker: BKNG
+    focus: secondary
+  - ticker: GOOG
+    focus: secondary
+  - ticker: AAPL
+    focus: secondary
+  - ticker: META
+    focus: secondary
+  - ticker: RBLX
+    focus: mention
+  - ticker: DASH
+    focus: mention
+  - ticker: INSTACART
+    focus: mention
+  - ticker: BYTEDANCE
+    focus: mention
+  - ticker: TSLA
+    focus: mention
+  - ticker: AMZN
+    focus: mention
+topics_detail:
+  - topic: agentic-commerce
+    focus: primary
+  - topic: agentic-checkout
+    focus: secondary
+  - topic: platform-economics
+    focus: secondary
+  - topic: agent-latency-constraints
+    focus: secondary
+source_length: 1374
 fetch_method: substack_api
 fetch_id: openai-app-store-what-it-means-for
 ---
+
+# Robonomics — October 09, 2025
 
 # Robonomics — October 09, 2025
 

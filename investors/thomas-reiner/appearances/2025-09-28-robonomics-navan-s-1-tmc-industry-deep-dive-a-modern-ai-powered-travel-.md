@@ -4,12 +4,50 @@ date: 2025-09-28
 source: Robonomics
 type: substack
 url: https://www.platformaeronaut.com/p/navan-s-1-and-tmc-industry-deep-dive
-companies: [NAVAN, AMEX GBT, CTM, FLIGHT CENTRE, BREX, RAMP, AMERICAN EXPRESS, CONCUR, UBER, LYFT, DOORDASH]
-sectors: [corporate-travel, travel-tech, tmc, fintech, payments, expense-management, ai]
-source_length: 2036
+companies: [NAVAN, AMEXGBT, FLIGHTCENTRE, BREX, RAMP, AXP, EXPE, SAP, UBER, LYFT, DASH, CWT]
+topics: [tmc, ai-agents, travel-distribution, payments, platform-pricing]
+companies_detail:
+  - ticker: NAVAN
+    focus: primary
+  - ticker: AMEXGBT
+    focus: secondary
+  - ticker: FLIGHTCENTRE
+    focus: secondary
+  - ticker: BREX
+    focus: mention
+  - ticker: RAMP
+    focus: mention
+  - ticker: AXP
+    focus: mention
+  - ticker: EXPE
+    focus: mention
+  - ticker: SAP
+    focus: mention
+  - ticker: UBER
+    focus: mention
+  - ticker: LYFT
+    focus: mention
+  - ticker: DASH
+    focus: mention
+  - ticker: CWT
+    focus: mention
+topics_detail:
+  - topic: tmc
+    focus: primary
+  - topic: ai-agents
+    focus: secondary
+  - topic: travel-distribution
+    focus: secondary
+  - topic: payments
+    focus: secondary
+  - topic: platform-pricing
+    focus: secondary
+source_length: 2042
 fetch_method: substack_api
 fetch_id: navan-s-1-and-tmc-industry-deep-dive
 ---
+
+# Robonomics — September 28, 2025
 
 # Robonomics — September 28, 2025
 

@@ -4,12 +4,64 @@ date: 2025-10-03
 source: Robonomics
 type: substack
 url: https://www.platformaeronaut.com/p/platform-aeronaut-dispatch-no-2-ai
-companies: [BKNG, EXPE, MAR, DAL, OTTO, OPENAI, ANTHROPIC, GOOGL, AAPL, MSFT, EA, SAUDI PIF, SILVER LAKE, UBER, KR, DASH, GETYOURGUIDE, TIKTOK, ABNB, FREENOW, LYFT]
-sectors: [travel, ai, online-travel-agency, hospitality, ecommerce, social-media-ads, grocery-delivery, mobility, gaming, m-a, platforms]
-source_length: 1068
+companies: [BKNG, EXPD, MAR, DAL, OTTO, OPENAI, ANTHROPIC, GOOG, AAPL, MSFT, EA, UBER, KR, DASH, GETYOURGUIDE, BYTEDANCE, ABNB, FREENOW, LYFT, AMZN]
+topics: [travel-distribution, agentic-commerce, os-level-agents, app-store-model]
+companies_detail:
+  - ticker: BKNG
+    focus: secondary
+  - ticker: EXPD
+    focus: secondary
+  - ticker: MAR
+    focus: secondary
+  - ticker: DAL
+    focus: secondary
+  - ticker: OTTO
+    focus: mention
+  - ticker: OPENAI
+    focus: secondary
+  - ticker: ANTHROPIC
+    focus: secondary
+  - ticker: GOOG
+    focus: secondary
+  - ticker: AAPL
+    focus: secondary
+  - ticker: MSFT
+    focus: secondary
+  - ticker: EA
+    focus: mention
+  - ticker: UBER
+    focus: mention
+  - ticker: KR
+    focus: mention
+  - ticker: DASH
+    focus: mention
+  - ticker: GETYOURGUIDE
+    focus: mention
+  - ticker: BYTEDANCE
+    focus: mention
+  - ticker: ABNB
+    focus: secondary
+  - ticker: FREENOW
+    focus: mention
+  - ticker: LYFT
+    focus: mention
+  - ticker: AMZN
+    focus: mention
+topics_detail:
+  - topic: travel-distribution
+    focus: primary
+  - topic: agentic-commerce
+    focus: secondary
+  - topic: os-level-agents
+    focus: secondary
+  - topic: app-store-model
+    focus: secondary
+source_length: 1074
 fetch_method: substack_api
 fetch_id: platform-aeronaut-dispatch-no-2-ai
 ---
+
+# Robonomics — October 03, 2025
 
 # Robonomics — October 03, 2025
 

@@ -4,12 +4,34 @@ date: 2026-02-02
 source: Robonomics
 type: substack
 url: https://www.platformaeronaut.com/p/av-rideshare-fleet-sizing-why-the
-companies: [WAYMO, TSLA, UBER, LYFT]
-sectors: [autonomous-vehicles, robotaxi, ridesharing, mobility, transportation, fleet-management]
-source_length: 1900
+companies: [GOOGL, TSLA, UBER, LYFT, SAVE]
+topics: [robotaxis, fleet-management, unit-economics, platform-pricing]
+companies_detail:
+  - ticker: GOOGL
+    focus: secondary
+  - ticker: TSLA
+    focus: secondary
+  - ticker: UBER
+    focus: secondary
+  - ticker: LYFT
+    focus: secondary
+  - ticker: SAVE
+    focus: mention
+topics_detail:
+  - topic: robotaxis
+    focus: primary
+  - topic: fleet-management
+    focus: secondary
+  - topic: unit-economics
+    focus: secondary
+  - topic: platform-pricing
+    focus: secondary
+source_length: 1906
 fetch_method: substack_api
 fetch_id: av-rideshare-fleet-sizing-why-the
 ---
+
+# Robonomics — February 02, 2026
 
 # Robonomics — February 02, 2026
 

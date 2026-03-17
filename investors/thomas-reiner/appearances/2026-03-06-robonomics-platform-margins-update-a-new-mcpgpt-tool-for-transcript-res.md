@@ -4,12 +4,56 @@ date: 2026-03-06
 source: Robonomics
 type: substack
 url: https://www.platformaeronaut.com/p/platform-margins-update-a-new-mcpgpt
-companies: [BKNG, UBER, ABNB, EXPE, CART, LYFT, DASH, RBLX, NAVAN, PLATFORM AERONAUT, OPENAI, TRIP, GETYOURGUIDE, KROGER, GOOGL, SABR, SKYSCANNER]
-sectors: [platform-economics, ai, travel-marketplaces, online-travel-agencies, food-delivery, ride-hailing, grocery-delivery, experiences, transcript-search-tools]
-source_length: 1483
+companies: [BKNG, UBER, ABNB, EXPE, CART, LYFT, DASH, TRIP, RBLX, GOOGL, SABR, KR, OPENAI, GETYOURGUIDE, NAVAN, SKYSCANNER]
+topics: [platform-margins, incremental-margin-analysis, transcript-search-tools, agentic-commerce]
+companies_detail:
+  - ticker: BKNG
+    focus: primary
+  - ticker: UBER
+    focus: primary
+  - ticker: ABNB
+    focus: primary
+  - ticker: EXPE
+    focus: primary
+  - ticker: CART
+    focus: primary
+  - ticker: LYFT
+    focus: primary
+  - ticker: DASH
+    focus: primary
+  - ticker: TRIP
+    focus: mention
+  - ticker: RBLX
+    focus: mention
+  - ticker: GOOGL
+    focus: mention
+  - ticker: SABR
+    focus: mention
+  - ticker: KR
+    focus: mention
+  - ticker: OPENAI
+    focus: mention
+  - ticker: GETYOURGUIDE
+    focus: mention
+  - ticker: NAVAN
+    focus: mention
+  - ticker: SKYSCANNER
+    focus: mention
+topics_detail:
+  - topic: platform-margins
+    focus: primary
+  - topic: incremental-margin-analysis
+    focus: secondary
+  - topic: transcript-search-tools
+    focus: secondary
+  - topic: agentic-commerce
+    focus: mention
+source_length: 1489
 fetch_method: substack_api
 fetch_id: platform-margins-update-a-new-mcpgpt
 ---
+
+# Robonomics — March 06, 2026
 
 # Robonomics — March 06, 2026
 

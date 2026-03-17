@@ -4,12 +4,32 @@ date: 2026-01-21
 source: Robonomics
 type: substack
 url: https://www.platformaeronaut.com/p/autonomous-rideshare-economics-stress
-companies: [WAYMO, TSLA, UBER, LYFT]
-sectors: [autonomous-vehicles, ride-hailing, platform-marketplaces, fleet-management, unit-economics, transportation]
-source_length: 1766
+companies: [GOOGL, TSLA, UBER, LYFT]
+topics: [autonomous-rideshare-economics, fleet-utilization, per-trip-economics, platform-marketplaces]
+companies_detail:
+  - ticker: GOOGL
+    focus: secondary
+  - ticker: TSLA
+    focus: secondary
+  - ticker: UBER
+    focus: secondary
+  - ticker: LYFT
+    focus: mention
+topics_detail:
+  - topic: autonomous-rideshare-economics
+    focus: primary
+  - topic: fleet-utilization
+    focus: secondary
+  - topic: per-trip-economics
+    focus: secondary
+  - topic: platform-marketplaces
+    focus: secondary
+source_length: 1772
 fetch_method: substack_api
 fetch_id: autonomous-rideshare-economics-stress
 ---
+
+# Robonomics — January 21, 2026
 
 # Robonomics — January 21, 2026
 

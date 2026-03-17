@@ -4,12 +4,46 @@ date: 2025-10-19
 source: Robonomics
 type: substack
 url: https://www.platformaeronaut.com/p/ubers-third-engine-driver-led-ai
-companies: [UBER, AMZN]
-sectors: [ai, gig-economy, data-labeling, marketplaces, autonomous-vehicles, ads]
-source_length: 1095
+companies: [UBER, GOOG, DASH, AMZN, V, SABR, RIYADH AIR, AAL, UAL, DAL, SPACEX]
+topics: [driver-app-monetization, data-labeling, gig-economy, platform-economics]
+companies_detail:
+  - ticker: UBER
+    focus: primary
+  - ticker: GOOG
+    focus: mention
+  - ticker: DASH
+    focus: mention
+  - ticker: AMZN
+    focus: mention
+  - ticker: V
+    focus: mention
+  - ticker: SABR
+    focus: mention
+  - ticker: RIYADH AIR
+    focus: mention
+  - ticker: AAL
+    focus: mention
+  - ticker: UAL
+    focus: mention
+  - ticker: DAL
+    focus: mention
+  - ticker: SPACEX
+    focus: mention
+topics_detail:
+  - topic: driver-app-monetization
+    focus: primary
+  - topic: data-labeling
+    focus: secondary
+  - topic: gig-economy
+    focus: secondary
+  - topic: platform-economics
+    focus: secondary
+source_length: 1101
 fetch_method: substack_api
 fetch_id: ubers-third-engine-driver-led-ai
 ---
+
+# Robonomics — October 19, 2025
 
 # Robonomics — October 19, 2025
 

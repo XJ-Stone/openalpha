@@ -5,11 +5,25 @@ source: Clouded Judgement
 type: substack
 url: https://cloudedjudgement.substack.com/p/clouded-judgement-13026-software
 companies: [NOW]
-sectors: [saas, cloud-software, enterprise-software, ai, software-valuation]
-source_length: 1522
+topics: [cloud-software, software-valuation, saas-retention-risks, ai-driven-competition]
+companies_detail:
+  - ticker: NOW
+    focus: secondary
+topics_detail:
+  - topic: cloud-software
+    focus: primary
+  - topic: software-valuation
+    focus: primary
+  - topic: saas-retention-risks
+    focus: secondary
+  - topic: ai-driven-competition
+    focus: secondary
+source_length: 1529
 fetch_method: substack_api
 fetch_id: clouded-judgement-13026-software
 ---
+
+# Clouded Judgement — January 30, 2026
 
 # Clouded Judgement — January 30, 2026
 

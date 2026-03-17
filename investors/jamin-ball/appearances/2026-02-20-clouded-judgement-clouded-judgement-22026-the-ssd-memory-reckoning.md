@@ -4,12 +4,40 @@ date: 2026-02-20
 source: Clouded Judgement
 type: substack
 url: https://cloudedjudgement.substack.com/p/clouded-judgement-22026-the-ssd-memory
-companies: [000660.KS, 005930.KS, KIOXIA, SANDISK, MU, WDC, HAMMERSPACE]
-sectors: [ai, semiconductors, flash-memory, ssd-storage, storage, infrastructure, cloud, enterprise-storage, data-orchestration, saas]
-source_length: 2879
+companies: [HAMMERSPACE, 000660.KS, 005930.KS, KIOXIA, SANDISK, MU, WDC, FUSION-IO]
+topics: [ssd-storage, flash-memory, data-orchestration, inference-infrastructure]
+companies_detail:
+  - ticker: HAMMERSPACE
+    focus: primary
+  - ticker: 000660.KS
+    focus: mention
+  - ticker: 005930.KS
+    focus: mention
+  - ticker: KIOXIA
+    focus: mention
+  - ticker: SANDISK
+    focus: mention
+  - ticker: MU
+    focus: mention
+  - ticker: WDC
+    focus: mention
+  - ticker: FUSION-IO
+    focus: mention
+topics_detail:
+  - topic: ssd-storage
+    focus: primary
+  - topic: flash-memory
+    focus: secondary
+  - topic: data-orchestration
+    focus: secondary
+  - topic: inference-infrastructure
+    focus: secondary
+source_length: 2886
 fetch_method: substack_api
 fetch_id: clouded-judgement-22026-the-ssd-memory
 ---
+
+# Clouded Judgement — February 20, 2026
 
 # Clouded Judgement — February 20, 2026
 

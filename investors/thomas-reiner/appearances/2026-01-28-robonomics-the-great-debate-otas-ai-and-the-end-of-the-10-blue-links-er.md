@@ -4,12 +4,46 @@ date: 2026-01-28
 source: Robonomics
 type: substack
 url: https://www.platformaeronaut.com/p/the-great-debate-otas-ai-and-the
-companies: [OPENAI, GOOGL, WAYMO, BKNG, AAL]
-sectors: [ai, travel-tech, ota, hospitality, mobility, marketplaces, travel-distribution]
-source_length: 1898
+companies: [GOOGL, OPENAI, BKNG, MEWS, ZIPLINE, AMZN, UBER, WAABI, DASH, AAL]
+topics: [ota, agentic-commerce, zero-click-travel, hotel-direct-booking, vibe-coding]
+companies_detail:
+  - ticker: GOOGL
+    focus: secondary
+  - ticker: OPENAI
+    focus: secondary
+  - ticker: BKNG
+    focus: mention
+  - ticker: MEWS
+    focus: mention
+  - ticker: ZIPLINE
+    focus: mention
+  - ticker: AMZN
+    focus: mention
+  - ticker: UBER
+    focus: mention
+  - ticker: WAABI
+    focus: mention
+  - ticker: DASH
+    focus: mention
+  - ticker: AAL
+    focus: mention
+topics_detail:
+  - topic: ota
+    focus: primary
+  - topic: agentic-commerce
+    focus: secondary
+  - topic: zero-click-travel
+    focus: secondary
+  - topic: hotel-direct-booking
+    focus: secondary
+  - topic: vibe-coding
+    focus: mention
+source_length: 1904
 fetch_method: substack_api
 fetch_id: the-great-debate-otas-ai-and-the
 ---
+
+# Robonomics — January 28, 2026
 
 # Robonomics — January 28, 2026
 

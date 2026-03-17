@@ -5,11 +5,37 @@ source: Robonomics
 type: substack
 url: https://www.platformaeronaut.com/p/why-does-dilution-matter-charts-on
 companies: [ABNB, PINS, SNAP, TWLO, SNOW, DDOG, CFLT]
-sectors: [technology, infrastructure-software, consumer-internet, travel-tech]
-source_length: 1155
+topics: [dilution-metrics, dilution-vs-revenue-growth, equity-compensation-issuance, infra-software-dilution]
+companies_detail:
+  - ticker: ABNB
+    focus: secondary
+  - ticker: PINS
+    focus: secondary
+  - ticker: SNAP
+    focus: secondary
+  - ticker: TWLO
+    focus: secondary
+  - ticker: SNOW
+    focus: secondary
+  - ticker: DDOG
+    focus: secondary
+  - ticker: CFLT
+    focus: secondary
+topics_detail:
+  - topic: dilution-metrics
+    focus: primary
+  - topic: dilution-vs-revenue-growth
+    focus: secondary
+  - topic: equity-compensation-issuance
+    focus: secondary
+  - topic: infra-software-dilution
+    focus: secondary
+source_length: 1161
 fetch_method: substack_api
 fetch_id: why-does-dilution-matter-charts-on
 ---
+
+# Robonomics — November 25, 2025
 
 # Robonomics — November 25, 2025
 

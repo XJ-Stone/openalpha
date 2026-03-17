@@ -4,12 +4,52 @@ date: 2026-01-06
 source: Robonomics
 type: substack
 url: https://www.platformaeronaut.com/p/platform-and-leisure-multiples-entering
-companies: [FOUR, MMYT, HTZ, TRVG, EXPE, AMZN, MCP, UBER, LCID, NURO, NVDA, WAYMO, LYFT, BKNG, CLOUDBEDS]
-sectors: [travel, hospitality, platform, leisure, ai, mobility, autonomous-vehicles, online-travel-agencies]
-source_length: 1206
+companies: [FOUR, MMYT, HTZ, TRVG, EXPE, AMZN, UBER, LCID, NURO, NVDA, GOOGL, LYFT, BKNG, CLOUDBEDS]
+topics: [platform-and-leisure-multiples, ota, ai-agents, valuation-metrics]
+companies_detail:
+  - ticker: FOUR
+    focus: mention
+  - ticker: MMYT
+    focus: mention
+  - ticker: HTZ
+    focus: mention
+  - ticker: TRVG
+    focus: mention
+  - ticker: EXPE
+    focus: mention
+  - ticker: AMZN
+    focus: mention
+  - ticker: UBER
+    focus: mention
+  - ticker: LCID
+    focus: mention
+  - ticker: NURO
+    focus: mention
+  - ticker: NVDA
+    focus: mention
+  - ticker: GOOGL
+    focus: mention
+  - ticker: LYFT
+    focus: mention
+  - ticker: BKNG
+    focus: mention
+  - ticker: CLOUDBEDS
+    focus: mention
+topics_detail:
+  - topic: platform-and-leisure-multiples
+    focus: primary
+  - topic: ota
+    focus: secondary
+  - topic: ai-agents
+    focus: secondary
+  - topic: valuation-metrics
+    focus: secondary
+source_length: 1212
 fetch_method: substack_api
 fetch_id: platform-and-leisure-multiples-entering
 ---
+
+# Robonomics — January 06, 2026
 
 # Robonomics — January 06, 2026
 

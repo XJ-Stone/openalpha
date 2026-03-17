@@ -4,12 +4,23 @@ date: 2026-01-09
 source: Clouded Judgement
 type: substack
 url: https://cloudedjudgement.substack.com/p/clouded-judgement-1926-the-education
-companies: [BLOOMBERG, PITCHBOOK]
-sectors: [ai, cloud-software, saas, enterprise-software, valuations, go-to-market]
-source_length: 1739
+companies: []
+topics: [ai-education-advantage, enterprise-ai, saas-valuation, time-to-first-value]
+topics_detail:
+  - topic: ai-education-advantage
+    focus: primary
+  - topic: enterprise-ai
+    focus: secondary
+  - topic: saas-valuation
+    focus: secondary
+  - topic: time-to-first-value
+    focus: mention
+source_length: 1746
 fetch_method: substack_api
 fetch_id: clouded-judgement-1926-the-education
 ---
+
+# Clouded Judgement — January 09, 2026
 
 # Clouded Judgement — January 09, 2026
 

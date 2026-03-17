@@ -4,12 +4,32 @@ date: 2026-02-13
 source: Clouded Judgement
 type: substack
 url: https://cloudedjudgement.substack.com/p/clouded-judgement-21326-build-vs
-companies: [FSLY, EGHT, NOK, AAPL, Bloomberg, Pitchbook]
-sectors: [ai, saas, enterprise-software, cloud-software, public-markets, internet-media, valuation]
-source_length: 2056
+companies: [FSLY, EGHT, NOK, AAPL]
+topics: [build-vs-buy, ai-development-velocity, software-commoditization, saas-valuation]
+companies_detail:
+  - ticker: FSLY
+    focus: mention
+  - ticker: EGHT
+    focus: mention
+  - ticker: NOK
+    focus: mention
+  - ticker: AAPL
+    focus: mention
+topics_detail:
+  - topic: build-vs-buy
+    focus: primary
+  - topic: ai-development-velocity
+    focus: secondary
+  - topic: software-commoditization
+    focus: secondary
+  - topic: saas-valuation
+    focus: secondary
+source_length: 2063
 fetch_method: substack_api
 fetch_id: clouded-judgement-21326-build-vs
 ---
+
+# Clouded Judgement — February 13, 2026
 
 # Clouded Judgement — February 13, 2026
 

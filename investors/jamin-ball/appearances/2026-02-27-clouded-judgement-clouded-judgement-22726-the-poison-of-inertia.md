@@ -4,12 +4,34 @@ date: 2026-02-27
 source: Clouded Judgement
 type: substack
 url: https://cloudedjudgement.substack.com/p/clouded-judgement-22726-the-poison
-companies: [SQ, SAB, TRAVELOCITY, Priceline, Booking, ChatGPT]
-sectors: [ai, saas, enterprise-software, cloud-software, travel-tech, software-valuation]
-source_length: 2027
+companies: [SQ, SABR, BKNG, TRAVELOCITY, OPENAI]
+topics: [ai-org-centralization, agentic-commerce, saas-valuation, cost-discipline]
+companies_detail:
+  - ticker: SQ
+    focus: primary
+  - ticker: SABR
+    focus: mention
+  - ticker: BKNG
+    focus: mention
+  - ticker: TRAVELOCITY
+    focus: mention
+  - ticker: OPENAI
+    focus: mention
+topics_detail:
+  - topic: ai-org-centralization
+    focus: primary
+  - topic: agentic-commerce
+    focus: secondary
+  - topic: saas-valuation
+    focus: secondary
+  - topic: cost-discipline
+    focus: mention
+source_length: 2034
 fetch_method: substack_api
 fetch_id: clouded-judgement-22726-the-poison
 ---
+
+# Clouded Judgement — February 27, 2026
 
 # Clouded Judgement — February 27, 2026
 

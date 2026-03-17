@@ -4,13 +4,66 @@ date: 2026-03-13
 source: Clouded Judgement
 type: substack
 url: https://cloudedjudgement.substack.com/p/clouded-judgement-31326-in-defense
-companies: [OPENAI, ANTHROPIC, GOOG, LLAMA, MISTRAL, DEEPSEEK, PLTR, NET, CRWD, CLOUDFLARE, PALANTIR, Figma, CONFLUENT, FASTLY, DATADOG, SPRINKLR, ADBE, YEXT, DOMO, PATH, PAGERDUTY, SERVICETITAN, RUBRIK, SENTINELONE]
-sectors: [ai, cloud-software, enterprise-software, valuations]
-source_length: 3335
+companies: [OPENAI, ANTHROPIC, GOOG, META, MISTRAL, DEEPSEEK, PLTR, NET, CRWD, FIGMA, CFLT, FSLY, DDOG, CXM, ADBE, YEXT, DOMO, PATH, PD, ST, RUBRIK, SENTINELONE]
+topics: [ai-labs-profitability, saas-valuations, cloud-software-earnings]
+companies_detail:
+  - ticker: OPENAI
+    focus: primary
+  - ticker: ANTHROPIC
+    focus: primary
+  - ticker: GOOG
+    focus: mention
+  - ticker: META
+    focus: mention
+  - ticker: MISTRAL
+    focus: mention
+  - ticker: DEEPSEEK
+    focus: mention
+  - ticker: PLTR
+    focus: mention
+  - ticker: NET
+    focus: mention
+  - ticker: CRWD
+    focus: mention
+  - ticker: FIGMA
+    focus: mention
+  - ticker: CFLT
+    focus: mention
+  - ticker: FSLY
+    focus: mention
+  - ticker: DDOG
+    focus: mention
+  - ticker: CXM
+    focus: mention
+  - ticker: ADBE
+    focus: mention
+  - ticker: YEXT
+    focus: mention
+  - ticker: DOMO
+    focus: mention
+  - ticker: PATH
+    focus: mention
+  - ticker: PD
+    focus: mention
+  - ticker: ST
+    focus: mention
+  - ticker: RUBRIK
+    focus: mention
+  - ticker: SENTINELONE
+    focus: mention
+topics_detail:
+  - topic: ai-labs-profitability
+    focus: primary
+  - topic: saas-valuations
+    focus: secondary
+  - topic: cloud-software-earnings
+    focus: secondary
+source_length: 1293
 fetch_method: substack_api
 fetch_id: clouded-judgement-31326-in-defense
-summary_length: 937
 ---
+
+# Clouded Judgement — March 13, 2026
 
 # Clouded Judgement — March 13, 2026
 
@@ -59,4 +112,3 @@ The author summarizes recent quarterly revenue beats/misses across nine cloud/se
 
 ![Table of reported revenue (Actual vs Consensus and Δ) and next-quarter guidance (Guidance vs Consensus and Δ) for nine companies (Sprinklr, Adobe, Yext, Domo, UiPath, PagerDuty, ServiceTitan, Rubrik, SentinelOne). Key numbers: Rubrik +10.4% beat, UiPath +3.5%, Adobe +1.9%, PagerDuty guided -3.6% vs consensus.](https://substack-post-media.s3.amazonaws.com/public/images/56701bc1-fe8a-4275-9736-85290de0636d_1153x376.png)
 ![Newsletter table comparing 10 companies across recent 7‑day, 30‑day and YTD share price moves and market cap. Highlights: DigitalOcean +23% (7d), Fastly +166% (30d) outlier, YTD winners Fastly +138% & DigitalOcean +38%; median YTD = -8%.](https://substack-post-media.s3.amazonaws.com/public/images/61bb963c-5132-4791-88dc-3010e94ebc50_1008x621.png)
-

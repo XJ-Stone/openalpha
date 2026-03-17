@@ -4,12 +4,50 @@ date: 2025-11-07
 source: Robonomics
 type: substack
 url: https://www.platformaeronaut.com/p/experience-and-mobility-platform
-companies: [BKNG, UBER, EXPE, INSTACART, DASH, ABNB, LYFT, GOOGL, AMZN, PERPLEXITY, WAYMO, ZEEKR, OVERSEE, FCM, TOAST, KR]
-sectors: [experience-and-mobility, travel-commerce, rideshare-delivery, short-term-rentals, marketplaces, ai-agents, autonomy, corporate-travel, retail-delivery]
-source_length: 1193
+companies: [ABNB, BKNG, EXPE, UBER, DASH, INSTACART, LYFT, TRIP, GOOGL, AMZN, PERPLEXITY, TOST, KR]
+topics: [experience-and-mobility, incremental-margins, fcf-margins, short-term-rentals]
+companies_detail:
+  - ticker: ABNB
+    focus: primary
+  - ticker: BKNG
+    focus: secondary
+  - ticker: EXPE
+    focus: secondary
+  - ticker: UBER
+    focus: secondary
+  - ticker: DASH
+    focus: secondary
+  - ticker: INSTACART
+    focus: secondary
+  - ticker: LYFT
+    focus: secondary
+  - ticker: TRIP
+    focus: mention
+  - ticker: GOOGL
+    focus: mention
+  - ticker: AMZN
+    focus: mention
+  - ticker: PERPLEXITY
+    focus: mention
+  - ticker: TOST
+    focus: mention
+  - ticker: KR
+    focus: mention
+topics_detail:
+  - topic: experience-and-mobility
+    focus: primary
+  - topic: incremental-margins
+    focus: secondary
+  - topic: fcf-margins
+    focus: secondary
+  - topic: short-term-rentals
+    focus: secondary
+source_length: 1199
 fetch_method: substack_api
 fetch_id: experience-and-mobility-platform
 ---
+
+# Robonomics — November 07, 2025
 
 # Robonomics — November 07, 2025
 

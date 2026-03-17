@@ -4,12 +4,56 @@ date: 2025-10-01
 source: Robonomics
 type: substack
 url: https://www.platformaeronaut.com/p/doordash-tam-expansion-and-a-push
-companies: [DASH, SEVENROOMS, BBOT, SYMBIOSYS, INSTACART, UBER, AMZN, TOST, SKYTAB, WOLT, ROO, CVS, Party City, OPENTABLE, RESY, TOCK, TOAST]
-sectors: [local-delivery, grocery-delivery, fulfillment-and-logistics, micro-fulfillment, autonomous-vehicles, retail-media, restaurant-pos, restaurant-tech, payments, international-expansion]
-source_length: 1906
+companies: [DASH, UBER, INSTACART, AMZN, WOLT, ROO, CVS, PARTYCITY, SEVENROOMS, BBOT, SYMBIOSYS, TOST, SKYTAB, OPENTABLE, RESY, TOCK]
+topics: [tam-expansion, restaurant-pos, fulfillment-and-logistics, grocery-delivery]
+companies_detail:
+  - ticker: DASH
+    focus: primary
+  - ticker: UBER
+    focus: secondary
+  - ticker: INSTACART
+    focus: secondary
+  - ticker: AMZN
+    focus: secondary
+  - ticker: WOLT
+    focus: secondary
+  - ticker: ROO
+    focus: secondary
+  - ticker: CVS
+    focus: mention
+  - ticker: PARTYCITY
+    focus: mention
+  - ticker: SEVENROOMS
+    focus: secondary
+  - ticker: BBOT
+    focus: secondary
+  - ticker: SYMBIOSYS
+    focus: secondary
+  - ticker: TOST
+    focus: secondary
+  - ticker: SKYTAB
+    focus: mention
+  - ticker: OPENTABLE
+    focus: mention
+  - ticker: RESY
+    focus: mention
+  - ticker: TOCK
+    focus: mention
+topics_detail:
+  - topic: tam-expansion
+    focus: primary
+  - topic: restaurant-pos
+    focus: secondary
+  - topic: fulfillment-and-logistics
+    focus: secondary
+  - topic: grocery-delivery
+    focus: mention
+source_length: 1912
 fetch_method: substack_api
 fetch_id: doordash-tam-expansion-and-a-push
 ---
+
+# Robonomics — October 01, 2025
 
 # Robonomics — October 01, 2025
 

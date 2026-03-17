@@ -4,12 +4,46 @@ date: 2026-02-24
 source: Robonomics
 type: substack
 url: https://www.platformaeronaut.com/p/ubers-spothero-acquisition-is-an
-companies: [UBER, SPOTHERO, WAYMO, NURO, TSLA, EXPE, BKNG, ABNB]
-sectors: [autonomous-vehicles, fleet-management, mobility, parking-marketplaces, urban-infrastructure, transportation, travel-tech, ai]
-source_length: 1504
+companies: [UBER, SPOTHERO, GOOGL, TSLA, NURO, DASH, BKNG, EXPE, ABNB, CART, GRUB]
+topics: [av-parking, fleet-utilization, depot-location-optimization, parking-marketplaces]
+companies_detail:
+  - ticker: UBER
+    focus: primary
+  - ticker: SPOTHERO
+    focus: primary
+  - ticker: GOOGL
+    focus: secondary
+  - ticker: TSLA
+    focus: secondary
+  - ticker: NURO
+    focus: secondary
+  - ticker: DASH
+    focus: mention
+  - ticker: BKNG
+    focus: mention
+  - ticker: EXPE
+    focus: mention
+  - ticker: ABNB
+    focus: mention
+  - ticker: CART
+    focus: mention
+  - ticker: GRUB
+    focus: mention
+topics_detail:
+  - topic: av-parking
+    focus: primary
+  - topic: fleet-utilization
+    focus: secondary
+  - topic: depot-location-optimization
+    focus: secondary
+  - topic: parking-marketplaces
+    focus: mention
+source_length: 1510
 fetch_method: substack_api
 fetch_id: ubers-spothero-acquisition-is-an
 ---
+
+# Robonomics — February 24, 2026
 
 # Robonomics — February 24, 2026
 

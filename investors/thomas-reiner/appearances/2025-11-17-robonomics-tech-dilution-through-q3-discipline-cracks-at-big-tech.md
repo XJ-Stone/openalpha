@@ -4,12 +4,56 @@ date: 2025-11-17
 source: Robonomics
 type: substack
 url: https://www.platformaeronaut.com/p/tech-dilution-through-q3-discipline
-companies: [META, NVDA, MSFT, AAPL, TSLA, NFLX, BKNG, TRIP, BOX, BILL, GTM, SNOW, MDB, W, PINS, LYFT, HOOD]
-sectors: [technology, ai, public-markets, executive-compensation, software]
-source_length: 882
+companies: [META, TSLA, NVDA, MSFT, AAPL, TRIP, BOX, BILL, SNOW, MDB, W, PINS, LYFT, NFLX, BKNG, HOOD]
+topics: [equity-dilution, stock-based-compensation, dilution-vs-market-cap, cost-discipline]
+companies_detail:
+  - ticker: META
+    focus: secondary
+  - ticker: TSLA
+    focus: secondary
+  - ticker: NVDA
+    focus: mention
+  - ticker: MSFT
+    focus: mention
+  - ticker: AAPL
+    focus: mention
+  - ticker: TRIP
+    focus: mention
+  - ticker: BOX
+    focus: mention
+  - ticker: BILL
+    focus: mention
+  - ticker: SNOW
+    focus: mention
+  - ticker: MDB
+    focus: mention
+  - ticker: W
+    focus: mention
+  - ticker: PINS
+    focus: mention
+  - ticker: LYFT
+    focus: mention
+  - ticker: NFLX
+    focus: mention
+  - ticker: BKNG
+    focus: mention
+  - ticker: HOOD
+    focus: mention
+topics_detail:
+  - topic: equity-dilution
+    focus: primary
+  - topic: stock-based-compensation
+    focus: secondary
+  - topic: dilution-vs-market-cap
+    focus: secondary
+  - topic: cost-discipline
+    focus: mention
+source_length: 888
 fetch_method: substack_api
 fetch_id: tech-dilution-through-q3-discipline
 ---
+
+# Robonomics — November 17, 2025
 
 # Robonomics — November 17, 2025
 

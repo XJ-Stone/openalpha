@@ -4,12 +4,46 @@ date: 2025-12-08
 source: Robonomics
 type: substack
 url: https://www.platformaeronaut.com/p/ai-direct-hotel-booking-how-crs-and
-companies: [SABR, AMADEUS, CENDYN, SHR, TRAVELCLICK, MIRAI, AVVIO, MEWS, CLOUDBEDS, ORCL, MYMA.AI, CANARY, TPG]
-sectors: [ai, hotel-tech, hospitality, travel-tech, distribution-technology]
-source_length: 2000
+companies: [SABR, AMS.MC, CENDYN, SHR, MIRAI, AVVIO, MEWS, CLOUDBEDS, ORCL, MYMA, CANARY]
+topics: [crs-native-bookings, agentic-commerce, travel-distribution, pms-servicing]
+companies_detail:
+  - ticker: SABR
+    focus: secondary
+  - ticker: AMS.MC
+    focus: secondary
+  - ticker: CENDYN
+    focus: secondary
+  - ticker: SHR
+    focus: secondary
+  - ticker: MIRAI
+    focus: secondary
+  - ticker: AVVIO
+    focus: secondary
+  - ticker: MEWS
+    focus: secondary
+  - ticker: CLOUDBEDS
+    focus: secondary
+  - ticker: ORCL
+    focus: secondary
+  - ticker: MYMA
+    focus: mention
+  - ticker: CANARY
+    focus: mention
+topics_detail:
+  - topic: crs-native-bookings
+    focus: primary
+  - topic: agentic-commerce
+    focus: secondary
+  - topic: travel-distribution
+    focus: secondary
+  - topic: pms-servicing
+    focus: mention
+source_length: 2006
 fetch_method: substack_api
 fetch_id: ai-direct-hotel-booking-how-crs-and
 ---
+
+# Robonomics — December 08, 2025
 
 # Robonomics — December 08, 2025
 

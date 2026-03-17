@@ -12,10 +12,10 @@ This is the index of all investors currently tracked in the OpenAlpha knowledge 
 | David Sacks | Craft Ventures |  | 0 |  |
 | Freda Duan | Altimeter Capital | 0dte-options, ads-vs-take-rate, agent-memory, agentic-checkout, ... | 49 | Robonomics |
 | Howard Marks | Oaktree Capital Management | credit, value-investing, macro, market-cycles | 0 | Oaktree Memos, Bloomberg, CNBC, podcasts |
-| Jamin Ball | Altimeter Capital | ai, ai-agents, ai-infrastructure, china-tech, ... | 13 | Clouded Judgement |
+| Jamin Ball | Altimeter Capital | agent-front-door, agentic-commerce, ai-agents, ai-capex-roi, ... | 13 | Clouded Judgement |
 | Jason Calacanis | Various (Angel Investor, LAUNCH Fund) |  | 0 |  |
 | Stanley Druckenmiller | Duquesne Family Office |  | 0 |  |
-| Thomas Reiner | Altimeter Capital | ads, ai, ai-agents, airlines, ... | 21 | Robonomics |
+| Thomas Reiner | Altimeter Capital | agent-latency-constraints, agentic-checkout, agentic-commerce, ai-agents, ... | 21 | Robonomics |
 
 ## Adding a New Investor
 

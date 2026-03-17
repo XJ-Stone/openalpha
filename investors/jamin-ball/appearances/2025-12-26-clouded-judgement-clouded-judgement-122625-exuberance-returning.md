@@ -4,12 +4,23 @@ date: 2025-12-26
 source: Clouded Judgement
 type: substack
 url: https://cloudedjudgement.substack.com/p/clouded-judgement-122625-exuberance
-companies: [Bloomberg, Pitchbook, Altimeter Capital Management]
-sectors: [ai, venture-capital, saas, cloud-software, public-markets, private-markets, valuation-metrics]
-source_length: 1657
+companies: []
+topics: [venture-capital, ai-capex-roi, private-markets, saas-valuation]
+topics_detail:
+  - topic: venture-capital
+    focus: primary
+  - topic: ai-capex-roi
+    focus: secondary
+  - topic: private-markets
+    focus: secondary
+  - topic: saas-valuation
+    focus: secondary
+source_length: 1664
 fetch_method: substack_api
 fetch_id: clouded-judgement-122625-exuberance
 ---
+
+# Clouded Judgement — December 26, 2025
 
 # Clouded Judgement — December 26, 2025
 

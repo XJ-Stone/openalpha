@@ -5,11 +5,31 @@ source: Clouded Judgement
 type: substack
 url: https://cloudedjudgement.substack.com/p/clouded-judgement-12326-the-year
 companies: [NVDA, INWORLD, FLASHLABS, BABA]
-sectors: [ai, multi-modal-ai, speech-technology, inference-infrastructure, cloud-software, saas, china-tech]
-source_length: 1564
+topics: [multimodal-ai, inference-infrastructure, ai-agents, saas-valuation]
+companies_detail:
+  - ticker: NVDA
+    focus: mention
+  - ticker: INWORLD
+    focus: mention
+  - ticker: FLASHLABS
+    focus: mention
+  - ticker: BABA
+    focus: mention
+topics_detail:
+  - topic: multimodal-ai
+    focus: primary
+  - topic: inference-infrastructure
+    focus: secondary
+  - topic: ai-agents
+    focus: secondary
+  - topic: saas-valuation
+    focus: secondary
+source_length: 1571
 fetch_method: substack_api
 fetch_id: clouded-judgement-12326-the-year
 ---
+
+# Clouded Judgement — January 23, 2026
 
 # Clouded Judgement — January 23, 2026
 

@@ -4,12 +4,34 @@ date: 2026-01-16
 source: Clouded Judgement
 type: substack
 url: https://cloudedjudgement.substack.com/p/clouded-judgement-11626-platform
-companies: [Salesforce, NetSuite, Microsoft, Workato, Mulesoft, Zapier, Bloomberg, Pitchbook]
-sectors: [saas, enterprise-software, ai, integration-platforms, valuations, cloud-software]
-source_length: 1573
+companies: [CRM, ORCL, WORKATO, ZAPIER, MSFT]
+topics: [ai-agents, systems-of-record, enterprise-software, saas-valuation]
+companies_detail:
+  - ticker: CRM
+    focus: mention
+  - ticker: ORCL
+    focus: mention
+  - ticker: WORKATO
+    focus: mention
+  - ticker: ZAPIER
+    focus: mention
+  - ticker: MSFT
+    focus: mention
+topics_detail:
+  - topic: ai-agents
+    focus: primary
+  - topic: systems-of-record
+    focus: primary
+  - topic: enterprise-software
+    focus: secondary
+  - topic: saas-valuation
+    focus: secondary
+source_length: 1580
 fetch_method: substack_api
 fetch_id: clouded-judgement-11626-platform
 ---
+
+# Clouded Judgement — January 16, 2026
 
 # Clouded Judgement — January 16, 2026
 

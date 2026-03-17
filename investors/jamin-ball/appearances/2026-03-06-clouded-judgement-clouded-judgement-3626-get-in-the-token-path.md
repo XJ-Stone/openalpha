@@ -4,12 +4,56 @@ date: 2026-03-06
 source: Clouded Judgement
 type: substack
 url: https://cloudedjudgement.substack.com/p/clouded-judgement-3626-get-in-the
-companies: [SNOW, DDOG, NET, MDB, AMZN, DATABRICKS, DOCKER, LIMELIGHT NETWORKS, EDGIO, OPENAI, ANTHROPIC, CURSOR, INFERACT, BASETEN, FIREWORKS, TOGETHER]
-sectors: [ai, ai-infrastructure, cloud-infrastructure, developer-tools, platform-pricing, saas-valuation, infrastructure-software]
-source_length: 2344
+companies: [AMZN, DATABRICKS, SNOW, DDOG, NET, MDB, DOCKER, LIMELIGHT, OPENAI, ANTHROPIC, CURSOR, INFERACT, BASETEN, FIREWORKS, TOGETHER, GOOGL]
+topics: [token-throughput-metrics, inference-infrastructure, platform-economics, model-pricing-power]
+companies_detail:
+  - ticker: AMZN
+    focus: secondary
+  - ticker: DATABRICKS
+    focus: secondary
+  - ticker: SNOW
+    focus: secondary
+  - ticker: DDOG
+    focus: secondary
+  - ticker: NET
+    focus: secondary
+  - ticker: MDB
+    focus: secondary
+  - ticker: DOCKER
+    focus: secondary
+  - ticker: LIMELIGHT
+    focus: secondary
+  - ticker: OPENAI
+    focus: secondary
+  - ticker: ANTHROPIC
+    focus: secondary
+  - ticker: CURSOR
+    focus: secondary
+  - ticker: INFERACT
+    focus: mention
+  - ticker: BASETEN
+    focus: mention
+  - ticker: FIREWORKS
+    focus: mention
+  - ticker: TOGETHER
+    focus: mention
+  - ticker: GOOGL
+    focus: mention
+topics_detail:
+  - topic: token-throughput-metrics
+    focus: primary
+  - topic: inference-infrastructure
+    focus: secondary
+  - topic: platform-economics
+    focus: secondary
+  - topic: model-pricing-power
+    focus: secondary
+source_length: 2351
 fetch_method: substack_api
 fetch_id: clouded-judgement-3626-get-in-the
 ---
+
+# Clouded Judgement — March 06, 2026
 
 # Clouded Judgement — March 06, 2026
 

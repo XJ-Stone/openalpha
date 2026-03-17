@@ -4,12 +4,60 @@ date: 2026-01-16
 source: Robonomics
 type: substack
 url: https://www.platformaeronaut.com/p/vibe-coding-an-ota-thoughts-on-ai
-companies: [GOOGL, EXPE, BKNG, TSLA, WMT, KR, UBER, SABR, DAL, MAR, AMADEUS, OPENAI, ANTHROPIC, GITHUB, VERCEL, SKYSCANNER, KAYAK, MEWS, DIRECTBOOKER, SOMNISEAT, WAYMO, ZOOX, WING, BIZTRIPAI]
-sectors: [ai, travel-tech, online-travel-agency, airlines, developer-tools, metasearch, robotaxi, drone-delivery, e-commerce, payments]
-source_length: 1673
+companies: [SOMNISEAT, AMS, ANTHROPIC, GOOGL, EXPE, BKNG, TCOM, MSFT, VERCEL, OPENAI, SABR, WMT, AMZN, TSLA, KR, UBER, MEWS, DIRECTBOOKER]
+topics: [vibe-coding, ota, agentic-commerce, caching-strategies]
+companies_detail:
+  - ticker: SOMNISEAT
+    focus: primary
+  - ticker: AMS
+    focus: secondary
+  - ticker: ANTHROPIC
+    focus: secondary
+  - ticker: GOOGL
+    focus: secondary
+  - ticker: EXPE
+    focus: mention
+  - ticker: BKNG
+    focus: mention
+  - ticker: TCOM
+    focus: mention
+  - ticker: MSFT
+    focus: mention
+  - ticker: VERCEL
+    focus: mention
+  - ticker: OPENAI
+    focus: mention
+  - ticker: SABR
+    focus: mention
+  - ticker: WMT
+    focus: mention
+  - ticker: AMZN
+    focus: mention
+  - ticker: TSLA
+    focus: mention
+  - ticker: KR
+    focus: mention
+  - ticker: UBER
+    focus: mention
+  - ticker: MEWS
+    focus: mention
+  - ticker: DIRECTBOOKER
+    focus: mention
+topics_detail:
+  - topic: vibe-coding
+    focus: primary
+  - topic: ota
+    focus: secondary
+  - topic: agentic-commerce
+    focus: secondary
+  - topic: caching-strategies
+    focus: secondary
+source_length: 1679
 fetch_method: substack_api
 fetch_id: vibe-coding-an-ota-thoughts-on-ai
 ---
+
+# Robonomics — January 16, 2026
 
 # Robonomics — January 16, 2026
 

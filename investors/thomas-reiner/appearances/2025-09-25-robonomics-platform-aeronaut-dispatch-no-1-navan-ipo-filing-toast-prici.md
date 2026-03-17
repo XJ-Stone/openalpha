@@ -4,12 +4,54 @@ date: 2025-09-25
 source: Robonomics
 type: substack
 url: https://www.platformaeronaut.com/p/platform-aeronaut-dispatch-no-1-navan
-companies: [NAVN, TOST, BKNG, CART, UBER, WAYMO, APALEO, SABRE, AMADEUS, LUCID, NURO, AMAZON, WINN-DIXIE, PUBLIX]
-sectors: [ai, travel, delivery, ridesharing, autonomous-vehicles, hospitality, online-travel-agencies, grocery-delivery, fintech, enterprise-software, ads, gaming, mobility, software]
-source_length: 1102
+companies: [NAVN, TOST, BKNG, CART, UBER, GOOGL, LCID, NURO, AMADEUS, SABR, AMZN, WINN-DIXIE, PUBLIX, WETRAVEL, APALEO]
+topics: [travel-tech, platform-marketplaces, ai-agents, robotaxis]
+companies_detail:
+  - ticker: NAVN
+    focus: primary
+  - ticker: TOST
+    focus: secondary
+  - ticker: BKNG
+    focus: secondary
+  - ticker: CART
+    focus: secondary
+  - ticker: UBER
+    focus: secondary
+  - ticker: GOOGL
+    focus: secondary
+  - ticker: LCID
+    focus: mention
+  - ticker: NURO
+    focus: mention
+  - ticker: AMADEUS
+    focus: mention
+  - ticker: SABR
+    focus: secondary
+  - ticker: AMZN
+    focus: secondary
+  - ticker: WINN-DIXIE
+    focus: mention
+  - ticker: PUBLIX
+    focus: mention
+  - ticker: WETRAVEL
+    focus: mention
+  - ticker: APALEO
+    focus: mention
+topics_detail:
+  - topic: travel-tech
+    focus: primary
+  - topic: platform-marketplaces
+    focus: secondary
+  - topic: ai-agents
+    focus: secondary
+  - topic: robotaxis
+    focus: mention
+source_length: 1108
 fetch_method: substack_api
 fetch_id: platform-aeronaut-dispatch-no-1-navan
 ---
+
+# Robonomics — September 25, 2025
 
 # Robonomics — September 25, 2025
 

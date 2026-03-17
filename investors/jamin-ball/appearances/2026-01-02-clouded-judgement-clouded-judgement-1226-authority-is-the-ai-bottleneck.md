@@ -4,12 +4,23 @@ date: 2026-01-02
 source: Clouded Judgement
 type: substack
 url: https://cloudedjudgement.substack.com/p/clouded-judgement-1226-authority
-companies: [BLOOMBERG, PITCHBOOK]
-sectors: [ai, saas, cloud-software, enterprise-software, software-valuation]
-source_length: 1773
+companies: []
+topics: [authoritative-ai, enterprise-ai, org-design, saas-valuation]
+topics_detail:
+  - topic: authoritative-ai
+    focus: primary
+  - topic: enterprise-ai
+    focus: secondary
+  - topic: org-design
+    focus: secondary
+  - topic: saas-valuation
+    focus: secondary
+source_length: 1780
 fetch_method: substack_api
 fetch_id: clouded-judgement-1226-authority
 ---
+
+# Clouded Judgement — January 02, 2026
 
 # Clouded Judgement — January 02, 2026
 

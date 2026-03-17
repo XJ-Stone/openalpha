@@ -4,12 +4,42 @@ date: 2025-09-23
 source: Robonomics
 type: substack
 url: https://www.platformaeronaut.com/p/fortnite-going-all-in-on-ugc-but
-companies: [EPIC GAMES, RBLX, VALVE, NFLX, TIKTOK, DIS, LEGO]
-sectors: [gaming, video-games, user-generated-content, creator-economy, mobile-gaming, platforms, metaverse, digital-discovery]
-source_length: 1859
+companies: [EPIC GAMES, RBLX, VALVE, DIS, LEGO, BYTEDANCE, NFLX, AAPL, GOOGL]
+topics: [user-generated-content, creator-economy, mobile-gaming, platform-content-flywheel]
+companies_detail:
+  - ticker: EPIC GAMES
+    focus: primary
+  - ticker: RBLX
+    focus: secondary
+  - ticker: VALVE
+    focus: mention
+  - ticker: DIS
+    focus: secondary
+  - ticker: LEGO
+    focus: mention
+  - ticker: BYTEDANCE
+    focus: mention
+  - ticker: NFLX
+    focus: mention
+  - ticker: AAPL
+    focus: mention
+  - ticker: GOOGL
+    focus: mention
+topics_detail:
+  - topic: user-generated-content
+    focus: primary
+  - topic: creator-economy
+    focus: secondary
+  - topic: mobile-gaming
+    focus: secondary
+  - topic: platform-content-flywheel
+    focus: secondary
+source_length: 1865
 fetch_method: substack_api
 fetch_id: fortnite-going-all-in-on-ugc-but
 ---
+
+# Robonomics — September 23, 2025
 
 # Robonomics — September 23, 2025
 

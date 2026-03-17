@@ -4,12 +4,58 @@ date: 2026-03-12
 source: Robonomics
 type: substack
 url: https://www.platformaeronaut.com/p/uber-is-quietly-winning-the-av-rideshare
-companies: [WAYMO, TSLA, LYFT, UBER, NURO, LCID, WAYVE, NISSAN, NVDA, VOLKSWAGEN, MOIA, ZOOX, AVRIDE, MAY MOBILITY, MOBILEYE, BIDU]
-sectors: [autonomous-vehicles, rideshare, robotaxi, mobility-platforms, transportation]
-source_length: 2671
+companies: [UBER, GOOGL, TSLA, LYFT, NURO, LCID, WAYVE, NSANY, NVDA, VWAGY, AMZN, AVRIDE, MAY MOBILITY, INTC, BIDU, HYMTF, MGA]
+topics: [av-rideshare-economics, autonomy-partnerships, platform-economics, fleet-management]
+companies_detail:
+  - ticker: UBER
+    focus: primary
+  - ticker: GOOGL
+    focus: secondary
+  - ticker: TSLA
+    focus: secondary
+  - ticker: LYFT
+    focus: secondary
+  - ticker: NURO
+    focus: secondary
+  - ticker: LCID
+    focus: secondary
+  - ticker: WAYVE
+    focus: secondary
+  - ticker: NSANY
+    focus: secondary
+  - ticker: NVDA
+    focus: secondary
+  - ticker: VWAGY
+    focus: secondary
+  - ticker: AMZN
+    focus: secondary
+  - ticker: AVRIDE
+    focus: secondary
+  - ticker: MAY MOBILITY
+    focus: secondary
+  - ticker: INTC
+    focus: mention
+  - ticker: BIDU
+    focus: mention
+  - ticker: HYMTF
+    focus: mention
+  - ticker: MGA
+    focus: mention
+topics_detail:
+  - topic: av-rideshare-economics
+    focus: primary
+  - topic: autonomy-partnerships
+    focus: secondary
+  - topic: platform-economics
+    focus: secondary
+  - topic: fleet-management
+    focus: secondary
+source_length: 2677
 fetch_method: substack_api
 fetch_id: uber-is-quietly-winning-the-av-rideshare
 ---
+
+# Robonomics — March 12, 2026
 
 # Robonomics — March 12, 2026
 

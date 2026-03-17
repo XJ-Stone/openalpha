@@ -4,12 +4,54 @@ date: 2026-02-06
 source: Clouded Judgement
 type: substack
 url: https://cloudedjudgement.substack.com/p/clouded-judgement-2626-software-is
-companies: [IGV, AMZN, GOOGL, NVDA, TSM, NOW, TEAM, PLTR, BILL, PCTY, EGHT, ANTHROPIC, OPENAI, META, MSFT, SAP]
-sectors: [ai, enterprise-software, cloud-infrastructure, semiconductors, saas, software-etf]
-source_length: 2853
+companies: [NVDA, TSM, AMZN, GOOG, META, MSFT, NOW, TEAM, PLTR, BILL, PCTY, EGHT, ANTHROPIC, OPENAI, SAP]
+topics: [ai-agents, saas-valuation, cloud-software, cloud-infrastructure]
+companies_detail:
+  - ticker: NVDA
+    focus: secondary
+  - ticker: TSM
+    focus: secondary
+  - ticker: AMZN
+    focus: secondary
+  - ticker: GOOG
+    focus: secondary
+  - ticker: META
+    focus: secondary
+  - ticker: MSFT
+    focus: secondary
+  - ticker: NOW
+    focus: mention
+  - ticker: TEAM
+    focus: mention
+  - ticker: PLTR
+    focus: mention
+  - ticker: BILL
+    focus: mention
+  - ticker: PCTY
+    focus: mention
+  - ticker: EGHT
+    focus: mention
+  - ticker: ANTHROPIC
+    focus: secondary
+  - ticker: OPENAI
+    focus: mention
+  - ticker: SAP
+    focus: mention
+topics_detail:
+  - topic: ai-agents
+    focus: primary
+  - topic: saas-valuation
+    focus: secondary
+  - topic: cloud-software
+    focus: secondary
+  - topic: cloud-infrastructure
+    focus: secondary
+source_length: 2860
 fetch_method: substack_api
 fetch_id: clouded-judgement-2626-software-is
 ---
+
+# Clouded Judgement — February 06, 2026
 
 # Clouded Judgement — February 06, 2026
 

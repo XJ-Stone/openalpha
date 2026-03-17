@@ -76,23 +76,19 @@ class CompanyView(BaseModel):
     )
 
 
-class ThemeView(BaseModel):
-    """A non-company-specific perspective: sector view, macro argument, thematic call,
+class TopicView(BaseModel):
+    """A non-company-specific perspective: macro argument, thematic call, sector view,
     market observation, or any other insight not tied to a single ticker."""
 
-    theme: str = Field(
-        description=(
-            "Concise theme label, e.g. 'Agentic Commerce', 'AI ROI Measurement', "
-            "'Neo Cloud Adoption', 'China AI Infrastructure'"
-        )
+    topic: str = Field(
+        description="Concise topic label, 2-4 words, lowercase-hyphenated"
     )
-    companies_referenced: list[str] = Field(
-        default_factory=list,
+    focus: Literal["primary", "secondary", "mention"] = Field(
         description=(
-            "Tickers or company names mentioned in the context of this theme but "
-            "not discussed deeply enough to warrant a separate CompanyView. "
-            "Use ticker symbols for public companies, uppercase names for private."
-        ),
+            "primary = central thesis of the piece; "
+            "secondary = meaningfully discussed but not the core thesis; "
+            "mention = referenced briefly for context"
+        )
     )
     analysis: str = Field(
         description=(
@@ -106,7 +102,7 @@ class ThemeView(BaseModel):
         default_factory=list,
         description=(
             "Charts or images from the source that are directly relevant to this "
-            "theme. Only include charts that add analytical value — data "
+            "topic. Only include charts that add analytical value — data "
             "visualizations, comparisons, trend charts, etc."
         ),
     )
@@ -118,29 +114,17 @@ class AppearanceSummary(BaseModel):
     companies: list[CompanyView] = Field(
         default_factory=list,
         description=(
-            "Company-specific views. Only include companies the investor "
-            "actually analyzed or expressed an opinion on — not every company "
-            "mentioned in passing. Those belong in ThemeView.companies_referenced."
+            "Company-specific views. Include every company the investor analyzes, "
+            "expresses an opinion on, or references for comparison — set the "
+            "appropriate focus level (primary/secondary/mention) for each."
         ),
     )
-    themes: list[ThemeView] = Field(
+    topics: list[TopicView] = Field(
         default_factory=list,
         description=(
-            "Non-company-specific perspectives: sector views, macro arguments, "
-            "thematic calls, market observations, geographic analyses, "
-            "organizational insights, or any other viewpoint not tied to a "
-            "single ticker."
-        ),
-    )
-    topics: list[str] = Field(
-        default_factory=list,
-        description=(
-            "3-5 topic tags capturing what this appearance is about. Topics are "
-            "broader than sectors — they capture narratives, themes, and conversations "
-            "(e.g. 'AI investment bubble', 'agentic commerce', 'China token economy', "
-            "'ride-hailing competition', 'Fed rate cuts impact on growth'). "
-            "Lowercase hyphenated. Reuse existing topics from the provided list when "
-            "semantically equivalent; only create new ones if nothing fits."
+            "Non-company-specific perspectives: macro arguments, thematic calls, "
+            "sector views, market observations, geographic analyses, or any other "
+            "viewpoint not tied to a single ticker. Each topic has a focus level."
         ),
     )
 
@@ -169,13 +153,16 @@ class CompanyMention(BaseModel):
     )
 
 
-class ThemeMention(BaseModel):
-    """Lightweight theme mention for indexing — no analysis text."""
+class TopicMention(BaseModel):
+    """Lightweight topic mention for indexing — no analysis text."""
 
-    theme: str = Field(description="Concise theme label")
-    companies_referenced: list[str] = Field(
-        default_factory=list,
-        description="Tickers or company names mentioned in this theme's context.",
+    topic: str = Field(description="Concise topic label, 2-4 words, lowercase-hyphenated")
+    focus: Literal["primary", "secondary", "mention"] = Field(
+        description=(
+            "primary = central thesis of the piece; "
+            "secondary = meaningfully discussed but not the core thesis; "
+            "mention = referenced briefly for context"
+        )
     )
 
 
@@ -184,18 +171,16 @@ class AppearanceIndex(BaseModel):
 
     companies: list[CompanyMention] = Field(
         default_factory=list,
-        description="Companies the investor analyzed or expressed an opinion on.",
+        description=(
+            "Companies the investor analyzes, expresses an opinion on, or "
+            "references for comparison. Set focus level for each."
+        ),
     )
-    themes: list[ThemeMention] = Field(
-        default_factory=list,
-        description="Non-company-specific themes discussed.",
-    )
-    topics: list[str] = Field(
+    topics: list[TopicMention] = Field(
         default_factory=list,
         description=(
-            "3-5 topic tags capturing what this appearance is about. Reuse "
-            "existing topics from the provided list when semantically equivalent; "
-            "only create new ones if nothing fits."
+            "Non-company-specific topics discussed: macro arguments, thematic "
+            "calls, sector views, market observations. Each has a focus level."
         ),
     )
 
@@ -233,42 +218,45 @@ user counts, margins, revenue, dates — use exact figures, never round
 - Image/chart references that add analytical value
 
 ## CompanyView
-Use when the investor analyzes or expresses a clear opinion on a specific company. \
-For public companies use standard tickers (NVDA, MSFT, META). For private companies \
-use uppercase name (OPENAI, ANTHROPIC, STRIPE).
+Include companies that are subjects of investment analysis, opinion, comparison, or \
+used as examples to illustrate an investment thesis. For public companies use standard \
+tickers (NVDA, MSFT, META). For private companies use a clean uppercase name (OPENAI, \
+ANTHROPIC, STRIPE — no legal suffixes like Inc, LP, Ltd). \
+For subsidiaries or divisions, use the parent company ticker (e.g. Volcano Engine → BYTEDANCE).
 
-Do NOT create a CompanyView for companies merely mentioned in passing — those belong \
-in ThemeView.companies_referenced.
+Do NOT include research firms, data providers, news outlets, consulting firms, \
+investment funds, or hedge funds — these are sources, not subjects.
 
-## ThemeView
-Use for perspectives not tied to a single company: sector views, macro arguments, \
-market observations, geographic analyses, frameworks.
+## TopicView
+Use for perspectives not tied to a single company: macro arguments, thematic calls, \
+sector views, market observations, geographic analyses, frameworks. \
+Each topic gets a focus level. Do NOT repeat information already in a CompanyView. \
+TopicViews add cross-cutting or non-company-specific insight only.
 
-Do NOT repeat information already in a CompanyView. ThemeViews add cross-cutting or \
-non-company-specific insight only. Skip meta-commentary, disclaimers, and themes \
-that merely reword a CompanyView.
+## Focus levels (applies to both companies and topics)
+- primary: the piece deeply analyzes this subject (dedicated section, financials, core thesis)
+- secondary: meaningful discussion but not the central subject
+- mention: named as an example, comparison, or historical reference without analysis
 
 ## Images
 When the source includes images (marked as [IMAGE: ...] with descriptions), attach \
-them to the relevant CompanyView or ThemeView if the image provides analytical value \
+them to the relevant CompanyView or TopicView if the image provides analytical value \
 (charts, data visualizations, tables, diagrams). Skip decorative images.
 
-## Company focus levels
-- primary: the report is substantially about this company (deep analysis, dedicated section)
-- secondary: meaningful discussion but not the main focus
-- mention: referenced for comparison, context, or in passing
-
-## Topics
-Extract 3-5 topic tags that capture what this appearance is about. Topics are broader \
-than financial sectors — they capture narratives, themes, and market conversations \
-(e.g. 'agentic commerce', 'AI investment bubble', 'China token economy'). \
-When an existing topics list is provided, REUSE existing topics where semantically \
+## Topic rules
+- 3-5 topics per piece, each 2-4 words, lowercase-hyphenated.
+- Topics should help an analyst find this piece when researching an investment theme.
+- Specific enough to distinguish from other investor commentary.
+  Good: "agentic-commerce", "china-token-economy", "ride-hailing-competition"
+  Bad: "ai", "gen-ai", "macro", "technology", "markets", "investing"
+- Each topic must be semantically distinct — no overlapping or near-duplicate topics.
+- When an existing topics list is provided, REUSE existing topics where semantically \
 equivalent. Only create a new topic if nothing in the list fits.
 
 ## Rules
 - Only extract views actually expressed — do not infer or editorialize
 - Every claim must be traceable to the source text
-- State each point ONCE across all CompanyViews and ThemeViews — zero redundancy
+- State each point ONCE across all CompanyViews and TopicViews — zero redundancy
 """
 
 
@@ -278,30 +266,39 @@ equivalent. Only create a new topic if nothing in the list fits.
 
 INDEX_SYSTEM_PROMPT = """\
 You are an expert financial analyst assistant. Your job is to extract STRUCTURED \
-METADATA from a publication — companies discussed, themes, and topics.
+METADATA from a publication — companies discussed and topics.
 
 You are NOT writing a summary. The full text will be kept verbatim. You are only \
 extracting searchable index fields.
 
 ## CompanyMention
-Create one for each company the investor analyzes or expresses an opinion on. \
-For public companies use standard tickers (NVDA, MSFT, META). For private companies \
-use uppercase name (OPENAI, ANTHROPIC, STRIPE). Set the focus level: primary if the \
-report is substantially about this company, secondary for meaningful but non-central \
-discussion, mention for passing references.
+Include companies that are subjects of investment analysis, opinion, comparison, or \
+used as examples to illustrate an investment thesis. For public companies use standard \
+tickers (NVDA, MSFT, META). For private companies use a clean uppercase name (OPENAI, \
+ANTHROPIC, STRIPE — no legal suffixes like Inc, LP, Ltd). \
+For subsidiaries or divisions, use the parent company ticker (e.g. Volcano Engine → BYTEDANCE).
 
-Do NOT create a CompanyMention for companies merely mentioned in passing — those \
-belong in ThemeMention.companies_referenced.
+Do NOT include research firms, data providers, news outlets, consulting firms, \
+investment funds, or hedge funds — these are sources, not subjects.
 
-## ThemeMention
-Create one for each non-company-specific perspective: sector views, macro arguments, \
-market observations, geographic analyses, frameworks.
+## TopicMention
+Create one for each non-company-specific perspective: macro arguments, thematic calls, \
+sector views, market observations, geographic analyses, frameworks. \
+Each topic gets a focus level.
 
-## Topics
-Extract 3-5 topic tags that capture what this appearance is about. Topics are broader \
-than financial sectors — they capture narratives, themes, and market conversations \
-(e.g. 'agentic commerce', 'AI investment bubble', 'China token economy'). \
-When an existing topics list is provided, REUSE existing topics where semantically \
+## Focus levels (applies to both companies and topics)
+- primary: the piece deeply analyzes this subject (dedicated section, financials, core thesis)
+- secondary: meaningful discussion but not the central subject
+- mention: named as an example, comparison, or historical reference without analysis
+
+## Topic rules
+- 3-5 topics per piece, each 2-4 words, lowercase-hyphenated.
+- Topics should help an analyst find this piece when researching an investment theme.
+- Specific enough to distinguish from other investor commentary.
+  Good: "agentic-commerce", "china-token-economy", "ride-hailing-competition"
+  Bad: "ai", "gen-ai", "macro", "technology", "markets", "investing"
+- Each topic must be semantically distinct — no overlapping or near-duplicate topics.
+- When an existing topics list is provided, REUSE existing topics where semantically \
 equivalent. Only create a new topic if nothing in the list fits.
 
 ## Rules
@@ -440,7 +437,7 @@ def summarize_text(
         f"- URL: {url}\n"
         f"{topics_hint}\n"
         f"Publication text:\n---\n{enriched_text}\n---\n\n"
-        f"Extract all company-specific views and thematic perspectives now."
+        f"Extract all company views and topic views now."
     )
 
     completion = client.beta.chat.completions.parse(
@@ -473,7 +470,7 @@ def extract_index(
     """Extract lightweight index metadata from short source text.
 
     Used when source is below COMPRESS_ABOVE_WORDS — full text is kept verbatim,
-    so we only need tickers, sentiment, themes, and sectors for frontmatter.
+    so we only need tickers, topics, and focus levels for frontmatter.
     """
     client = openai.OpenAI(api_key=api_key)
 
@@ -494,7 +491,7 @@ def extract_index(
         f"- URL: {url}\n"
         f"{topics_hint}\n"
         f"Publication text:\n---\n{text}\n---\n\n"
-        f"Extract all company mentions, themes, and topic tags now."
+        f"Extract all company mentions and topic mentions now."
     )
 
     completion = client.beta.chat.completions.parse(
@@ -529,27 +526,14 @@ def render_markdown(
     fetch_id: str = "",
 ) -> str:
     """Render an AppearanceSummary into the appearance markdown format."""
-    # Collect all tickers for frontmatter
-    all_tickers: list[str] = [c.ticker for c in summary.companies]
-    for theme in summary.themes:
-        for t in theme.companies_referenced:
-            if t not in all_tickers:
-                all_tickers.append(t)
-
-    # Format date for heading
     from datetime import datetime
 
     dt = datetime.strptime(date, "%Y-%m-%d")
     heading_date = dt.strftime("%B %d, %Y")
 
-    # Build frontmatter
-    tickers_str = ", ".join(all_tickers) if all_tickers else ""
-    topics_str = ", ".join(summary.topics) if summary.topics else ""
-
-    # Build companies_detail with focus levels
-    companies_detail: list[dict[str, str]] = []
-    for c in summary.companies:
-        companies_detail.append({"ticker": c.ticker, "focus": c.focus})
+    # Build flat lists for frontmatter (used by search grep)
+    tickers_str = ", ".join(c.ticker for c in summary.companies) if summary.companies else ""
+    topics_str = ", ".join(t.topic for t in summary.topics) if summary.topics else ""
 
     lines: list[str] = [
         "---",
@@ -561,11 +545,16 @@ def render_markdown(
         f"companies: [{tickers_str}]",
         f"topics: [{topics_str}]",
     ]
-    if companies_detail:
+    if summary.companies:
         lines.append("companies_detail:")
-        for cd in companies_detail:
-            lines.append(f"  - ticker: {cd['ticker']}")
-            lines.append(f"    focus: {cd['focus']}")
+        for c in summary.companies:
+            lines.append(f"  - ticker: {c.ticker}")
+            lines.append(f"    focus: {c.focus}")
+    if summary.topics:
+        lines.append("topics_detail:")
+        for t in summary.topics:
+            lines.append(f"  - topic: {t.topic}")
+            lines.append(f"    focus: {t.focus}")
     if source_length:
         lines.append(f"source_length: {source_length}")
     if fetch_method:
@@ -600,26 +589,22 @@ def render_markdown(
         lines.append("No company-specific views expressed in this appearance.")
         lines.append("")
 
-    # Themes
-    lines.append("## Broader Themes")
+    # Topics
+    lines.append("## Broader Topics")
     lines.append("")
 
-    if summary.themes:
-        for theme in summary.themes:
-            lines.append(f"### {theme.theme}")
+    if summary.topics:
+        for topic in summary.topics:
+            lines.append(f"### {topic.topic} ({topic.focus})")
             lines.append("")
-            lines.append(theme.analysis)
-            if theme.companies_referenced:
-                refs = ", ".join(theme.companies_referenced)
+            lines.append(topic.analysis)
+            if topic.charts:
                 lines.append("")
-                lines.append(f"**Companies referenced:** {refs}")
-            if theme.charts:
-                lines.append("")
-                for chart in theme.charts:
+                for chart in topic.charts:
                     lines.append(f"![{chart.description}]({chart.url})")
             lines.append("")
     else:
-        lines.append("No broader themes discussed in this appearance.")
+        lines.append("No broader topics discussed in this appearance.")
         lines.append("")
 
     # Inject summary_length into frontmatter (count words in body only)
@@ -655,23 +640,12 @@ def render_markdown_full(
     """
     from datetime import datetime
 
-    # Collect all tickers for frontmatter
-    all_tickers: list[str] = [c.ticker for c in index.companies]
-    for theme in index.themes:
-        for t in theme.companies_referenced:
-            if t not in all_tickers:
-                all_tickers.append(t)
-
-    # Build companies_detail with focus levels
-    companies_detail: list[dict[str, str]] = []
-    for c in index.companies:
-        companies_detail.append({"ticker": c.ticker, "focus": c.focus})
-
     dt = datetime.strptime(date, "%Y-%m-%d")
     heading_date = dt.strftime("%B %d, %Y")
 
-    tickers_str = ", ".join(all_tickers) if all_tickers else ""
-    topics_str = ", ".join(index.topics) if index.topics else ""
+    # Build flat lists for frontmatter (used by search grep)
+    tickers_str = ", ".join(c.ticker for c in index.companies) if index.companies else ""
+    topics_str = ", ".join(t.topic for t in index.topics) if index.topics else ""
 
     lines: list[str] = [
         "---",
@@ -683,11 +657,16 @@ def render_markdown_full(
         f"companies: [{tickers_str}]",
         f"topics: [{topics_str}]",
     ]
-    if companies_detail:
+    if index.companies:
         lines.append("companies_detail:")
-        for cd in companies_detail:
-            lines.append(f"  - ticker: {cd['ticker']}")
-            lines.append(f"    focus: {cd['focus']}")
+        for c in index.companies:
+            lines.append(f"  - ticker: {c.ticker}")
+            lines.append(f"    focus: {c.focus}")
+    if index.topics:
+        lines.append("topics_detail:")
+        for t in index.topics:
+            lines.append(f"  - topic: {t.topic}")
+            lines.append(f"    focus: {t.focus}")
     if source_length:
         lines.append(f"source_length: {source_length}")
     if fetch_method:

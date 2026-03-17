@@ -22,8 +22,11 @@ logger = logging.getLogger(__name__)
 # Max files to feed directly without map phase
 DIRECT_CONTEXT_LIMIT = 3
 
-# Max appearances to process in map phase
-MAP_LIMIT = 15
+# Token budget caps per focus level (upper limits, not targets)
+FOCUS_BUDGET = {"primary": 1000, "secondary": 400, "mention": 200}
+
+# Target tokens per reduce batch — keep each LLM call's input manageable
+REDUCE_BATCH_TARGET = 10_000
 
 # ---------------------------------------------------------------------------
 # Event types for streaming progress + content
@@ -112,13 +115,23 @@ If relevant:
 2. In analysis: provide your analytical interpretation — what is the \
    investor's stance, conviction level, reasoning, key catalysts or risks \
    they identify, and how this relates to the user's question. Connect \
-   the dots the investor may have left implicit."""
+   the dots the investor may have left implicit.
+
+## Extraction budget
+The appearance metadata includes focus levels for companies and topics. \
+Scale your extraction depth accordingly:
+- primary (<1000 tokens): full thesis, evidence, key numbers, direct quotes
+- secondary (<400 tokens): core opinion + one supporting data point
+- mention (<200 tokens): one sentence with specific claim, or skip entirely
+Focus your extraction on the companies/topics most relevant to the question."""
 
 _REDUCE_PROMPT = """\
 You are an expert investment research analyst. You have been given analyzed \
 extracts from multiple investor appearances, each pre-filtered for relevance \
 to the user's question. Each extract contains raw excerpts from the source \
-and an analytical summary. Extracts are ordered newest-first.
+and an analytical summary. Extracts are grouped by investor and ordered \
+chronologically within each group — use this structure to track how each \
+investor's views evolved over time.
 
 Synthesize these into a clear, well-structured answer.
 
@@ -250,9 +263,8 @@ class Agent:
                 yield event
             return
 
-        # Sort by date descending (most recent first), cap at MAP_LIMIT
+        # Sort by date descending (most recent first)
         matched.sort(key=lambda a: a.get("date", ""), reverse=True)
-        matched = matched[:MAP_LIMIT]
 
         # Build search detail: investor names + appearance count
         investor_names = sorted(
@@ -424,7 +436,6 @@ class Agent:
             return self._answer_no_data(question, stream=stream)
 
         matched.sort(key=lambda a: a.get("date", ""), reverse=True)
-        matched = matched[:MAP_LIMIT]
 
         if len(matched) <= DIRECT_CONTEXT_LIMIT:
             return self._answer_direct(question, matched, stream=stream)
@@ -574,7 +585,7 @@ class Agent:
         question: str,
         appearances: list[dict],
     ) -> AsyncGenerator[StreamEvent, None]:
-        """Map in parallel, then stream the reduce phase."""
+        """Map in parallel, then reduce with budget-aware batching."""
         total = len(appearances)
         yield StatusEvent(
             phase="map", detail=f"Reading {total} posts...", progress=f"0/{total}"
@@ -610,24 +621,75 @@ class Agent:
                 yield event
             return
 
-        # Sort newest-first so sources and extracts share the same order
-        paired = list(zip(extracts, relevant_appearances))
-        paired.sort(key=lambda p: p[1].get("date", ""), reverse=True)
-        extracts = [p[0] for p in paired]
-        relevant_appearances = [p[1] for p in paired]
+        # Group by investor, sort by date ascending within each group
+        grouped = self._group_by_investor(extracts, relevant_appearances)
 
-        all_sources = self._build_sources_list(relevant_appearances)
+        # Flatten back to ordered list (investor-contiguous, time-ascending)
+        ordered_extracts: list[MapExtract] = []
+        ordered_appearances: list[dict] = []
+        for _slug, pairs in grouped:
+            for ext, app in pairs:
+                ordered_extracts.append(ext)
+                ordered_appearances.append(app)
 
-        # REDUCE phase: stream the synthesis
-        yield StatusEvent(phase="reduce", detail="Synthesizing answer...")
+        all_sources = self._build_sources_list(ordered_appearances)
 
-        messages = self._build_reduce_messages(
-            question, extracts, appearances=relevant_appearances
+        # Batch into ~REDUCE_BATCH_TARGET token chunks
+        batches = self._batch_extracts(
+            ordered_extracts, ordered_appearances
         )
-        accumulated = ""
-        async for chunk in self._async_stream(messages):
-            accumulated += chunk
-            yield ContentEvent(token=chunk)
+
+        if len(batches) == 1:
+            # Single batch — direct reduce, stream the answer
+            yield StatusEvent(phase="reduce", detail="Synthesizing answer...")
+            b_extracts, b_apps = batches[0]
+            messages = self._build_reduce_messages(
+                question, b_extracts, appearances=b_apps
+            )
+            accumulated = ""
+            async for chunk in self._async_stream(messages):
+                accumulated += chunk
+                yield ContentEvent(token=chunk)
+        else:
+            # Hierarchical reduce — reduce each batch, then final reduce
+            yield StatusEvent(
+                phase="reduce",
+                detail=f"Synthesizing {len(batches)} batches...",
+            )
+            batch_summaries: list[MapExtract] = []
+            batch_apps_flat: list[dict] = []
+            for bi, (b_extracts, b_apps) in enumerate(batches):
+                yield StatusEvent(
+                    phase="reduce",
+                    detail=f"Batch {bi + 1}/{len(batches)}",
+                    progress=f"{bi + 1}/{len(batches)}",
+                )
+                messages = self._build_reduce_messages(
+                    question, b_extracts, appearances=b_apps
+                )
+                raw = await asyncio.to_thread(
+                    self._provider.chat, messages, stream=False
+                )
+                assert isinstance(raw, str)
+                # Wrap batch summary as a MapExtract for the final reduce
+                batch_summaries.append(
+                    MapExtract(
+                        relevance="RELEVANT",
+                        key_excerpts="",
+                        analysis=raw,
+                    )
+                )
+                batch_apps_flat.extend(b_apps)
+
+            # Final reduce across batch summaries — stream this one
+            yield StatusEvent(phase="reduce", detail="Final synthesis...")
+            messages = self._build_reduce_messages(
+                question, batch_summaries, appearances=batch_apps_flat
+            )
+            accumulated = ""
+            async for chunk in self._async_stream(messages):
+                accumulated += chunk
+                yield ContentEvent(token=chunk)
 
         # Filter to cited sources only and renumber sequentially
         rewritten, cited_sources = self._filter_cited_sources(accumulated, all_sources)
@@ -778,13 +840,7 @@ class Agent:
             f"{system_prompt}\n\n{_REDUCE_PROMPT}" if system_prompt else _REDUCE_PROMPT
         )
 
-        # Sort newest-first when appearances metadata is available
-        if appearances and len(appearances) == len(extracts):
-            paired = list(zip(extracts, appearances))
-            paired.sort(key=lambda p: p[1].get("date", ""), reverse=True)
-            extracts = [p[0] for p in paired]
-            appearances = [p[1] for p in paired]
-
+        # Extracts arrive pre-ordered: grouped by investor, date-ascending within each
         extract_parts: list[str] = []
         for i, ext in enumerate(extracts):
             # Build a rich header with investor, source, and date
@@ -846,6 +902,72 @@ class Agent:
             }
         )
         return messages
+
+    # -----------------------------------------------------------------------
+    # Grouping and batching for reduce phase
+    # -----------------------------------------------------------------------
+
+    @staticmethod
+    def _group_by_investor(
+        extracts: list[MapExtract],
+        appearances: list[dict],
+    ) -> list[tuple[str, list[tuple[MapExtract, dict]]]]:
+        """Group extract/appearance pairs by investor, sorted by date within each.
+
+        Returns a list of (investor_slug, [(extract, appearance), ...]) tuples.
+        Within each investor group, appearances are sorted date-ascending so the
+        reduce step can see how views evolved over time.
+        """
+        from collections import OrderedDict
+
+        groups: OrderedDict[str, list[tuple[MapExtract, dict]]] = OrderedDict()
+        for ext, app in zip(extracts, appearances):
+            slug = app.get("investor_slug", "") or app.get("investor", "unknown")
+            groups.setdefault(slug, []).append((ext, app))
+
+        # Sort each group by date ascending
+        for slug in groups:
+            groups[slug].sort(key=lambda p: p[1].get("date", ""))
+
+        return list(groups.items())
+
+    @staticmethod
+    def _estimate_tokens(extract: MapExtract) -> int:
+        """Rough token estimate for an extract (~4 chars per token)."""
+        text = extract.key_excerpts + extract.analysis
+        return max(len(text) // 4, 50)
+
+    def _batch_extracts(
+        self,
+        extracts: list[MapExtract],
+        appearances: list[dict],
+    ) -> list[tuple[list[MapExtract], list[dict]]]:
+        """Split extracts into batches of ~REDUCE_BATCH_TARGET tokens.
+
+        Tries to keep each investor's extracts contiguous within a batch.
+        """
+        batches: list[tuple[list[MapExtract], list[dict]]] = []
+        current_extracts: list[MapExtract] = []
+        current_apps: list[dict] = []
+        current_tokens = 0
+
+        for ext, app in zip(extracts, appearances):
+            est = self._estimate_tokens(ext)
+            # Start new batch if adding this would exceed target,
+            # unless current batch is empty
+            if current_tokens + est > REDUCE_BATCH_TARGET and current_extracts:
+                batches.append((current_extracts, current_apps))
+                current_extracts = []
+                current_apps = []
+                current_tokens = 0
+            current_extracts.append(ext)
+            current_apps.append(app)
+            current_tokens += est
+
+        if current_extracts:
+            batches.append((current_extracts, current_apps))
+
+        return batches
 
     # -----------------------------------------------------------------------
     # Source list builder
@@ -972,8 +1094,40 @@ class Agent:
         if not extracts:
             return self._answer_no_data(question, stream=stream)
 
+        # Group by investor, sort by date within each
+        grouped = self._group_by_investor(extracts, relevant_appearances)
+        ordered_extracts: list[MapExtract] = []
+        ordered_apps: list[dict] = []
+        for _slug, pairs in grouped:
+            for ext, app in pairs:
+                ordered_extracts.append(ext)
+                ordered_apps.append(app)
+
+        batches = self._batch_extracts(ordered_extracts, ordered_apps)
+
+        if len(batches) == 1:
+            b_extracts, b_apps = batches[0]
+            messages = self._build_reduce_messages(
+                question, b_extracts, appearances=b_apps
+            )
+            return self._provider.chat(messages, stream=stream)
+
+        # Hierarchical reduce
+        batch_summaries: list[MapExtract] = []
+        all_apps: list[dict] = []
+        for b_extracts, b_apps in batches:
+            messages = self._build_reduce_messages(
+                question, b_extracts, appearances=b_apps
+            )
+            raw = self._provider.chat(messages, stream=False)
+            assert isinstance(raw, str)
+            batch_summaries.append(
+                MapExtract(relevance="RELEVANT", key_excerpts="", analysis=raw)
+            )
+            all_apps.extend(b_apps)
+
         messages = self._build_reduce_messages(
-            question, extracts, appearances=relevant_appearances
+            question, batch_summaries, appearances=all_apps
         )
         return self._provider.chat(messages, stream=stream)
 

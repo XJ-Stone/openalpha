@@ -318,6 +318,12 @@ def main() -> None:
         help="OpenAI model to use (default: gpt-5-mini)",
     )
     parser.add_argument(
+        "--workers",
+        type=int,
+        default=5,
+        help="Number of parallel workers for LLM calls (default: 5)",
+    )
+    parser.add_argument(
         "--dry-run",
         action="store_true",
         help="List posts that would be processed without calling the LLM",
@@ -392,20 +398,31 @@ def main() -> None:
     if existing_topics:
         print(f"Loaded {len(existing_topics)} existing topics for reuse.", file=sys.stderr)
 
-    # Process each post
-    print(f"\nGenerating appearances with {args.model}...", file=sys.stderr)
+    # Filter to posts that need processing
+    to_process: list[tuple[int, dict]] = []
     for i, post in enumerate(posts, 1):
         filename = make_filename(post["date"], post["title"], source_name)
         filepath = output_dir / filename
-
         if filepath.exists():
             print(f"  [{i}/{len(posts)}] SKIP (exists): {filename}", file=sys.stderr)
-            continue
+        else:
+            to_process.append((i, post))
 
-        print(
-            f"  [{i}/{len(posts)}] Processing: {post['title']} ({post['date']})...",
-            file=sys.stderr,
-        )
+    if not to_process:
+        print("\nAll posts already exist — nothing to do.", file=sys.stderr)
+        sys.exit(0)
+
+    print(
+        f"\nGenerating {len(to_process)} appearances with {args.model} "
+        f"({args.workers} workers)...",
+        file=sys.stderr,
+    )
+
+    def process_post(item: tuple[int, dict]) -> str:
+        """Process a single post and return status message."""
+        idx, post = item
+        filename = make_filename(post["date"], post["title"], source_name)
+        filepath = output_dir / filename
 
         try:
             source_length = len(post["body_text"].split())
@@ -413,12 +430,7 @@ def main() -> None:
             fetch_id = post.get("slug", "")
 
             if source_length <= COMPRESS_ABOVE_WORDS:
-                # Short source: extract index only, keep full text
-                print(
-                    f"           Mode: full-text ({source_length} words < {COMPRESS_ABOVE_WORDS})",
-                    file=sys.stderr,
-                )
-                index: AppearanceIndex = extract_index(
+                index = extract_index(
                     text=post["body_text"],
                     investor=investor,
                     date=post["date"],
@@ -429,7 +441,6 @@ def main() -> None:
                     model=args.model,
                     existing_topics=existing_topics,
                 )
-
                 md = render_markdown_full(
                     index=index,
                     full_text=post["body_text"],
@@ -443,28 +454,14 @@ def main() -> None:
                     fetch_id=fetch_id,
                 )
             else:
-                # Long source: describe images + full structured summary
-                print(
-                    f"           Mode: summary ({source_length} words > {COMPRESS_ABOVE_WORDS})",
-                    file=sys.stderr,
-                )
                 image_descriptions: list[dict[str, str]] = []
                 if post.get("images"):
-                    print(
-                        f"           Describing {len(post['images'])} image(s)...",
-                        file=sys.stderr,
-                    )
                     image_descriptions = describe_images(
                         post["images"],
                         api_key=api_key,
                         model=args.model,
                     )
-                    print(
-                        f"           {len(image_descriptions)} chart(s) identified.",
-                        file=sys.stderr,
-                    )
-
-                summary: AppearanceSummary = summarize_text(
+                summary = summarize_text(
                     text=post["body_text"],
                     investor=investor,
                     date=post["date"],
@@ -476,7 +473,6 @@ def main() -> None:
                     image_descriptions=image_descriptions,
                     existing_topics=existing_topics,
                 )
-
                 md = render_markdown(
                     summary=summary,
                     investor=investor,
@@ -490,14 +486,18 @@ def main() -> None:
                 )
 
             filepath.write_text(md + "\n", encoding="utf-8")
-            print(f"           Written: {filename}", file=sys.stderr)
-
-            # Brief pause between API calls
-            time.sleep(1)
+            mode = "full-text" if source_length <= COMPRESS_ABOVE_WORDS else "summary"
+            return f"  [{idx}/{len(posts)}] OK ({mode}, {source_length}w): {filename}"
 
         except Exception as exc:
-            print(f"           ERROR: {exc}", file=sys.stderr)
-            continue
+            return f"  [{idx}/{len(posts)}] ERROR: {filename} — {exc}"
+
+    from concurrent.futures import ThreadPoolExecutor, as_completed
+
+    with ThreadPoolExecutor(max_workers=args.workers) as pool:
+        futures = {pool.submit(process_post, item): item for item in to_process}
+        for future in as_completed(futures):
+            print(future.result(), file=sys.stderr)
 
     print(f"\nDone. Output directory: {output_dir}", file=sys.stderr)
     print(

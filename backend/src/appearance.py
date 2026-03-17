@@ -310,6 +310,101 @@ COMPRESS_ABOVE_WORDS = 3000
 
 
 # ---------------------------------------------------------------------------
+# Ticker validation
+# ---------------------------------------------------------------------------
+
+
+class TickerCorrection(BaseModel):
+    """A single ticker correction."""
+
+    original: str = Field(description="The original ticker/name as extracted")
+    corrected: str = Field(
+        description=(
+            "The corrected value. Standard ticker for public companies "
+            "(e.g. SNOW, CRM, PLTR). Original value unchanged for private "
+            "companies or if already correct."
+        )
+    )
+
+
+class TickerValidationResult(BaseModel):
+    """Result of validating a batch of extracted tickers."""
+
+    corrections: list[TickerCorrection] = Field(
+        description="One entry per input ticker. Return ALL tickers, not just changed ones."
+    )
+
+
+TICKER_VALIDATION_PROMPT = """\
+You are a financial data quality assistant. You will receive a list of company \
+identifiers extracted from an investor publication.
+
+Your job: for each identifier, determine if it refers to a publicly traded company. \
+If it does, return the standard stock ticker (e.g. SNOW for Snowflake, CRM for \
+Salesforce, CRWD for CrowdStrike, PLTR for Palantir, UBER for Uber).
+
+If the company is private (not publicly traded on any major exchange), return the \
+identifier unchanged.
+
+If the identifier is already a correct ticker, return it unchanged.
+
+IMPORTANT: Do NOT guess. If you are unsure whether a company is public or what its \
+ticker is, return the original value unchanged. It is much better to leave a wrong \
+name than to introduce a wrong ticker.
+
+Return one entry per input ticker, in the same order."""
+
+
+def validate_tickers(
+    tickers: list[str],
+    *,
+    api_key: str,
+    model: str = "gpt-5-mini",
+) -> dict[str, str]:
+    """Validate extracted tickers and return a mapping of original → corrected.
+
+    Only public companies with wrong identifiers get corrected.
+    Private companies and already-correct tickers pass through unchanged.
+    """
+    if not tickers:
+        return {}
+
+    client = openai.OpenAI(api_key=api_key)
+
+    user_prompt = (
+        "Validate these company identifiers:\n\n"
+        + "\n".join(f"- {t}" for t in tickers)
+    )
+
+    completion = client.beta.chat.completions.parse(
+        model=model,
+        messages=[
+            {"role": "system", "content": TICKER_VALIDATION_PROMPT},
+            {"role": "user", "content": user_prompt},
+        ],
+        response_format=TickerValidationResult,
+    )
+
+    result = completion.choices[0].message.parsed
+    if result is None:
+        return {t: t for t in tickers}
+
+    return {c.original: c.corrected for c in result.corrections}
+
+
+def _apply_ticker_corrections(
+    companies: list,
+    corrections: dict[str, str],
+) -> None:
+    """Apply ticker corrections in-place to a list of CompanyView or CompanyMention."""
+    for company in companies:
+        original = company.ticker
+        corrected = corrections.get(original, original)
+        if corrected != original:
+            company.ticker = corrected
+
+
+# ---------------------------------------------------------------------------
 # Image/chart description via vision model
 # ---------------------------------------------------------------------------
 
@@ -452,6 +547,13 @@ def summarize_text(
     result = completion.choices[0].message.parsed
     if result is None:
         raise RuntimeError("LLM returned no parsed output")
+
+    # Validate and correct tickers
+    if result.companies:
+        tickers = [c.ticker for c in result.companies]
+        corrections = validate_tickers(tickers, api_key=api_key, model=model)
+        _apply_ticker_corrections(result.companies, corrections)
+
     return result
 
 
@@ -506,6 +608,13 @@ def extract_index(
     result = completion.choices[0].message.parsed
     if result is None:
         raise RuntimeError("LLM returned no parsed output")
+
+    # Validate and correct tickers
+    if result.companies:
+        tickers = [c.ticker for c in result.companies]
+        corrections = validate_tickers(tickers, api_key=api_key, model=model)
+        _apply_ticker_corrections(result.companies, corrections)
+
     return result
 
 

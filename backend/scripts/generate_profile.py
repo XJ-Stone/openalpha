@@ -76,12 +76,18 @@ def find_appearances(investor_slug: str) -> list[tuple[str, str]]:
         return []
 
     appearances: list[tuple[str, str]] = []
-    for md_path in sorted(investor_dir.glob("*.md")):
-        # Skip the profile file itself
-        if md_path.name == "profile.md":
-            continue
-        content = md_path.read_text(encoding="utf-8")
-        appearances.append((md_path.name, content))
+    # Check both top-level and appearances/ subdirectory
+    search_dirs = [investor_dir]
+    appearances_subdir = investor_dir / "appearances"
+    if appearances_subdir.is_dir():
+        search_dirs.append(appearances_subdir)
+    for search_dir in search_dirs:
+        for md_path in sorted(search_dir.glob("*.md")):
+            # Skip the profile file itself
+            if md_path.name == "profile.md":
+                continue
+            content = md_path.read_text(encoding="utf-8")
+            appearances.append((md_path.name, content))
 
     return appearances
 

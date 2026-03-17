@@ -1,12 +1,13 @@
 {
-  "generated": "2026-03-16",
-  "total_appearances": 83,
+  "generated": "2026-03-17",
+  "total_appearances": 90,
   "companies": [
     {
       "name": "GOOGL",
-      "count": 39,
-      "investor_count": 3,
+      "count": 43,
+      "investor_count": 4,
       "investors": [
+        "apoorv-agrawal",
         "freda-duan",
         "jamin-ball",
         "thomas-reiner"
@@ -14,9 +15,10 @@
     },
     {
       "name": "OPENAI",
-      "count": 30,
-      "investor_count": 3,
+      "count": 34,
+      "investor_count": 4,
       "investors": [
+        "apoorv-agrawal",
         "freda-duan",
         "jamin-ball",
         "thomas-reiner"
@@ -24,9 +26,10 @@
     },
     {
       "name": "AMZN",
-      "count": 24,
-      "investor_count": 3,
+      "count": 27,
+      "investor_count": 4,
       "investors": [
+        "apoorv-agrawal",
         "freda-duan",
         "jamin-ball",
         "thomas-reiner"
@@ -52,9 +55,10 @@
     },
     {
       "name": "META",
-      "count": 15,
-      "investor_count": 3,
+      "count": 18,
+      "investor_count": 4,
       "investors": [
+        "apoorv-agrawal",
         "freda-duan",
         "jamin-ball",
         "thomas-reiner"
@@ -62,9 +66,21 @@
     },
     {
       "name": "AAPL",
-      "count": 15,
-      "investor_count": 3,
+      "count": 17,
+      "investor_count": 4,
       "investors": [
+        "apoorv-agrawal",
+        "freda-duan",
+        "jamin-ball",
+        "thomas-reiner"
+      ]
+    },
+    {
+      "name": "ANTHROPIC",
+      "count": 16,
+      "investor_count": 4,
+      "investors": [
+        "apoorv-agrawal",
         "freda-duan",
         "jamin-ball",
         "thomas-reiner"
@@ -72,9 +88,32 @@
     },
     {
       "name": "MSFT",
-      "count": 14,
-      "investor_count": 3,
+      "count": 16,
+      "investor_count": 4,
       "investors": [
+        "apoorv-agrawal",
+        "freda-duan",
+        "jamin-ball",
+        "thomas-reiner"
+      ]
+    },
+    {
+      "name": "BKNG",
+      "count": 15,
+      "investor_count": 4,
+      "investors": [
+        "apoorv-agrawal",
+        "freda-duan",
+        "jamin-ball",
+        "thomas-reiner"
+      ]
+    },
+    {
+      "name": "NVDA",
+      "count": 14,
+      "investor_count": 4,
+      "investors": [
+        "apoorv-agrawal",
         "freda-duan",
         "jamin-ball",
         "thomas-reiner"
@@ -90,32 +129,12 @@
       ]
     },
     {
-      "name": "BKNG",
-      "count": 14,
+      "name": "BYTEDANCE",
+      "count": 12,
       "investor_count": 3,
       "investors": [
+        "apoorv-agrawal",
         "freda-duan",
-        "jamin-ball",
-        "thomas-reiner"
-      ]
-    },
-    {
-      "name": "NVDA",
-      "count": 13,
-      "investor_count": 3,
-      "investors": [
-        "freda-duan",
-        "jamin-ball",
-        "thomas-reiner"
-      ]
-    },
-    {
-      "name": "ANTHROPIC",
-      "count": 13,
-      "investor_count": 3,
-      "investors": [
-        "freda-duan",
-        "jamin-ball",
         "thomas-reiner"
       ]
     },
@@ -148,15 +167,6 @@
       ]
     },
     {
-      "name": "BYTEDANCE",
-      "count": 10,
-      "investor_count": 2,
-      "investors": [
-        "freda-duan",
-        "thomas-reiner"
-      ]
-    },
-    {
       "name": "SHOP",
       "count": 9,
       "investor_count": 1,
@@ -169,6 +179,25 @@
       "count": 8,
       "investor_count": 2,
       "investors": [
+        "freda-duan",
+        "thomas-reiner"
+      ]
+    },
+    {
+      "name": "STRIPE",
+      "count": 7,
+      "investor_count": 2,
+      "investors": [
+        "apoorv-agrawal",
+        "freda-duan"
+      ]
+    },
+    {
+      "name": "PERPLEXITY",
+      "count": 7,
+      "investor_count": 3,
+      "investors": [
+        "apoorv-agrawal",
         "freda-duan",
         "thomas-reiner"
       ]
@@ -211,6 +240,25 @@
       ]
     },
     {
+      "name": "SPACEX",
+      "count": 5,
+      "investor_count": 3,
+      "investors": [
+        "apoorv-agrawal",
+        "freda-duan",
+        "thomas-reiner"
+      ]
+    },
+    {
+      "name": "XAI",
+      "count": 5,
+      "investor_count": 2,
+      "investors": [
+        "apoorv-agrawal",
+        "freda-duan"
+      ]
+    },
+    {
       "name": "V",
       "count": 5,
       "investor_count": 2,
@@ -237,28 +285,11 @@
       ]
     },
     {
-      "name": "STRIPE",
-      "count": 5,
-      "investor_count": 1,
-      "investors": [
-        "freda-duan"
-      ]
-    },
-    {
       "name": "COIN",
       "count": 5,
       "investor_count": 1,
       "investors": [
         "freda-duan"
-      ]
-    },
-    {
-      "name": "PERPLEXITY",
-      "count": 5,
-      "investor_count": 2,
-      "investors": [
-        "freda-duan",
-        "thomas-reiner"
       ]
     },
     {
@@ -287,11 +318,23 @@
       ]
     },
     {
-      "name": "XAI",
+      "name": "SNOW",
       "count": 4,
-      "investor_count": 1,
+      "investor_count": 3,
       "investors": [
-        "freda-duan"
+        "apoorv-agrawal",
+        "jamin-ball",
+        "thomas-reiner"
+      ]
+    },
+    {
+      "name": "CRM",
+      "count": 4,
+      "investor_count": 3,
+      "investors": [
+        "apoorv-agrawal",
+        "freda-duan",
+        "jamin-ball"
       ]
     },
     {
@@ -301,15 +344,6 @@
       "investors": [
         "freda-duan",
         "jamin-ball"
-      ]
-    },
-    {
-      "name": "SPACEX",
-      "count": 4,
-      "investor_count": 2,
-      "investors": [
-        "freda-duan",
-        "thomas-reiner"
       ]
     },
     {
@@ -326,6 +360,42 @@
       "investor_count": 1,
       "investors": [
         "thomas-reiner"
+      ]
+    },
+    {
+      "name": "REVOLUT",
+      "count": 3,
+      "investor_count": 2,
+      "investors": [
+        "apoorv-agrawal",
+        "freda-duan"
+      ]
+    },
+    {
+      "name": "DATABRICKS",
+      "count": 3,
+      "investor_count": 2,
+      "investors": [
+        "apoorv-agrawal",
+        "jamin-ball"
+      ]
+    },
+    {
+      "name": "CHARACTERAI",
+      "count": 3,
+      "investor_count": 1,
+      "investors": [
+        "apoorv-agrawal"
+      ]
+    },
+    {
+      "name": "DEEPSEEK",
+      "count": 3,
+      "investor_count": 3,
+      "investors": [
+        "apoorv-agrawal",
+        "freda-duan",
+        "jamin-ball"
       ]
     },
     {
@@ -381,29 +451,11 @@
       ]
     },
     {
-      "name": "CRM",
-      "count": 3,
-      "investor_count": 2,
-      "investors": [
-        "freda-duan",
-        "jamin-ball"
-      ]
-    },
-    {
       "name": "NOW",
       "count": 3,
       "investor_count": 1,
       "investors": [
         "jamin-ball"
-      ]
-    },
-    {
-      "name": "SNOW",
-      "count": 3,
-      "investor_count": 2,
-      "investors": [
-        "jamin-ball",
-        "thomas-reiner"
       ]
     },
     {
@@ -448,6 +500,86 @@
       ]
     },
     {
+      "name": "CHIME",
+      "count": 2,
+      "investor_count": 2,
+      "investors": [
+        "apoorv-agrawal",
+        "freda-duan"
+      ]
+    },
+    {
+      "name": "NU",
+      "count": 2,
+      "investor_count": 2,
+      "investors": [
+        "apoorv-agrawal",
+        "freda-duan"
+      ]
+    },
+    {
+      "name": "RAMP",
+      "count": 2,
+      "investor_count": 2,
+      "investors": [
+        "apoorv-agrawal",
+        "thomas-reiner"
+      ]
+    },
+    {
+      "name": "INFLECTION",
+      "count": 2,
+      "investor_count": 2,
+      "investors": [
+        "apoorv-agrawal",
+        "freda-duan"
+      ]
+    },
+    {
+      "name": "ADEPT",
+      "count": 2,
+      "investor_count": 2,
+      "investors": [
+        "apoorv-agrawal",
+        "freda-duan"
+      ]
+    },
+    {
+      "name": "BASETEN",
+      "count": 2,
+      "investor_count": 2,
+      "investors": [
+        "apoorv-agrawal",
+        "jamin-ball"
+      ]
+    },
+    {
+      "name": "CURSOR",
+      "count": 2,
+      "investor_count": 2,
+      "investors": [
+        "apoorv-agrawal",
+        "jamin-ball"
+      ]
+    },
+    {
+      "name": "SPOT",
+      "count": 2,
+      "investor_count": 1,
+      "investors": [
+        "apoorv-agrawal"
+      ]
+    },
+    {
+      "name": "X",
+      "count": 2,
+      "investor_count": 2,
+      "investors": [
+        "apoorv-agrawal",
+        "freda-duan"
+      ]
+    },
+    {
       "name": "SNAP",
       "count": 2,
       "investor_count": 2,
@@ -481,15 +613,6 @@
       ]
     },
     {
-      "name": "DEEPSEEK",
-      "count": 2,
-      "investor_count": 2,
-      "investors": [
-        "freda-duan",
-        "jamin-ball"
-      ]
-    },
-    {
       "name": "FIDELITY",
       "count": 2,
       "investor_count": 1,
@@ -499,14 +622,6 @@
     },
     {
       "name": "UNITREE",
-      "count": 2,
-      "investor_count": 1,
-      "investors": [
-        "freda-duan"
-      ]
-    },
-    {
-      "name": "REVOLUT",
       "count": 2,
       "investor_count": 1,
       "investors": [
@@ -776,6 +891,270 @@
       ]
     },
     {
+      "name": "N26",
+      "count": 1,
+      "investor_count": 1,
+      "investors": [
+        "apoorv-agrawal"
+      ]
+    },
+    {
+      "name": "MONZO",
+      "count": 1,
+      "investor_count": 1,
+      "investors": [
+        "apoorv-agrawal"
+      ]
+    },
+    {
+      "name": "STARLING",
+      "count": 1,
+      "investor_count": 1,
+      "investors": [
+        "apoorv-agrawal"
+      ]
+    },
+    {
+      "name": "WISE",
+      "count": 1,
+      "investor_count": 1,
+      "investors": [
+        "apoorv-agrawal"
+      ]
+    },
+    {
+      "name": "RELIANCE",
+      "count": 1,
+      "investor_count": 1,
+      "investors": [
+        "apoorv-agrawal"
+      ]
+    },
+    {
+      "name": "SCALEAI",
+      "count": 1,
+      "investor_count": 1,
+      "investors": [
+        "apoorv-agrawal"
+      ]
+    },
+    {
+      "name": "GROQ",
+      "count": 1,
+      "investor_count": 1,
+      "investors": [
+        "apoorv-agrawal"
+      ]
+    },
+    {
+      "name": "WINDSURF",
+      "count": 1,
+      "investor_count": 1,
+      "investors": [
+        "apoorv-agrawal"
+      ]
+    },
+    {
+      "name": "PARLOA",
+      "count": 1,
+      "investor_count": 1,
+      "investors": [
+        "apoorv-agrawal"
+      ]
+    },
+    {
+      "name": "ALV",
+      "count": 1,
+      "investor_count": 1,
+      "investors": [
+        "apoorv-agrawal"
+      ]
+    },
+    {
+      "name": "SLHN",
+      "count": 1,
+      "investor_count": 1,
+      "investors": [
+        "apoorv-agrawal"
+      ]
+    },
+    {
+      "name": "HQY",
+      "count": 1,
+      "investor_count": 1,
+      "investors": [
+        "apoorv-agrawal"
+      ]
+    },
+    {
+      "name": "BERLIN-BRANDENBURG-AIRPORT",
+      "count": 1,
+      "investor_count": 1,
+      "investors": [
+        "apoorv-agrawal"
+      ]
+    },
+    {
+      "name": "GENESYS",
+      "count": 1,
+      "investor_count": 1,
+      "investors": [
+        "apoorv-agrawal"
+      ]
+    },
+    {
+      "name": "AVYA",
+      "count": 1,
+      "investor_count": 1,
+      "investors": [
+        "apoorv-agrawal"
+      ]
+    },
+    {
+      "name": "FIVN",
+      "count": 1,
+      "investor_count": 1,
+      "investors": [
+        "apoorv-agrawal"
+      ]
+    },
+    {
+      "name": "6SENSE",
+      "count": 1,
+      "investor_count": 1,
+      "investors": [
+        "apoorv-agrawal"
+      ]
+    },
+    {
+      "name": "OPENEVIDENCE",
+      "count": 1,
+      "investor_count": 1,
+      "investors": [
+        "apoorv-agrawal"
+      ]
+    },
+    {
+      "name": "NOTION",
+      "count": 1,
+      "investor_count": 1,
+      "investors": [
+        "apoorv-agrawal"
+      ]
+    },
+    {
+      "name": "ABRIDGE",
+      "count": 1,
+      "investor_count": 1,
+      "investors": [
+        "apoorv-agrawal"
+      ]
+    },
+    {
+      "name": "CLAY",
+      "count": 1,
+      "investor_count": 1,
+      "investors": [
+        "apoorv-agrawal"
+      ]
+    },
+    {
+      "name": "WORLDLABS",
+      "count": 1,
+      "investor_count": 1,
+      "investors": [
+        "apoorv-agrawal"
+      ]
+    },
+    {
+      "name": "GAMMA",
+      "count": 1,
+      "investor_count": 1,
+      "investors": [
+        "apoorv-agrawal"
+      ]
+    },
+    {
+      "name": "WRITER",
+      "count": 1,
+      "investor_count": 1,
+      "investors": [
+        "apoorv-agrawal"
+      ]
+    },
+    {
+      "name": "BLANDAI",
+      "count": 1,
+      "investor_count": 1,
+      "investors": [
+        "apoorv-agrawal"
+      ]
+    },
+    {
+      "name": "DESCRIPT",
+      "count": 1,
+      "investor_count": 1,
+      "investors": [
+        "apoorv-agrawal"
+      ]
+    },
+    {
+      "name": "AMBIENCE",
+      "count": 1,
+      "investor_count": 1,
+      "investors": [
+        "apoorv-agrawal"
+      ]
+    },
+    {
+      "name": "HEX",
+      "count": 1,
+      "investor_count": 1,
+      "investors": [
+        "apoorv-agrawal"
+      ]
+    },
+    {
+      "name": "WISPRFLOW",
+      "count": 1,
+      "investor_count": 1,
+      "investors": [
+        "apoorv-agrawal"
+      ]
+    },
+    {
+      "name": "LATENTHEALTH",
+      "count": 1,
+      "investor_count": 1,
+      "investors": [
+        "apoorv-agrawal"
+      ]
+    },
+    {
+      "name": "CLUBHOUSE",
+      "count": 1,
+      "investor_count": 1,
+      "investors": [
+        "apoorv-agrawal"
+      ]
+    },
+    {
+      "name": "BEREAL",
+      "count": 1,
+      "investor_count": 1,
+      "investors": [
+        "apoorv-agrawal"
+      ]
+    },
+    {
+      "name": "OPENCLAW",
+      "count": 1,
+      "investor_count": 1,
+      "investors": [
+        "apoorv-agrawal"
+      ]
+    },
+    {
       "name": "RAY-BAN",
       "count": 1,
       "investor_count": 1,
@@ -785,22 +1164,6 @@
     },
     {
       "name": "DIDI",
-      "count": 1,
-      "investor_count": 1,
-      "investors": [
-        "freda-duan"
-      ]
-    },
-    {
-      "name": "INFLECTION",
-      "count": 1,
-      "investor_count": 1,
-      "investors": [
-        "freda-duan"
-      ]
-    },
-    {
-      "name": "ADEPT",
       "count": 1,
       "investor_count": 1,
       "investors": [
@@ -928,14 +1291,6 @@
       ]
     },
     {
-      "name": "CHIME",
-      "count": 1,
-      "investor_count": 1,
-      "investors": [
-        "freda-duan"
-      ]
-    },
-    {
       "name": "BLK",
       "count": 1,
       "investor_count": 1,
@@ -1025,14 +1380,6 @@
     },
     {
       "name": "HYUNDAI",
-      "count": 1,
-      "investor_count": 1,
-      "investors": [
-        "freda-duan"
-      ]
-    },
-    {
-      "name": "X",
       "count": 1,
       "investor_count": 1,
       "investors": [
@@ -1257,14 +1604,6 @@
     },
     {
       "name": "ARCB",
-      "count": 1,
-      "investor_count": 1,
-      "investors": [
-        "freda-duan"
-      ]
-    },
-    {
-      "name": "NU",
       "count": 1,
       "investor_count": 1,
       "investors": [
@@ -1720,14 +2059,6 @@
       ]
     },
     {
-      "name": "DATABRICKS",
-      "count": 1,
-      "investor_count": 1,
-      "investors": [
-        "jamin-ball"
-      ]
-    },
-    {
       "name": "DOCKER",
       "count": 1,
       "investor_count": 1,
@@ -1744,23 +2075,7 @@
       ]
     },
     {
-      "name": "CURSOR",
-      "count": 1,
-      "investor_count": 1,
-      "investors": [
-        "jamin-ball"
-      ]
-    },
-    {
       "name": "INFERACT",
-      "count": 1,
-      "investor_count": 1,
-      "investors": [
-        "jamin-ball"
-      ]
-    },
-    {
-      "name": "BASETEN",
       "count": 1,
       "investor_count": 1,
       "investors": [
@@ -1969,14 +2284,6 @@
     },
     {
       "name": "BREX",
-      "count": 1,
-      "investor_count": 1,
-      "investors": [
-        "thomas-reiner"
-      ]
-    },
-    {
-      "name": "RAMP",
       "count": 1,
       "investor_count": 1,
       "investors": [
@@ -2413,9 +2720,10 @@
     },
     {
       "name": "ai-agents",
-      "count": 10,
-      "investor_count": 3,
+      "count": 13,
+      "investor_count": 4,
       "investors": [
+        "apoorv-agrawal",
         "freda-duan",
         "jamin-ball",
         "thomas-reiner"
@@ -2426,6 +2734,16 @@
       "count": 9,
       "investor_count": 1,
       "investors": [
+        "jamin-ball"
+      ]
+    },
+    {
+      "name": "enterprise-ai",
+      "count": 7,
+      "investor_count": 3,
+      "investors": [
+        "apoorv-agrawal",
+        "freda-duan",
         "jamin-ball"
       ]
     },
@@ -2458,10 +2776,11 @@
       ]
     },
     {
-      "name": "enterprise-ai",
+      "name": "model-pricing-power",
       "count": 6,
-      "investor_count": 2,
+      "investor_count": 3,
       "investors": [
+        "apoorv-agrawal",
         "freda-duan",
         "jamin-ball"
       ]
@@ -2473,15 +2792,6 @@
       "investors": [
         "freda-duan",
         "thomas-reiner"
-      ]
-    },
-    {
-      "name": "model-pricing-power",
-      "count": 5,
-      "investor_count": 2,
-      "investors": [
-        "freda-duan",
-        "jamin-ball"
       ]
     },
     {
@@ -2603,6 +2913,94 @@
       "investor_count": 1,
       "investors": [
         "thomas-reiner"
+      ]
+    },
+    {
+      "name": "revenue-diversification",
+      "count": 2,
+      "investor_count": 2,
+      "investors": [
+        "apoorv-agrawal",
+        "freda-duan"
+      ]
+    },
+    {
+      "name": "consumer-financial-superapp",
+      "count": 2,
+      "investor_count": 2,
+      "investors": [
+        "apoorv-agrawal",
+        "freda-duan"
+      ]
+    },
+    {
+      "name": "international-expansion",
+      "count": 2,
+      "investor_count": 2,
+      "investors": [
+        "apoorv-agrawal",
+        "freda-duan"
+      ]
+    },
+    {
+      "name": "neobanks-primary-bank",
+      "count": 2,
+      "investor_count": 2,
+      "investors": [
+        "apoorv-agrawal",
+        "freda-duan"
+      ]
+    },
+    {
+      "name": "private-markets",
+      "count": 2,
+      "investor_count": 2,
+      "investors": [
+        "apoorv-agrawal",
+        "jamin-ball"
+      ]
+    },
+    {
+      "name": "ai-labs-profitability",
+      "count": 2,
+      "investor_count": 2,
+      "investors": [
+        "apoorv-agrawal",
+        "jamin-ball"
+      ]
+    },
+    {
+      "name": "consumer-ai-engagement",
+      "count": 2,
+      "investor_count": 1,
+      "investors": [
+        "apoorv-agrawal"
+      ]
+    },
+    {
+      "name": "retention-smile-curve",
+      "count": 2,
+      "investor_count": 1,
+      "investors": [
+        "apoorv-agrawal"
+      ]
+    },
+    {
+      "name": "training-vs-inference",
+      "count": 2,
+      "investor_count": 2,
+      "investors": [
+        "apoorv-agrawal",
+        "freda-duan"
+      ]
+    },
+    {
+      "name": "ai-education-advantage",
+      "count": 2,
+      "investor_count": 2,
+      "investors": [
+        "apoorv-agrawal",
+        "jamin-ball"
       ]
     },
     {
@@ -2759,6 +3157,118 @@
       ]
     },
     {
+      "name": "bets-culture",
+      "count": 1,
+      "investor_count": 1,
+      "investors": [
+        "apoorv-agrawal"
+      ]
+    },
+    {
+      "name": "contact-center-automation",
+      "count": 1,
+      "investor_count": 1,
+      "investors": [
+        "apoorv-agrawal"
+      ]
+    },
+    {
+      "name": "forward-deployed-engineers",
+      "count": 1,
+      "investor_count": 1,
+      "investors": [
+        "apoorv-agrawal"
+      ]
+    },
+    {
+      "name": "production-inference",
+      "count": 1,
+      "investor_count": 1,
+      "investors": [
+        "apoorv-agrawal"
+      ]
+    },
+    {
+      "name": "model-serving-platforms",
+      "count": 1,
+      "investor_count": 1,
+      "investors": [
+        "apoorv-agrawal"
+      ]
+    },
+    {
+      "name": "open-weight-models",
+      "count": 1,
+      "investor_count": 1,
+      "investors": [
+        "apoorv-agrawal"
+      ]
+    },
+    {
+      "name": "consumer-ai-usage",
+      "count": 1,
+      "investor_count": 1,
+      "investors": [
+        "apoorv-agrawal"
+      ]
+    },
+    {
+      "name": "ai-app-market-share",
+      "count": 1,
+      "investor_count": 1,
+      "investors": [
+        "apoorv-agrawal"
+      ]
+    },
+    {
+      "name": "distribution-vs-model-quality",
+      "count": 1,
+      "investor_count": 1,
+      "investors": [
+        "apoorv-agrawal"
+      ]
+    },
+    {
+      "name": "downloads-vs-usage",
+      "count": 1,
+      "investor_count": 1,
+      "investors": [
+        "apoorv-agrawal"
+      ]
+    },
+    {
+      "name": "engagement-metrics",
+      "count": 1,
+      "investor_count": 1,
+      "investors": [
+        "apoorv-agrawal"
+      ]
+    },
+    {
+      "name": "habit-formation",
+      "count": 1,
+      "investor_count": 1,
+      "investors": [
+        "apoorv-agrawal"
+      ]
+    },
+    {
+      "name": "consumer-market-concentration",
+      "count": 1,
+      "investor_count": 1,
+      "investors": [
+        "apoorv-agrawal"
+      ]
+    },
+    {
+      "name": "consumer-ai-growth",
+      "count": 1,
+      "investor_count": 1,
+      "investors": [
+        "apoorv-agrawal"
+      ]
+    },
+    {
       "name": "humanoid-robotics-hardware",
       "count": 1,
       "investor_count": 1,
@@ -2840,14 +3350,6 @@
     },
     {
       "name": "battery-swaps",
-      "count": 1,
-      "investor_count": 1,
-      "investors": [
-        "freda-duan"
-      ]
-    },
-    {
-      "name": "training-vs-inference",
       "count": 1,
       "investor_count": 1,
       "investors": [
@@ -3063,31 +3565,7 @@
       ]
     },
     {
-      "name": "international-expansion",
-      "count": 1,
-      "investor_count": 1,
-      "investors": [
-        "freda-duan"
-      ]
-    },
-    {
       "name": "autonomy",
-      "count": 1,
-      "investor_count": 1,
-      "investors": [
-        "freda-duan"
-      ]
-    },
-    {
-      "name": "neobanks-primary-bank",
-      "count": 1,
-      "investor_count": 1,
-      "investors": [
-        "freda-duan"
-      ]
-    },
-    {
-      "name": "consumer-financial-superapp",
       "count": 1,
       "investor_count": 1,
       "investors": [
@@ -3232,14 +3710,6 @@
     },
     {
       "name": "transactional-revenue-cyclicality",
-      "count": 1,
-      "investor_count": 1,
-      "investors": [
-        "freda-duan"
-      ]
-    },
-    {
-      "name": "revenue-diversification",
       "count": 1,
       "investor_count": 1,
       "investors": [
@@ -3735,23 +4205,7 @@
       ]
     },
     {
-      "name": "private-markets",
-      "count": 1,
-      "investor_count": 1,
-      "investors": [
-        "jamin-ball"
-      ]
-    },
-    {
       "name": "authoritative-ai",
-      "count": 1,
-      "investor_count": 1,
-      "investors": [
-        "jamin-ball"
-      ]
-    },
-    {
-      "name": "ai-education-advantage",
       "count": 1,
       "investor_count": 1,
       "investors": [
@@ -3848,14 +4302,6 @@
     },
     {
       "name": "data-orchestration",
-      "count": 1,
-      "investor_count": 1,
-      "investors": [
-        "jamin-ball"
-      ]
-    },
-    {
-      "name": "ai-labs-profitability",
       "count": 1,
       "investor_count": 1,
       "investors": [

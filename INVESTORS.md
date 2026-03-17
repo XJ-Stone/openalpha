@@ -4,6 +4,7 @@ This is the index of all investors currently tracked in the OpenAlpha knowledge 
 
 | Investor | Fund | Focus | Appearances | Primary Sources |
 |---|---|---|---|---|
+| Apoorv Agrawal | Altimeter Capital | ai-agents, ai-app-market-share, ai-education-advantage, ai-labs-profitability, ... | 7 | Apoorv's notes |
 | Bill Gurley | Benchmark |  | 0 |  |
 | Brad Gerstner | Altimeter Capital |  | 0 |  |
 | Cathie Wood | ARK Invest |  | 0 |  |

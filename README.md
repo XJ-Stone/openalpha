@@ -22,7 +22,7 @@ OpenAlpha is an open-source research agent that searches a community-curated kno
 ### 1. Clone and install
 
 ```bash
-git clone https://github.com/your-org/openalpha.git
+git clone https://github.com/XJ-Stone/openalpha.git
 cd openalpha/backend
 pip install poetry
 poetry install

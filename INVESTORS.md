@@ -10,7 +10,7 @@ This is the index of all investors currently tracked in the OpenAlpha knowledge 
 | Chamath Palihapitiya | Social Capital |  | 0 |  |
 | David Friedberg | The Production Board |  | 0 |  |
 | David Sacks | Craft Ventures |  | 0 |  |
-| Freda Duan | Altimeter Capital | ad-tech, ads, adtech, advertising, ... | 26 | Robonomics |
+| Freda Duan | Altimeter Capital | 0dte-options, ads-vs-take-rate, agent-memory, agentic-checkout, ... | 49 | Robonomics |
 | Howard Marks | Oaktree Capital Management | credit, value-investing, macro, market-cycles | 0 | Oaktree Memos, Bloomberg, CNBC, podcasts |
 | Jamin Ball | Altimeter Capital | ai, ai-agents, ai-infrastructure, china-tech, ... | 13 | Clouded Judgement |
 | Jason Calacanis | Various (Angel Investor, LAUNCH Fund) |  | 0 |  |
@@ -46,7 +46,7 @@ slug: lowercase-hyphenated
 fund: Fund Name
 role: Title
 aum: "$XB+" or "N/A"
-sectors: [sector1, sector2]
+topics: [topic1, topic2]
 companies: [TICK1, TICK2]
 sources: [Source1, Source2]
 last_updated: YYYY-MM-DD

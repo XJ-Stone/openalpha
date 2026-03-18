@@ -30,8 +30,8 @@ npm run lint    # ESLint
 ### Data Ingestion
 ```bash
 cd backend
-python data-ingestion/substack.py --url <substack-url> --months 6   # Ingest Substack posts
-python scripts/generate_appearance.py --transcript <file> --investor <slug> --date YYYY-MM-DD --source "Name" --type podcast --url "..."
+python -m ingestion substack --url <substack-url> --months 6        # Ingest Substack posts
+python -m ingestion manual --file <transcript> --investor <slug> --date YYYY-MM-DD --source-name "Name" --type podcast
 python scripts/generate_profile.py --investor <slug>                 # Generate profile from appearances
 python scripts/post_ingest.py --all                                  # Reconcile metadata after adding appearances
 python scripts/lint_investors.py                                     # Lint frontmatter

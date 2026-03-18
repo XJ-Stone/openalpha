@@ -35,5 +35,8 @@ Thumbs.db
 htmlcov/
 .pytest_cache/
 
+# Generated
+investors/_stats.json
+
 # Deployment
 .vercel/

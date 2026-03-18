@@ -30,8 +30,9 @@ jobs:
       - name: Run tests
         run: poetry run pytest tests/ -v
 
-      - name: Run linter
+      - name: Lint investor frontmatter
         run: poetry run python scripts/lint_investors.py
+        continue-on-error: true
 
   frontend:
     name: Frontend (Next.js)

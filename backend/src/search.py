@@ -2,11 +2,14 @@
 
 from __future__ import annotations
 
+from datetime import date, timedelta
 from pathlib import Path
 
 import frontmatter
 
 from .entity import ExtractedEntities
+
+MAX_APPEARANCES = 50
 
 
 def scan_profiles(investors_dir: Path) -> list[dict]:
@@ -61,105 +64,153 @@ def scan_appearances(investors_dir: Path) -> list[dict]:
     return appearances
 
 
-def _score_match_entities(item: dict, entities: ExtractedEntities) -> int:
-    """Score an item against extracted entities.
+# ---------------------------------------------------------------------------
+# Matching helpers
+# ---------------------------------------------------------------------------
 
-    Scoring:
-        - Ticker match in ``companies``    -> 100 per match
-        - Sector match in ``sectors``      -> 50 per match
-        - Investor name/slug match         -> 25
-    """
-    score = 0
 
-    # Ticker matching — exact match on uppercase tickers
-    item_companies = {c.upper() for c in (item.get("companies", []) or [])}
-    for ticker in entities.tickers:
-        if ticker in item_companies:
-            score += 100
+def _matches_investor(app: dict, investors: list[str]) -> bool:
+    """Check if an appearance belongs to any of the given investors."""
+    slug = (app.get("investor_slug", "") or app.get("investor", "")).lower()
+    for inv in investors:
+        inv_lower = inv.lower()
+        if inv_lower in slug or any(part in slug for part in inv_lower.split()):
+            return True
+    return False
 
-    # Topic matching — case-insensitive substring (reads both 'topics' and legacy 'sectors')
-    item_topics = [t.lower() for t in (item.get("topics", []) or [])]
-    item_topics += [s.lower() for s in (item.get("sectors", []) or [])]
-    for topic in entities.topics:
+
+def _matches_companies(app: dict, tickers: list[str]) -> bool:
+    """Check if an appearance mentions any of the given tickers."""
+    app_companies = {c.upper() for c in (app.get("companies", []) or [])}
+    return bool(app_companies & {t.upper() for t in tickers})
+
+
+def _matches_topics(app: dict, topics: list[str]) -> bool:
+    """Check if an appearance covers any of the given topics (substring match)."""
+    app_topics = [t.lower() for t in (app.get("topics", []) or [])]
+    app_topics += [s.lower() for s in (app.get("sectors", []) or [])]
+    for topic in topics:
         topic_lower = topic.lower()
-        for item_topic in item_topics:
-            if topic_lower in item_topic or item_topic in topic_lower:
-                score += 50
+        for app_topic in app_topics:
+            if topic_lower in app_topic or app_topic in topic_lower:
+                return True
+    return False
 
-    # Investor name matching — check against name, slug, fund
-    if entities.investors:
-        name = (item.get("name") or "").lower()
-        slug = (item.get("slug") or item.get("investor_slug") or "").lower()
-        fund = (item.get("fund") or "").lower()
-        searchable = f"{name} {slug} {fund}"
 
-        for investor in entities.investors:
-            investor_lower = investor.lower()
-            if investor_lower in searchable or any(
-                part in searchable for part in investor_lower.split()
-            ):
-                score += 25
+def _parse_date(d: str | date | None) -> date | None:
+    """Parse a date field from frontmatter (may be str or date object)."""
+    if isinstance(d, date):
+        return d
+    if isinstance(d, str):
+        try:
+            parts = d.split("-")
+            return date(int(parts[0]), int(parts[1]), int(parts[2]))
+        except (ValueError, IndexError):
+            return None
+    return None
 
-    return score
+
+def _within_time_range(app: dict, months: int) -> bool:
+    """Check if an appearance's date falls within the last N months."""
+    d = _parse_date(app.get("date"))
+    if d is None:
+        return False
+    cutoff = date.today() - timedelta(days=months * 30)
+    return d >= cutoff
+
+
+# ---------------------------------------------------------------------------
+# Core search: AND across categories, OR within categories
+# ---------------------------------------------------------------------------
 
 
 def search_by_entities(
     entities: ExtractedEntities,
-    profiles: list[dict],
     appearances: list[dict],
+    profiles: list[dict],
+    resolved_topics: list[str] | None = None,
+    *,
+    max_appearances: int = MAX_APPEARANCES,
 ) -> dict[str, list[dict]]:
-    """Find matching investors and appearances using extracted entities.
+    """Filter appearances using AND-across-categories, OR-within-categories logic.
 
-    Results are sorted by relevance score then recency.
+    Dimensions:
+    - investor: match if appearance belongs to ANY listed investor
+    - company:  match if appearance mentions ANY listed ticker
+    - topic:    match if appearance covers ANY listed topic (includes resolved_topics)
+    - time:     match if appearance date is within time_months
+
+    An appearance must satisfy ALL specified dimensions to be included.
+    Profiles are matched by investor name/slug only (never by ticker/topic).
     """
     if entities.is_empty:
-        # No entities extracted — return everything (broad query)
-        return {"profiles": list(profiles), "appearances": list(appearances)}
+        return {"profiles": [], "appearances": []}
 
-    scored_profiles: list[tuple[int, dict]] = []
-    for p in profiles:
-        s = _score_match_entities(p, entities)
-        if s > 0:
-            scored_profiles.append((s, p))
+    # Merge raw topics with resolved topics
+    all_topics = list(entities.topics or [])
+    if resolved_topics:
+        all_topics.extend(resolved_topics)
 
-    scored_appearances: list[tuple[int, dict]] = []
-    for a in appearances:
-        s = _score_match_entities(a, entities)
-        if s > 0:
-            scored_appearances.append((s, a))
+    # --- Filter appearances: AND across dimensions ---
+    matched: list[dict] = []
+    for app in appearances:
+        # Each dimension is a gate — if specified, must match
+        if entities.investors and not _matches_investor(app, entities.investors):
+            continue
+        if entities.tickers and not _matches_companies(app, entities.tickers):
+            continue
+        if all_topics and not _matches_topics(app, all_topics):
+            continue
+        if entities.time_months and not _within_time_range(app, entities.time_months):
+            continue
+        matched.append(app)
 
-    # If entity extraction returned investors but no ticker/sector matches,
-    # also include all appearances for matched investor profiles
-    if entities.investors and not scored_appearances and scored_profiles:
-        matched_slugs = {p.get("slug") for _, p in scored_profiles}
-        for a in appearances:
-            a_slug = a.get("investor_slug") or a.get("investor", "")
-            if a_slug in matched_slugs:
-                scored_appearances.append((25, a))
+    # Sort by date descending (newest first)
+    matched.sort(key=lambda a: str(a.get("date", "")), reverse=True)
 
-    # Sort by score desc, then by date desc
-    scored_profiles.sort(key=lambda p: (-p[0], str(p[1].get("date", "9999-99-99"))))
-    scored_appearances.sort(key=lambda p: (-p[0], str(p[1].get("date", "9999-99-99"))))
+    # Cap results
+    matched = matched[:max_appearances]
 
-    return {
-        "profiles": [p for _, p in scored_profiles],
-        "appearances": [a for _, a in scored_appearances],
+    # --- Match profiles by investor only ---
+    matched_slugs = {
+        a.get("investor_slug", "") or a.get("investor", "") for a in matched
     }
+    matched_profiles: list[dict] = []
+    for p in profiles:
+        slug = p.get("slug", "")
+        # Include if investor slug appears in matched appearances
+        if slug in matched_slugs:
+            matched_profiles.append(p)
+            continue
+        # Or if profile directly matches an investor name query
+        if entities.investors:
+            name = (p.get("name") or "").lower()
+            p_slug = slug.lower()
+            fund = (p.get("fund") or "").lower()
+            searchable = f"{name} {p_slug} {fund}"
+            for inv in entities.investors:
+                inv_lower = inv.lower()
+                if inv_lower in searchable or any(
+                    part in searchable for part in inv_lower.split()
+                ):
+                    matched_profiles.append(p)
+                    break
+
+    return {"profiles": matched_profiles, "appearances": matched}
 
 
 class InvestorIndex:
     """In-memory index over investor profiles and appearances.
 
     Scans the investors directory once (on first access) and caches the
-    results for subsequent searches.  Also builds reverse mappings
-    (sector → files, company → files) for fast lookup.
+    results for subsequent searches.
     """
 
     def __init__(self, investors_dir: Path) -> None:
         self._investors_dir = investors_dir
         self._profiles: list[dict] | None = None
         self._appearances: list[dict] | None = None
-        # Reverse indexes: key → list of appearance dicts
+        # Reverse indexes: key -> list of appearance dicts
         self._topic_index: dict[str, list[dict]] | None = None
         self._company_index: dict[str, list[dict]] | None = None
 
@@ -172,7 +223,7 @@ class InvestorIndex:
             self._build_reverse_indexes()
 
     def _build_reverse_indexes(self) -> None:
-        """Build topic→appearances and company→appearances mappings."""
+        """Build topic->appearances and company->appearances mappings."""
         assert self._appearances is not None
         self._topic_index = {}
         self._company_index = {}
@@ -242,11 +293,23 @@ class InvestorIndex:
                     results.append(app)
         return results
 
-    def search(self, entities: ExtractedEntities) -> dict[str, list[dict]]:
-        """Search the index using extracted entities."""
+    def search(
+        self,
+        entities: ExtractedEntities,
+        resolved_topics: list[str] | None = None,
+        *,
+        max_appearances: int = MAX_APPEARANCES,
+    ) -> dict[str, list[dict]]:
+        """Search the index using extracted entities with AND logic."""
         self._ensure_loaded()
         assert self._profiles is not None and self._appearances is not None
-        return search_by_entities(entities, self._profiles, self._appearances)
+        return search_by_entities(
+            entities,
+            self._appearances,
+            self._profiles,
+            resolved_topics,
+            max_appearances=max_appearances,
+        )
 
     def reload(self) -> None:
         """Force a re-scan of the investors directory."""

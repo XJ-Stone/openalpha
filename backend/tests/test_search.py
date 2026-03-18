@@ -1,94 +1,192 @@
-"""Tests for the search engine (InvestorIndex + scoring)."""
+"""Tests for the search engine (AND-across-categories, OR-within-categories)."""
 
 from __future__ import annotations
 
 from pathlib import Path
 
 from src.entity import ExtractedEntities
-from src.search import InvestorIndex, _score_match_entities
+from src.search import InvestorIndex
 
 
-class TestScoring:
-    """Unit tests for _score_match_entities."""
+class TestANDLogic:
+    """Investor + ticker/topic should AND — only appearances matching both."""
 
-    def test_ticker_match_scores_100(self):
-        item = {"companies": ["NVDA", "MSFT"]}
-        entities = ExtractedEntities(tickers=["NVDA"], investors=[], topics=[])
-        assert _score_match_entities(item, entities) == 100
+    def test_investor_and_ticker(self, tmp_investors: Path):
+        """'What does Test Investor think about NVDA?' — only Test's NVDA appearances."""
+        index = InvestorIndex(tmp_investors)
+        entities = ExtractedEntities(tickers=["NVDA"], investors=["test-investor"])
+        result = index.search(entities)
+        assert len(result["appearances"]) == 2  # 2026-02-01 + 2024-06-01
+        for app in result["appearances"]:
+            assert app["investor"] == "test-investor"
+            assert "NVDA" in app["companies"]
 
-    def test_multiple_ticker_matches(self):
-        item = {"companies": ["NVDA", "MSFT"]}
-        entities = ExtractedEntities(tickers=["NVDA", "MSFT"], investors=[], topics=[])
-        assert _score_match_entities(item, entities) == 200
+    def test_investor_and_ticker_excludes_other_investor(self, tmp_investors: Path):
+        """Other investor's NVDA appearance should NOT appear."""
+        index = InvestorIndex(tmp_investors)
+        entities = ExtractedEntities(tickers=["NVDA"], investors=["test-investor"])
+        result = index.search(entities)
+        slugs = {a["investor"] for a in result["appearances"]}
+        assert "other-investor" not in slugs
 
-    def test_topic_match_scores_50(self):
-        item = {"topics": ["ai-infrastructure"]}
-        entities = ExtractedEntities(tickers=[], investors=[], topics=["ai-infrastructure"])
-        assert _score_match_entities(item, entities) == 50
+    def test_investor_and_ticker_excludes_other_ticker(self, tmp_investors: Path):
+        """Test investor's SNOW appearance should NOT appear when asking about NVDA."""
+        index = InvestorIndex(tmp_investors)
+        entities = ExtractedEntities(tickers=["NVDA"], investors=["test-investor"])
+        result = index.search(entities)
+        for app in result["appearances"]:
+            assert "NVDA" in app["companies"]
 
-    def test_legacy_sectors_field(self):
-        item = {"sectors": ["ai-infrastructure"]}
-        entities = ExtractedEntities(tickers=[], investors=[], topics=["ai-infrastructure"])
-        assert _score_match_entities(item, entities) == 50
 
-    def test_investor_match_scores_25(self):
-        item = {"name": "Brad Gerstner", "slug": "brad-gerstner", "fund": "Altimeter"}
-        entities = ExtractedEntities(tickers=[], investors=["Gerstner"], topics=[])
-        assert _score_match_entities(item, entities) == 25
+class TestORWithinCategory:
+    """Multiple investors or tickers should OR within their category."""
 
-    def test_no_match_scores_zero(self):
-        item = {"companies": ["AAPL"], "topics": ["fintech"]}
-        entities = ExtractedEntities(tickers=["NVDA"], investors=[], topics=["ai"])
-        assert _score_match_entities(item, entities) == 0
-
-    def test_empty_entities_scores_zero(self):
-        item = {"companies": ["NVDA"]}
-        entities = ExtractedEntities(tickers=[], investors=[], topics=[])
-        assert _score_match_entities(item, entities) == 0
-
-    def test_combined_scoring(self):
-        item = {
-            "companies": ["NVDA"],
-            "topics": ["ai-infrastructure"],
-            "name": "Test",
-            "slug": "test-investor",
-            "fund": "Test Fund",
-        }
+    def test_multiple_investors(self, tmp_investors: Path):
+        """'What do Test and Other think about NVDA?' — NVDA from both."""
+        index = InvestorIndex(tmp_investors)
         entities = ExtractedEntities(
-            tickers=["NVDA"], investors=["test-investor"], topics=["ai-infrastructure"],
+            tickers=["NVDA"], investors=["test-investor", "other-investor"]
         )
-        # 100 (ticker) + 50 (topic) + 25 (investor) = 175
-        assert _score_match_entities(item, entities) == 175
+        result = index.search(entities)
+        slugs = {a["investor"] for a in result["appearances"]}
+        assert "test-investor" in slugs
+        assert "other-investor" in slugs
 
-    def test_case_insensitive_ticker(self):
-        item = {"companies": ["nvda"]}
-        entities = ExtractedEntities(tickers=["NVDA"], investors=[], topics=[])
-        assert _score_match_entities(item, entities) == 100
+    def test_multiple_tickers(self, tmp_investors: Path):
+        """'What does Test think about NVDA and SNOW?' — both tickers from Test."""
+        index = InvestorIndex(tmp_investors)
+        entities = ExtractedEntities(
+            tickers=["NVDA", "SNOW"], investors=["test-investor"]
+        )
+        result = index.search(entities)
+        tickers_seen = set()
+        for app in result["appearances"]:
+            tickers_seen.update(app["companies"])
+        assert "NVDA" in tickers_seen
+        assert "SNOW" in tickers_seen
 
-    def test_substring_topic_match(self):
-        item = {"topics": ["ai-infrastructure-buildout"]}
-        entities = ExtractedEntities(tickers=[], investors=[], topics=["ai-infrastructure"])
-        assert _score_match_entities(item, entities) == 50
+
+class TestSingleDimension:
+    """When only one dimension is specified, filter by that dimension alone."""
+
+    def test_ticker_only(self, tmp_investors: Path):
+        """'Who's talking about NVDA?' — all NVDA appearances, any investor."""
+        index = InvestorIndex(tmp_investors)
+        entities = ExtractedEntities(tickers=["NVDA"])
+        result = index.search(entities)
+        assert len(result["appearances"]) == 3  # 2 from test + 1 from other
+        for app in result["appearances"]:
+            assert "NVDA" in app["companies"]
+
+    def test_investor_only(self, tmp_investors: Path):
+        """'What has Test Investor said?' — all of Test's appearances."""
+        index = InvestorIndex(tmp_investors)
+        entities = ExtractedEntities(investors=["test-investor"])
+        result = index.search(entities)
+        assert len(result["appearances"]) == 3  # all 3 test-investor appearances
+        for app in result["appearances"]:
+            assert app["investor"] == "test-investor"
+
+    def test_topic_only(self, tmp_investors: Path):
+        """'What are investors saying about AI infrastructure?'"""
+        index = InvestorIndex(tmp_investors)
+        entities = ExtractedEntities(topics=["ai-infrastructure"])
+        result = index.search(entities)
+        assert len(result["appearances"]) >= 3
+        for app in result["appearances"]:
+            topics = (app.get("topics") or []) + (app.get("sectors") or [])
+            assert any("ai-infrastructure" in t.lower() for t in topics)
+
+
+class TestEmptyEntities:
+    """Empty entities should return nothing, not everything."""
+
+    def test_empty_returns_nothing(self, tmp_investors: Path):
+        index = InvestorIndex(tmp_investors)
+        entities = ExtractedEntities()
+        result = index.search(entities)
+        assert result["profiles"] == []
+        assert result["appearances"] == []
+
+
+class TestTimeRange:
+    """Time filtering should exclude old appearances."""
+
+    def test_recent_only(self, tmp_investors: Path):
+        """With time_months=6, the 2024 appearance should be excluded."""
+        index = InvestorIndex(tmp_investors)
+        entities = ExtractedEntities(tickers=["NVDA"], time_months=6)
+        result = index.search(entities)
+        for app in result["appearances"]:
+            assert app["date"].year >= 2025 or (
+                isinstance(app["date"], str) and app["date"] >= "2025"
+            )
+
+    def test_no_time_filter_includes_old(self, tmp_investors: Path):
+        """Without time_months, old appearances are included."""
+        index = InvestorIndex(tmp_investors)
+        entities = ExtractedEntities(tickers=["NVDA"])
+        result = index.search(entities)
+        dates = [str(a["date"]) for a in result["appearances"]]
+        assert any("2024" in d for d in dates)
+
+
+class TestProfileMatching:
+    """Profiles should match by investor only, never by ticker/topic."""
+
+    def test_ticker_only_profiles_from_appearances(self, tmp_investors: Path):
+        """Ticker-only search: profiles come from matched appearances' investors."""
+        index = InvestorIndex(tmp_investors)
+        entities = ExtractedEntities(tickers=["SNOW"])
+        result = index.search(entities)
+        # SNOW only appears in test-investor's appearances
+        profile_slugs = {p["slug"] for p in result["profiles"]}
+        assert "test-investor" in profile_slugs
+        assert "other-investor" not in profile_slugs
+
+    def test_investor_query_includes_profile(self, tmp_investors: Path):
+        """Investor name query should include that investor's profile."""
+        index = InvestorIndex(tmp_investors)
+        entities = ExtractedEntities(investors=["other-investor"])
+        result = index.search(entities)
+        profile_slugs = {p["slug"] for p in result["profiles"]}
+        assert "other-investor" in profile_slugs
+
+
+class TestResultLimit:
+    """Results should be capped at max_appearances."""
+
+    def test_limit(self, tmp_investors: Path):
+        index = InvestorIndex(tmp_investors)
+        entities = ExtractedEntities(tickers=["NVDA"])
+        result = index.search(entities, max_appearances=1)
+        assert len(result["appearances"]) == 1
+
+    def test_sorted_newest_first(self, tmp_investors: Path):
+        """Results should be sorted newest first."""
+        index = InvestorIndex(tmp_investors)
+        entities = ExtractedEntities(tickers=["NVDA"])
+        result = index.search(entities)
+        dates = [str(a["date"]) for a in result["appearances"]]
+        assert dates == sorted(dates, reverse=True)
 
 
 class TestInvestorIndex:
-    """Integration tests for InvestorIndex against fixture data."""
+    """Basic index functionality tests."""
 
     def test_loads_profiles(self, tmp_investors: Path):
         index = InvestorIndex(tmp_investors)
-        assert len(index.profiles) == 1
-        assert index.profiles[0]["slug"] == "test-investor"
+        assert len(index.profiles) == 2
 
     def test_loads_appearances(self, tmp_investors: Path):
         index = InvestorIndex(tmp_investors)
-        assert len(index.appearances) == 2
+        assert len(index.appearances) == 4
 
     def test_all_companies(self, tmp_investors: Path):
         index = InvestorIndex(tmp_investors)
         companies = index.all_companies
         assert "NVDA" in companies
         assert "SNOW" in companies
-        assert "MSFT" in companies
 
     def test_all_sectors(self, tmp_investors: Path):
         index = InvestorIndex(tmp_investors)
@@ -96,42 +194,9 @@ class TestInvestorIndex:
         assert "ai-infrastructure" in sectors
         assert "saas-metrics" in sectors
 
-    def test_appearances_for_companies(self, tmp_investors: Path):
-        index = InvestorIndex(tmp_investors)
-        results = index.appearances_for_companies(["NVDA"])
-        assert len(results) == 1
-        assert results[0]["companies"] == ["NVDA", "MSFT"]
-
-    def test_appearances_for_sectors(self, tmp_investors: Path):
-        index = InvestorIndex(tmp_investors)
-        results = index.appearances_for_sectors(["saas-metrics"])
-        assert len(results) == 1
-        assert "SNOW" in results[0]["companies"]
-
-    def test_search_by_ticker(self, tmp_investors: Path):
-        index = InvestorIndex(tmp_investors)
-        entities = ExtractedEntities(tickers=["SNOW"], investors=[], topics=[])
-        result = index.search(entities)
-        assert len(result["profiles"]) == 1
-        assert len(result["appearances"]) == 1
-
-    def test_search_empty_entities_returns_all(self, tmp_investors: Path):
-        index = InvestorIndex(tmp_investors)
-        entities = ExtractedEntities(tickers=[], investors=[], topics=[])
-        result = index.search(entities)
-        assert len(result["profiles"]) == 1
-        assert len(result["appearances"]) == 2
-
-    def test_search_no_match(self, tmp_investors: Path):
-        index = InvestorIndex(tmp_investors)
-        entities = ExtractedEntities(tickers=["AAPL"], investors=[], topics=[])
-        result = index.search(entities)
-        assert len(result["profiles"]) == 0
-        assert len(result["appearances"]) == 0
-
     def test_reload_clears_cache(self, tmp_investors: Path):
         index = InvestorIndex(tmp_investors)
-        _ = index.profiles  # trigger load
+        _ = index.profiles
         index.reload()
         assert index._profiles is None
         assert index._appearances is None

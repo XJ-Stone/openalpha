@@ -24,6 +24,9 @@ Return a JSON object with these fields:
 - "topics": list of topic/theme strings (e.g. "AI-infrastructure", "agentic-commerce",
   "ai-investment-bubble", "fintech", "china-tech"). These capture narratives and
   conversations, not just financial sectors. Normalize to lowercase-hyphenated.
+- "time_months": integer or null. If the user specifies a time window, extract the
+  number of months. "recent" or "lately" = 3, "this year" = months since January,
+  "last quarter" = 3, "last 6 months" = 6, "past year" = 12. null if no time constraint.
 
 Rules:
 - Only extract entities actually mentioned or clearly implied in the question.
@@ -32,15 +35,19 @@ Rules:
 
 Example:
   Input: "What does Cathie Wood think about Tesla?"
-  Output: {"tickers": ["TSLA"], "investors": ["Cathie Wood"], "topics": []}
+  Output: {"tickers": ["TSLA"], "investors": ["Cathie Wood"], "topics": [], "time_months": null}
 
 Example:
   Input: "Who's bullish on AI infrastructure?"
-  Output: {"tickers": [], "investors": [], "topics": ["AI-infrastructure"]}
+  Output: {"tickers": [], "investors": [], "topics": ["AI-infrastructure"], "time_months": null}
 
 Example:
   Input: "How do Gerstner and Druckenmiller differ on Snowflake?"
-  Output: {"tickers": ["SNOW"], "investors": ["Gerstner", "Druckenmiller"], "topics": []}
+  Output: {"tickers": ["SNOW"], "investors": ["Gerstner", "Druckenmiller"], "topics": [], "time_months": null}
+
+Example:
+  Input: "What has Brad said about AI in the last 3 months?"
+  Output: {"tickers": [], "investors": ["Brad Gerstner"], "topics": ["AI-infrastructure"], "time_months": 3}
 """
 
 
@@ -51,9 +58,11 @@ class ExtractedEntities:
     tickers: list[str] = field(default_factory=list)
     investors: list[str] = field(default_factory=list)
     topics: list[str] = field(default_factory=list)
+    time_months: int | None = None
 
     @property
     def is_empty(self) -> bool:
+        """True when no search dimensions are set (time alone is not a dimension)."""
         return not self.tickers and not self.investors and not self.topics
 
 
@@ -77,10 +86,13 @@ def extract_entities(query: str, provider: LLMProvider) -> ExtractedEntities:
             text = text.strip()
 
         parsed = json.loads(text)
+        raw_months = parsed.get("time_months")
+        time_months = int(raw_months) if raw_months is not None else None
         return ExtractedEntities(
             tickers=[t.upper() for t in parsed.get("tickers", [])],
             investors=parsed.get("investors", []),
             topics=parsed.get("topics", []),
+            time_months=time_months,
         )
     except (json.JSONDecodeError, KeyError, AssertionError) as exc:
         logger.warning("Entity extraction failed, falling back to raw query: %s", exc)

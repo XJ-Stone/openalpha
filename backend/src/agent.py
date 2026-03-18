@@ -257,7 +257,8 @@ class Agent:
             logger.info("Resolved topics: %s", resolved_sectors)
 
         # --- 3. Find matching appearances -------------------------------------
-        matched = self._find_appearances(entities, resolved_sectors)
+        result = self._index.search(entities, resolved_sectors)
+        matched = result["appearances"]
         logger.info("Matched %d appearances", len(matched))
 
         if not matched:
@@ -433,7 +434,8 @@ class Agent:
         """Synchronous query — returns string or generator. No status events."""
         entities = extract_entities(question, self._provider)
         resolved_sectors = self._resolve_sectors(entities.topics)
-        matched = self._find_appearances(entities, resolved_sectors)
+        result = self._index.search(entities, resolved_sectors)
+        matched = result["appearances"]
 
         if not matched:
             return self._answer_no_data(question, stream=stream)
@@ -481,79 +483,6 @@ class Agent:
         except (json.JSONDecodeError, TypeError):
             logger.warning("Sector resolution failed, using raw sectors")
             return query_sectors
-
-    # -----------------------------------------------------------------------
-    # Appearance matching
-    # -----------------------------------------------------------------------
-
-    def _find_appearances(
-        self,
-        entities: ExtractedEntities,
-        resolved_sectors: list[str],
-    ) -> list[dict]:
-        """Collect appearances matching extracted entities.
-
-        When multiple entity dimensions are present (e.g. investor + ticker),
-        uses AND logic — only appearances matching ALL specified dimensions are
-        returned. When a single dimension is present, returns all matches for
-        that dimension. Tickers and sectors are treated as a single "topic"
-        dimension (OR'd together) since they're complementary ways to find
-        topic-relevant appearances.
-        """
-        if entities.is_empty:
-            return list(self._index.appearances)
-
-        # --- Topic matches: tickers OR sectors (complementary filters) ---
-        topic_paths: set[str] | None = None
-        topic_apps: dict[str, dict] = {}
-
-        if entities.tickers or resolved_sectors:
-            topic_paths = set()
-            if entities.tickers:
-                for app in self._index.appearances_for_companies(entities.tickers):
-                    path_key = str(app.get("_path", id(app)))
-                    topic_paths.add(path_key)
-                    topic_apps[path_key] = app
-            if resolved_sectors:
-                for app in self._index.appearances_for_sectors(resolved_sectors):
-                    path_key = str(app.get("_path", id(app)))
-                    topic_paths.add(path_key)
-                    topic_apps[path_key] = app
-
-        # --- Investor matches ---
-        investor_paths: set[str] | None = None
-        investor_apps: dict[str, dict] = {}
-
-        if entities.investors:
-            investor_paths = set()
-            for app in self._index.appearances:
-                slug = app.get("investor_slug", "") or app.get("investor", "")
-                for inv in entities.investors:
-                    inv_lower = inv.lower()
-                    if inv_lower in slug.lower() or any(
-                        part in slug.lower() for part in inv_lower.split()
-                    ):
-                        path_key = str(app.get("_path", id(app)))
-                        investor_paths.add(path_key)
-                        investor_apps[path_key] = app
-                        break
-
-        # --- Intersect dimensions (AND logic) ---
-        dimension_sets = [s for s in (topic_paths, investor_paths) if s is not None]
-
-        if not dimension_sets:
-            return []
-
-        if len(dimension_sets) == 1:
-            # Single dimension — return all matches
-            matched_paths = dimension_sets[0]
-        else:
-            # Multiple dimensions — AND (intersect)
-            matched_paths = dimension_sets[0].intersection(*dimension_sets[1:])
-
-        # Collect apps, preferring topic_apps for richer metadata
-        all_apps = {**investor_apps, **topic_apps}
-        return [all_apps[p] for p in matched_paths if p in all_apps]
 
     # -----------------------------------------------------------------------
     # Async streaming: Direct (≤ DIRECT_CONTEXT_LIMIT files)

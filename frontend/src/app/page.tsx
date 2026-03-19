@@ -593,9 +593,9 @@ export default function HomePage() {
             </div>
             <div className="mt-6 flex flex-wrap justify-center gap-2">
               {[
-                "What is Freda's view on Amazon?",
-                "Freda's take on AI infrastructure spending",
-                "What does Freda think about China tech?",
+                "Investor views on UBER",
+                "Thoughts on agentic commerce",
+                "Investor takes on robotaxis",
               ].map((suggestion) => (
                 <button
                   key={suggestion}

@@ -4,12 +4,13 @@ from __future__ import annotations
 
 import json
 import logging
+import os
 from collections import Counter
 from datetime import date, timedelta
 from pathlib import Path
 from typing import AsyncGenerator
 
-from fastapi import FastAPI, HTTPException
+from fastapi import FastAPI, HTTPException, Request
 from fastapi.middleware.cors import CORSMiddleware
 from fastapi.responses import StreamingResponse
 from pydantic import BaseModel, Field
@@ -18,6 +19,13 @@ from src.agent import Agent, ContentEvent, ContentReplaceEvent, SourcesEvent, St
 from src.config import get_settings
 
 logger = logging.getLogger(__name__)
+
+# ---------------------------------------------------------------------------
+# Rate limiting (in-memory, per-IP)
+# ---------------------------------------------------------------------------
+
+MAX_QUERIES_PER_IP = int(os.environ.get("MAX_QUERIES_PER_IP", "5"))
+_query_counts: dict[str, int] = {}
 
 # ---------------------------------------------------------------------------
 # Pydantic models
@@ -212,7 +220,7 @@ app.add_middleware(
     summary="Analyze a research question",
     response_description="SSE stream of status updates and LLM tokens",
 )
-async def analyze(req: AnalyzeRequest) -> StreamingResponse:
+async def analyze(req: AnalyzeRequest, request: Request) -> StreamingResponse:
     """Stream an LLM-powered analysis for *req.question*.
 
     The response is an SSE text/event-stream.  Each ``data:`` frame contains
@@ -225,6 +233,11 @@ async def analyze(req: AnalyzeRequest) -> StreamingResponse:
 
     The stream ends with a ``data: [DONE]`` sentinel.
     """
+
+    client_ip = request.headers.get("x-forwarded-for", request.client.host if request.client else "unknown").split(",")[0].strip()
+    _query_counts[client_ip] = _query_counts.get(client_ip, 0) + 1
+    if _query_counts[client_ip] > MAX_QUERIES_PER_IP:
+        raise HTTPException(status_code=429, detail="Query limit reached. Thank you for trying OpenAlpha!")
 
     async def _event_stream() -> AsyncGenerator[str, None]:
         try:
@@ -421,8 +434,6 @@ async def get_entities(months: int = 6) -> EntitiesResponse:
 # ---------------------------------------------------------------------------
 
 if __name__ == "__main__":
-    import os
-
     import uvicorn
 
     port = int(os.environ.get("PORT", 8000))

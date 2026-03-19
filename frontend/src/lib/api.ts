@@ -71,6 +71,10 @@ export async function analyzeQuestion(
   });
 
   if (!res.ok) {
+    if (res.status === 429) {
+      const body = await res.json().catch(() => null);
+      throw new Error(body?.detail ?? "Query limit reached. Thank you for trying OpenAlpha!");
+    }
     throw new Error(`Analyze request failed: ${res.status} ${res.statusText}`);
   }
 

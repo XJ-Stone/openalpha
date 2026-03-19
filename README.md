@@ -6,7 +6,7 @@ OpenAlpha is a research agent that searches a knowledge base of real investor op
 
 **[Try the live demo](https://openalpha-eight.vercel.app/)**
 
-Most AI investment tools simulate investor opinions through LLM prompts. OpenAlpha takes the opposite approach — investors are **data**, not personas. Every opinion traces to a real public statement with a date and source link.
+Most AI investment tools simulate investor behavior — predefined analysis pipelines that assume how an investor would think, with LLMs roleplaying as specific personas. OpenAlpha skips the simulation. Investors are **data**, not personas — every opinion traces to a real public statement with a date and source link.
 
 ## Quick Start
 

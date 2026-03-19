@@ -237,7 +237,7 @@ async def analyze(req: AnalyzeRequest, request: Request) -> StreamingResponse:
     client_ip = request.headers.get("x-forwarded-for", request.client.host if request.client else "unknown").split(",")[0].strip()
     _query_counts[client_ip] = _query_counts.get(client_ip, 0) + 1
     if _query_counts[client_ip] > MAX_QUERIES_PER_IP:
-        raise HTTPException(status_code=429, detail="Query limit reached. Thank you for trying OpenAlpha!")
+        raise HTTPException(status_code=429, detail="Query limit reached. Open an issue on GitHub if you'd like more access.")
 
     async def _event_stream() -> AsyncGenerator[str, None]:
         try:

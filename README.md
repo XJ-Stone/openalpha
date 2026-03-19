@@ -6,9 +6,7 @@ OpenAlpha is a research agent that searches a knowledge base of real investor op
 
 **[Try the live demo](https://openalpha-eight.vercel.app/)**
 
-## Why?
-
-Projects like [ai-hedge-fund](https://github.com/virattt/ai-hedge-fund) roleplay as famous investors via system prompts. OpenAlpha treats investors as **data**, not code — every opinion traces to a real public statement with a date and source link.
+Most AI investment tools simulate investor opinions through LLM prompts. OpenAlpha takes the opposite approach — investors are **data**, not personas. Every opinion traces to a real public statement with a date and source link.
 
 ## Quick Start
 
